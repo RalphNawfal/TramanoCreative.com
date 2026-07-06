@@ -71,6 +71,7 @@ export default function Home() {
             <SplitReveal
               text="Websites engineered like spacecraft."
               accent={["spacecraft"]}
+              kinetic
               delay={0.2}
               className="mt-6 font-display text-[clamp(2.9rem,8.5vw,7.5rem)] font-bold leading-[0.98] tracking-tight"
             />

@@ -21,7 +21,7 @@ export default function CustomCursor() {
     const move = (e: PointerEvent) => {
       x.set(e.clientX);
       y.set(e.clientY);
-      const target = e.target as Element | null;
+      const target = e.target instanceof Element ? e.target : null;
       setHovering(!!target?.closest("a, button, [role='button'], input, select, textarea, summary"));
     };
     window.addEventListener("pointermove", move, { passive: true });

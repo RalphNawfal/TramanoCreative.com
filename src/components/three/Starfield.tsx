@@ -1,9 +1,10 @@
 "use client";
 
-import { useMemo, useRef } from "react";
+import { useMemo, useRef, useState } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
-import { PointMaterial, Points } from "@react-three/drei";
+import { PerformanceMonitor, PointMaterial, Points } from "@react-three/drei";
 import * as THREE from "three";
+import FluidSmoke from "./FluidSmoke";
 
 function randomInSphere(count: number, radius: number) {
   const positions = new Float32Array(count * 3);
@@ -66,11 +67,13 @@ function StarLayer({
 
 export default function Starfield({ dense = true }: { dense?: boolean }) {
   const scrollRef = useRef(0);
+  // Adaptive quality: drop pixel ratio on GPUs that can't hold frame rate
+  const [dpr, setDpr] = useState(1.5);
 
   return (
     <Canvas
       camera={{ position: [0, 0, 1], fov: 70 }}
-      dpr={[1, 1.75]}
+      dpr={dpr}
       gl={{ antialias: false, powerPreference: "high-performance" }}
       onCreated={({ gl }) => {
         gl.setClearColor("#030509");
@@ -78,7 +81,12 @@ export default function Starfield({ dense = true }: { dense?: boolean }) {
       // Track normalized scroll progress without re-rendering React
       onPointerMissed={() => {}}
     >
+      <PerformanceMonitor
+        onIncline={() => setDpr(Math.min(1.75, window.devicePixelRatio))}
+        onDecline={() => setDpr(1)}
+      />
       <ScrollTracker scrollRef={scrollRef} />
+      {dense && <FluidSmoke />}
       <StarLayer
         count={dense ? 2600 : 900}
         radius={4}

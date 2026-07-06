@@ -1,6 +1,7 @@
 "use client";
 
 import { Canvas, useFrame } from "@react-three/fiber";
+import { PerformanceMonitor } from "@react-three/drei";
 import { useEffect, useRef, useState } from "react";
 import * as THREE from "three";
 
@@ -142,6 +143,7 @@ export default function HeroOrb({ className = "" }: { className?: string }) {
   const container = useRef<HTMLDivElement>(null);
   const [active, setActive] = useState(true);
   const [enabled, setEnabled] = useState(false);
+  const [dpr, setDpr] = useState(1.5);
 
   useEffect(() => {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
@@ -162,12 +164,16 @@ export default function HeroOrb({ className = "" }: { className?: string }) {
       {enabled ? (
         <Canvas
           camera={{ position: [0, 0, 5.2], fov: 45 }}
-          dpr={[1, 1.75]}
+          dpr={dpr}
           frameloop={active ? "always" : "never"}
           gl={{ antialias: true, alpha: true, powerPreference: "high-performance" }}
           eventSource={typeof document !== "undefined" ? document.body : undefined}
           eventPrefix="client"
         >
+          <PerformanceMonitor
+            onIncline={() => setDpr(Math.min(1.75, window.devicePixelRatio))}
+            onDecline={() => setDpr(1)}
+          />
           <Orb />
         </Canvas>
       ) : (
