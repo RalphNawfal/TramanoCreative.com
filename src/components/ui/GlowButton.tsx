@@ -1,4 +1,8 @@
+"use client";
+
 import Link from "next/link";
+import { useRef } from "react";
+import { motion, useReducedMotion, useSpring } from "motion/react";
 
 type GlowButtonProps = {
   href: string;
@@ -8,6 +12,7 @@ type GlowButtonProps = {
   onClick?: () => void;
 };
 
+/** CTA link that magnetically pulls toward the cursor. */
 export default function GlowButton({
   href,
   children,
@@ -15,6 +20,11 @@ export default function GlowButton({
   variant = "solid",
   onClick,
 }: GlowButtonProps) {
+  const ref = useRef<HTMLDivElement>(null);
+  const reduced = useReducedMotion();
+  const x = useSpring(0, { stiffness: 200, damping: 16 });
+  const y = useSpring(0, { stiffness: 200, damping: 16 });
+
   const sizes = {
     sm: "px-4 py-1.5 text-xs",
     md: "px-6 py-2.5 text-sm",
@@ -27,13 +37,33 @@ export default function GlowButton({
       "border border-line text-ink-muted hover:border-cyan/50 hover:text-cyan-bright",
   };
 
+  function onPointerMove(e: React.PointerEvent) {
+    if (reduced || !ref.current) return;
+    const rect = ref.current.getBoundingClientRect();
+    x.set((e.clientX - rect.left - rect.width / 2) * 0.35);
+    y.set((e.clientY - rect.top - rect.height / 2) * 0.35);
+  }
+
+  function onPointerLeave() {
+    x.set(0);
+    y.set(0);
+  }
+
   return (
-    <Link
-      href={href}
-      onClick={onClick}
-      className={`inline-flex items-center justify-center gap-2 rounded-full font-mono uppercase tracking-[0.15em] transition-all duration-300 ${sizes[size]} ${variants[variant]}`}
+    <motion.div
+      ref={ref}
+      className="inline-block"
+      style={{ x, y }}
+      onPointerMove={onPointerMove}
+      onPointerLeave={onPointerLeave}
     >
-      {children}
-    </Link>
+      <Link
+        href={href}
+        onClick={onClick}
+        className={`inline-flex items-center justify-center gap-2 rounded-full font-mono uppercase tracking-[0.15em] transition-colors duration-300 ${sizes[size]} ${variants[variant]}`}
+      >
+        {children}
+      </Link>
+    </motion.div>
   );
 }

@@ -4,7 +4,7 @@ import { useState } from "react";
 import { site } from "@/lib/site";
 
 const inputClass =
-  "w-full rounded-xl border border-line bg-surface/80 px-4 py-3 text-sm text-ink placeholder:text-ink-faint focus:border-cyan/60 focus:outline-none focus:ring-1 focus:ring-cyan/40";
+  "w-full rounded-xl border border-line bg-surface/80 px-4 py-3 text-sm text-ink placeholder:text-ink-faint transition-all duration-300 focus:border-cyan/60 focus:outline-none focus:ring-1 focus:ring-cyan/40 focus:shadow-[0_0_24px_rgba(34,211,238,0.18)] focus:bg-surface";
 
 const labelClass =
   "block font-mono text-xs uppercase tracking-[0.2em] text-ink-muted mb-2";

@@ -5,6 +5,7 @@ import { site } from "@/lib/site";
 import Nav from "@/components/ui/Nav";
 import Footer from "@/components/ui/Footer";
 import JsonLd from "@/components/seo/JsonLd";
+import CustomCursor from "@/components/ui/CustomCursor";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -75,6 +76,7 @@ export default function RootLayout({
             ],
           }}
         />
+        <CustomCursor />
         <Nav />
         <main className="flex-1">{children}</main>
         <Footer />
