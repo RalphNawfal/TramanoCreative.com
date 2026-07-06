@@ -4,7 +4,7 @@ import { useState } from "react";
 import { site } from "@/lib/site";
 
 const inputClass =
-  "w-full rounded-xl border border-line bg-surface/80 px-4 py-3 text-sm text-ink placeholder:text-ink-faint transition-all duration-300 focus:border-cyan/60 focus:outline-none focus:ring-1 focus:ring-cyan/40 focus:shadow-[0_0_24px_rgba(34,211,238,0.18)] focus:bg-surface";
+  "w-full rounded-xl border border-line bg-surface/80 px-4 py-3 text-sm text-ink placeholder:text-ink-faint transition-all duration-300 focus:border-gold/60 focus:outline-none focus:ring-1 focus:ring-gold/40 focus:shadow-[0_0_24px_rgba(212,175,92,0.18)] focus:bg-surface";
 
 const labelClass =
   "block font-mono text-xs uppercase tracking-[0.2em] text-ink-muted mb-2";
@@ -38,8 +38,8 @@ export default function ContactForm() {
   if (status === "sent") {
     return (
       <div className="glow-ring rounded-2xl bg-surface/60 p-10 text-center backdrop-blur-sm">
-        <p className="font-mono text-xs uppercase tracking-[0.3em] text-cyan">
-          Transmission received
+        <p className="font-mono text-xs uppercase tracking-[0.3em] text-gold">
+          Got it
         </p>
         <p className="mt-4 font-display text-2xl font-semibold">
           We&apos;ll respond within one business day.
@@ -121,7 +121,7 @@ export default function ContactForm() {
 
       <div>
         <label htmlFor="message" className={labelClass}>
-          The mission *
+          The project *
         </label>
         <textarea
           id="message"
@@ -138,15 +138,15 @@ export default function ContactForm() {
       <button
         type="submit"
         disabled={status === "sending"}
-        className="glow-ring inline-flex items-center justify-center rounded-full bg-cyan/10 px-8 py-3.5 font-mono text-base uppercase tracking-[0.15em] text-cyan-bright transition-all duration-300 hover:bg-cyan/20 hover:text-white disabled:opacity-50"
+        className="glow-ring inline-flex items-center justify-center rounded-full bg-gold/10 px-8 py-3.5 font-mono text-base uppercase tracking-[0.15em] text-gold-bright transition-all duration-300 hover:bg-gold/20 hover:text-white disabled:opacity-50"
       >
-        {status === "sending" ? "Transmitting…" : "Send transmission"}
+        {status === "sending" ? "Sending…" : "Send message"}
       </button>
 
       {status === "error" && (
         <p className="text-sm text-red-400">
-          Transmission failed. Email us directly at{" "}
-          <a href={`mailto:${site.email}`} className="text-cyan-bright underline">
+          That didn&apos;t send. Email us directly at{" "}
+          <a href={`mailto:${site.email}`} className="text-gold-bright underline">
             {site.email}
           </a>
           .

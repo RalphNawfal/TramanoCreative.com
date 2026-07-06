@@ -10,7 +10,7 @@ export type StoryLog = {
 };
 
 /**
- * Pinned scroll choreography: the viewport locks while each mission log
+ * Pinned scroll choreography: the viewport locks while each story scene
  * plays through — fade/slide in, hold, hand off to the next scene.
  * Driven by a rAF scroll loop for full control over the scene timing.
  */
@@ -107,7 +107,7 @@ export default function StorySequence({ logs }: { logs: StoryLog[] }) {
                 ticks.current[i] = node;
               }}
               style={{ opacity: 0.25, transition: "opacity 0.3s" }}
-              className="block h-8 w-px bg-cyan shadow-[0_0_8px_rgba(34,211,238,0.8)]"
+              className="block h-8 w-px bg-gold shadow-[0_0_8px_rgba(212,175,92,0.8)]"
             />
           ))}
         </div>
@@ -119,7 +119,7 @@ export default function StorySequence({ logs }: { logs: StoryLog[] }) {
 function LogContent({ log }: { log: StoryLog }) {
   return (
     <>
-      <p className="font-mono text-xs uppercase tracking-[0.3em] text-cyan">{log.code}</p>
+      <p className="font-mono text-xs uppercase tracking-[0.3em] text-gold">{log.code}</p>
       <h2 className="mt-4 font-display text-4xl font-semibold leading-[1.02] tracking-tight md:text-6xl">
         {log.title}
       </h2>
@@ -127,8 +127,8 @@ function LogContent({ log }: { log: StoryLog }) {
         {log.body}
       </p>
       {log.stat && (
-        <div className="mt-8 flex items-baseline gap-3 border-l-2 border-cyan/60 pl-4">
-          <span className="font-display text-4xl font-bold text-cyan-bright glow-text md:text-5xl">
+        <div className="mt-8 flex items-baseline gap-3 border-l-2 border-gold/60 pl-4">
+          <span className="font-display text-4xl font-bold text-gold-bright glow-text md:text-5xl">
             {log.stat.value}
           </span>
           <span className="font-mono text-xs uppercase tracking-[0.2em] text-ink-faint">

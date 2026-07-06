@@ -39,8 +39,8 @@ export default function CustomCursor() {
         y: springY,
         translateX: "-50%",
         translateY: "-50%",
-        borderColor: "rgba(103,232,249,0.65)",
-        boxShadow: "0 0 12px rgba(34,211,238,0.35)",
+        borderColor: "rgba(240,212,138,0.65)",
+        boxShadow: "0 0 12px rgba(212,175,92,0.35)",
       }}
       animate={{
         width: hovering ? 44 : 22,

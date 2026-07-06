@@ -53,9 +53,9 @@ void main() {
   float n = fbm((p + warp) * 2.4 + vec2(uTime * 0.045, -uTime * 0.03));
   n += 0.45 * fbm(p * 4.8 - vec2(0.0, uTime * 0.05) + warp * 2.0);
 
-  vec3 cyan = vec3(0.13, 0.83, 0.93);
-  vec3 violet = vec3(0.55, 0.36, 0.96);
-  vec3 tint = mix(cyan, violet, smoothstep(-0.35, 0.5, n));
+  vec3 gold = vec3(0.83, 0.69, 0.36);
+  vec3 slate = vec3(0.35, 0.50, 0.72);
+  vec3 tint = mix(gold, slate, smoothstep(-0.35, 0.5, n));
 
   float smoke = smoothstep(0.12, 0.75, n) * 0.10;
   float glow = max(ripple, 0.0) * 0.5 + abs(ripple) * 0.18;
