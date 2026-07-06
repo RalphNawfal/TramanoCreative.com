@@ -15,7 +15,7 @@ export default function Nav() {
           href="/"
           className="font-display text-lg font-semibold tracking-wide text-ink"
         >
-          TRAMANO<span className="text-cyan glow-text">·</span>CREATIVE
+          TRAMANO<span className="text-gold glow-text">·</span>CREATIVE
         </Link>
 
         <div className="hidden items-center gap-7 md:flex">
@@ -23,13 +23,13 @@ export default function Nav() {
             <Link
               key={item.href}
               href={item.href}
-              className="font-mono text-xs uppercase tracking-[0.2em] text-ink-muted transition-colors hover:text-cyan-bright"
+              className="font-mono text-xs uppercase tracking-[0.2em] text-ink-muted transition-colors hover:text-gold-bright"
             >
               {item.label}
             </Link>
           ))}
           <GlowButton href="/contact/" size="sm">
-            Start a project
+            Book the call
           </GlowButton>
         </div>
 
@@ -54,13 +54,13 @@ export default function Nav() {
                 key={item.href}
                 href={item.href}
                 onClick={() => setOpen(false)}
-                className="font-mono text-sm uppercase tracking-[0.2em] text-ink-muted hover:text-cyan-bright"
+                className="font-mono text-sm uppercase tracking-[0.2em] text-ink-muted hover:text-gold-bright"
               >
                 {item.label}
               </Link>
             ))}
             <GlowButton href="/contact/" onClick={() => setOpen(false)}>
-              Start a project
+              Book the call
             </GlowButton>
           </div>
         </div>

@@ -28,9 +28,9 @@ export default function SpaceBackdrop() {
         className="absolute inset-0"
         style={{
           background:
-            "radial-gradient(ellipse 60% 45% at 20% 15%, rgba(34,211,238,0.09), transparent 60%)," +
-            "radial-gradient(ellipse 55% 50% at 80% 70%, rgba(139,92,246,0.10), transparent 60%)," +
-            "radial-gradient(ellipse 40% 35% at 60% 25%, rgba(103,232,249,0.05), transparent 60%)",
+            "radial-gradient(ellipse 60% 45% at 20% 15%, rgba(212,175,92,0.09), transparent 60%)," +
+            "radial-gradient(ellipse 55% 50% at 80% 70%, rgba(90,127,184,0.10), transparent 60%)," +
+            "radial-gradient(ellipse 40% 35% at 60% 25%, rgba(240,212,138,0.05), transparent 60%)",
         }}
       />
       {mode === "static" && (
@@ -38,13 +38,13 @@ export default function SpaceBackdrop() {
           className="absolute inset-0 opacity-70"
           style={{
             backgroundImage:
-              "radial-gradient(1px 1px at 12% 22%, #9fd8e8 50%, transparent 51%)," +
-              "radial-gradient(1px 1px at 34% 68%, #67e8f9 50%, transparent 51%)," +
+              "radial-gradient(1px 1px at 12% 22%, #e8dcc0 50%, transparent 51%)," +
+              "radial-gradient(1px 1px at 34% 68%, #f0d48a 50%, transparent 51%)," +
               "radial-gradient(1.5px 1.5px at 56% 12%, #e6edf6 50%, transparent 51%)," +
-              "radial-gradient(1px 1px at 71% 45%, #a78bfa 50%, transparent 51%)," +
-              "radial-gradient(1.5px 1.5px at 88% 78%, #9fd8e8 50%, transparent 51%)," +
+              "radial-gradient(1px 1px at 71% 45%, #8fadd6 50%, transparent 51%)," +
+              "radial-gradient(1.5px 1.5px at 88% 78%, #e8dcc0 50%, transparent 51%)," +
               "radial-gradient(1px 1px at 45% 88%, #e6edf6 50%, transparent 51%)," +
-              "radial-gradient(1px 1px at 92% 8%, #67e8f9 50%, transparent 51%)",
+              "radial-gradient(1px 1px at 92% 8%, #f0d48a 50%, transparent 51%)",
             backgroundSize: "420px 420px",
           }}
         />

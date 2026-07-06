@@ -76,7 +76,7 @@ export default function Starfield({ dense = true }: { dense?: boolean }) {
       dpr={dpr}
       gl={{ antialias: false, powerPreference: "high-performance" }}
       onCreated={({ gl }) => {
-        gl.setClearColor("#030509");
+        gl.setClearColor("#070c18");
       }}
       // Track normalized scroll progress without re-rendering React
       onPointerMissed={() => {}}
@@ -91,7 +91,7 @@ export default function Starfield({ dense = true }: { dense?: boolean }) {
         count={dense ? 2600 : 900}
         radius={4}
         size={0.006}
-        color="#9fd8e8"
+        color="#e8dcc0"
         speed={1}
         scrollRef={scrollRef}
       />
@@ -99,7 +99,7 @@ export default function Starfield({ dense = true }: { dense?: boolean }) {
         count={dense ? 1400 : 500}
         radius={6}
         size={0.01}
-        color="#67e8f9"
+        color="#f0d48a"
         speed={0.6}
         scrollRef={scrollRef}
       />
@@ -107,7 +107,7 @@ export default function Starfield({ dense = true }: { dense?: boolean }) {
         count={dense ? 700 : 250}
         radius={8}
         size={0.014}
-        color="#a78bfa"
+        color="#8fadd6"
         speed={0.35}
         scrollRef={scrollRef}
       />

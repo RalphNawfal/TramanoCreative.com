@@ -89,13 +89,12 @@ export default function SplitReveal({
       {words.map((word, w) => {
         const isAccent = accent.includes(word.replace(/[.,!?]/g, ""));
         return (
-          <span
-            key={w}
-            aria-hidden
-            className={`inline-block whitespace-nowrap ${
-              isAccent ? "text-cyan-bright glow-text" : ""
-            }`}
-          >
+          <span key={w} aria-hidden>
+            <span
+              className={`inline-block whitespace-nowrap ${
+                isAccent ? "text-gold-bright glow-text" : ""
+              }`}
+            >
             {word.split("").map((letter, l) => {
               const i = letterIndex++;
               return (
@@ -121,7 +120,8 @@ export default function SplitReveal({
                 </motion.span>
               );
             })}
-            {w < words.length - 1 && " "}
+            </span>
+            {w < words.length - 1 ? " " : ""}
           </span>
         );
       })}

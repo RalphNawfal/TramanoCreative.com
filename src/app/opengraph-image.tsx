@@ -1,7 +1,7 @@
 import { ImageResponse } from "next/og";
 
 export const dynamic = "force-static";
-export const alt = "Tramano Creative — Websites engineered like spacecraft.";
+export const alt = "Tramano Creative — A website is a tool. We build the whole machine.";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -17,42 +17,44 @@ export default function OgImage() {
           alignItems: "center",
           justifyContent: "center",
           background:
-            "radial-gradient(ellipse 60% 50% at 25% 20%, rgba(34,211,238,0.18), transparent 60%), radial-gradient(ellipse 55% 50% at 80% 80%, rgba(139,92,246,0.20), transparent 60%), #030509",
-          color: "#e6edf6",
-          fontFamily: "sans-serif",
+            "radial-gradient(ellipse 60% 50% at 25% 20%, rgba(212,175,92,0.16), transparent 60%), radial-gradient(ellipse 55% 50% at 80% 80%, rgba(90,127,184,0.18), transparent 60%), #070c18",
+          color: "#f5f1ea",
+          fontFamily: "Georgia, serif",
         }}
       >
         <div
           style={{
-            fontSize: 30,
+            fontSize: 28,
             letterSpacing: 12,
-            color: "#22d3ee",
+            color: "#d4af5c",
             display: "flex",
+            fontFamily: "sans-serif",
           }}
         >
           TRAMANO · CREATIVE
         </div>
         <div
           style={{
-            marginTop: 36,
-            fontSize: 72,
+            marginTop: 40,
+            fontSize: 64,
             fontWeight: 700,
             textAlign: "center",
-            lineHeight: 1.1,
+            lineHeight: 1.15,
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
           }}
         >
-          <span>Websites engineered</span>
-          <span style={{ color: "#67e8f9" }}>like spacecraft.</span>
+          <span>A website is a tool.</span>
+          <span style={{ color: "#f0d48a" }}>We build the whole machine.</span>
         </div>
         <div
           style={{
             marginTop: 44,
             fontSize: 26,
-            color: "#8b98ab",
+            color: "#a3abbc",
             display: "flex",
+            fontFamily: "sans-serif",
           }}
         >
           tramanocreative.com

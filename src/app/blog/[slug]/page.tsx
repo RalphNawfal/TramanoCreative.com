@@ -57,9 +57,9 @@ export default async function BlogPost({
           <article className="mx-auto max-w-2xl">
             <Link
               href="/blog/"
-              className="font-mono text-xs uppercase tracking-[0.25em] text-ink-faint hover:text-cyan-bright"
+              className="font-mono text-xs uppercase tracking-[0.25em] text-ink-faint hover:text-gold-bright"
             >
-              ← All field notes
+              ← All articles
             </Link>
             <header className="mt-8">
               <div className="flex flex-wrap items-center gap-3 font-mono text-xs tracking-wider text-ink-faint">
@@ -81,7 +81,7 @@ export default async function BlogPost({
                 {post.description}
               </p>
             </header>
-            <div className="prose-invert mt-12 space-y-6 text-base leading-relaxed text-ink-muted [&_a]:text-cyan-bright [&_a]:underline [&_h2]:mt-12 [&_h2]:font-display [&_h2]:text-2xl [&_h2]:font-semibold [&_h2]:text-ink [&_h3]:mt-8 [&_h3]:font-display [&_h3]:text-xl [&_h3]:font-semibold [&_h3]:text-ink [&_li]:ml-5 [&_li]:list-disc [&_strong]:text-ink">
+            <div className="prose-invert mt-12 space-y-6 text-base leading-relaxed text-ink-muted [&_a]:text-gold-bright [&_a]:underline [&_h2]:mt-12 [&_h2]:font-display [&_h2]:text-2xl [&_h2]:font-semibold [&_h2]:text-ink [&_h3]:mt-8 [&_h3]:font-display [&_h3]:text-xl [&_h3]:font-semibold [&_h3]:text-ink [&_li]:ml-5 [&_li]:list-disc [&_strong]:text-ink">
               <MDXRemote source={post.content} />
             </div>
             <footer className="mt-16 rounded-2xl border border-line/70 bg-surface/60 p-8 text-center backdrop-blur-sm">
@@ -93,7 +93,7 @@ export default async function BlogPost({
               </p>
               <Link
                 href="/contact/"
-                className="glow-ring mt-6 inline-flex items-center justify-center rounded-full bg-cyan/10 px-6 py-2.5 font-mono text-sm uppercase tracking-[0.15em] text-cyan-bright transition-all hover:bg-cyan/20 hover:text-white"
+                className="glow-ring mt-6 inline-flex items-center justify-center rounded-full bg-gold/10 px-6 py-2.5 font-mono text-sm uppercase tracking-[0.15em] text-gold-bright transition-all hover:bg-gold/20 hover:text-white"
               >
                 Start a project
               </Link>

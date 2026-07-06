@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Space_Grotesk, JetBrains_Mono } from "next/font/google";
+import { Inter, Playfair_Display, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { site } from "@/lib/site";
 import Nav from "@/components/ui/Nav";
@@ -12,8 +12,8 @@ const inter = Inter({
   subsets: ["latin"],
 });
 
-const spaceGrotesk = Space_Grotesk({
-  variable: "--font-space-grotesk",
+const playfair = Playfair_Display({
+  variable: "--font-playfair",
   subsets: ["latin"],
 });
 
@@ -51,7 +51,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${spaceGrotesk.variable} ${jetbrainsMono.variable} h-full antialiased`}
+      className={`${inter.variable} ${playfair.variable} ${jetbrainsMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-void text-ink">
         <JsonLd
@@ -64,7 +64,12 @@ export default function RootLayout({
                 name: site.name,
                 url: site.url,
                 email: site.email,
+                telephone: site.phone,
                 description: site.description,
+                founder: site.founders.map((name) => ({
+                  "@type": "Person",
+                  name,
+                })),
               },
               {
                 "@type": "WebSite",

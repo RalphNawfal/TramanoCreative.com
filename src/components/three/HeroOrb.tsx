@@ -83,9 +83,9 @@ void main() {
   vec3 viewDir = vec3(0.0, 0.0, 1.0);
   float fresnel = pow(1.0 - abs(dot(vNormal, viewDir)), 2.2);
   vec3 base = vec3(0.012, 0.02, 0.045);
-  vec3 cyan = vec3(0.13, 0.83, 0.93);
-  vec3 violet = vec3(0.55, 0.36, 0.96);
-  vec3 rim = mix(cyan, violet, smoothstep(-0.6, 0.9, vNoise));
+  vec3 gold = vec3(0.83, 0.69, 0.36);
+  vec3 slate = vec3(0.35, 0.50, 0.72);
+  vec3 rim = mix(gold, slate, smoothstep(-0.6, 0.9, vNoise));
   vec3 color = base + rim * fresnel * 1.6 + rim * 0.06;
   gl_FragColor = vec4(color, 0.92);
 }
@@ -182,7 +182,7 @@ export default function HeroOrb({ className = "" }: { className?: string }) {
           className="h-full w-full rounded-full"
           style={{
             background:
-              "radial-gradient(circle at 40% 35%, rgba(34,211,238,0.35), rgba(139,92,246,0.18) 55%, transparent 72%)",
+              "radial-gradient(circle at 40% 35%, rgba(212,175,92,0.35), rgba(90,127,184,0.18) 55%, transparent 72%)",
             filter: "blur(2px)",
           }}
         />

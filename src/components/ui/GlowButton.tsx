@@ -32,9 +32,9 @@ export default function GlowButton({
   };
   const variants = {
     solid:
-      "bg-cyan/10 text-cyan-bright glow-ring hover:bg-cyan/20 hover:text-white",
+      "bg-gold/10 text-gold-bright glow-ring hover:bg-gold/20 hover:text-white",
     outline:
-      "border border-line text-ink-muted hover:border-cyan/50 hover:text-cyan-bright",
+      "border border-line text-ink-muted hover:border-gold/50 hover:text-gold-bright",
   };
 
   function onPointerMove(e: React.PointerEvent) {

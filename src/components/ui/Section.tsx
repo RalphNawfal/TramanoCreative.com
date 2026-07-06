@@ -22,7 +22,7 @@ export default function Section({
     >
       <div className="mx-auto max-w-6xl px-5">
         {eyebrow && (
-          <p className="font-mono text-xs uppercase tracking-[0.3em] text-cyan">
+          <p className="font-mono text-xs uppercase tracking-[0.3em] text-gold">
             {eyebrow}
           </p>
         )}

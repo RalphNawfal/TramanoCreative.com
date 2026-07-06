@@ -5,9 +5,9 @@ import Reveal from "@/components/ui/Reveal";
 import { getAllPosts } from "@/lib/blog";
 
 export const metadata: Metadata = {
-  title: "Blog — Field Notes on Websites That Win",
+  title: "Blog — Guides on Websites, Ads & Search",
   description:
-    "Practical guides on web design, SEO, site speed, and AI search from the Tramano Creative crew.",
+    "Practical guides on web design, SEO, site speed, and AI search from Tramano Creative.",
   alternates: { canonical: "/blog/" },
 };
 
@@ -16,7 +16,7 @@ export default function BlogIndex() {
 
   return (
     <div className="pt-16">
-      <Section eyebrow="Field notes" title="Signals from the crew." grid>
+      <Section eyebrow="Blog" title="What we&apos;ve learned, written down." grid>
         <p className="max-w-2xl text-base leading-relaxed text-ink-muted md:text-lg">
           What we&apos;ve learned building sites that rank, load fast, and
           convert — written for business owners, not developers.
@@ -26,7 +26,7 @@ export default function BlogIndex() {
             <Reveal key={post.slug} delay={Math.min(i * 0.08, 0.3)}>
               <Link
                 href={`/blog/${post.slug}/`}
-                className="block rounded-2xl border border-line/70 bg-surface/60 p-7 backdrop-blur-sm transition-colors hover:border-cyan/40"
+                className="block rounded-2xl border border-line/70 bg-surface/60 p-7 backdrop-blur-sm transition-colors hover:border-gold/40"
               >
                 <div className="flex flex-wrap items-center gap-3 font-mono text-xs tracking-wider text-ink-faint">
                   <time dateTime={post.date}>
@@ -46,8 +46,8 @@ export default function BlogIndex() {
                 <p className="mt-2 max-w-2xl text-sm leading-relaxed text-ink-muted">
                   {post.description}
                 </p>
-                <p className="mt-4 font-mono text-xs uppercase tracking-[0.2em] text-cyan">
-                  Read the log →
+                <p className="mt-4 font-mono text-xs uppercase tracking-[0.2em] text-gold">
+                  Read the article →
                 </p>
               </Link>
             </Reveal>
