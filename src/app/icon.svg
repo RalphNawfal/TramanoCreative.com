@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Tramano Creative">
+  <!--
+    The mark is a T drawn to Archivo Expanded's proportions — wide, heavy,
+    flat-terminated. The crossbar carries the signal blue and the stem is
+    bone, which is the same relationship the wordmark uses (Tramano·Creative,
+    blue interpunct).
+
+    Split into two colours on purpose: at 16px the letterform stops being
+    legible, and what survives is a blue bar sitting above a lighter block —
+    still distinct in a crowded tab strip, which a single-colour T is not.
+  -->
+  <rect width="512" height="512" fill="#0c0c0d"/>
+  <rect x="96" y="128" width="320" height="76" fill="#3f7bff"/>
+  <rect x="218" y="204" width="76" height="180" fill="#f5f4f2"/>
+</svg>
