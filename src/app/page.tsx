@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import SmoothScroll from "@/components/ui/SmoothScroll";
 import Section from "@/components/ui/Section";
 import Reveal from "@/components/ui/Reveal";
@@ -8,7 +7,6 @@ import CtaButton from "@/components/ui/CtaButton";
 import Spotlight from "@/components/ui/Spotlight";
 import ZoomStory from "@/components/home/ZoomStory";
 import WorkReel from "@/components/home/WorkReel";
-import StatBand from "@/components/home/StatBand";
 import { reel } from "@/lib/work";
 import { site } from "@/lib/site";
 
@@ -95,11 +93,6 @@ const pillars = [
   },
 ];
 
-const stats = [
-  { to: 1, prefix: "<", suffix: "s", label: "Load time on every site we ship. We treat it as a requirement, not a target." },
-  { to: 100, suffix: "%", label: "Custom code. No page builders, no bought themes, nothing you can't own outright." },
-  { to: 6, prefix: "3–", suffix: " wks", label: "From kickoff to launch, for most builds. You'll know the date before we start." },
-];
 
 export default function Home() {
   return (
@@ -107,87 +100,110 @@ export default function Home() {
       <SmoothScroll />
 
       {/* ── Title card ─────────────────────────────────────────── */}
-      <section className="relative flex min-h-svh items-end overflow-hidden pb-16 pt-32 md:items-center md:pb-0">
-        {/*
-          A hard-edged plate of our own work occupying the right third, rather
-          than a full-bleed wash. Swiss layouts put images in blocks, not
-          behind everything — and it keeps the headline on flat carbon.
-        */}
-        <div
-          className="absolute inset-y-0 right-0 -z-10 hidden w-[38%] lg:block"
-          aria-hidden
-        >
-          <div className="relative h-full w-full opacity-[0.28]">
-            <Image
-              src={reel[0].desktop.src}
-              alt=""
-              width={reel[0].desktop.width}
-              height={reel[0].desktop.height}
-              loading="eager"
-              fetchPriority="high"
-              sizes="40vw"
-              className="h-full w-full object-cover grayscale"
-            />
-          </div>
-          <div className="absolute inset-0 bg-gradient-to-r from-carbon via-carbon/60 to-transparent" />
-          <div className="absolute inset-y-0 left-0 w-px bg-edge" />
-        </div>
-
-        <div className="relative mx-auto w-full max-w-6xl px-5">
+      {/*
+        No image. Everything here hangs off a single 12-column grid inside one
+        container, so every rule spans the same measure and every vertical
+        divider lands on a column line. The previous version floated a plate
+        against the viewport edge while the type sat in a centred container —
+        the hairline between them answered to nothing, which is what made the
+        grid read as broken.
+      */}
+      <section className="relative flex min-h-svh items-end pb-14 pt-24 md:items-center md:pb-0">
+        <div className="mx-auto w-full max-w-6xl px-5">
+          {/* Spec row — three stops on the 12-col grid */}
           <Reveal>
-            <div className="flex items-center gap-4 border-t border-edge pt-5">
-              <span className="signal-dot block h-1.5 w-1.5 rounded-full bg-signal" />
-              <p className="slate">Tramano Creative — Reel 2026 — Beirut</p>
+            <div className="grid grid-cols-12 items-baseline gap-x-6 gap-y-2 border-y border-edge py-4">
+              <div className="col-span-12 flex items-center gap-3 sm:col-span-5">
+                <span
+                  aria-hidden
+                  className="signal-dot block h-1.5 w-1.5 shrink-0 rounded-full bg-signal"
+                />
+                <p className="slate">Tramano Creative</p>
+              </div>
+              <p className="slate col-span-7 sm:col-span-4">Beirut — Worldwide</p>
+              <p className="slate col-span-5 sm:col-span-3 sm:text-right">
+                Est. 2025
+              </p>
             </div>
           </Reveal>
 
           {/*
-            Headline is sized so the sub-copy and both CTAs still clear the
-            fold on a 900px-tall laptop. It can be loud, but not at the cost
-            of pushing the ask below the screen.
+            Sized so the sub-copy and both CTAs still clear the fold on a
+            900px-tall laptop. It can be loud, but not at the cost of pushing
+            the ask below the screen.
           */}
           <SplitReveal
             text="We build the websites people remember."
             accent={["remember"]}
             delay={0.2}
-            className="mt-8 max-w-[15ch] font-display text-[clamp(2.4rem,6.2vw,5.5rem)] uppercase leading-[0.9]"
+            className="mt-9 max-w-[15ch] font-display text-[clamp(2.3rem,5.6vw,5rem)] uppercase leading-[0.88] md:mt-11"
           />
 
-          <Reveal delay={0.8}>
-            <p className="mt-10 max-w-[48ch] text-base leading-[1.65] text-grey md:text-lg">
-              Websites, Google Ads, and the search work that keeps them found.
-              Two people, a short list of clients, and work we&apos;re happy to
-              sign.
-            </p>
-          </Reveal>
+          {/* Copy left, ask right — both starting on their own column line */}
+          <div className="mt-9 grid grid-cols-12 gap-x-6 gap-y-9 md:mt-12">
+            <Reveal delay={0.8} className="col-span-12 md:col-span-5">
+              <p className="max-w-[46ch] text-base leading-[1.65] text-grey md:text-lg">
+                Websites, Google Ads, and the search work that keeps them
+                found. Two people, a short list of clients, and work
+                we&apos;re happy to sign.
+              </p>
+            </Reveal>
 
-          {/*
-            The ask comes first and it comes solid. A meaningful share of SEO
-            traffic lands here already decided and will never scroll — that
-            visitor should not have to hunt for the booking link, so the
-            sequence below is positioned as the optional long version.
-          */}
-          <Reveal delay={0.95}>
-            <div className="mt-12 flex flex-wrap items-center gap-8">
-              <CtaButton href="/contact/" size="lg">
-                Book the call
-              </CtaButton>
-              <CtaButton href="#reel" size="lg" variant="quiet">
-                See the work first
-              </CtaButton>
-            </div>
-          </Reveal>
-
-          <Reveal delay={1.1}>
-            <div className="mt-16 flex items-center gap-4 border-t border-edge pt-6 md:mt-20">
-              <span
-                aria-hidden
-                className="signal-dot block h-1.5 w-1.5 rounded-full bg-signal"
-              />
-              <p className="slate">
+            {/*
+              The ask comes first and it comes solid. A meaningful share of
+              SEO traffic lands here already decided and will never scroll —
+              that visitor should not have to hunt for the booking link.
+            */}
+            <Reveal
+              delay={0.95}
+              className="col-span-12 md:col-span-6 md:col-start-7"
+            >
+              <div className="flex flex-wrap items-center gap-x-7 gap-y-5">
+                <CtaButton href="/contact/" size="lg">
+                  Book the call
+                </CtaButton>
+                <CtaButton href="#reel" size="lg" variant="quiet">
+                  See the work first
+                </CtaButton>
+              </div>
+              <p className="slate mt-6 leading-relaxed">
                 Not ready? Scroll — two minutes and you&apos;ll know if we fit.
               </p>
-            </div>
+            </Reveal>
+          </div>
+
+          {/* Proof row — four equal cells, dividers on the quarter columns */}
+          <Reveal delay={1.1}>
+            {/*
+              Two columns on mobile, four on desktop. The divider classes are
+              written out per cell rather than derived — at two columns the
+              left rule belongs on the odd cells, at four it belongs on every
+              cell but the first, and a clever expression for that is a good
+              way to get one rule in the wrong place at one breakpoint.
+            */}
+            <dl className="mt-12 grid grid-cols-2 border-t border-edge md:mt-14 md:grid-cols-4">
+              {[
+                { k: "Load time", v: "<1s", cell: "" },
+                { k: "Custom code", v: "100%", cell: "border-l border-edge pl-5" },
+                {
+                  k: "Kickoff to launch",
+                  v: "3–6 wks",
+                  cell: "border-t border-edge md:border-t-0 md:border-l md:pl-5",
+                },
+                {
+                  k: "People you'll meet",
+                  v: "Two",
+                  cell: "border-l border-t border-edge pl-5 md:border-t-0",
+                },
+              ].map((stat) => (
+                <div key={stat.k} className={`py-5 ${stat.cell}`}>
+                  <dd className="font-display text-2xl uppercase leading-none md:text-3xl">
+                    {stat.v}
+                  </dd>
+                  <dt className="slate mt-3">{stat.k}</dt>
+                </div>
+              ))}
+            </dl>
           </Reveal>
         </div>
       </section>
@@ -289,10 +305,13 @@ export default function Home() {
         </div>
       </Section>
 
-      {/* ── Numbers ────────────────────────────────────────────── */}
-      <Section>
-        <StatBand stats={stats} />
-      </Section>
+      {/*
+        The numbers band that used to sit here is gone — the same three figures
+        now sit in the hero proof row, where they reach the visitor who never
+        scrolls. Repeating them two-thirds down the page was redundant and it
+        made the page longer for no gain. StatBand is still available if a
+        counted-up treatment is ever wanted elsewhere.
+      */}
 
       {/* ── Closing card ───────────────────────────────────────── */}
       <section className="relative overflow-hidden border-t border-edge bg-signal py-32 md:py-44">
