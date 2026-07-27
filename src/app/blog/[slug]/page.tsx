@@ -48,21 +48,21 @@ export default async function BlogPost({
           description: post.description,
           datePublished: post.date,
           url: `${site.url}/blog/${slug}/`,
-          author: { "@type": "Organization", name: site.name, url: site.url },
-          publisher: { "@type": "Organization", name: site.name, url: site.url },
+          author: { "@id": `${site.url}/#organization` },
+          publisher: { "@id": `${site.url}/#organization` },
         }}
       />
-      <div className="pt-16">
-        <Section className="!py-16">
-          <article className="mx-auto max-w-2xl">
+      <div className="pt-20">
+        <Section className="!py-20">
+          <article className="mx-auto max-w-[68ch]">
             <Link
               href="/blog/"
-              className="font-mono text-xs uppercase tracking-[0.25em] text-ink-faint hover:text-gold-bright"
+              className="font-mono text-[11px] uppercase tracking-[0.22em] text-grey-deep transition-colors hover:text-signal"
             >
               ← All articles
             </Link>
-            <header className="mt-8">
-              <div className="flex flex-wrap items-center gap-3 font-mono text-xs tracking-wider text-ink-faint">
+            <header className="mt-10">
+              <div className="flex flex-wrap items-center gap-3 font-mono text-[11px] tracking-[0.15em] text-grey-deep">
                 <time dateTime={post.date}>
                   {new Date(post.date).toLocaleDateString("en-US", {
                     year: "numeric",
@@ -74,28 +74,29 @@ export default async function BlogPost({
                 <span aria-hidden>·</span>
                 <span>{post.readingMinutes} min read</span>
               </div>
-              <h1 className="mt-4 font-display text-3xl font-bold leading-tight md:text-5xl">
+              <h1 className="mt-5 font-display text-[clamp(2rem,5vw,3.4rem)] font-semibold leading-[1.06] tracking-[-0.025em]">
                 {post.title}
               </h1>
-              <p className="mt-4 text-lg leading-relaxed text-ink-muted">
+              <p className="mt-6 text-xl leading-relaxed text-grey">
                 {post.description}
               </p>
             </header>
-            <div className="prose-invert mt-12 space-y-6 text-base leading-relaxed text-ink-muted [&_a]:text-gold-bright [&_a]:underline [&_h2]:mt-12 [&_h2]:font-display [&_h2]:text-2xl [&_h2]:font-semibold [&_h2]:text-ink [&_h3]:mt-8 [&_h3]:font-display [&_h3]:text-xl [&_h3]:font-semibold [&_h3]:text-ink [&_li]:ml-5 [&_li]:list-disc [&_strong]:text-ink">
+            <div className="mt-16 space-y-6 text-[17px] leading-[1.75] text-grey [&_a]:text-signal [&_a]:underline [&_a]:underline-offset-4 [&_h2]:mt-14 [&_h2]:font-display [&_h2]:text-[1.75rem] [&_h2]:font-semibold [&_h2]:leading-snug [&_h2]:tracking-[-0.015em] [&_h2]:text-white [&_h3]:mt-10 [&_h3]:font-display [&_h3]:text-xl [&_h3]:font-semibold [&_h3]:text-white [&_li]:ml-5 [&_li]:list-disc [&_strong]:text-white">
               <MDXRemote source={post.content} />
             </div>
-            <footer className="mt-16 rounded-2xl border border-line/70 bg-surface/60 p-8 text-center backdrop-blur-sm">
-              <p className="font-display text-xl font-semibold">
+            <footer className="mt-20 border-t border-edge pt-12">
+              <p className="font-display text-2xl font-semibold tracking-[-0.015em]">
                 Want a site built like this?
               </p>
-              <p className="mt-2 text-sm text-ink-muted">
-                Tell us about your project — we reply within one business day.
+              <p className="mt-3 text-base text-grey">
+                Tell us about your project — we write back within one business
+                day.
               </p>
               <Link
                 href="/contact/"
-                className="glow-ring mt-6 inline-flex items-center justify-center rounded-full bg-gold/10 px-6 py-2.5 font-mono text-sm uppercase tracking-[0.15em] text-gold-bright transition-all hover:bg-gold/20 hover:text-white"
+                className="mt-8 inline-flex items-center justify-center rounded-full bg-signal px-7 py-3.5 font-mono text-xs uppercase tracking-[0.22em] text-carbon transition-colors hover:bg-signal-deep"
               >
-                Start a project
+                Book the call
               </Link>
             </footer>
           </article>

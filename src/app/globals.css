@@ -1,99 +1,241 @@
 @import "tailwindcss";
 
 :root {
-  --void: #070c18;
-  --surface: #0d1526;
-  --surface-raised: #131c31;
-  --line: #232f47;
-  --ink: #f5f1ea;
-  --ink-muted: #a3abbc;
-  --ink-faint: #6b7488;
-  --gold: #d4af5c;
-  --gold-bright: #f0d48a;
-  --slate: #5a7fb8;
-  --slate-bright: #8fadd6;
+  /* Carbon & Signal */
+  --carbon: #0c0c0d;
+  --carbon-lift: #17171a;
+  --carbon-card: #1e1e22;
+  --edge: #2b2b30;
+  --white: #f5f4f2;
+  --grey: #9b9a98;
+  --grey-deep: #63625f;
+  --signal: #3f7bff;
+  --signal-deep: #2b5fd6;
 }
 
 @theme inline {
-  --color-void: var(--void);
-  --color-surface: var(--surface);
-  --color-surface-raised: var(--surface-raised);
-  --color-line: var(--line);
-  --color-ink: var(--ink);
-  --color-ink-muted: var(--ink-muted);
-  --color-ink-faint: var(--ink-faint);
-  --color-gold: var(--gold);
-  --color-gold-bright: var(--gold-bright);
-  --color-slate: var(--slate);
-  --color-slate-bright: var(--slate-bright);
-  --font-display: var(--font-playfair);
-  --font-sans: var(--font-inter);
-  --font-mono: var(--font-jetbrains-mono);
+  --color-carbon: var(--carbon);
+  --color-carbon-lift: var(--carbon-lift);
+  --color-carbon-card: var(--carbon-card);
+  --color-edge: var(--edge);
+  --color-white: var(--white);
+  --color-grey: var(--grey);
+  --color-grey-deep: var(--grey-deep);
+  --color-signal: var(--signal);
+  --color-signal-deep: var(--signal-deep);
+  --font-display: var(--font-archivo);
+  --font-sans: var(--font-geist);
+  --font-mono: var(--font-geist-mono);
 }
 
 html {
-  scroll-behavior: smooth;
   color-scheme: dark;
 }
 
 body {
-  background: var(--void);
-  color: var(--ink);
-  font-family: var(--font-inter), system-ui, sans-serif;
+  background: var(--carbon);
+  color: var(--white);
+  font-family: var(--font-geist), system-ui, sans-serif;
   overflow-x: hidden;
 }
 
+/*
+ * The display voice. Archivo's wdth axis pushed to its 125 maximum is what
+ * makes the headlines read as a poster rather than a default grotesque —
+ * this is the single rule doing most of the visual work on the site.
+ */
+.font-display {
+  /*
+   * `wght` has to be declared here alongside `wdth`. font-variation-settings
+   * takes precedence over the font-weight property, so listing only `wdth`
+   * silently drops the weight axis back to its 400 default.
+   */
+  font-variation-settings: "wdth" 125, "wght" 800;
+  font-weight: 800;
+  letter-spacing: -0.035em;
+}
+
 ::selection {
-  background: color-mix(in srgb, var(--gold) 30%, transparent);
-  color: var(--gold-bright);
+  background: var(--signal);
+  color: var(--white);
 }
 
-/* Glow utilities */
-.glow-text {
-  text-shadow:
-    0 0 12px color-mix(in srgb, var(--gold) 50%, transparent),
-    0 0 48px color-mix(in srgb, var(--gold) 22%, transparent);
+/* Mono label used for scene markers, eyebrows and metadata */
+.slate {
+  font-family: var(--font-geist-mono), ui-monospace, monospace;
+  font-size: 0.6875rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--grey-deep);
 }
 
-.glow-ring {
-  box-shadow:
-    0 0 0 1px color-mix(in srgb, var(--gold) 40%, transparent),
-    0 0 24px color-mix(in srgb, var(--gold) 22%, transparent),
-    inset 0 0 12px color-mix(in srgb, var(--gold) 10%, transparent);
+/*
+ * One frame treatment for every screenshot in the reel. Unlike the film grade
+ * it replaces, this barely touches colour — the work shows close to true and
+ * the hard border is what makes five different brands read as one system.
+ */
+.plate {
+  position: relative;
+  filter: saturate(0.92) contrast(1.06);
+  border: 1px solid var(--edge);
 }
 
-/* Fine grid backdrop for sections */
-.hud-grid {
-  background-image:
-    linear-gradient(color-mix(in srgb, var(--line) 45%, transparent) 1px, transparent 1px),
-    linear-gradient(90deg, color-mix(in srgb, var(--line) 45%, transparent) 1px, transparent 1px);
-  background-size: 48px 48px;
-  mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, black 30%, transparent 75%);
-}
-
-/* Thin scanline shimmer for hero overlays */
-.scanlines::after {
+.plate::after {
   content: "";
   position: absolute;
   inset: 0;
   pointer-events: none;
-  background: repeating-linear-gradient(
+  background: linear-gradient(
     to bottom,
-    transparent 0px,
-    transparent 3px,
-    rgba(7, 12, 24, 0.18) 4px
+    color-mix(in srgb, var(--signal) 10%, transparent),
+    transparent 22%
   );
 }
 
-@media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
+/*
+ * Pointer spotlight. A parent sets --mx/--my from a single rAF-throttled
+ * listener; each child paints the gradient. No per-card listeners.
+ */
+.spotlight-field {
+  --mx: -9999px;
+  --my: -9999px;
+}
+
+.spotlight-cell::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  background: radial-gradient(
+    280px circle at var(--mx) var(--my),
+    color-mix(in srgb, var(--signal) 13%, transparent),
+    transparent 70%
+  );
+}
+
+.spotlight-field:hover .spotlight-cell::before {
+  opacity: 1;
+}
+
+@media (hover: none), (pointer: coarse) {
+  .spotlight-cell::before {
+    display: none;
   }
+}
+
+/*
+ * Long-form prose: legal pages, market pages, anywhere a body of running
+ * text needs sensible defaults without reaching for a plugin.
+ */
+.prose-tramano {
+  color: var(--grey);
+  font-size: 1rem;
+  line-height: 1.75;
+}
+
+/*
+ * Element-targeted rather than `> * + *`: the market pages wrap each section
+ * in its own element, so a direct-child selector would never reach the
+ * paragraphs inside.
+ */
+.prose-tramano p,
+.prose-tramano ul,
+.prose-tramano ol {
+  margin-top: 1.25rem;
+}
+
+.prose-tramano .lead {
+  font-size: 1.25rem;
+  line-height: 1.6;
+  color: var(--white);
+}
+
+.prose-tramano h2 {
+  font-family: var(--font-archivo), sans-serif;
+  font-variation-settings: "wdth" 125, "wght" 800;
+  text-transform: uppercase;
+  font-size: 1.5rem;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: var(--white);
+  margin-top: 3.5rem;
+  margin-bottom: 1.5rem;
+  padding-top: 1.75rem;
+  border-top: 1px solid var(--edge);
+}
+
+.prose-tramano > :first-child > h2:first-child,
+.prose-tramano > h2:first-child {
+  margin-top: 0;
+}
+
+.prose-tramano h3 {
+  font-family: var(--font-geist), sans-serif;
+  font-weight: 600;
+  font-size: 1.0625rem;
+  color: var(--white);
+  margin-top: 2.25rem;
+  margin-bottom: 0.75rem;
+}
+
+.prose-tramano strong {
+  color: var(--white);
+  font-weight: 600;
+}
+
+.prose-tramano a {
+  color: var(--signal);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.prose-tramano a:hover {
+  color: var(--white);
+}
+
+.prose-tramano ul {
+  list-style: none;
+  padding-left: 1.5rem;
+}
+
+.prose-tramano li {
+  position: relative;
+  margin-top: 0.625rem;
+}
+
+.prose-tramano li::before {
+  content: "";
+  position: absolute;
+  left: -1.5rem;
+  top: 0.7em;
+  width: 0.5rem;
+  height: 1px;
+  background: var(--signal);
+}
+
+@keyframes signal-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.25; }
+}
+
+.signal-dot {
+  animation: signal-pulse 1.8s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
   *,
   *::before,
   *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+  }
+  .signal-dot {
+    animation: none;
+  }
+  .spotlight-cell::before {
+    display: none;
   }
 }

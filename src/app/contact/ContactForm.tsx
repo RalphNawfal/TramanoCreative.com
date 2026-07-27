@@ -4,10 +4,10 @@ import { useState } from "react";
 import { site } from "@/lib/site";
 
 const inputClass =
-  "w-full rounded-xl border border-line bg-surface/80 px-4 py-3 text-sm text-ink placeholder:text-ink-faint transition-all duration-300 focus:border-gold/60 focus:outline-none focus:ring-1 focus:ring-gold/40 focus:shadow-[0_0_24px_rgba(212,175,92,0.18)] focus:bg-surface";
+  "w-full rounded-sm border border-edge bg-carbon-lift px-4 py-3.5 text-[15px] text-white placeholder:text-grey-deep transition-colors duration-300 focus:border-signal focus:outline-none";
 
 const labelClass =
-  "block font-mono text-xs uppercase tracking-[0.2em] text-ink-muted mb-2";
+  "block font-mono text-[11px] uppercase tracking-[0.22em] text-grey mb-3";
 
 export default function ContactForm() {
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">(
@@ -37,12 +37,10 @@ export default function ContactForm() {
 
   if (status === "sent") {
     return (
-      <div className="glow-ring rounded-2xl bg-surface/60 p-10 text-center backdrop-blur-sm">
-        <p className="font-mono text-xs uppercase tracking-[0.3em] text-gold">
-          Got it
-        </p>
-        <p className="mt-4 font-display text-2xl font-semibold">
-          We&apos;ll respond within one business day.
+      <div className="border border-edge bg-carbon-lift p-12 text-center">
+        <p className="slate">Got it</p>
+        <p className="mt-6 font-display text-3xl font-semibold leading-snug tracking-[-0.02em]">
+          We&apos;ll write back within one business day.
         </p>
       </div>
     );
@@ -138,15 +136,15 @@ export default function ContactForm() {
       <button
         type="submit"
         disabled={status === "sending"}
-        className="glow-ring inline-flex items-center justify-center rounded-full bg-gold/10 px-8 py-3.5 font-mono text-base uppercase tracking-[0.15em] text-gold-bright transition-all duration-300 hover:bg-gold/20 hover:text-white disabled:opacity-50"
+        className="inline-flex items-center justify-center rounded-full bg-signal px-8 py-4 font-mono text-xs uppercase tracking-[0.22em] text-carbon transition-colors duration-300 hover:bg-signal-deep disabled:opacity-50"
       >
         {status === "sending" ? "Sending…" : "Send message"}
       </button>
 
       {status === "error" && (
-        <p className="text-sm text-red-400">
+        <p className="text-sm text-signal">
           That didn&apos;t send. Email us directly at{" "}
-          <a href={`mailto:${site.email}`} className="text-gold-bright underline">
+          <a href={`mailto:${site.email}`} className="text-white underline">
             {site.email}
           </a>
           .
