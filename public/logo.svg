@@ -1,15 +1,40 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Tramano Creative">
   <!--
-    The mark is a T drawn to Archivo Expanded's proportions — wide, heavy,
-    flat-terminated. The crossbar carries the signal blue and the stem is
-    bone, which is the same relationship the wordmark uses (Tramano·Creative,
-    blue interpunct).
+    The TC monogram redrawn as vector.
 
-    Split into two colours on purpose: at 16px the letterform stops being
-    legible, and what survives is a blue bar sitting above a lighter block —
-    still distinct in a crowded tab strip, which a single-colour T is not.
+    The supplied artwork is a hairline monogram, which is right for a header
+    or a deck and impossible at 16px — the strokes fall well under a pixel and
+    antialiasing turns the whole mark to grey mush. This version keeps the
+    construction (angled-cut crossbar, stem descending through an open C, the
+    T sitting in front) but carries enough stroke weight to survive a browser
+    tab. Same logic every brand uses when its favicon differs from its logo.
+
+    The knockout stroke behind the T is what preserves the overlap: without it
+    the stem and the C merge into one shape as soon as they antialias.
   -->
   <rect width="512" height="512" fill="#0c0c0d"/>
-  <rect x="96" y="128" width="320" height="76" fill="#3f7bff"/>
-  <rect x="218" y="204" width="76" height="180" fill="#f5f4f2"/>
+
+  <!--
+    C — 260° arc, aperture facing right. Sits clear of the crossbar: its
+    top terminal starts below y=148 so the two shapes never collide.
+  -->
+  <path
+    d="M 376 220 A 118 118 0 1 0 376 400"
+    fill="none"
+    stroke="#f5f4f2"
+    stroke-width="44"
+    stroke-linecap="butt"
+  />
+
+  <!--
+    Knockout keeping the stem visually in front of the C. It reaches past
+    the arc's leftmost point (300 − 118 − 22 = 160) so no fragment of the C
+    survives on the wrong side of the stem, and clears 12px to the right of
+    the stem to hold the two shapes apart.
+  -->
+  <rect x="136" y="140" width="112" height="320" fill="#0c0c0d"/>
+
+  <!-- T — crossbar with angled cuts, then the stem -->
+  <path d="M 92 96 L 420 96 L 398 148 L 70 148 Z" fill="#f5f4f2"/>
+  <rect x="192" y="148" width="44" height="300" fill="#f5f4f2"/>
 </svg>
