@@ -47,9 +47,10 @@ export default function SignalHud() {
       aria-hidden
       className="pointer-events-none fixed bottom-6 left-6 z-40 hidden items-center gap-3 font-mono text-[10px] uppercase tracking-[0.2em] text-grey-deep md:flex"
     >
-      <span className="signal-dot block h-1.5 w-1.5 rounded-full bg-signal" />
       <span>
-        <span ref={pct}>00</span>
+        <span ref={pct} className="text-grey">
+          00
+        </span>
         <span className="text-edge"> / </span>
         100
       </span>

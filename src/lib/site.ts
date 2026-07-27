@@ -9,7 +9,7 @@ export const site = {
   phone: "+961 71 042 427",
   phoneHref: "+96171042427",
   founders: ["Ralph Nawfal", "Ramy Al Housary"],
-  foundingDate: "2025",
+  foundingDate: "2026",
   priceRange: "$$",
   formspreeEndpoint: "https://formspree.io/f/xkolykzp",
 
