@@ -1,7 +1,7 @@
 import { ImageResponse } from "next/og";
 
 export const dynamic = "force-static";
-export const alt = "Tramano Creative — A website is a tool. We build the whole machine.";
+export const alt = "Tramano Creative — We build the websites people remember.";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -17,16 +17,16 @@ export default function OgImage() {
           alignItems: "center",
           justifyContent: "center",
           background:
-            "radial-gradient(ellipse 60% 50% at 25% 20%, rgba(212,175,92,0.16), transparent 60%), radial-gradient(ellipse 55% 50% at 80% 80%, rgba(90,127,184,0.18), transparent 60%), #070c18",
-          color: "#f5f1ea",
+            "radial-gradient(ellipse 65% 60% at 50% 115%, rgba(224,118,61,0.28), transparent 62%), radial-gradient(ellipse 50% 45% at 15% 10%, rgba(217,164,65,0.12), transparent 60%), #14100d",
+          color: "#f2e9dc",
           fontFamily: "Georgia, serif",
         }}
       >
         <div
           style={{
-            fontSize: 28,
+            fontSize: 24,
             letterSpacing: 12,
-            color: "#d4af5c",
+            color: "#6f635a",
             display: "flex",
             fontFamily: "sans-serif",
           }}
@@ -35,24 +35,24 @@ export default function OgImage() {
         </div>
         <div
           style={{
-            marginTop: 40,
-            fontSize: 64,
+            marginTop: 44,
+            fontSize: 68,
             fontWeight: 700,
             textAlign: "center",
-            lineHeight: 1.15,
+            lineHeight: 1.1,
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
           }}
         >
-          <span>A website is a tool.</span>
-          <span style={{ color: "#f0d48a" }}>We build the whole machine.</span>
+          <span>We build the websites</span>
+          <span style={{ color: "#e0763d" }}>people remember.</span>
         </div>
         <div
           style={{
-            marginTop: 44,
-            fontSize: 26,
-            color: "#a3abbc",
+            marginTop: 48,
+            fontSize: 24,
+            color: "#a8988a",
             display: "flex",
             fontFamily: "sans-serif",
           }}

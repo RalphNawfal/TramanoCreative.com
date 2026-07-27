@@ -1,36 +1,49 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { site } from "@/lib/site";
-import GlowButton from "./GlowButton";
+import CtaButton from "./CtaButton";
 
 export default function Nav() {
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  // Transparent over the title card, solid once the trailer starts.
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 40);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50 border-b border-line/60 bg-void/70 backdrop-blur-md">
-      <nav className="mx-auto flex h-16 max-w-6xl items-center justify-between px-5">
+    <header
+      className={`fixed inset-x-0 top-0 z-50 transition-colors duration-500 ${
+        scrolled || open ? "border-b border-edge bg-carbon" : "border-b border-transparent"
+      }`}
+    >
+      <nav className="mx-auto flex h-20 max-w-6xl items-center justify-between px-5">
         <Link
           href="/"
-          className="font-display text-lg font-semibold tracking-wide text-ink"
+          className="font-display text-lg font-semibold tracking-[-0.01em] text-white"
         >
-          TRAMANO<span className="text-gold glow-text">·</span>CREATIVE
+          Tramano<span className="text-signal">·</span>Creative
         </Link>
 
-        <div className="hidden items-center gap-7 md:flex">
+        <div className="hidden items-center gap-8 md:flex">
           {site.nav.map((item) => (
             <Link
               key={item.href}
               href={item.href}
-              className="font-mono text-xs uppercase tracking-[0.2em] text-ink-muted transition-colors hover:text-gold-bright"
+              className="font-mono text-[11px] uppercase tracking-[0.22em] text-grey transition-colors hover:text-white"
             >
               {item.label}
             </Link>
           ))}
-          <GlowButton href="/contact/" size="sm">
+          <CtaButton href="/contact/" size="sm">
             Book the call
-          </GlowButton>
+          </CtaButton>
         </div>
 
         <button
@@ -38,30 +51,32 @@ export default function Nav() {
           aria-label={open ? "Close menu" : "Open menu"}
           aria-expanded={open}
           onClick={() => setOpen(!open)}
-          className="flex h-10 w-10 items-center justify-center text-ink md:hidden"
+          className="flex h-10 w-14 items-center justify-end text-white md:hidden"
         >
-          <span className="font-mono text-xs uppercase tracking-widest">
-            {open ? "CLOSE" : "MENU"}
+          <span className="font-mono text-[11px] uppercase tracking-[0.22em]">
+            {open ? "Close" : "Menu"}
           </span>
         </button>
       </nav>
 
       {open && (
-        <div className="border-t border-line/60 bg-void/95 px-5 py-6 md:hidden">
-          <div className="flex flex-col gap-5">
+        <div className="border-t border-edge bg-carbon px-5 py-8 md:hidden">
+          <div className="flex flex-col gap-6">
             {site.nav.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
                 onClick={() => setOpen(false)}
-                className="font-mono text-sm uppercase tracking-[0.2em] text-ink-muted hover:text-gold-bright"
+                className="font-mono text-sm uppercase tracking-[0.22em] text-grey hover:text-white"
               >
                 {item.label}
               </Link>
             ))}
-            <GlowButton href="/contact/" onClick={() => setOpen(false)}>
-              Book the call
-            </GlowButton>
+            <div className="pt-2">
+              <CtaButton href="/contact/" onClick={() => setOpen(false)}>
+                Book the call
+              </CtaButton>
+            </div>
           </div>
         </div>
       )}

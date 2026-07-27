@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import Section from "@/components/ui/Section";
+import Breadcrumbs from "@/components/seo/Breadcrumbs";
 import Reveal from "@/components/ui/Reveal";
-import GlowButton from "@/components/ui/GlowButton";
+import CtaButton from "@/components/ui/CtaButton";
 import JsonLd from "@/components/seo/JsonLd";
 
 export const metadata: Metadata = {
@@ -14,7 +15,7 @@ export const metadata: Metadata = {
 const faqs = [
   {
     q: "How much does a custom website cost?",
-    a: "Most projects land between $3,000 and $15,000 depending on scope — number of pages, motion/3D complexity, and content needs. We quote a fixed price after a short discovery call, so there are no surprise invoices. Simpler landing-page builds start lower; we'll tell you honestly if you don't need the full treatment.",
+    a: "Most projects land between $3,000 and $15,000 depending on scope — how many pages, how much custom design and motion, and how much content needs writing. You get a fixed price after a short call, so there's no surprise invoice later. Landing-page builds start lower, and if you don't need the full treatment we'll say so.",
   },
   {
     q: "How long does a website take to build?",
@@ -52,11 +53,28 @@ const faqs = [
     q: "Do you work with businesses outside your area?",
     a: "Yes — the whole process runs remotely: video calls, a shared project channel, and live preview links at every stage. Our experience was built serving Canadian businesses, and we work with clients wherever they are.",
   },
+  {
+    q: "Do you work with businesses in Lebanon?",
+    a: "Yes — we're based in Beirut and Lebanon is our primary market. That means we understand the things that actually matter here: building for connections that vary, quoting in USD so the price you agree is the price you pay, and handling Arabic, French and English properly rather than through a translation plugin.",
+  },
+  {
+    q: "Do you work with clients in the UAE and the Gulf?",
+    a: "Yes. We're one hour behind Dubai, so you get a full working-day overlap instead of the overnight lag you'd have with a European or American studio. Costs are lower than a comparable Dubai agency because you're paying for two people doing the work, not for an office and an account manager.",
+  },
+  {
+    q: "Can you invoice in USD?",
+    a: "Yes. We quote and invoice in US dollars at a fixed price agreed before we start. Bank transfer, Wise and OMT all work depending on where you are. Third-party costs like domains and hosting are billed at cost with no markup.",
+  },
+  {
+    q: "Do you build websites in Arabic?",
+    a: "Yes, and properly. Arabic isn't a text swap — right-to-left means the whole layout mirrors, including navigation, buttons and reading order, and the typography has to hold up in both scripts. We build bilingual and trilingual sites where each language version has its own URL so it can rank in search independently.",
+  },
 ];
 
 export default function FaqPage() {
   return (
     <>
+      <Breadcrumbs items={[{ name: "FAQ", href: "/faq/" }]} />
       <JsonLd
         data={{
           "@context": "https://schema.org",
@@ -68,19 +86,19 @@ export default function FaqPage() {
           })),
         }}
       />
-      <div className="pt-16">
-        <Section eyebrow="FAQ" title="Questions, answered straight." grid>
-          <div className="max-w-3xl space-y-4">
+      <div className="pt-20">
+        <Section slate="Straight answers" eyebrow="FAQ" title="The questions everyone asks." titleAs="h1">
+          <div className="max-w-3xl border-t border-edge">
             {faqs.map((f, i) => (
-              <Reveal key={f.q} delay={Math.min(i * 0.06, 0.3)}>
-                <details className="group rounded-2xl border border-line/70 bg-surface/60 backdrop-blur-sm open:border-gold/40">
-                  <summary className="cursor-pointer list-none p-6 font-display text-lg font-medium marker:hidden [&::-webkit-details-marker]:hidden">
-                    <span className="mr-3 font-mono text-xs text-gold">
+              <Reveal key={f.q} delay={Math.min(i * 0.05, 0.25)}>
+                <details className="group border-b border-edge">
+                  <summary className="flex cursor-pointer list-none items-start gap-5 py-6 font-display text-lg font-medium leading-snug transition-colors marker:hidden hover:text-signal [&::-webkit-details-marker]:hidden">
+                    <span className="slate mt-1.5 shrink-0">
                       Q{String(i + 1).padStart(2, "0")}
                     </span>
                     {f.q}
                   </summary>
-                  <p className="px-6 pb-6 text-sm leading-relaxed text-ink-muted md:text-base">
+                  <p className="max-w-[62ch] pb-7 pl-[4.25rem] text-[15px] leading-relaxed text-grey">
                     {f.a}
                   </p>
                 </details>
@@ -88,12 +106,12 @@ export default function FaqPage() {
             ))}
           </div>
           <Reveal delay={0.3}>
-            <div className="mt-12">
-              <p className="text-sm text-ink-muted">
+            <div className="mt-14">
+              <p className="text-base text-grey">
                 Something we didn&apos;t cover?
               </p>
-              <div className="mt-4">
-                <GlowButton href="/contact/">Ask us directly</GlowButton>
+              <div className="mt-6">
+                <CtaButton href="/contact/">Ask us directly</CtaButton>
               </div>
             </div>
           </Reveal>

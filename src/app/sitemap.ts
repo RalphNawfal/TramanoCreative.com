@@ -4,22 +4,49 @@ import { site } from "@/lib/site";
 
 export const dynamic = "force-static";
 
-export default function sitemap(): MetadataRoute.Sitemap {
-  const staticRoutes = ["", "/services/", "/work/", "/about/", "/blog/", "/faq/", "/contact/"].map(
-    (route) => ({
-      url: `${site.url}${route}`,
-      lastModified: new Date(),
-      changeFrequency: "weekly" as const,
-      priority: route === "" ? 1 : 0.8,
-    }),
-  );
+/**
+ * Stable date rather than `new Date()`. Regenerating every lastModified on
+ * every build tells crawlers the whole site changed when nothing did, which
+ * is noise they learn to ignore. Bump this when content actually changes.
+ */
+const CONTENT_UPDATED = new Date("2026-07-26");
 
-  const postRoutes = getAllPosts().map((post) => ({
+export default function sitemap(): MetadataRoute.Sitemap {
+  const primary = ["", "/services/", "/work/", "/contact/"].map((route) => ({
+    url: `${site.url}${route}`,
+    lastModified: CONTENT_UPDATED,
+    changeFrequency: "monthly" as const,
+    priority: route === "" ? 1 : 0.9,
+  }));
+
+  // Market pages carry the location-intent search terms.
+  const markets = site.markets.map((market) => ({
+    url: `${site.url}${market.href}`,
+    lastModified: CONTENT_UPDATED,
+    changeFrequency: "monthly" as const,
+    priority: 0.9,
+  }));
+
+  const secondary = ["/about/", "/blog/", "/faq/"].map((route) => ({
+    url: `${site.url}${route}`,
+    lastModified: CONTENT_UPDATED,
+    changeFrequency: "monthly" as const,
+    priority: 0.7,
+  }));
+
+  const legal = ["/privacy/", "/terms/"].map((route) => ({
+    url: `${site.url}${route}`,
+    lastModified: CONTENT_UPDATED,
+    changeFrequency: "yearly" as const,
+    priority: 0.2,
+  }));
+
+  const posts = getAllPosts().map((post) => ({
     url: `${site.url}/blog/${post.slug}/`,
     lastModified: new Date(post.date),
     changeFrequency: "monthly" as const,
     priority: 0.6,
   }));
 
-  return [...staticRoutes, ...postRoutes];
+  return [...primary, ...markets, ...secondary, ...posts, ...legal];
 }

@@ -1,0 +1,177 @@
+import Link from "next/link";
+import Section from "@/components/ui/Section";
+import Reveal from "@/components/ui/Reveal";
+import CtaButton from "@/components/ui/CtaButton";
+import Spotlight from "@/components/ui/Spotlight";
+import JsonLd from "./JsonLd";
+import Breadcrumbs from "./Breadcrumbs";
+import { site } from "@/lib/site";
+
+export type MarketFaq = { q: string; a: string };
+export type MarketBlock = { heading: string; paras: string[] };
+
+export type MarketPageProps = {
+  slate: string;
+  eyebrow: string;
+  title: string;
+  lead: string;
+  /** Service name for schema, e.g. "Web design" */
+  serviceName: string;
+  /** Country the service is offered in */
+  areaServed: string;
+  href: string;
+  breadcrumbName: string;
+  blocks: MarketBlock[];
+  /** Three short "what you get" columns */
+  deliverables: { title: string; body: string }[];
+  faqs: MarketFaq[];
+};
+
+/**
+ * Shared shell for the market pages.
+ *
+ * Only the *chrome* is shared — every page passes its own genuinely
+ * market-specific prose. Near-identical location pages are treated as doorway
+ * pages and demoted, so this component deliberately has no default copy to
+ * fall back on: if a page has nothing real to say, it can't be built.
+ */
+export default function MarketPage({
+  slate,
+  eyebrow,
+  title,
+  lead,
+  serviceName,
+  areaServed,
+  href,
+  breadcrumbName,
+  blocks,
+  deliverables,
+  faqs,
+}: MarketPageProps) {
+  return (
+    <>
+      <Breadcrumbs items={[{ name: breadcrumbName, href }]} />
+      <JsonLd
+        data={{
+          "@context": "https://schema.org",
+          "@graph": [
+            {
+              "@type": "Service",
+              name: `${serviceName} — ${areaServed}`,
+              description: lead,
+              serviceType: serviceName,
+              provider: { "@id": `${site.url}/#organization` },
+              areaServed: { "@type": "Country", name: areaServed },
+              url: `${site.url}${href}`,
+            },
+            {
+              "@type": "FAQPage",
+              mainEntity: faqs.map((f) => ({
+                "@type": "Question",
+                name: f.q,
+                acceptedAnswer: { "@type": "Answer", text: f.a },
+              })),
+            },
+          ],
+        }}
+      />
+
+      <div className="pt-20">
+        <Section slate={slate} eyebrow={eyebrow} title={title} titleAs="h1">
+          <p className="max-w-[60ch] text-lg leading-[1.65] text-grey">{lead}</p>
+
+          <div className="mt-10 flex flex-wrap items-center gap-8">
+            <CtaButton href="/contact/" size="lg">
+              Book the call
+            </CtaButton>
+            <CtaButton href="/work/" size="lg" variant="quiet">
+              See the work
+            </CtaButton>
+          </div>
+
+          <div className="prose-tramano mt-24 max-w-[68ch]">
+            {blocks.map((block) => (
+              <div key={block.heading}>
+                <h2>{block.heading}</h2>
+                {block.paras.map((p) => (
+                  <p key={p.slice(0, 40)}>{p}</p>
+                ))}
+              </div>
+            ))}
+          </div>
+        </Section>
+
+        <Section slate="What you get" eyebrow="Included" title="What the work covers.">
+          <Spotlight className="grid gap-px overflow-hidden border border-edge bg-edge md:grid-cols-3">
+            {deliverables.map((d, i) => (
+              <Reveal
+                key={d.title}
+                delay={i * 0.1}
+                className="spotlight-cell relative bg-carbon-lift"
+              >
+                <div className="relative h-full p-8 md:p-10">
+                  <span className="slate">
+                    {String(i + 1).padStart(2, "0")}
+                  </span>
+                  <h3 className="mt-6 font-display text-xl uppercase leading-[1]">
+                    {d.title}
+                  </h3>
+                  <p className="mt-5 text-[15px] leading-[1.65] text-grey">
+                    {d.body}
+                  </p>
+                </div>
+              </Reveal>
+            ))}
+          </Spotlight>
+        </Section>
+
+        <Section slate="Questions" eyebrow="FAQ" title={`${areaServed}, specifically.`}>
+          <div className="max-w-3xl border-t border-edge">
+            {faqs.map((f, i) => (
+              <Reveal key={f.q} delay={Math.min(i * 0.05, 0.25)}>
+                <details className="group border-b border-edge">
+                  <summary className="flex cursor-pointer list-none items-start gap-5 py-6 font-medium leading-snug transition-colors marker:hidden hover:text-signal [&::-webkit-details-marker]:hidden">
+                    <span className="slate mt-1.5 shrink-0">
+                      Q{String(i + 1).padStart(2, "0")}
+                    </span>
+                    {f.q}
+                  </summary>
+                  <p className="max-w-[62ch] pb-7 pl-[4.25rem] text-[15px] leading-[1.65] text-grey">
+                    {f.a}
+                  </p>
+                </details>
+              </Reveal>
+            ))}
+          </div>
+
+          <div className="mt-16 border-t border-edge pt-10">
+            <p className="text-base text-grey">
+              Also worth reading:{" "}
+              <Link
+                href="/services/"
+                className="text-white underline underline-offset-4 hover:text-signal"
+              >
+                everything we do
+              </Link>
+              ,{" "}
+              <Link
+                href="/faq/"
+                className="text-white underline underline-offset-4 hover:text-signal"
+              >
+                pricing and process
+              </Link>
+              , or{" "}
+              <Link
+                href="/work/"
+                className="text-white underline underline-offset-4 hover:text-signal"
+              >
+                the builds themselves
+              </Link>
+              .
+            </p>
+          </div>
+        </Section>
+      </div>
+    </>
+  );
+}
