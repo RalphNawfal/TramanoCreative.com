@@ -110,33 +110,15 @@ export default function Home() {
       */}
       <section className="relative flex min-h-svh items-end pb-14 pt-24 md:items-center md:pb-0">
         <div className="mx-auto w-full max-w-6xl px-5">
-          {/* Spec row — three stops on the 12-col grid */}
-          <Reveal>
-            <div className="grid grid-cols-12 items-baseline gap-x-6 gap-y-2 border-y border-edge py-4">
-              <div className="col-span-12 flex items-center gap-3 sm:col-span-5">
-                <span
-                  aria-hidden
-                  className="signal-dot block h-1.5 w-1.5 shrink-0 rounded-full bg-signal"
-                />
-                <p className="slate">Tramano Creative</p>
-              </div>
-              <p className="slate col-span-7 sm:col-span-4">Beirut — Worldwide</p>
-              <p className="slate col-span-5 sm:col-span-3 sm:text-right">
-                Est. 2025
-              </p>
-            </div>
-          </Reveal>
-
           {/*
-            Sized so the sub-copy and both CTAs still clear the fold on a
-            900px-tall laptop. It can be loud, but not at the cost of pushing
-            the ask below the screen.
+            The headline opens the page directly. A metadata strip above it
+            only delayed the one thing this screen exists to say.
           */}
           <SplitReveal
             text="We build the websites people remember."
             accent={["remember"]}
-            delay={0.2}
-            className="mt-9 max-w-[15ch] font-display text-[clamp(2.3rem,5.6vw,5rem)] uppercase leading-[0.88] md:mt-11"
+            delay={0.1}
+            className="max-w-[15ch] font-display text-[clamp(2.4rem,6vw,5.5rem)] uppercase leading-[0.88]"
           />
 
           {/* Copy left, ask right — both starting on their own column line */}
