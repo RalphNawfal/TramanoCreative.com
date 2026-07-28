@@ -9,7 +9,7 @@ export const dynamic = "force-static";
  * every build tells crawlers the whole site changed when nothing did, which
  * is noise they learn to ignore. Bump this when content actually changes.
  */
-const CONTENT_UPDATED = new Date("2026-07-26");
+const CONTENT_UPDATED = new Date("2026-07-28");
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const primary = ["", "/services/", "/work/", "/contact/"].map((route) => ({

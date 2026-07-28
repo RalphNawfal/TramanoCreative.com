@@ -74,7 +74,7 @@ export default function Page() {
         },
         {
           q: "How much does a website cost compared to a Dubai agency?",
-          a: "Materially less for comparable quality, because our cost base is lower and you are not paying for an office and an account management layer. Most projects run between $3,000 and $15,000 depending on scope, quoted as a fixed price in USD before anything starts. What you are paying for is two experienced people doing the work directly.",
+          a: "Materially less for comparable quality, because our cost base is lower and you are not paying for an office in a Dubai tower or an account management layer. Most projects run between $1,000 and $3,000 depending on scope, with small focused builds from $500 and larger work quoted individually — a fixed price in USD, agreed before anything starts. What you are paying for is two experienced people doing the work directly.",
         },
         {
           q: "Do I need an Arabic version of my site?",
