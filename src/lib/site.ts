@@ -71,8 +71,16 @@ export const site = {
    * too but lives at the registrar where it's easy to lose track of.
    */
   verification: {
-    /** search.google.com/search-console → Add property → URL prefix → HTML tag. */
-    google: "" as string,
+    /**
+     * search.google.com/search-console → Add property → URL prefix → HTML tag.
+     *
+     * URL-prefix property for https://tramanocreative.com/. Do not switch this
+     * to the "Google Analytics" verification method: it requires the GA tag to
+     * be present when Google's verifier loads the page, and GA4 here is
+     * consent-gated, so the tag does not exist until a visitor clicks Accept.
+     * Google's verifier never does.
+     */
+    google: "Wh6tZbXziJpMG2VmINAljn4MEmt_1vZ8Yc0W2dxr8DY" as string,
     /** bing.com/webmasters → Add site → Meta tag (`msvalidate.01`). */
     bing: "" as string,
   },
