@@ -80,6 +80,14 @@ export default function Page() {
           a: "Expect months, not weeks — but often fewer months than in a competitive international market, because local competition is thinner. Technical fixes can show up within weeks. Ranking for meaningful commercial phrases usually takes three to six months of consistent work, and it keeps compounding after that.",
         },
         {
+          q: "How much does SEO cost in Lebanon?",
+          a: "Monthly search work is quoted as a fixed fee against a defined scope, and what sets it is how much is genuinely being done — technical fixes, how much content is published each month, and how much reporting you want. Local rates sit well below what an agency in Dubai or London charges for the same work, which is one of the few structural advantages of operating here. You get the number before committing, and there is no minimum contract designed to keep you paying after the useful work is finished.",
+        },
+        {
+          q: "How do I get my business on Google Maps in Lebanon?",
+          a: "Through a Google Business Profile, which is free to create and is the single highest-return hour most Lebanese businesses have never spent. You need a business name, a category, a phone number and a location Google can verify — verification is usually by postcard or phone, and the postcard route can be slow here. Once it is live, the profile is what puts you in the map results above the normal listings, and keeping it filled in with photos, hours, services and replies to reviews is most of what decides where you sit in that pack.",
+        },
+        {
           q: "Should I do SEO or Google Ads first?",
           a: "If you need enquiries this month, ads — they work the day they turn on. SEO is the one that keeps producing after you stop paying, so the usual answer is ads for now and SEO building underneath. If your budget only covers one, we will tell you which suits your situation rather than selling you both.",
         },

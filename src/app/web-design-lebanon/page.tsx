@@ -40,7 +40,7 @@ export default function Page() {
           heading: "Pricing, payment and the currency question",
           paras: [
             "We quote in US dollars and we quote a fixed price. Given how the lira has behaved, a fixed number in a stable currency is the only honest way to price work that takes weeks — and it means the figure you agree at the start is the figure you pay at the end.",
-            "Most projects land between $3,000 and $15,000 depending on how many pages there are, how much of the content needs writing, and how much custom design and motion is involved. A focused landing page costs less. We tell you which of those you actually need, and we have talked people out of the bigger option more than once.",
+            "Most projects land between $1,000 and $3,000 depending on how many pages there are, how much of the content needs writing, and how much custom design and motion is involved. A small, focused build — a single strong page doing one job — starts at $500. Larger or more complex work is quoted individually. We tell you which of those you actually need, and we have talked people out of the bigger option more than once.",
             "Payment is normally half before we start and half before launch, and we can work with bank transfer, OMT, or Wise depending on what suits you. Third-party costs like domains and hosting are yours and are billed at cost — we do not mark them up.",
           ],
         },
@@ -70,15 +70,23 @@ export default function Page() {
       faqs={[
         {
           q: "How much does a website cost in Lebanon?",
-          a: "Most of our projects run between $3,000 and $15,000 depending on scope — number of pages, how much content needs writing, and how much custom design is involved. A single well-built landing page costs less. You get a fixed price in USD after a discovery call, so there is no surprise invoice at the end. Cheaper template work exists locally and we will tell you honestly when that would serve you better.",
+          a: "Most custom websites in Lebanon run between $1,000 and $3,000, with small focused builds starting at $500 and larger projects quoted individually. Scope is what moves the number: page count, how much content needs writing, and how much custom design and motion is involved. You get a fixed price in USD after a discovery call, so there is no surprise invoice at the end.",
         },
         {
-          q: "Do you build websites in Arabic?",
-          a: "Yes, and properly — real right-to-left layouts rather than a translation plugin bolted onto a left-to-right design. That means the navigation, buttons and reading order all mirror, and the typography is chosen to hold up in both Arabic and Latin script. We build bilingual and trilingual sites so each language version can rank in search on its own.",
+          q: "Can you build a site in Arabic, French and English?",
+          a: "Yes — trilingual builds are normal here and we treat them as a design problem rather than a translation one. Arabic runs right to left, so navigation, buttons and reading order all mirror, and the type has to hold its weight in both scripts. French and English share a direction but not a rhythm; the same heading set at the same size reads differently in each. Every language version gets its own URL so it can rank in search independently, and adding a third language later is not a rebuild if we plan for it now.",
         },
         {
           q: "Can you invoice in USD?",
           a: "Yes. We quote and invoice in US dollars, which is the only sensible way to price multi-week work at the moment. We can accept bank transfer, OMT or Wise depending on what is easiest for you.",
+        },
+        {
+          q: "Can I take card payments online from a Lebanese business?",
+          a: "Yes, but not through Stripe — it does not operate in Lebanon, and PayPal will let you send money far more easily than receive it. What does work is a merchant account through a local bank or processor such as Areeba, or a local wallet like Whish, alongside OMT and bank transfer for customers who prefer them. Which of those is available to you depends on your bank and your commercial registration, so we check what you can actually get approved for before we design the checkout rather than after.",
+        },
+        {
+          q: "Should I register a .lb domain or a .com?",
+          a: "For most businesses, .com. A .com.lb domain is administered through the registry run by AUB and requires documentation proving your registered business name, which takes time and paperwork a .com does not. The local extension signals you are Lebanese, which is worth something if all your customers are here — but it is not a ranking advantage, and it is harder to move if you ever sell abroad. Plenty of clients register both and point one at the other.",
         },
         {
           q: "Do we need to meet in person?",

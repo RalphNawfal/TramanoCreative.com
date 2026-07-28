@@ -77,6 +77,14 @@ export default function Page() {
           a: "No. Our fee is fixed and separate from your budget. Charging a percentage rewards us for spending more of your money, which is the wrong incentive. Your ad budget goes straight from you to Google.",
         },
         {
+          q: "Is my ad budget included in your management fee?",
+          a: "No — they are two separate things, and it matters that you can see both. Your ad budget goes directly from you to Google on your own billing, so you can log in and see every dollar of it. Our management fee is a fixed monthly amount covering campaign build, keyword and competitor research, ad copy, conversion tracking, landing pages and reporting. Nobody sits between you and Google, and there is no markup hidden inside the spend.",
+        },
+        {
+          q: "Can I pay for Google Ads with a Lebanese bank card?",
+          a: "Often yes, though it is the step most likely to cause trouble. Google bills in USD and some local cards are declined or blocked for international recurring charges, so the practical answer depends on your bank and your card. Fresh-dollar accounts generally work; older lira-linked cards frequently do not. Wise and similar cards are a common fallback, and monthly invoicing is available on larger accounts. We sort billing out before building the campaign, because there is no point launching one that stops three days later.",
+        },
+        {
           q: "Who owns the Google Ads account?",
           a: "You do. It is set up under your billing, you have full access, and if we stop working together you keep the account and all its history. We will not hold an account hostage — that practice is common and it is indefensible.",
         },
