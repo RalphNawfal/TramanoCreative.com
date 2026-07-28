@@ -31,13 +31,14 @@ function Counter({ stat }: { stat: Stat }) {
   const ref = useRef<HTMLParagraphElement>(null);
   const inView = useInView(ref, { once: true, margin: "-80px" });
   const reduced = useReducedMotion();
-  const [value, setValue] = useState(reduced ? stat.to : 0);
+  const [value, setValue] = useState(0);
 
   useEffect(() => {
-    if (!inView || reduced) {
-      if (reduced) setValue(stat.to);
-      return;
-    }
+    // No synchronous setState here: the reduced-motion case is handled by
+    // deriving the rendered number below rather than by writing state during
+    // the effect, which cost an extra render and tripped the hooks lint.
+    if (!inView || reduced) return;
+
     const duration = 1400;
     const start = performance.now();
     let raf = 0;
@@ -54,13 +55,17 @@ function Counter({ stat }: { stat: Stat }) {
     return () => cancelAnimationFrame(raf);
   }, [inView, reduced, stat.to]);
 
+  // Reduced motion skips straight to the final number — the information is the
+  // point, the count-up is the decoration.
+  const shown = reduced ? stat.to : value;
+
   return (
     <p
       ref={ref}
       className="font-display text-[clamp(3rem,7vw,5rem)] font-semibold leading-none tracking-[-0.03em] text-white"
     >
       {stat.prefix}
-      {value}
+      {shown}
       {stat.suffix}
     </p>
   );

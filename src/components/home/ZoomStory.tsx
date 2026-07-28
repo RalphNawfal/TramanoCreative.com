@@ -1,7 +1,8 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import CtaButton from "@/components/ui/CtaButton";
+import { useMediaQuery } from "@/hooks/useMediaQuery";
 
 export type Beat = {
   slate: string;
@@ -35,11 +36,9 @@ export default function ZoomStory({ beats }: { beats: Beat[] }) {
   const layers = useRef<(HTMLDivElement | null)[]>([]);
   const marks = useRef<(HTMLSpanElement | null)[]>([]);
   const rail = useRef<HTMLDivElement>(null);
-  const [reduced, setReduced] = useState<boolean | null>(null);
-
-  useEffect(() => {
-    setReduced(window.matchMedia("(prefers-reduced-motion: reduce)").matches);
-  }, []);
+  // null until the client answers, which is what keeps the plain-sections
+  // fallback below in the prerendered markup.
+  const reduced = useMediaQuery("(prefers-reduced-motion: reduce)");
 
   useEffect(() => {
     if (reduced !== false) return;
