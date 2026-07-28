@@ -9,7 +9,7 @@ import { reel } from "@/lib/work";
 export const metadata: Metadata = {
   title: "Work — Five Builds, No Templates",
   description:
-    "A live restaurant site and four concept builds from Tramano Creative — custom design, fast loads, and layouts built around a single action.",
+    "A live restaurant site and four concept builds from Tramano Creative — custom design, sub-second loads, and layouts built around one clear action per page.",
   alternates: { canonical: "/work/" },
 };
 
@@ -29,7 +29,8 @@ export default function WorkPage() {
         </Reveal>
 
         <div className="mt-24">
-          <WorkReel shots={reel} />
+          {/* Directly under the page h1 here, so the item titles are h2. */}
+          <WorkReel shots={reel} headingLevel="h2" />
         </div>
 
         <Reveal delay={0.2}>

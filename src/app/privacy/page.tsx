@@ -3,15 +3,30 @@ import Link from "next/link";
 import Section from "@/components/ui/Section";
 import Breadcrumbs from "@/components/seo/Breadcrumbs";
 import { site } from "@/lib/site";
+import ConsentControls from "@/components/analytics/ConsentControls";
+
+/**
+ * Every claim on this page is derived from `site.analytics`, not written by
+ * hand, so the policy cannot drift out of step with what the site loads. Each
+ * token that gets filled in relaxes exactly the claims it invalidates and no
+ * others — turning on GA4 must not quietly weaken the statements that are
+ * still true.
+ */
+const cfEnabled = Boolean(site.analytics.cloudflareToken);
+const ga4Enabled = Boolean(site.analytics.ga4MeasurementId);
+const anyAnalytics = cfEnabled || ga4Enabled;
 
 export const metadata: Metadata = {
   title: "Privacy Policy",
-  description:
-    "How Tramano Creative handles your data. No cookies, no analytics, no tracking — the only information we hold is what you type into the contact form.",
+  description: ga4Enabled
+    ? "How Tramano Creative handles your data. Analytics cookies only if you accept them, no advertising trackers, and the information you type into the contact form."
+    : anyAnalytics
+      ? "How Tramano Creative handles your data. No cookies, no tracking, no profiling — anonymous visit counts and the information you type into the contact form."
+      : "How Tramano Creative handles your data. No cookies, no analytics, no tracking — the only information we hold is what you type into the contact form.",
   alternates: { canonical: "/privacy/" },
 };
 
-const UPDATED = "26 July 2026";
+const UPDATED = "27 July 2026";
 
 export default function PrivacyPage() {
   return (
@@ -27,14 +42,38 @@ export default function PrivacyPage() {
             </p>
 
             <h2>The short version</h2>
-            <p>
-              This website sets <strong>no cookies</strong>, runs{" "}
-              <strong>no analytics</strong>, and contains{" "}
-              <strong>no tracking pixels, advertising tags or third-party
-              embeds</strong>. It stores nothing on your device — no cookies, no
-              local storage, no session storage. We do not build a profile of
-              you, and we do not sell or share your information for advertising.
-            </p>
+            {ga4Enabled ? (
+              <p>
+                This website asks before it measures anything. Google Analytics
+                is used to count visits, and because it sets cookies{" "}
+                <strong>it does not load at all unless you press Accept</strong>
+                . Decline, or simply ignore the prompt, and no request is ever
+                made to Google — the site behaves identically either way. There
+                are <strong>no advertising tags, remarketing pixels or
+                third-party embeds</strong> in any case, and we do not sell or
+                share your information.
+              </p>
+            ) : cfEnabled ? (
+              <p>
+                This website sets <strong>no cookies</strong> and contains{" "}
+                <strong>no tracking pixels, advertising tags or third-party
+                embeds</strong>. It stores nothing on your device — no cookies,
+                no local storage, no session storage. We count visits using a
+                privacy-preserving tool that does not identify you or follow you
+                between sites. We do not build a profile of you, and we do not
+                sell or share your information for advertising.
+              </p>
+            ) : (
+              <p>
+                This website sets <strong>no cookies</strong>, runs{" "}
+                <strong>no analytics</strong>, and contains{" "}
+                <strong>no tracking pixels, advertising tags or third-party
+                embeds</strong>. It stores nothing on your device — no cookies,
+                no local storage, no session storage. We do not build a profile
+                of you, and we do not sell or share your information for
+                advertising.
+              </p>
+            )}
             <p>
               The only personal information we receive is what you choose to
               type into the contact form and send us.
@@ -65,6 +104,16 @@ export default function PrivacyPage() {
               <li>Your message (required)</li>
             </ul>
             <p>
+              The submission also tells us{" "}
+              <strong>which page you were reading when you sent it</strong>, the
+              page you first arrived on, and — if you reached us from a search
+              engine, a link elsewhere or one of our ads — where that click came
+              from. This is how we learn which of our pages are worth writing.
+              It is read off the address bar and the standard browser referrer
+              at the moment you press Send; it is not stored on your device
+              beforehand, and if you never submit the form we never receive it.
+            </p>
+            <p>
               We use this for one purpose: to reply to you and, if it goes
               further, to discuss and deliver a project. We do not add you to a
               mailing list, and we do not send marketing sequences.
@@ -93,51 +142,197 @@ export default function PrivacyPage() {
             </p>
 
             <h2 id="cookies">Cookies and tracking</h2>
-            <p>
-              <strong>This website does not use cookies.</strong> That is not a
-              qualified statement — there is no cookie banner because there is
-              nothing to consent to.
-            </p>
-            <p>Specifically, this site does not:</p>
-            <ul>
-              <li>set or read any cookies, first-party or third-party;</li>
-              <li>
-                write to local storage, session storage or IndexedDB on your
-                device;
-              </li>
-              <li>
-                run Google Analytics, Google Tag Manager, Meta Pixel, or any
-                other analytics or advertising script;
-              </li>
-              <li>
-                embed third-party widgets, iframes, maps, chat tools or video
-                players;
-              </li>
-              <li>fingerprint your device or track you across other sites.</li>
-            </ul>
+            {ga4Enabled ? (
+              <>
+                <p>
+                  <strong>
+                    This website sets no cookies until you allow it to.
+                  </strong>{" "}
+                  On your first visit you are asked once. Nothing is stored and
+                  no request is sent to Google before you answer, and declining
+                  is a single click that costs you nothing — the site is not
+                  degraded, gated or nagged afterwards.
+                </p>
+                <p>If you press Accept, Google Analytics sets:</p>
+                <ul>
+                  <li>
+                    <code>_ga</code> and <code>_ga_&lt;id&gt;</code> — first-party
+                    cookies holding a random identifier used to recognise a
+                    returning browser and avoid counting one person as several.
+                    They expire after two years.
+                  </li>
+                </ul>
+                <p>Whether you accept or not, this site does not:</p>
+                <ul>
+                  <li>
+                    run advertising, remarketing or conversion pixels — no Meta
+                    Pixel, no ad tags, no cross-site audiences;
+                  </li>
+                  <li>
+                    embed third-party widgets, iframes, maps, chat tools or
+                    video players;
+                  </li>
+                  <li>
+                    fingerprint your device, or sell or share what it measures.
+                  </li>
+                </ul>
+                <p>
+                  We also store one small item regardless of your answer: your
+                  answer itself, kept in your browser&apos;s local storage under{" "}
+                  <code>tc-consent</code> so you are not asked again on every
+                  page. It holds a single word — accepted or declined — and no
+                  identifier. Clearing your browser storage resets the question.
+                </p>
+                <p>
+                  <strong>Changing your mind</strong> is deliberately easy. Use
+                  the button below; if you withdraw consent, the Google
+                  Analytics script stops loading immediately on your next page
+                  view.
+                </p>
+                <ConsentControls />
+              </>
+            ) : (
+              <>
+                <p>
+                  <strong>This website does not use cookies.</strong> That is
+                  not a qualified statement — there is no cookie banner because
+                  there is nothing to consent to.
+                </p>
+                <p>Specifically, this site does not:</p>
+                <ul>
+                  <li>set or read any cookies, first-party or third-party;</li>
+                  <li>
+                    write to local storage, session storage or IndexedDB on your
+                    device;
+                  </li>
+                  <li>
+                    run Google Analytics, Google Tag Manager, Meta Pixel, or any
+                    advertising or remarketing script
+                    {cfEnabled
+                      ? " — the one measurement script we do run is described below"
+                      : ""}
+                    ;
+                  </li>
+                  <li>
+                    embed third-party widgets, iframes, maps, chat tools or
+                    video players;
+                  </li>
+                  <li>
+                    fingerprint your device or track you across other sites.
+                  </li>
+                </ul>
+              </>
+            )}
             <p>
               One detail worth stating because it is unusual: our fonts are{" "}
               <strong>downloaded and bundled at build time</strong> rather than
               fetched from Google&apos;s servers when you visit. Most sites using
               Google Fonts disclose your IP address to Google on every page
-              load. This one does not — no request leaves your browser for
-              Google, or for any other third party, simply by reading a page
-              here.
+              load. This one does not
+              {ga4Enabled
+                ? " — reading a page here contacts Google only if you accepted analytics, and never merely to render type."
+                : " — no request leaves your browser for Google, or for any other third party, simply by reading a page here."}
             </p>
-            <p>
-              The only outbound request this site makes to anyone else happens
-              when you press Send on the contact form. If you never use the
-              form, no third party receives anything about you from us.
-            </p>
-            <p>
-              If we add analytics in future, we will update this section before
-              doing so, and we will choose something that does not require
-              tracking individuals.
-            </p>
+            {anyAnalytics && <h2 id="analytics">Visitor measurement</h2>}
+            {ga4Enabled && (
+              <>
+                <p>
+                  If you accept, we use <strong>Google Analytics 4</strong> to
+                  see which pages are read, how people reach us, and which of
+                  them go on to contact us. Alongside page views we record a
+                  small number of named actions: submitting the contact form,
+                  pressing a call-to-action, tapping a phone or email link, and
+                  how far down a long page you read.
+                </p>
+                <p>
+                  Those actions are recorded as counts against a page, not
+                  against a person we can name. We do not upload your email
+                  address or any other identifier from the contact form into
+                  Analytics, and we have not enabled Google Signals, advertising
+                  personalisation or remarketing audiences — the advertising
+                  consent flags stay switched off even for visitors who accept.
+                  IP addresses are anonymised before storage.
+                </p>
+                <p>
+                  Google acts as our processor for this and may transfer data to
+                  the United States under its{" "}
+                  <a
+                    href="https://business.safety.google/privacy/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    business privacy terms
+                  </a>
+                  . Our lawful basis is your consent, which you can withdraw at
+                  any time using the button above.
+                </p>
+              </>
+            )}
+            {cfEnabled && (
+              <>
+                <p>
+                  We also use{" "}
+                  <a
+                    href="https://www.cloudflare.com/web-analytics/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Cloudflare Web Analytics
+                  </a>{" "}
+                  to see how many people read these pages, which pages they
+                  read, roughly where in the world they are, and how fast the
+                  site loaded for them. We use it to fix slow pages and to write
+                  more of what gets read.
+                </p>
+                <p>
+                  It is <strong>cookieless</strong>. It sets no cookie, writes
+                  nothing to your device, assigns you no identifier, and cannot
+                  follow you to any other website
+                  {ga4Enabled
+                    ? ", so it needs no consent and runs for everyone"
+                    : " — which is why there is still no consent banner on this site"}
+                  . Measurement is derived from a page-load signal, not from a
+                  profile of you, and we cannot single out an individual visitor
+                  in it. Cloudflare processes this on our behalf under its{" "}
+                  <a
+                    href="https://www.cloudflare.com/privacypolicy/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    privacy policy
+                  </a>
+                  ; it does not use the data to build advertising profiles.
+                </p>
+                <p>
+                  Our lawful basis under the UK and EU GDPR is legitimate
+                  interest in understanding whether our own website works. If
+                  you would rather not be counted at all, any browser
+                  content-blocker will stop the script, and nothing on the site
+                  breaks if you do.
+                </p>
+              </>
+            )}
+            {!anyAnalytics && (
+              <>
+                <p>
+                  The only outbound request this site makes to anyone else
+                  happens when you press Send on the contact form. If you never
+                  use the form, no third party receives anything about you from
+                  us.
+                </p>
+                <p>
+                  If we add analytics in future, we will update this section
+                  before doing so, and we will choose something that does not
+                  require tracking individuals.
+                </p>
+              </>
+            )}
 
             <h2>Who else receives your information</h2>
             <p>
-              We keep this list short deliberately. Two companies are involved:
+              We keep this list short deliberately.{" "}
+              {["Two", "Three", "Four"][Number(cfEnabled) + Number(ga4Enabled)]}{" "}
+              companies are involved:
             </p>
             <ul>
               <li>
@@ -159,6 +354,20 @@ export default function PrivacyPage() {
                 <strong>GitHub Pages</strong> — hosts and serves the website, as
                 described above.
               </li>
+              {cfEnabled && (
+                <li>
+                  <strong>Cloudflare</strong> — provides the cookieless visit
+                  measurement described under{" "}
+                  <Link href="/privacy/#analytics">visitor measurement</Link>.
+                </li>
+              )}
+              {ga4Enabled && (
+                <li>
+                  <strong>Google</strong> — provides Google Analytics, and only
+                  for visitors who accepted it. If you declined, Google receives
+                  nothing from your visit at all.
+                </li>
+              )}
             </ul>
             <p>
               We do not sell your personal information, and we do not share it

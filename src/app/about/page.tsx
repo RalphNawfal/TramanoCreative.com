@@ -8,7 +8,7 @@ import { site } from "@/lib/site";
 export const metadata: Metadata = {
   title: "About — The Two People Doing the Work",
   description:
-    "Tramano Creative is Ralph Nawfal and Ramy Al Housary — experience built in the Canadian market, a deliberately small client roster, and no hand-offs.",
+    "Tramano Creative is Ralph Nawfal and Ramy Al Housary, working from Beirut — experience built in the Canadian market, a deliberately small roster, no hand-offs.",
   alternates: { canonical: "/about/" },
 };
 

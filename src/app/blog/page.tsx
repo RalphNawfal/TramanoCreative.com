@@ -8,7 +8,7 @@ import { getAllPosts } from "@/lib/blog";
 export const metadata: Metadata = {
   title: "Blog — Guides on Websites, Ads & Search",
   description:
-    "Practical guides on web design, SEO, site speed, and AI search from Tramano Creative.",
+    "Practical guides on web design, SEO, site speed and AI search from Tramano Creative — what a website really costs, and what actually moves search rankings.",
   alternates: { canonical: "/blog/" },
 };
 

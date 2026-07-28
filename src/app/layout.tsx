@@ -7,6 +7,11 @@ import Footer from "@/components/ui/Footer";
 import JsonLd from "@/components/seo/JsonLd";
 import MotionProvider from "@/components/ui/MotionProvider";
 import SignalHud from "@/components/ui/SignalHud";
+import Analytics from "@/components/analytics/Analytics";
+import Attribution from "@/components/analytics/Attribution";
+import GoogleAnalytics from "@/components/analytics/GoogleAnalytics";
+import ConsentBanner from "@/components/analytics/ConsentBanner";
+import EventTracking from "@/components/analytics/EventTracking";
 
 // Archivo is the only family here that takes an axes array, and `wdth` is the
 // only legal value. It must resolve to a variable weight — passing an explicit
@@ -35,7 +40,7 @@ export const metadata: Metadata = {
     default: `${site.name} — ${site.tagline}`,
     template: `%s — ${site.name}`,
   },
-  description: site.description,
+  description: site.metaDescription,
   openGraph: {
     siteName: site.name,
     type: "website",
@@ -47,6 +52,14 @@ export const metadata: Metadata = {
   robots: {
     index: true,
     follow: true,
+  },
+  // Spread rather than set: an empty string would emit an empty verification
+  // meta tag, which Search Console reads as a failed claim rather than none.
+  verification: {
+    ...(site.verification.google ? { google: site.verification.google } : {}),
+    ...(site.verification.bing
+      ? { other: { "msvalidate.01": site.verification.bing } }
+      : {}),
   },
 };
 
@@ -69,8 +82,6 @@ export default function RootLayout({
               {
                 // ProfessionalService alongside Organization: it's the right
                 // type for a service business, and it carries areaServed.
-                // There's deliberately no postal address — the business is
-                // country-level, which means no map-pack eligibility.
                 "@type": ["Organization", "ProfessionalService"],
                 "@id": `${site.url}/#organization`,
                 name: site.name,
@@ -81,8 +92,21 @@ export default function RootLayout({
                 slogan: site.tagline,
                 foundingDate: site.foundingDate,
                 priceRange: site.priceRange,
-                logo: `${site.url}/opengraph-image`,
+                // `logo` wants the mark, not the social banner — Google renders
+                // it in knowledge panels where a 1200×630 wordmark crops badly.
+                // `image` keeps the banner, which is what it's for.
+                logo: `${site.url}/icon.png`,
                 image: `${site.url}/opengraph-image`,
+                // Locality without a street address. The business is
+                // deliberately country-level — no premises means no map-pack
+                // eligibility — but "Beirut" is already stated publicly in
+                // /llms.txt, the footer and the FAQ, so withholding it from schema
+                // only hid a true signal from search engines.
+                address: {
+                  "@type": "PostalAddress",
+                  addressLocality: "Beirut",
+                  addressCountry: "LB",
+                },
                 ...(site.sameAs.length > 0 ? { sameAs: site.sameAs } : {}),
                 knowsLanguage: site.languages,
                 areaServed: site.areaServed.map((area) =>
@@ -131,6 +155,11 @@ export default function RootLayout({
           <main className="flex-1">{children}</main>
           <Footer />
         </MotionProvider>
+        <Attribution />
+        <EventTracking />
+        <Analytics />
+        <GoogleAnalytics />
+        <ConsentBanner />
       </body>
     </html>
   );

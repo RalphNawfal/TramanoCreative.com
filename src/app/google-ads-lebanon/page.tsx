@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import MarketPage from "@/components/seo/MarketPage";
 
 export const metadata: Metadata = {
-  title: "Google Ads Management in Lebanon — Run Honestly, Reported Plainly",
+  title: "Google Ads in Lebanon",
   description:
-    "Google Ads for Lebanese businesses. Campaigns built on the terms your buyers actually search, landing pages built to answer them, and monthly reporting you can audit.",
+    "Google Ads for Lebanese businesses. Campaigns built on the terms buyers actually search, landing pages built to answer them, and reporting you can audit.",
   alternates: { canonical: "/google-ads-lebanon/" },
 };
 

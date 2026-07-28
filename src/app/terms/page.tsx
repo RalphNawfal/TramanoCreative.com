@@ -7,7 +7,7 @@ import { site } from "@/lib/site";
 export const metadata: Metadata = {
   title: "Terms of Service",
   description:
-    "The terms Tramano Creative works under — quotes and fixed pricing, payment, timelines, ownership of the work, and the limits of our liability.",
+    "These are the terms Tramano Creative works under — quotes and fixed pricing, payment, timelines, who owns the finished work, and the limits of our liability.",
   alternates: { canonical: "/terms/" },
 };
 
