@@ -45,9 +45,23 @@ export const metadata: Metadata = {
     siteName: site.name,
     type: "website",
     locale: "en_US",
+    // Pointed at /og.png rather than letting the file convention emit
+    // /opengraph-image: the extensionless URL is served as
+    // application/octet-stream by GitHub Pages and rejected by scrapers that
+    // check Content-Type. Same bytes, copied at build time.
+    images: [
+      {
+        url: "/og.png",
+        width: 1200,
+        height: 630,
+        type: "image/png",
+        alt: `${site.name} — ${site.tagline}`,
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
+    images: ["/og.png"],
   },
   robots: {
     index: true,
@@ -96,7 +110,7 @@ export default function RootLayout({
                 // it in knowledge panels where a 1200×630 wordmark crops badly.
                 // `image` keeps the banner, which is what it's for.
                 logo: `${site.url}/icon.png`,
-                image: `${site.url}/opengraph-image`,
+                image: `${site.url}/og.png`,
                 // Locality without a street address. The business is
                 // deliberately country-level — no premises means no map-pack
                 // eligibility — but "Beirut" is already stated publicly in

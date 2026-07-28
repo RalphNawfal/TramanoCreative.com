@@ -28,6 +28,18 @@ export async function generateMetadata({
       // Social cards have room for the full headline.
       title: post.title,
       description: post.description,
+      // Repeated rather than inherited: declaring `openGraph` here replaces
+      // the layout's object wholesale, so omitting this leaves posts with no
+      // og:image at all.
+      images: [
+        {
+          url: "/og.png",
+          width: 1200,
+          height: 630,
+          type: "image/png",
+          alt: `${site.name} — ${site.tagline}`,
+        },
+      ],
     },
   };
 }
@@ -60,7 +72,7 @@ export default async function BlogPost({
           },
           // Article rich results require an image; posts have no hero of their
           // own, so the site card stands in rather than leaving it absent.
-          image: `${site.url}/opengraph-image`,
+          image: `${site.url}/og.png`,
           inLanguage: "en",
           wordCount: post.content.split(/\s+/).length,
           isPartOf: { "@id": `${site.url}/#website` },
