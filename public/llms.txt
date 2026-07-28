@@ -40,7 +40,7 @@ We do not guarantee search rankings or specific commercial outcomes, and we say 
 
 ### Legal
 
-- [Privacy policy](https://tramanocreative.com/privacy/) — this site sets no cookies, runs no analytics, and does no tracking
+- [Privacy policy](https://tramanocreative.com/privacy/) — analytics load only with consent, no advertising or remarketing scripts, no cross-site tracking or profiling
 - [Terms of service](https://tramanocreative.com/terms/)
 
 ## Contact

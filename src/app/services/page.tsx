@@ -8,9 +8,9 @@ import JsonLd from "@/components/seo/JsonLd";
 import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Services — Websites, Google Ads & Search Presence",
+  title: "Web Design, Google Ads & SEO",
   description:
-    "Custom websites, Google Ads management, and search presence (SEO + AI search) from Tramano Creative — three things built to hold each other up.",
+    "Custom websites, Google Ads management and search presence from Tramano Creative — three services built to hold each other up, priced before work starts.",
   alternates: { canonical: "/services/" },
 };
 
@@ -67,12 +67,25 @@ export default function ServicesPage() {
         data={{
           "@context": "https://schema.org",
           "@type": "ItemList",
+          // `position` belongs to ListItem, not to the thing being listed, so
+          // each Service has to be wrapped rather than annotated — a bare
+          // Service carrying `position` is not a valid ItemList member.
           itemListElement: services.map((s, i) => ({
-            "@type": "Service",
+            "@type": "ListItem",
             position: i + 1,
-            name: s.title,
-            description: s.body,
-            provider: { "@id": `${site.url}/#organization` },
+            item: {
+              "@type": "Service",
+              name: s.title,
+              description: s.body,
+              serviceType: s.title,
+              url: `${site.url}/services/#${s.id}`,
+              provider: { "@id": `${site.url}/#organization` },
+              areaServed: site.areaServed.map((area) =>
+                area === "Worldwide"
+                  ? { "@type": "Place", name: "Worldwide" }
+                  : { "@type": "Country", name: area },
+              ),
+            },
           })),
         }}
       />

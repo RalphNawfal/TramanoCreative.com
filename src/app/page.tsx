@@ -12,7 +12,8 @@ import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: `${site.name} — Websites, Google Ads & Search Presence`,
-  description: site.description,
+  description:
+    "Custom websites, Google Ads and SEO from a two-person studio in Beirut. No templates, sub-second loads, and a fixed price agreed before any work starts.",
   alternates: { canonical: "/" },
 };
 

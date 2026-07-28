@@ -2,6 +2,8 @@
 
 import { useState } from "react";
 import { site } from "@/lib/site";
+import { attributionFields } from "@/lib/attribution";
+import { track, LEAD_EVENT } from "@/lib/analytics";
 
 const inputClass =
   "w-full rounded-sm border border-edge bg-carbon-lift px-4 py-3.5 text-[15px] text-white placeholder:text-grey-deep transition-colors duration-300 focus:border-signal focus:outline-none";
@@ -19,12 +21,28 @@ export default function ContactForm() {
     setStatus("sending");
     const form = e.currentTarget;
     try {
+      const body = new FormData(form);
+      // Appended at submit rather than rendered as hidden inputs: the values
+      // depend on how this visit started, which the statically exported HTML
+      // cannot know at build time.
+      for (const [name, value] of Object.entries(attributionFields())) {
+        body.append(name, value);
+      }
       const res = await fetch(site.formspreeEndpoint, {
         method: "POST",
         headers: { Accept: "application/json" },
-        body: new FormData(form),
+        body,
       });
       if (res.ok) {
+        // Fires on confirmed success only — a failed POST is not a lead.
+        // Budget and project type ride along as dimensions so the GA4 report
+        // can separate a $15k enquiry from a tyre-kick, which is the only
+        // segmentation that matters at this volume.
+        track(LEAD_EVENT, {
+          project_type: String(body.get("projectType") ?? ""),
+          budget: String(body.get("budget") ?? ""),
+          timeline: String(body.get("timeline") ?? ""),
+        });
         setStatus("sent");
         form.reset();
       } else {

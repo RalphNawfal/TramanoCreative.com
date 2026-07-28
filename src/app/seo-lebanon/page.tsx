@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import MarketPage from "@/components/seo/MarketPage";
 
 export const metadata: Metadata = {
-  title: "SEO in Lebanon — Get Found on Google and in AI Answers",
+  title: "SEO in Lebanon",
   description:
-    "Technical SEO and search presence for Lebanese businesses. Fast, crawlable sites, structured data, Arabic and English search, and content built to be quoted by AI answers.",
+    "Technical SEO for Lebanese businesses. Fast, crawlable sites, structured data, Arabic and English search, and content built to be quoted by AI answers.",
   alternates: { canonical: "/seo-lebanon/" },
 };
 

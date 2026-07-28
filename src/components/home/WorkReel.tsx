@@ -13,17 +13,41 @@ import { useScrollVelocity } from "@/hooks/useScrollVelocity";
  * Nothing here links out — see the note on ReelShot. The frames are plain
  * images with no hover affordance, so they never read as clickable.
  */
-export default function WorkReel({ shots }: { shots: ReelShot[] }) {
+export default function WorkReel({
+  shots,
+  headingLevel = "h3",
+}: {
+  shots: ReelShot[];
+  /**
+   * The reel sits under a section h2 on the homepage but directly under the
+   * page h1 on /work/, so the item titles can't be a fixed level without
+   * skipping one somewhere. Callers pass the level that follows their own.
+   */
+  headingLevel?: "h2" | "h3";
+}) {
   return (
     <div className="space-y-28 md:space-y-44">
       {shots.map((shot, i) => (
-        <ReelItem key={shot.slate} shot={shot} flip={i % 2 === 1} />
+        <ReelItem
+          key={shot.slate}
+          shot={shot}
+          flip={i % 2 === 1}
+          headingLevel={headingLevel}
+        />
       ))}
     </div>
   );
 }
 
-function ReelItem({ shot, flip }: { shot: ReelShot; flip: boolean }) {
+function ReelItem({
+  shot,
+  flip,
+  headingLevel: Heading,
+}: {
+  shot: ReelShot;
+  flip: boolean;
+  headingLevel: "h2" | "h3";
+}) {
   const reduced = useReducedMotion();
   const skewRef = useScrollVelocity<HTMLDivElement>();
 
@@ -104,9 +128,9 @@ function ReelItem({ shot, flip }: { shot: ReelShot; flip: boolean }) {
           </span>
         </div>
 
-        <h3 className="mt-7 font-display text-[clamp(1.6rem,3vw,2.5rem)] uppercase leading-[1]">
+        <Heading className="mt-7 font-display text-[clamp(1.6rem,3vw,2.5rem)] uppercase leading-[1]">
           {shot.title}
-        </h3>
+        </Heading>
         <p className="mt-5 text-[15px] leading-[1.65] text-grey">{shot.body}</p>
 
         <ul className="mt-8 flex flex-wrap gap-x-5 gap-y-2">

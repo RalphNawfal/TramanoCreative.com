@@ -6,7 +6,15 @@ const BLOG_DIR = path.join(process.cwd(), "content", "blog");
 
 export type PostMeta = {
   slug: string;
+  /** The headline, as rendered on the page and the index card. */
   title: string;
+  /**
+   * Optional shorter title for the `<title>` tag only. A headline that reads
+   * well on the page can blow past the ~60 characters Google shows once the
+   * " — Tramano Creative" suffix is appended; this lets the tag be trimmed
+   * without shortening the headline itself.
+   */
+  seoTitle?: string;
   description: string;
   date: string;
   readingMinutes: number;
@@ -24,6 +32,7 @@ export function getAllPosts(): PostMeta[] {
       return {
         slug: f.replace(/\.mdx$/, ""),
         title: data.title as string,
+        seoTitle: data.seoTitle as string | undefined,
         description: data.description as string,
         date: data.date as string,
         readingMinutes: Math.max(1, Math.round(content.split(/\s+/).length / 220)),
@@ -38,6 +47,7 @@ export function getPost(slug: string): Post {
   return {
     slug,
     title: data.title as string,
+    seoTitle: data.seoTitle as string | undefined,
     description: data.description as string,
     date: data.date as string,
     readingMinutes: Math.max(1, Math.round(content.split(/\s+/).length / 220)),

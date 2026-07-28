@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import MarketPage from "@/components/seo/MarketPage";
 
 export const metadata: Metadata = {
-  title: "Web Design in Lebanon — Custom Websites, Built From Scratch",
+  title: "Web Design in Lebanon",
   description:
     "Custom web design and development for Lebanese businesses. No templates, sub-second load times, trilingual layouts, and a fixed price agreed before we start.",
   alternates: { canonical: "/web-design-lebanon/" },

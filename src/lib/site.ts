@@ -3,8 +3,21 @@ export const site = {
   domain: "tramanocreative.com",
   url: "https://tramanocreative.com",
   tagline: "We build the websites people remember.",
+  /**
+   * The long-form description. Used for schema.org and /llms.txt, where
+   * length is an asset — neither one truncates.
+   */
   description:
     "Tramano Creative builds websites, Google Ads, and search presence that hold each other up — custom design, sub-second loads, and honest advice. If you found us at the bottom of a site you liked, that's our work.",
+
+  /**
+   * The `<meta name="description">` variant, held to 150–160 characters.
+   * Google cuts the snippet around 155, and the long description above runs to
+   * 211 — it was being truncated mid-sentence on the homepage and on every
+   * page that fell through to the layout default.
+   */
+  metaDescription:
+    "A two-person studio in Beirut building custom websites, Google Ads and search presence for businesses in Lebanon, the UAE and further afield. No templates.",
   email: "info@tramanocreative.com",
   phone: "+961 71 042 427",
   phoneHref: "+96171042427",
@@ -12,6 +25,68 @@ export const site = {
   foundingDate: "2026",
   priceRange: "$$",
   formspreeEndpoint: "https://formspree.io/f/xkolykzp",
+
+  /**
+   * Measurement and search-engine tokens.
+   *
+   * Every value here is public by design — verification meta tags and the
+   * Cloudflare beacon token are readable in the page source of any site that
+   * uses them, so they belong in the repo rather than in CI secrets. Nothing
+   * here grants access to an account.
+   *
+   * Each one is empty until claimed. Empty means the feature is genuinely
+   * off: no beacon script is rendered, no meta tag is emitted, and the
+   * privacy policy's analytics section stays absent. That coupling is
+   * deliberate — the policy can never describe tracking the site isn't doing.
+   */
+  analytics: {
+    /**
+     * Cloudflare Web Analytics. Cookieless and consent-free by design: no
+     * cookies, no local storage, no cross-site identifier, nothing that would
+     * need a banner under GDPR or ePrivacy. Chosen over GA4 to keep the
+     * promise already made in the privacy policy.
+     *
+     * Get the token: dash.cloudflare.com → Analytics & Logs → Web Analytics →
+     * Add a site → tramanocreative.com. Copy the value of `token` out of the
+     * JS snippet it shows you. The domain does not need to be on Cloudflare.
+     */
+    cloudflareToken: "" as string,
+
+    /**
+     * GA4 measurement ID (`G-XXXXXXXXXX`). Unlike the Cloudflare beacon this
+     * one sets cookies, so it is consent-gated: the script is not requested
+     * at all until a visitor accepts. Setting this ID is what makes the
+     * consent banner and the cookie sections of the privacy policy appear.
+     *
+     * Get it: analytics.google.com → Admin → Data streams → Web → your
+     * stream → Measurement ID. Link the property to Google Ads under Admin →
+     * Product links if you want `generate_lead` importable as a conversion.
+     */
+    ga4MeasurementId: "G-T8WWNZEN8P" as string,
+  },
+
+  /**
+   * Search engine ownership verification. Both are HTML meta tag methods,
+   * which survive a static export cleanly; DNS TXT verification would work
+   * too but lives at the registrar where it's easy to lose track of.
+   */
+  verification: {
+    /** search.google.com/search-console → Add property → URL prefix → HTML tag. */
+    google: "" as string,
+    /** bing.com/webmasters → Add site → Meta tag (`msvalidate.01`). */
+    bing: "" as string,
+  },
+
+  /**
+   * IndexNow key. Pinging this API tells Bing — and therefore Copilot and
+   * ChatGPT search, which both lean on Bing's index — that a URL changed,
+   * instead of waiting for a crawl. Google does not participate.
+   *
+   * The key is proven by hosting it at /<key>.txt, so this value and the
+   * filename in public/ must always match. Run `npm run indexnow` after a
+   * deploy to submit; see scripts/ping-indexnow.mjs.
+   */
+  indexNowKey: "e40e830d6a210465d9b0b8f0dab8dd2e",
 
   /**
    * Country-level only, by decision — no street address and no city-pinned

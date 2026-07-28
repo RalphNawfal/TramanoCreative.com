@@ -18,12 +18,14 @@ export async function generateMetadata({
   const { slug } = await params;
   const post = getPost(slug);
   return {
-    title: post.title,
+    // The tag gets the trimmed variant; the headline on the page is untouched.
+    title: post.seoTitle ?? post.title,
     description: post.description,
     alternates: { canonical: `/blog/${slug}/` },
     openGraph: {
       type: "article",
       publishedTime: post.date,
+      // Social cards have room for the full headline.
       title: post.title,
       description: post.description,
     },
@@ -47,7 +49,21 @@ export default async function BlogPost({
           headline: post.title,
           description: post.description,
           datePublished: post.date,
+          // No edit history is tracked, so modified == published. Omitting it
+          // is worse than stating it: Google falls back to guessing from the
+          // crawl, and a guessed date can make a current post look stale.
+          dateModified: post.date,
           url: `${site.url}/blog/${slug}/`,
+          mainEntityOfPage: {
+            "@type": "WebPage",
+            "@id": `${site.url}/blog/${slug}/`,
+          },
+          // Article rich results require an image; posts have no hero of their
+          // own, so the site card stands in rather than leaving it absent.
+          image: `${site.url}/opengraph-image`,
+          inLanguage: "en",
+          wordCount: post.content.split(/\s+/).length,
+          isPartOf: { "@id": `${site.url}/#website` },
           author: { "@id": `${site.url}/#organization` },
           publisher: { "@id": `${site.url}/#organization` },
         }}

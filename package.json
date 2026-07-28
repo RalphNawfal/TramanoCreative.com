@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build && node scripts/flatten-rsc.mjs",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "indexnow": "node scripts/ping-indexnow.mjs"
   },
   "dependencies": {
     "@mdx-js/loader": "^3.1.1",
