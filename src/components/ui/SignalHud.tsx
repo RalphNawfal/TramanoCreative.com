@@ -1,6 +1,7 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
+import { useMediaQuery } from "@/hooks/useMediaQuery";
 
 /**
  * Fixed corner readout: scroll position and a live signal dot.
@@ -13,13 +14,13 @@ import { useEffect, useRef, useState } from "react";
  */
 export default function SignalHud() {
   const pct = useRef<HTMLSpanElement>(null);
-  const [enabled, setEnabled] = useState(false);
+  const reduced = useMediaQuery("(prefers-reduced-motion: reduce)");
+  const finePointer = useMediaQuery("(pointer: fine)");
 
-  useEffect(() => {
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    if (!window.matchMedia("(pointer: fine)").matches) return;
-    setEnabled(true);
-  }, []);
+  // Both must be known and favourable. Either being null means we're still
+  // prerendering, and the readout stays off — same as the old effect, minus
+  // the extra render.
+  const enabled = reduced === false && finePointer === true;
 
   useEffect(() => {
     if (!enabled) return;
