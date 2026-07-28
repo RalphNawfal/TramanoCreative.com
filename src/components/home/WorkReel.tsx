@@ -55,7 +55,11 @@ function ReelItem({
     <article className="grid items-center gap-10 md:grid-cols-12 md:gap-14">
       {/* Frame */}
       <motion.div
-        className={`relative md:col-span-7 ${flip ? "md:order-2" : ""}`}
+        className={`relative md:col-span-7 ${flip ? "md:order-2" : ""} ${
+          // Below lg the phone hangs into the row rather than into the page
+          // margin, so the frame needs clearance or it lands on the caption.
+          shot.mobile ? "mb-16 lg:mb-0" : ""
+        }`}
         initial={reduced ? false : { opacity: 0, y: 28 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-120px" }}
@@ -81,17 +85,24 @@ function ReelItem({
         </div>
 
         {/*
-          The phone hangs off the outer page margin, never the inner edge —
-          otherwise it lands on top of the caption column when the row flips.
+          From lg up the phone hangs off the outer page margin, never the inner
+          edge — otherwise it lands on top of the caption column when the row
+          flips. Below lg there is no outer margin to spare (the section is only
+          px-5), so it tucks against the frame's own edge instead and takes a
+          larger share of the width to stay legible on a small screen.
         */}
         {shot.mobile && (
           <motion.div
-            className={`absolute -bottom-12 hidden w-[19%] lg:block ${
-              flip ? "-right-10" : "-left-10"
+            className={`absolute -bottom-12 w-[22%] sm:w-[20%] lg:w-[19%] ${
+              flip ? "right-3 lg:-right-10" : "left-3 lg:-left-10"
             }`}
             initial={reduced ? false : { opacity: 0, y: 26 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-120px" }}
+            // Vertical inset only. A bare "-120px" shrinks the observed area
+            // horizontally too, and on a narrow screen this phone sits inside
+            // that 120px left/right gutter — it would never intersect, so it
+            // would stay at opacity 0 forever. Wide viewports hid the bug.
+            viewport={{ once: true, margin: "-120px 0px" }}
             transition={{ duration: 0.9, delay: 0.2, ease: [0.16, 0.84, 0.32, 1] }}
           >
             <div className="plate overflow-hidden">
