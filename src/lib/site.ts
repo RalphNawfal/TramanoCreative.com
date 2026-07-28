@@ -81,8 +81,13 @@ export const site = {
      * Google's verifier never does.
      */
     google: "Wh6tZbXziJpMG2VmINAljn4MEmt_1vZ8Yc0W2dxr8DY" as string,
-    /** bing.com/webmasters → Add site → Meta tag (`msvalidate.01`). */
-    bing: "" as string,
+    /**
+     * bing.com/webmasters → Add site → Meta tag (`msvalidate.01`).
+     *
+     * Worth more than Bing's own traffic share suggests: Copilot and ChatGPT
+     * search both read Bing's index, and so does the IndexNow ping below.
+     */
+    bing: "4487129FA64D1ADDEA88D619DA6EF91A" as string,
   },
 
   /**
