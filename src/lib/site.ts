@@ -170,9 +170,15 @@ export const site = {
     { label: "Contact", href: "/contact/" },
   ],
 
-  /** Market pages — linked from the footer and the services hub. */
+  /**
+   * Market pages — linked from the footer, the services hub and the sitemap.
+   *
+   * Order is deliberate: Beirut sits under Lebanon because it is the narrower
+   * page, and a visitor scanning this list should meet the broader one first.
+   */
   markets: [
     { label: "Web design in Lebanon", href: "/web-design-lebanon/" },
+    { label: "Web design in Beirut", href: "/web-design-beirut/" },
     { label: "Google Ads in Lebanon", href: "/google-ads-lebanon/" },
     { label: "SEO in Lebanon", href: "/seo-lebanon/" },
     { label: "Web design in the UAE", href: "/web-design-uae/" },

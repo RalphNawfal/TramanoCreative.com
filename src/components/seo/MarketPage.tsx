@@ -36,6 +36,16 @@ export type MarketPageProps = {
   /** Three short "what you get" columns */
   deliverables: { title: string; body: string }[];
   faqs: MarketFaq[];
+  /**
+   * Short declarative statements about this market, each complete on its own.
+   *
+   * The `blocks` prose above is written to be read in order, which is right
+   * for a person and useless to anything trying to quote it — nearly every
+   * sentence leans on the one before. These don't. No pronouns pointing
+   * backwards, no "that's why", no "the other one". An answer engine lifts a
+   * passage whole, and this is the passage it can lift.
+   */
+  facts?: string[];
   /** Sibling market pages and topically relevant posts, linked in-content. */
   related?: MarketLink[];
 };
@@ -60,6 +70,7 @@ export default function MarketPage({
   blocks,
   deliverables,
   faqs,
+  facts = [],
   related = [],
 }: MarketPageProps) {
   return (
@@ -102,6 +113,21 @@ export default function MarketPage({
               See the work
             </CtaButton>
           </div>
+
+          {facts.length > 0 && (
+            <Reveal delay={0.1}>
+              <div className="mt-16 max-w-[68ch] border-l border-signal pl-7">
+                <p className="slate">In plain terms</p>
+                <ul className="mt-6 space-y-4">
+                  {facts.map((fact) => (
+                    <li key={fact} className="text-base leading-[1.7] text-grey">
+                      {fact}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </Reveal>
+          )}
 
           <div className="prose-tramano mt-24 max-w-[68ch]">
             {blocks.map((block) => (

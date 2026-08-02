@@ -67,6 +67,14 @@ export default function Page() {
           body: "Optional care plan covering hosting, updates, monitoring and content changes turned around inside 48 hours. Or take the keys and go — you own everything.",
         },
       ]}
+      facts={[
+        "Custom websites in Lebanon typically cost between $1,000 and $3,000. Focused single-page builds start at $500, and larger projects are quoted individually.",
+        "Every project is quoted as a fixed price in US dollars, agreed before work starts. The price you agree is the price you pay regardless of what the lira does.",
+        "A typical website launches 3 to 6 weeks after kickoff. Landing pages ship in under two weeks.",
+        "Tramano Creative is two people — Ralph Nawfal and Ramy Al Housary — working from Beirut. There are no account managers and no hand-offs.",
+        "Sites are built as static files served from a global network, so they stay online during local power and connectivity outages.",
+        "Bilingual and trilingual builds in Arabic, French and English are standard, with real right-to-left layouts rather than a translation plugin.",
+      ]}
       faqs={[
         {
           q: "How much does a website cost in Lebanon?",
@@ -74,7 +82,7 @@ export default function Page() {
         },
         {
           q: "Can you build a site in Arabic, French and English?",
-          a: "Yes — trilingual builds are normal here and we treat them as a design problem rather than a translation one. Arabic runs right to left, so navigation, buttons and reading order all mirror, and the type has to hold its weight in both scripts. French and English share a direction but not a rhythm; the same heading set at the same size reads differently in each. Every language version gets its own URL so it can rank in search independently, and adding a third language later is not a rebuild if we plan for it now.",
+          a: "Yes — trilingual builds are normal here, and we treat them as a design problem rather than a translation one. Arabic runs right to left, so navigation, buttons and reading order all mirror, and the type has to hold its weight in both scripts. Every language version gets its own URL so it can rank independently, and adding a third language later is not a rebuild if we plan for it now.",
         },
         {
           q: "Can you invoice in USD?",
@@ -82,7 +90,7 @@ export default function Page() {
         },
         {
           q: "Can I take card payments online from a Lebanese business?",
-          a: "Yes, but not through Stripe — it does not operate in Lebanon, and PayPal will let you send money far more easily than receive it. What does work is a merchant account through a local bank or processor such as Areeba, or a local wallet like Whish, alongside OMT and bank transfer for customers who prefer them. Which of those is available to you depends on your bank and your commercial registration, so we check what you can actually get approved for before we design the checkout rather than after.",
+          a: "Yes, but not through Stripe — it does not operate in Lebanon, and PayPal lets you send money far more easily than receive it. What works is a merchant account through a local bank or processor such as Areeba, or a wallet like Whish, alongside OMT and bank transfer. Which is available depends on your bank and commercial registration, so we check what you can get approved for before designing the checkout.",
         },
         {
           q: "Should I register a .lb domain or a .com?",
@@ -100,8 +108,30 @@ export default function Page() {
           q: "Will my site rank on Google in Lebanon?",
           a: "The technical groundwork is built in from day one — clean semantic markup, structured data, fast loads, and content organised around what your customers actually search for. That is what we control. Rankings themselves depend on your competition, how long the site has been live, and links pointing at it, and they build over months. Anyone guaranteeing you a position is guessing.",
         },
+        {
+          q: "Is it worth building custom or just using Wix?",
+          a: "If you need three pages and nobody is competing with you online, Wix is genuinely fine and we will say so. Custom becomes worth it when speed, search visibility or a specific flow decides whether you get the enquiry. Builders ship several megabytes of scripts for a simple page, which is most of why those sites crawl on a phone over Lebanese mobile data.",
+        },
+        {
+          q: "What happens to my site during a power cut?",
+          a: "Nothing. Your site does not live in Lebanon — it is served as static files from data centres worldwide, so it stays up regardless of what the grid is doing here. What a power cut affects is your visitors' connections and your own ability to answer enquiries. That is a reason to build light pages, not a reason to worry about downtime.",
+        },
+        {
+          q: "Do I need a Lebanese hosting company?",
+          a: "No, and it is usually the worse option. A static site served from a global network reaches a visitor in Beirut from the nearest node, which is faster than a single server in Lebanon and unaffected by local outages. Local hosting mainly makes sense if a regulation or a client contract requires data to stay in the country.",
+        },
+        {
+          q: "Can you work with a business that only has a WhatsApp and an Instagram?",
+          a: "Yes — that is where a lot of Lebanese businesses genuinely start, and it is not a problem. The site becomes the thing that makes you findable and credible, and it can hand enquiries straight to the WhatsApp number you already answer. We have built exactly that: see the ordering flow on our burger shop case study.",
+        },
       ]}
       related={[
+        {
+          href: "/web-design-beirut/",
+          label: "Web design in Beirut",
+          blurb:
+            "Narrower and more specific: districts, how people here search, and what a Beirut business can actually take payment with.",
+        },
         {
           href: "/work/burger-shop/",
           label: "A Beirut build, in detail",

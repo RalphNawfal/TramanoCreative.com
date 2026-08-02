@@ -40,15 +40,15 @@ const faqGroups: { category: string; items: Faq[] }[] = [
       },
       {
         q: "What is the cheapest website you will build?",
-        a: "$500, and it buys one genuinely good page rather than a stripped-down version of a bigger site. Custom design, copy that works, sub-second loading, and one clear thing you want a visitor to do. What it does not include: multiple pages, a blog, a content system you log into, or ongoing search work. If you need those you are in the $1,000–$3,000 range, and we would rather tell you that on the call than sell you the cheap option and then sell it to you again six months later.",
+        a: "$500, and it buys one genuinely good page rather than a stripped-down version of a bigger site: custom design, copy that works, sub-second loading, one clear action. It does not include multiple pages, a blog, a content system you log into, or ongoing search work. If you need those, you are in the $1,000–$3,000 range — and we would rather say so on the call than sell you the cheap option twice.",
       },
       {
         q: "Why are you cheaper than other agencies?",
-        a: "Because there is less of us to pay for. Two people, no office lease, no account managers, no project managers, and nobody on sales commission. An agency quoting three times as much for the same site is not necessarily overcharging you — they have payroll we simply do not have. The trade-off is worth knowing up front: we take a small number of projects at a time, so we are not always available, and if what you need is a department of twelve with a dedicated account manager, we are the wrong studio. What you get instead is the people who understood your business on the call writing the actual code.",
+        a: "Because there is less of us to pay for. Two people, no office lease, no account managers, nobody on commission. An agency quoting three times as much is not necessarily overcharging — they have payroll we do not. The trade-off: we take few projects at a time, and if you need a department of twelve, we are the wrong studio. What you get instead is the people who understood your business on the call writing the code.",
       },
       {
         q: "How much does SEO or Google Ads management cost per month?",
-        a: "Monthly work is quoted as a fixed fee for a defined scope — never as a percentage of your ad spend, because that model quietly rewards an agency for spending more of your money. What sets the fee is how much is actually being done: how many campaigns are running, how much content is being published, and how much reporting you want. You get the number before you commit to anything, and your ad budget is entirely separate and paid straight to Google.",
+        a: "A fixed monthly fee for a defined scope — never a percentage of your ad spend, because that model quietly rewards an agency for spending more of your money. What sets the fee is how much is actually being done: campaigns running, content published, reporting wanted. You get the number before committing, and your ad budget is separate and paid straight to Google.",
       },
       {
         q: "Do you offer payment plans?",
@@ -65,11 +65,11 @@ const faqGroups: { category: string; items: Faq[] }[] = [
       },
       {
         q: "What does the onboarding process look like?",
-        a: "Three stages. A 30–45 minute call to understand the business and what the site actually has to do. A design direction you sign off on before a line of code is written. Then the build itself, with a live preview link you can open at any moment to see exactly where it stands. You get the launch date at the end of stage one, and the fixed price with it. There is no long questionnaire to fill in before we will speak to you, and no discovery phase billed separately.",
+        a: "Three stages. A 30–45 minute call to understand the business and what the site has to do. A design direction you sign off before a line of code is written. Then the build, with a live preview link you can open at any moment. You get the launch date and the fixed price at the end of stage one. No long questionnaire before we will speak to you, and no discovery phase billed separately.",
       },
       {
         q: "What do you need from me to get started?",
-        a: "Less than you would expect, and we tell you exactly what on the first call. Usually your logo and whatever brand assets exist, a rough sense of the pages you need, and one person who can answer questions and give feedback within a few days. Content is the usual bottleneck — if you do not have the copy written, we can write it, and that is priced into the quote rather than left as a surprise blocker halfway through the build.",
+        a: "Less than you would expect, and we tell you exactly what on the first call. Usually your logo and any brand assets, a rough sense of the pages you need, and one person who can give feedback within a few days. Content is the usual bottleneck — if the copy is not written, we write it, priced into the quote rather than left as a surprise blocker halfway through.",
       },
       {
         q: "Who actually does the work?",
@@ -90,19 +90,19 @@ const faqGroups: { category: string; items: Faq[] }[] = [
       },
       {
         q: "What technology do you build on?",
-        a: "React and Next.js, written by hand and exported as static files — the same stack this site runs on. No WordPress, no page builders, no plugin layer that can break, slow down or get exploited. Anything you need to edit yourself goes into a headless content system, so you can change copy and images without touching code or breaking the layout. Static files also mean the site can be served from anywhere in the world at once, which is most of why it loads as fast as it does.",
+        a: "React and Next.js, written by hand and exported as static files — the same stack this site runs on. No WordPress, no page builders, no plugin layer to break or get exploited. Anything you need to edit yourself goes into a headless content system, so you can change copy and images without touching code. Static files also serve from anywhere in the world at once, which is most of why they load fast.",
       },
       {
         q: "Do I own the website and the code?",
-        a: "Yes — all of it. The code, the design files, the content, the domain, and every account involved. The handover goes through a Git repository in your name, and the site can be hosted wherever you like. There is no licence, no monthly fee for the right to keep using your own website, and nothing stopping you taking the whole thing to another developer tomorrow. This is worth checking with anyone you hire: a surprising amount of agency work is built so that leaving means starting over.",
+        a: "Yes — all of it. The code, the design files, the content, the domain, and every account involved. Handover goes through a Git repository in your name, and the site can be hosted wherever you like. No licence, no monthly fee for the right to use your own website, nothing stopping you taking it to another developer tomorrow. Worth checking with anyone you hire: a lot of agency work is built so that leaving means starting over.",
       },
       {
         q: "Can you redesign or fix my existing website?",
-        a: "Yes, and the first thing we do is work out whether that is the right call. Sometimes a site has a sound foundation and the real problem is the design, the speed or the structure — that is a fix, and it costs a fraction of a rebuild. Sometimes it sits on a stack where every improvement fights the platform, and rebuilding genuinely costs less than repairing. We will tell you which one you have, with reasons, before you commit to either.",
+        a: "Yes, and the first thing we do is work out whether that is the right call. A site with a sound foundation where the real problem is design, speed or structure is a fix, at a fraction of a rebuild. A site on a stack where every improvement fights the platform is usually cheaper to rebuild than repair. We tell you which one you have, with reasons, before you commit to either.",
       },
       {
         q: "Do you build online stores?",
-        a: "Yes. Small catalogues we build custom; larger ones we put on Shopify and design the storefront properly rather than skinning a bought theme. Which way we go depends on how many products you have and how often they change, not on which platform we would prefer to work in. One thing worth raising early: taking payments is the genuinely hard part of e-commerce in Lebanon, and we work out what you can actually get approved for before designing the checkout rather than after.",
+        a: "Yes. Small catalogues we build custom; larger ones go on Shopify with the storefront designed properly rather than a skinned theme. Which way depends on how many products you have and how often they change, not on which platform we prefer. Worth raising early: taking payments is the genuinely hard part of e-commerce in Lebanon, so we establish what you can get approved for before designing the checkout.",
       },
       {
         q: "Do you handle hosting and domains?",
@@ -119,11 +119,11 @@ const faqGroups: { category: string; items: Faq[] }[] = [
       },
       {
         q: "How do the website, SEO and Google Ads work together?",
-        a: "They cover each other's weaknesses. Google Ads produces traffic immediately and stops the day you stop paying. Search presence takes months to arrive and then compounds for years. Neither one counts for much if the page people land on is slow or unconvincing, which is why the site gets built first. Run together, the ads also pay for themselves twice: the search terms that actually produce enquiries tell us exactly what content is worth writing, so you are not guessing at what to publish.",
+        a: "They cover each other's weaknesses. Google Ads produces traffic immediately and stops the day you stop paying. Search presence takes months, then compounds for years. Neither counts for much if the page people land on is slow or unconvincing, which is why the site gets built first. Run together, the ads pay twice: the terms that produce enquiries tell us exactly what content is worth writing.",
       },
       {
         q: "Why send Google Ads traffic to a landing page instead of my homepage?",
-        a: "A homepage has to speak to everyone, so it speaks to nobody in particular. Someone who clicked an ad for one specific service arrived with one specific question, and a page answering exactly that — navigation stripped back, one obvious next step — holds them far better than a general introduction to your business. Google notices too. It scores how closely the landing page matches the ad, and a better score means you pay less per click for the same position.",
+        a: "A homepage has to speak to everyone, so it speaks to nobody in particular. Someone who clicked an ad for one service arrived with one question, and a page answering exactly that — navigation stripped back, one obvious next step — holds them far better than a general introduction. Google notices too: it scores how closely the landing page matches the ad, and a better score means you pay less per click.",
       },
       {
         q: "How do you track leads and prove what is working?",

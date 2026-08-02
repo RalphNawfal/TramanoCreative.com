@@ -67,6 +67,13 @@ export default function Page() {
           body: "Conversion tracking set up properly, your own account and card, and a plain monthly summary of spend, enquiries and what changed.",
         },
       ]}
+      facts={[
+        "Google Ads management is a fixed monthly fee for a defined scope. Tramano Creative never charges a percentage of ad spend, because that model rewards an agency for spending more of your money.",
+        "The client owns the Google Ads account and pays Google directly. The ad budget is separate from the management fee and never passes through us.",
+        "Google bills in US dollars, and some Lebanese cards are blocked for international recurring charges. Billing is confirmed before a campaign is built.",
+        "Ads produce traffic the day they turn on. First enquiries commonly arrive within one to two weeks; efficiency takes a month or two of cutting terms that don't convert.",
+        "Every campaign lands on a page built to answer the ad. Google scores that match, and a better score lowers what you pay per click for the same position.",
+      ]}
       faqs={[
         {
           q: "How much should I spend on Google Ads in Lebanon?",
@@ -82,7 +89,7 @@ export default function Page() {
         },
         {
           q: "Can I pay for Google Ads with a Lebanese bank card?",
-          a: "Often yes, though it is the step most likely to cause trouble. Google bills in USD and some local cards are declined or blocked for international recurring charges, so the practical answer depends on your bank and your card. Fresh-dollar accounts generally work; older lira-linked cards frequently do not. Wise and similar cards are a common fallback, and monthly invoicing is available on larger accounts. We sort billing out before building the campaign, because there is no point launching one that stops three days later.",
+          a: "Often yes, though it is the step most likely to cause trouble. Google bills in USD and some local cards are blocked for international recurring charges. Fresh-dollar accounts generally work; older lira-linked cards frequently do not. Wise and similar cards are a common fallback, and monthly invoicing is available on larger accounts. We sort billing before building the campaign — there is no point launching one that stops three days later.",
         },
         {
           q: "Who owns the Google Ads account?",
@@ -99,6 +106,22 @@ export default function Page() {
         {
           q: "How quickly do Google Ads produce results?",
           a: "Ads start showing the day they go live, which is the main reason to run them while search rankings are still building. First enquiries often arrive in the first week or two. Getting the account genuinely efficient takes a month or two of learning which terms convert and cutting the ones that don't.",
+        },
+        {
+          q: "Should I run Google Ads or boost posts on Instagram?",
+          a: "They catch people at different moments. Google reaches someone already searching for what you sell — high intent, ready to act. Instagram reaches someone scrolling who was not looking for you at all. If your customers search before buying, start with Google. If your product is visual and impulse-led, social usually wins. Many businesses need both, in that order.",
+        },
+        {
+          q: "Why is my cost per click higher than I expected?",
+          a: "Usually competition and landing page relevance. You bid against everyone targeting the same term, and Google discounts the price for advertisers whose page closely matches the ad. A generic homepage as the destination raises what you pay for the same position. Broad match on vague terms is the other common cause — it spends on searches you never intended to buy.",
+        },
+        {
+          q: "Can I run ads without a website?",
+          a: "Technically yes, but it wastes most of the budget. Every click has to land somewhere, and sending paid traffic to a social profile or a phone number loses the people who wanted to read before contacting you. A single well-built landing page from $500 usually pays for itself faster than the equivalent spend on more clicks.",
+        },
+        {
+          q: "How do I know if my agency is actually managing the account?",
+          a: "Ask for access to the account itself, not a report. You should be the owner, with the agency added as a manager. Once inside, the change history shows what was done and when. An agency that will not give you access, or that only reports impressions and reach rather than cost per enquiry, is telling you something.",
         },
       ]}
       related={[
