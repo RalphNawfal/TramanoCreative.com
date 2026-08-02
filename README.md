@@ -57,7 +57,16 @@ src/components/delivery/    SiteCredit — the client footer credit. See below.
 public/llms.txt             Hand-written summary for AI crawlers.
 scripts/prep-work-shots.mjs Reel asset prep. Wipes public/work — read it first.
 scripts/prep-case-shots.mjs Case-study asset prep. Additive, safe to re-run.
+scripts/prep-blog-og.mjs    Per-post share cards. Re-run after adding a post.
 ```
+
+**After adding or retitling a blog post, run `node scripts/prep-blog-og.mjs`.**
+Share cards are committed PNGs, not a generated route, so a new post otherwise
+ships pointing at an image that doesn't exist.
+
+**To add the founders photo:** drop it at `public/team/founders.jpg` (roughly
+4:5). The homepage checks for it at build time and swaps the placeholder plate
+automatically — no code change.
 
 ## Rules that aren't negotiable
 

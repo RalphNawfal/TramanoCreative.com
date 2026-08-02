@@ -119,14 +119,14 @@ export const caseStudies: CaseStudy[] = [
     ],
     metrics: [
       {
+        label: "Kickoff to launch",
+        value: "3 weeks",
+        note: "Live on 26 July 2026, on the date agreed at kickoff.",
+      },
+      {
         label: "Time to first paint",
         value: "0.67s",
         note: "Something on screen before most sites have answered.",
-      },
-      {
-        label: "Server response",
-        value: "186ms",
-        note: "Time to first byte.",
       },
       {
         label: "Layout shift",
@@ -140,7 +140,7 @@ export const caseStudies: CaseStudy[] = [
       },
     ],
     metricsMethod:
-      "Measured 2 August 2026 on the live site from a desktop connection, using the browser's own Navigation Timing and Layout Instability APIs. These are the figures we can stand behind and you can re-take yourself. We don't publish conversion or revenue numbers for client work — we'd have to take someone's word for them, and a figure we can't verify isn't proof of anything.",
+      "Performance measured 2 August 2026 on the live site from a desktop connection, using the browser's own Navigation Timing and Layout Instability APIs — figures you can re-take yourself. We don't publish conversion or revenue numbers for client work. We'd have to take someone's word for them, and a number we can't verify isn't proof of anything.",
   },
 ];
 

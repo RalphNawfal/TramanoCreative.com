@@ -145,11 +145,19 @@ export const site = {
   ],
 
   /**
-   * Social/profile URLs. `sameAs` is the strongest entity-disambiguation
-   * signal available to a small business — Google uses it to decide that the
-   * site, the Google Business Profile and the social accounts are all the
-   * same company. Add every profile that exists, including the GBP listing
-   * once it's created.
+   * Social/profile URLs.
+   *
+   * Empty because the studio has no social accounts, not because this is
+   * waiting to be filled in. The layout only emits `sameAs` when this has
+   * entries, so nothing ships an empty array — an empty `sameAs` is worse
+   * than none, since it asserts that no other profiles exist.
+   *
+   * Worth knowing what the gap costs: `sameAs` is the strongest
+   * entity-disambiguation signal available to a small business. It's how
+   * Google concludes that the site, the profiles and the listings are all one
+   * company rather than several similarly-named ones. With none of them, the
+   * only thing tying this entity together is the site itself. Add any profile
+   * the moment it exists.
    */
   sameAs: [] as string[],
 
