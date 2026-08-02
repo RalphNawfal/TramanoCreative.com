@@ -3,6 +3,23 @@ title: "Your Website's Speed Is Deciding Your Google Rankings. Here's Why."
 seoTitle: "Website Speed and Google Rankings"
 description: "How Core Web Vitals affect search rankings and conversions, why most business sites quietly fail them, and what a genuinely fast website looks like in 2026."
 date: "2026-06-28"
+updated: "2026-08-02"
+cluster: "speed"
+takeaways:
+  - "Core Web Vitals feed directly into Google's ranking. When two pages answer a search equally well, the faster one ranks higher."
+  - "Bounce probability rises roughly 30% as load time goes from one second to three. A slow site loses twice — fewer people find it, and fewer of those who do stay."
+  - "The three numbers Google grades are LCP (under 2.5s), INP (under 200ms) and CLS (under 0.1)."
+  - "Page builders, plugin stacks, cheap shared hosting and unoptimised images cause almost every failing business site."
+  - "A rebuild on a static, pre-rendered stack usually beats months spent optimising a fundamentally heavy platform."
+faqs:
+  - q: "How fast should a website load?"
+    a: "Google's threshold is 2.5 seconds for Largest Contentful Paint on mobile — the moment the main content appears. Under 1 second is achievable on a well-built site and is what we target. Anything over 3 seconds is costing you both rankings and enquiries, and most template and page-builder sites sit there on mobile."
+  - q: "How do I know if my website is too slow?"
+    a: "Run it through Google's PageSpeed Insights and read the mobile tab, because that's the one Google ranks on. If Largest Contentful Paint is over 2.5 seconds you are failing the threshold. The field data section, when present, is real visitor measurements rather than a lab simulation — trust that one first."
+  - q: "Will making my website faster actually improve my Google ranking?"
+    a: "It helps, but it is a tiebreaker rather than a lever. When two pages answer a search equally well, the faster one wins. Speed will not push a page that doesn't answer the question onto page one. The larger gain is usually conversion: the same traffic produces more enquiries when the page appears immediately."
+  - q: "Can a caching plugin fix a slow website?"
+    a: "Rarely, and never on its own. Caching stops the server rebuilding a page it has already built, which helps if the server is the bottleneck. It does nothing about a four-megabyte payload of scripts, plugins and unoptimised images, which is what is usually wrong. Caching a heavy site gives you a heavy site with a cache."
 ---
 
 Google has said it plainly for years: page experience is a ranking factor. Yet most business websites still take three to six seconds to become usable. Here's what that costs, and how to fix it.
@@ -35,9 +52,9 @@ You can check your own site right now with Google's free PageSpeed Insights. Mos
 
 ## What a fast site looks like in 2026
 
-The sites that ace Core Web Vitals share an architecture: pages pre-rendered as static files, served from a CDN close to the visitor, with only the JavaScript each page actually needs. That's how this site is built — which is why it loads in well under a second while running a real-time 3D starfield.
+The sites that ace Core Web Vitals share an architecture: pages pre-rendered as static files, served from a CDN close to the visitor, with only the JavaScript each page actually needs. That's how this site is built — every page you're reading was rendered to plain HTML at build time, and the scroll animation on the [homepage](/) runs on transforms the browser hands to the GPU, not on scripts that block the page from appearing.
 
-This isn't exotic. It's just engineering instead of assembling.
+This isn't exotic. It's just engineering instead of assembling. It's the same approach behind every site we build — see [how we do it in Lebanon](/web-design-lebanon/), or [the decisions behind a live build](/work/burger-shop/).
 
 ## What to do about it
 

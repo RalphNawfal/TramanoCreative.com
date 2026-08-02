@@ -2,15 +2,25 @@
  * The reel.
  *
  * Deliberate constraints, agreed with the founders:
- *  - No `href` field exists on this type, so no reel item can ever link out.
- *    Visitors stay on the page; the work is shown, not visited.
+ *  - No `href` field exists on this type, so no reel item can ever link out to
+ *    a client's site. Visitors stay with us; the work is shown, not visited.
  *  - Client names appear nowhere — not in copy, not in filenames, and the
  *    screenshots themselves are cropped below the nav so no wordmark or
  *    phone number survives. See scripts/prep-work-shots.mjs.
  *  - Descriptors say what the build had to *do*, not who it was for.
+ *
+ * `slug` is the one link that is allowed, and it is not an exception to the
+ * rule above: it points at our own case study page, which is still anonymous
+ * and still hosted here. Anything pointing off-site remains impossible by
+ * construction — there is deliberately no field to put such a URL in.
  */
 
 export type ReelShot = {
+  /**
+   * Case-study slug under /work/. Present only on builds with a written-up
+   * page; absent items render as plain frames exactly as before.
+   */
+  slug?: string;
   /** Slate marker, e.g. "SC. 01" */
   slate: string;
   /** What the build is, sector-neutral */
@@ -26,6 +36,7 @@ export type ReelShot = {
 
 export const reel: ReelShot[] = [
   {
+    slug: "burger-shop",
     slate: "SC. 01",
     title: "A burger shop that had to look hungry",
     body: "Loud brand, playful motion, and a menu you can order from in two taps. Built to survive being opened one-handed on a phone outside the shop.",

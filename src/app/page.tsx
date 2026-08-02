@@ -122,9 +122,28 @@ export default function Home() {
             className="max-w-[15ch] font-display text-[clamp(2.4rem,6vw,5.5rem)] uppercase leading-[0.88]"
           />
 
-          {/* Copy left, ask right — both starting on their own column line */}
+          {/*
+            Copy left, ask right — both starting on their own column line.
+
+            The delays below used to run 0.8 / 0.95 / 1.1, and this paragraph
+            is the page's LCP element. Measured on the built site that put LCP
+            at 2.3s — near Google's 2.5s failure threshold, on the page whose
+            entire pitch is sub-second loading. The page was never slow; first
+            paint is 0.16s. The choreography was deferring the largest paint,
+            because a browser does not count an element at opacity 0 as
+            painted.
+
+            So this one block slides without fading (`fade={false}`) and starts
+            immediately: it paints at full opacity on the first frame and the
+            movement costs the metric nothing. The two blocks after it keep the
+            fade and the stagger, which is where the sequencing was doing the
+            work anyway.
+
+            This is the one place on the site where an animation delay is also
+            a ranking signal. Re-measure before changing it.
+          */}
           <div className="mt-9 grid grid-cols-12 gap-x-6 gap-y-9 md:mt-12">
-            <Reveal delay={0.8} className="col-span-12 md:col-span-5">
+            <Reveal fade={false} className="col-span-12 md:col-span-5">
               <p className="max-w-[46ch] text-base leading-[1.65] text-grey md:text-lg">
                 Websites, Google Ads, and the search work that keeps them
                 found. Two people, a short list of clients, and work
@@ -138,7 +157,7 @@ export default function Home() {
               that visitor should not have to hunt for the booking link.
             */}
             <Reveal
-              delay={0.95}
+              delay={0.42}
               className="col-span-12 md:col-span-6 md:col-start-7"
             >
               <div className="flex flex-wrap items-center gap-x-7 gap-y-5">
@@ -156,7 +175,7 @@ export default function Home() {
           </div>
 
           {/* Proof row — four equal cells, dividers on the quarter columns */}
-          <Reveal delay={1.1}>
+          <Reveal delay={0.54}>
             {/*
               Two columns on mobile, four on desktop. The divider classes are
               written out per cell rather than derived — at two columns the

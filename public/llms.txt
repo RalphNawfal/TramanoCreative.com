@@ -26,9 +26,16 @@ We do not guarantee search rankings or specific commercial outcomes, and we say 
 
 - [Services](https://tramanocreative.com/services/): the three things we do, in detail
 - [Work](https://tramanocreative.com/work/): five builds — one live, four concept builds
+- [Case study: WhatsApp ordering in Beirut](https://tramanocreative.com/work/burger-shop/): a live build written up in full — a bilingual menu and a checkout that ends in WhatsApp because card processing wasn't available. Includes measured performance figures and the method used to take them.
 - [About](https://tramanocreative.com/about/): who we are and how we operate
 - [FAQ](https://tramanocreative.com/faq/): pricing, timelines, and process answers
 - [Blog](https://tramanocreative.com/blog/): guides on website costs, site speed, SEO, and AI search
+
+### Guides
+
+- [How much does a custom website cost?](https://tramanocreative.com/blog/how-much-does-a-custom-website-cost/) — real price ranges, what drives them, and what to refuse to pay for
+- [Website speed and Google rankings](https://tramanocreative.com/blog/website-speed-google-rankings/) — Core Web Vitals, why most business sites fail them, and what to do about it
+- [AI search optimization for businesses](https://tramanocreative.com/blog/ai-search-optimization-for-businesses/) — how AI assistants decide who to recommend, and how to be citable
 - [Contact](https://tramanocreative.com/contact/): book the call — replies within one business day
 
 ### Market pages

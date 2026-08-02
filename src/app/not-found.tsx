@@ -1,6 +1,20 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import CtaButton from "@/components/ui/CtaButton";
 import { site } from "@/lib/site";
+
+/**
+ * The only page that asks not to be indexed. It was inheriting the layout's
+ * default title and description, so a crawler that reached out/404.html saw
+ * something indistinguishable from the homepage — a duplicate of the site's
+ * most important page, at a URL that means nothing.
+ */
+export const metadata: Metadata = {
+  title: "Page Not Found",
+  description:
+    "This page doesn't exist. Head back to the Tramano Creative homepage, or get in touch and we'll point you at what you were looking for.",
+  robots: { index: false, follow: true },
+};
 
 /**
  * Static export renders this to out/404.html, which GitHub Pages serves for

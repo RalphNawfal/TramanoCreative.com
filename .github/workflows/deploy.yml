@@ -24,6 +24,12 @@ jobs:
           node-version: 22
           cache: npm
       - run: npm ci
+      # Lint and typecheck gate the deploy rather than running after it. Both
+      # pass today; without a step here nothing stops a future commit from
+      # shipping while they don't. `next build` runs tsc over the app, but not
+      # over files no route imports.
+      - run: npm run lint
+      - run: npx tsc --noEmit
       - run: npm run build
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3

@@ -23,6 +23,10 @@ const AI_CRAWLERS = [
   "Google-Extended",
   "Applebot-Extended",
   "meta-externalagent",
+  // Common Crawl. Not an answer engine itself, but its archive is training and
+  // retrieval input for several of the ones above, so blocking it would quietly
+  // undo part of the list.
+  "CCBot",
   "Bingbot",
 ];
 

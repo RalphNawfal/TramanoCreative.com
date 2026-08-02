@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { motion, useReducedMotion } from "motion/react";
 import type { ReelShot } from "@/lib/work";
 import { useScrollVelocity } from "@/hooks/useScrollVelocity";
@@ -10,8 +11,9 @@ import { useScrollVelocity } from "@/hooks/useScrollVelocity";
  * scroll velocity — a few degrees of skew while the page moves, settling when
  * it stops.
  *
- * Nothing here links out — see the note on ReelShot. The frames are plain
- * images with no hover affordance, so they never read as clickable.
+ * Nothing here links off-site — see the note on ReelShot. The frames stay
+ * plain images with no hover affordance, so they never read as clickable; a
+ * build with a written-up case study gets a text link in its caption instead.
  */
 export default function WorkReel({
   shots,
@@ -33,6 +35,11 @@ export default function WorkReel({
           shot={shot}
           flip={i % 2 === 1}
           headingLevel={headingLevel}
+          // The first frame is the LCP element on both pages that render this
+          // reel. It was lazy-loaded along with the rest, which defers the very
+          // request the metric is waiting on. Everything below the fold stays
+          // lazy.
+          priority={i === 0}
         />
       ))}
     </div>
@@ -43,10 +50,12 @@ function ReelItem({
   shot,
   flip,
   headingLevel: Heading,
+  priority = false,
 }: {
   shot: ReelShot;
   flip: boolean;
   headingLevel: "h2" | "h3";
+  priority?: boolean;
 }) {
   const reduced = useReducedMotion();
   const skewRef = useScrollVelocity<HTMLDivElement>();
@@ -81,6 +90,7 @@ function ReelItem({
             height={shot.desktop.height}
             sizes="(min-width: 768px) 58vw, 100vw"
             className="h-auto w-full"
+            priority={priority}
           />
         </div>
 
@@ -154,6 +164,15 @@ function ReelItem({
             </li>
           ))}
         </ul>
+
+        {shot.slug && (
+          <Link
+            href={`/work/${shot.slug}/`}
+            className="mt-8 inline-block font-mono text-[11px] uppercase tracking-[0.22em] text-grey-deep transition-colors hover:text-signal"
+          >
+            Read the case study →
+          </Link>
+        )}
       </motion.div>
     </article>
   );

@@ -3,12 +3,23 @@ import Section from "@/components/ui/Section";
 import Reveal from "@/components/ui/Reveal";
 import CtaButton from "@/components/ui/CtaButton";
 import Spotlight from "@/components/ui/Spotlight";
+import Faq from "@/components/ui/Faq";
 import JsonLd from "./JsonLd";
 import Breadcrumbs from "./Breadcrumbs";
 import { site } from "@/lib/site";
 
 export type MarketFaq = { q: string; a: string };
 export type MarketBlock = { heading: string; paras: string[] };
+
+/**
+ * A contextual link out of this page, with a reason to click.
+ *
+ * The market pages used to connect to the rest of the site almost entirely
+ * through the footer, which distributes link equity evenly and tells a crawler
+ * nothing about topical relationships. These are in-content, described, and
+ * chosen per page.
+ */
+export type MarketLink = { href: string; label: string; blurb: string };
 
 export type MarketPageProps = {
   slate: string;
@@ -25,6 +36,8 @@ export type MarketPageProps = {
   /** Three short "what you get" columns */
   deliverables: { title: string; body: string }[];
   faqs: MarketFaq[];
+  /** Sibling market pages and topically relevant posts, linked in-content. */
+  related?: MarketLink[];
 };
 
 /**
@@ -47,6 +60,7 @@ export default function MarketPage({
   blocks,
   deliverables,
   faqs,
+  related = [],
 }: MarketPageProps) {
   return (
     <>
@@ -126,23 +140,34 @@ export default function MarketPage({
         </Section>
 
         <Section slate="Questions" eyebrow="FAQ" title={`${areaServed}, specifically.`}>
-          <div className="max-w-3xl border-t border-edge">
-            {faqs.map((f, i) => (
-              <Reveal key={f.q} delay={Math.min(i * 0.05, 0.25)}>
-                <details className="group border-b border-edge">
-                  <summary className="flex cursor-pointer list-none items-start gap-5 py-6 font-medium leading-snug transition-colors marker:hidden hover:text-signal [&::-webkit-details-marker]:hidden">
-                    <span className="slate mt-1.5 shrink-0">
-                      Q{String(i + 1).padStart(2, "0")}
-                    </span>
-                    {f.q}
-                  </summary>
-                  <p className="max-w-[62ch] pb-7 pl-[4.25rem] text-[15px] leading-[1.65] text-grey">
-                    {f.a}
-                  </p>
-                </details>
-              </Reveal>
-            ))}
-          </div>
+          {/* h2 rather than h3: the section heading above is itself an h2, so
+              there is no category level between it and the questions here. */}
+          <Faq items={faqs} questionAs="h2" className="max-w-3xl" />
+
+          {related.length > 0 && (
+            <div className="mt-16 max-w-3xl border-t border-edge pt-10">
+              <h2 className="font-display text-xl uppercase leading-none">
+                Related
+              </h2>
+              <ul className="mt-8 grid gap-6 md:grid-cols-2">
+                {related.map((r) => (
+                  <li key={r.href}>
+                    <Link
+                      href={r.href}
+                      className="group block border-l border-edge pl-5 transition-colors hover:border-signal"
+                    >
+                      <span className="font-medium leading-snug transition-colors group-hover:text-signal">
+                        {r.label}
+                      </span>
+                      <span className="mt-2 block text-[15px] leading-[1.65] text-grey">
+                        {r.blurb}
+                      </span>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
 
           <div className="mt-16 border-t border-edge pt-10">
             <p className="text-base text-grey">
