@@ -25,9 +25,9 @@ faqs:
     a: "Rarely, and never on its own. Caching stops the server rebuilding a page it has already built, which helps if the server is the bottleneck. It does nothing about a four-megabyte payload of scripts, plugins and unoptimised images, which is what is usually wrong. Caching a heavy site gives you a heavy site with a cache."
 ---
 
-Google has said it plainly for years: page experience is a ranking factor. Yet most business websites still take three to six seconds to become usable. Here's what that costs, and how to fix it.
+Google has said it plainly for years: page experience is a ranking factor. Site speed decides rankings because Core Web Vitals feed directly into how Google orders results, and it decides conversions because visitors leave pages that make them wait. Most business websites still take three to six seconds to become usable. Here's what that costs, how to measure yours, and what to do about it.
 
-## Speed is a ranking factor — and a revenue factor
+## Why does speed affect rankings and revenue at the same time?
 
 Two things happen when your site is slow:
 
@@ -36,7 +36,7 @@ Two things happen when your site is slow:
 
 So a slow site loses twice: fewer people find you, and fewer of those who do stick around.
 
-## The three numbers that matter
+## What are the three numbers Google actually measures?
 
 Google grades every page on three Core Web Vitals:
 
@@ -44,22 +44,68 @@ Google grades every page on three Core Web Vitals:
 - **INP (Interaction to Next Paint)** — how fast the page responds when someone taps or clicks. Target: under 200ms.
 - **CLS (Cumulative Layout Shift)** — whether things jump around while loading. Target: under 0.1.
 
-You can check your own site right now with Google's free PageSpeed Insights. Most template and page-builder sites score in the red on mobile.
+**LCP** is the one most sites fail. It measures the moment the biggest thing on screen — usually a hero image or a headline — finishes rendering. Not when the page starts appearing, and not when everything has finished. Just the largest element.
 
-## Why most business sites fail
+**INP** replaced an older metric called FID in 2024, and it's stricter. It measures the delay between a tap and the screen visibly responding. High INP usually means too much JavaScript competing for the main thread, so the browser is busy when the user isn't.
 
-- **Page builders ship bloat.** Drag-and-drop platforms generate several megabytes of scripts and styles for even simple pages.
-- **Plugins pile up.** Each one adds its own scripts. Twenty plugins is twenty toll booths before your content renders.
-- **Cheap hosting.** Shared servers add half a second before your page even starts.
-- **Unoptimized images.** A single uncompressed hero image can outweigh an entire well-built page.
+**CLS** is the one users feel most and complain about least. It's the score for things moving after you've started reading — an image loading without reserved space and shoving the text down, an ad appearing above the paragraph you were on. The usual fix is trivial: put explicit width and height on every image so the browser reserves the space before the file arrives.
 
-## What a fast site looks like in 2026
+## How do I check my own site?
+
+Run it through Google's free PageSpeed Insights and read the **mobile** tab, because that's the one Google ranks on. Desktop scores flatter almost every site and mean much less.
+
+Two sections matter, and they often disagree:
+
+- **Field data** — real measurements from real Chrome users over the past 28 days. This is what Google actually uses. If it's present, trust it over everything else on the page.
+- **Lab data** — a simulation run on a throttled connection. Useful for diagnosis, because it tells you *what* is slow, but it's not your score.
+
+A site can pass in the lab and fail in the field, usually because real visitors are on worse connections and older phones than the simulation assumes. It can also fail in the lab and pass in the field, in which case you can relax.
+
+If field data is missing entirely, your site doesn't have enough traffic for Google to have collected it. That's not a failure; it just means lab data is all you've got.
+
+## Why do most business sites fail?
+
+- **Page builders ship bloat.** Drag-and-drop platforms generate several megabytes of scripts and styles for even simple pages, because they have to support every layout anyone might build rather than the one you did.
+- **Plugins pile up.** Each one adds its own scripts and stylesheets. Twenty plugins is twenty toll booths before your content renders, and each was written by someone with no knowledge of the other nineteen.
+- **Cheap hosting.** Shared servers add half a second before your page even starts. You can't optimise your way out of a slow first byte.
+- **Unoptimised images.** A single uncompressed hero can outweigh an entire well-built page. We measured a live restaurant site recently carrying 1.9MB in five PNG hero images that should have been WebP — that one issue was most of its load time.
+- **Fonts that block rendering.** A custom font loaded badly leaves the page blank until it arrives.
+- **Third-party scripts.** Chat widgets, analytics, tracking pixels, embedded maps. Each is someone else's code running on your page at a speed you don't control.
+
+## Does this matter more in Lebanon than elsewhere?
+
+Yes, and it's the reason we lead with it locally.
+
+A meaningful share of your visitors here are on mobile data, on a connection that varies by the hour and by the neighbourhood. A page that takes two seconds on office fibre in Europe can take eight on a bad connection in Beirut — and the people on that connection are the ones who leave first, because they've learned to.
+
+Power cuts compound it. Someone browsing on a phone during an outage is on mobile data, possibly on a degraded tower, with a battery they're conserving. That visitor is not going to wait out a four-megabyte page.
+
+The practical consequence is that page weight matters more here than design polish. A lighter site out-converts a prettier slow one, consistently, and the gap is wider than it would be in a market with better infrastructure. There's more on this in [web design in Lebanon](/web-design-lebanon/).
+
+## What does a fast site look like in 2026?
 
 The sites that ace Core Web Vitals share an architecture: pages pre-rendered as static files, served from a CDN close to the visitor, with only the JavaScript each page actually needs. That's how this site is built — every page you're reading was rendered to plain HTML at build time, and the scroll animation on the [homepage](/) runs on transforms the browser hands to the GPU, not on scripts that block the page from appearing.
 
+Concretely, that means four things:
+
+- **Pre-rendered, not assembled on request.** The HTML exists as a file before anyone asks for it. There's no database query, no template engine, no server thinking. The first byte arrives in well under 200ms because nothing had to happen first.
+- **Served from close to the visitor.** Static files sit on a network of edge locations, so someone in Beirut is served from the nearest one rather than from a machine in Virginia.
+- **Only the JavaScript that page needs.** Not a framework bundle covering every feature the site has anywhere. Most pages need very little, and most sites ship all of it to all of them.
+- **Images sized for the slot they occupy,** in a modern format, with dimensions declared so nothing reflows.
+
 This isn't exotic. It's just engineering instead of assembling. It's the same approach behind every site we build — see [how we do it in Lebanon](/web-design-lebanon/), or [the decisions behind a live build](/work/burger-shop/).
 
-## What happened when we measured our own site
+## How fast is fast enough?
+
+Google's threshold is 2.5 seconds for LCP on mobile. That's the pass mark, not the target.
+
+Under one second is achievable on a well-built site and is what we aim for, because the gap between passing and fast is where the conversion difference lives. A page at 2.4 seconds passes Core Web Vitals and still feels sluggish to somebody standing in the street on mobile data. A page at 0.5 seconds feels like it was already there.
+
+The honest caveat: past a certain point this stops mattering commercially. Going from four seconds to one is transformative. Going from 0.4 to 0.2 is a number on a dashboard that no human will ever perceive. Speed is worth serious money right up to the point where the page feels instant, and worth very little after that.
+
+If you're currently above three seconds, this is probably the highest-return work available to you. If you're at 1.2, your problems are elsewhere and someone selling you further optimisation is selling you a decimal place.
+
+## What happened when we measured our own site?
 
 While updating this post, we measured our own homepage properly instead of assuming. Largest Contentful Paint came back at 2.3 seconds. Our homepage advertises load times under a second.
 
@@ -69,10 +115,24 @@ The fix took one line: that block now slides into place without fading, so it pa
 
 We're telling you this because it is the most common version of this problem we see, and because it makes the point better than any advice could: a site can be genuinely fast and still fail the test. Ours did, on the page where we make the claim, built by people who do this for a living. Measure yours.
 
-## What to do about it
+## Can I fix my current site, or do I need a rebuild?
 
-1. Run your site through PageSpeed Insights (mobile tab — that's what Google uses).
-2. If you're in the red, ask your developer for a plan to get LCP under 2.5s.
-3. If the answer is "install a caching plugin," get a second opinion — caching a slow site makes a slow site with a cache.
+It depends on what's actually wrong, and the honest answer is that you can usually tell in an afternoon.
 
-A rebuild on a modern stack usually beats months of optimizing a fundamentally heavy platform. If you want a straight answer about your own site, send it over — we'll tell you what we see, free.
+**Fixable, and worth fixing.** Oversized images, a lazy-loaded hero, missing width and height attributes, three chat widgets nobody uses, a font loading badly. These are hours of work on any platform and often move a failing score to a passing one on their own. Start here regardless of what you decide next.
+
+**Fixable, but you'll be doing it forever.** A page builder with twenty plugins can be tuned into passing territory, but every plugin update and every new page risks undoing it. You're renting the improvement rather than owning it.
+
+**Not worth fixing.** If the platform itself is the weight — if a simple page ships three megabytes before you've added anything — you're optimising against the architecture. A rebuild on a static, pre-rendered stack usually costs less than a year of fighting it, and it stays fast without maintenance.
+
+The test we'd apply: if the fixes are content and configuration, fix it. If the fixes require the platform to behave differently than it does, rebuild.
+
+## What should you do this week?
+
+1. Run your site through PageSpeed Insights, mobile tab. Note the LCP number and whether field data exists.
+2. Check the largest image on your homepage. If it's over 200KB or it's a PNG photograph, that's probably your single biggest win.
+3. Confirm your hero image isn't lazy-loaded. Deferring the element the metric is waiting for is the most common self-inflicted failure, and it's a one-line fix.
+4. Count your third-party scripts. Remove any you can't name a purpose for.
+5. If you're still in the red after that, ask your developer for a plan to get LCP under 2.5 seconds. If the answer is "install a caching plugin," get a second opinion — caching a slow site gives you a slow site with a cache.
+
+If you want a straight answer about your own site, send it over — we'll tell you what we see, free, including if the answer is that it's fine and you should spend the money elsewhere.

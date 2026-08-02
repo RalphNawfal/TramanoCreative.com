@@ -1,7 +1,24 @@
 # Content plan — blog clusters and the Beirut page
 
-**Status: outlines only. Nothing here has been written.** Review and cut before
-anything gets drafted.
+**Status: the three pillars are written. The twelve supports are still
+outlines.** Review and cut the supports before anything gets drafted.
+
+**Done:**
+- Cost pillar — expanded to 2,142 words, 12 question-form H2s, 4 FAQs.
+- Speed pillar — 1,909 words, 10 H2s, 5 FAQs. Includes the disclosure that
+  this site's own LCP was 2.3s until it was fixed.
+- Search pillar — 1,921 words, 11 H2s, 4 FAQs. Retitled to *How Businesses Get
+  Found in 2026* so it covers Google and assistants both.
+- `/web-design-beirut/` — built, not outlined. 12 FAQs, facts block, linked
+  from the footer, `/services/`, the sitemap and three sibling pages.
+
+**One decision made during the write-up:** the search pillar keeps its
+`ai-search-optimization-for-businesses` slug despite the retitle. The site is
+a static export on GitHub Pages, which has no redirect mechanism, so renaming
+the file would 404 a URL that is already in the sitemap and possibly indexed.
+A slug that no longer matches its title is a mild smell; a dead URL on a
+one-month-old domain is worse. Support 3.3 below reuses the AI-specific angle
+under its own slug.
 
 Three topic clusters, each a substantial pillar with supporting posts linking
 into it. The three existing posts become the three pillars — they're currently

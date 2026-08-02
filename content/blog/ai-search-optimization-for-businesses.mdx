@@ -1,11 +1,12 @@
 ---
-title: "AI Search Optimization: How to Get ChatGPT and Claude to Recommend Your Business"
-seoTitle: "AI Search Optimization for Businesses"
-description: "Customers now ask AI assistants for recommendations instead of Googling. Here's how to structure a website so AI systems can find, parse and cite it."
+title: "How Businesses Get Found in 2026: Google, AI Assistants, and What Changed"
+seoTitle: "How Businesses Get Found in 2026"
+description: "Where customers actually look for a business now, how Google and AI assistants each decide who to show, and the work that earns you a place in both."
 date: "2026-06-15"
 updated: "2026-08-02"
 cluster: "search"
 takeaways:
+  - "Google still sends most traffic, but a growing share of searches never produce a click — the answer appears at the top of the page instead."
   - "AI assistants build answers from what they can crawl, parse and trust. A site they can't parse cleanly doesn't get cited."
   - "Structured data (JSON-LD) hands machines your facts in a format built for them. Organization at minimum, plus FAQPage and Service where relevant."
   - "Many AI crawlers don't execute JavaScript. Content that only appears after scripts run is invisible to them."
@@ -22,9 +23,23 @@ faqs:
     a: "If you sell something, no. Blocking GPTBot, ClaudeBot or PerplexityBot removes you from answers your customers are already asking for. Publishers whose product is the content itself have a real argument for blocking; a business whose website exists to generate enquiries is only making itself harder to find."
 ---
 
-A growing share of your customers no longer scroll through ten blue links. They ask ChatGPT, Claude, or Google's AI Mode a question and act on the answer. If your business isn't in that answer, you're invisible to those buyers — and most of your competitors haven't noticed yet.
+Getting found in 2026 means being visible in two places at once: Google's results, which still send the majority of traffic, and AI assistants, which increasingly answer the question outright instead of listing links. The work overlaps more than most people expect — fast pages, clean structure, real answers to real questions — but the emphasis differs, and the businesses winning at both are doing a handful of unglamorous things their competitors aren't.
 
-## How AI assistants decide who to recommend
+## Where do customers actually look now?
+
+Google is still the largest single channel by a wide margin, and any advice that tells you otherwise is selling something. Most people looking for a plumber, a restaurant or a supplier still open a search box.
+
+What has changed is what happens next. A growing share of those searches never produce a click. Google answers the question at the top of the page — an AI overview, a featured snippet, a map pack — and the user has what they needed. Separately, a real and growing group skips search entirely and asks ChatGPT, Claude or Perplexity for a recommendation, then acts on the answer.
+
+Three consequences follow:
+
+- **Ranking first is no longer the same as being found.** You can hold position one and still lose the traffic to an answer box above you that quoted you without a click.
+- **Being quotable now matters as much as being rankable.** If your page can't be summarised accurately in three sentences, it won't be the source that gets used.
+- **The channel you can't see is growing.** There is no analytics dashboard for "how often an assistant recommended you." You are working partly blind, and so is everyone else.
+
+None of this makes traditional SEO obsolete. It makes it necessary but no longer sufficient.
+
+## How do AI assistants decide who to recommend?
 
 AI systems build answers from what they can crawl, parse, and trust. In practice they favor sites that:
 
@@ -33,17 +48,63 @@ AI systems build answers from what they can crawl, parse, and trust. In practice
 - **Carry structured data.** JSON-LD schema (Organization, FAQPage, Service, LocalBusiness) hands machines your facts — name, services, area, pricing — in a format built for them.
 - **Load fast and render server-side.** Many AI crawlers don't execute JavaScript. If your content only appears after scripts run, some of them see a blank page.
 
-## The new files: llms.txt
+## What has changed about Google itself?
+
+Two things worth adapting to, and one that hasn't changed at all.
+
+**Answers moved up the page.** AI overviews, featured snippets and the map pack occupy the space that used to be organic results. The practical response is not to fight it — it's to be the source those boxes quote. A direct answer in the first two sentences under a heading phrased as a question is what gets pulled.
+
+**Google reads structure, not just words.** Semantic HTML, structured data and clean heading hierarchy are how it decides what a page is about. This was always true and is now more consequential, because an answer box needs to extract a specific claim rather than rank a whole document.
+
+**What hasn't changed: authority still decides close calls.** Two pages answering equally well are separated by who links to them and how long the domain has existed. No amount of technical work substitutes for that, and any agency implying otherwise is guessing.
+
+## What is an llms.txt file?
 
 A convention has emerged for AI crawlers: an `llms.txt` file at your site root — a concise, plain-language summary of who you are, what you offer, and where your key pages live. It costs nothing and takes an hour. This site has one at [/llms.txt](/llms.txt).
 
-## The FAQ page is back — with teeth
+Be clear-eyed about it: this is an emerging convention, not a standard, and no assistant is documented as requiring it. Nothing breaks without one. It's an hour of work for a possible upside, which is a good trade at that price and a bad one if someone is charging you meaningfully for it.
 
-FAQ pages were long treated as filler. For AI search they're prime real estate: a question-and-answer format marked up with FAQPage schema is the closest thing to feeding answers directly into an assistant. Write real questions your customers ask — pricing, timelines, comparisons — and answer them honestly and specifically.
+## Should you block AI crawlers?
 
-## What this means for your website
+If you sell something, no.
 
-Traditional SEO and AI optimization overlap heavily: fast pages, semantic HTML, structured data, and genuinely useful content win both. The difference is emphasis — AI search rewards *extractable facts* over keyword volume.
+Blocking GPTBot, ClaudeBot or PerplexityBot removes you from answers your customers are actively asking for. The businesses with a genuine argument for blocking are publishers whose product *is* the content — if an assistant summarises your article, the reader never visits and you lose the ad revenue you exist on.
+
+A business whose website exists to generate enquiries is in the opposite position. You want your prices, your services and your location repeated as widely as possible. Being quoted is the goal, not the theft.
+
+Check your `robots.txt` for a blanket disallow left over from a staging site. It happens more often than you'd think, and it's silent.
+
+## Why is the FAQ page suddenly the most valuable page you have?
+
+FAQ pages were long treated as filler. For AI search they're prime real estate: a question-and-answer format marked up with FAQPage schema is the closest thing to feeding answers directly into an assistant.
+
+The format works because it matches how the question arrives. Someone asking an assistant "how much should I pay for a website in Lebanon" is asking almost exactly the question your FAQ heading should be. A narrative page covering pricing across four paragraphs contains the same information and is far harder to lift.
+
+Three rules that make the difference:
+
+- **Write the question the way a customer says it,** not the way a keyword tool spells it. "Is it worth building custom or just using Wix" beats "custom website vs template comparison."
+- **Keep every answer under about 80 words.** Past that, an assistant summarises rather than quotes, and the wording stops being yours.
+- **Make each answer stand alone.** No "as mentioned above," no pronoun pointing at the previous answer. It will be read in isolation.
+
+Worth knowing, because plenty of agencies won't tell you: **FAQPage schema no longer produces rich results** for ordinary businesses. Google restricted those to government and health sites in 2023. It is still worth adding, because answer engines parse it — but if someone is selling you FAQ schema on the promise of star ratings in Google, they're selling you 2022.
+
+## Does AI optimisation replace SEO?
+
+No. It's the same foundation with a different emphasis on top.
+
+Fast pages, semantic HTML, structured data and genuinely useful content win both. What differs is what you optimise the *writing* for. Traditional SEO rewards matching the phrases people search. Answer-engine visibility rewards extractable, self-contained facts stated plainly enough to quote.
+
+The good news is that most pages written to rank need only a few added paragraphs to also be citable. You are not choosing between two strategies; you're adding a layer to one you already have.
+
+The genuine difference is measurement, and it's uncomfortable. You can see your Google rankings. You cannot see how often an assistant named you. The best available proxy is asking the assistants yourself, periodically, in the phrasing a customer would use.
+
+## What order should a business do this in?
+
+1. **Fix the site first.** Speed, structure, mobile. Everything else amplifies whatever the page already does, including failing.
+2. **Add structured data.** Organization at minimum; FAQPage and Service where they match visible content.
+3. **Write the FAQ.** Your top ten real customer questions, with real numbers in the answers.
+4. **Publish the specifics.** Prices, timelines, areas served, what you don't do. Vagueness is what stops you being cited.
+5. **Then chase authority.** Links, mentions, being referenced elsewhere. Slowest, hardest, and the thing that decides close calls.
 
 A practical checklist:
 
@@ -53,9 +114,35 @@ A practical checklist:
 4. Make sure your content renders without JavaScript — server-rendered or static HTML.
 5. Answer specific questions in your blog, one question per post.
 
-## The window is open
+## Does any of this work differently in Lebanon?
 
-Most local and small-business competitors have done none of this. Right now, being properly structured for AI search is a genuine edge rather than table stakes. It won't stay that way.
+Yes, in three ways that matter more than the general advice.
+
+**Your customers search in three scripts for the same thing.** A Beirut customer looking for manakish may type it in Arabic, as *mankouche*, or as *manaeesh* — same person, same intent, three spellings. Assistants handle this better than search engines do, because they normalise across languages, but only if your site gives them something to normalise. A site written exclusively in formal Arabic, or exclusively in English, is invisible to a share of its own market.
+
+**Searches are neighbourhood-level, not city-level.** Nobody searches for a dentist in Lebanon. They search for one in Achrafieh, or near a landmark, or simply *near me*. If your site never names the areas you serve, you're absent from most of the queries that would have found you. There's more on this in [SEO in Lebanon](/seo-lebanon/) and [web design in Beirut](/web-design-beirut/).
+
+**The competition has done less.** This is the genuine advantage. In a saturated market, technical work gets you parity. Here, a site with clean structured data, real answers and a fast build is doing something most of its competitors are not, and the gap shows up faster.
+
+The thing that doesn't change: a new domain has no authority, and no amount of structure substitutes for time and links. Expect months, not weeks.
+
+## How do you tell if any of this is working?
+
+Four signals, in descending order of reliability.
+
+**Search Console impressions and position.** Still the ground truth for Google. Watch impressions rather than clicks — if impressions climb while clicks flatten, you're being shown and summarised rather than visited, which is worth knowing rather than panicking about.
+
+**Ask the assistants directly.** Every few weeks, ask ChatGPT, Claude, Perplexity and Google's AI mode the question a customer would ask, phrased the way a customer would phrase it. Note whether you appear and what they say about you. This is crude, unrepeatable and the only direct visibility anyone has.
+
+**Watch what they get wrong.** If an assistant states your prices incorrectly or places you in the wrong city, that's a specific, fixable signal: something on your site is ambiguous or contradicts itself somewhere else. Consistency across every page is what fixes it.
+
+**Enquiry quality.** Softer, but real. People who arrive already knowing your price range and your delivery time have read something that told them, and they close faster.
+
+What you will not get is a dashboard. Anyone selling you an "AI visibility score" is selling you a number they invented.
+
+## Why does this matter now rather than later?
+
+Most local and small-business competitors have done none of this. Right now, being properly structured for AI search is a genuine edge rather than table stakes. It won't stay that way — this is the same window that existed for mobile-friendly sites in 2013 and for page speed in 2018, and both closed once the advice became obvious.
 
 Every site we build ships with all five items as standard. If you want to know how your current site looks to an AI crawler, ask us — the audit takes us a day.
 
