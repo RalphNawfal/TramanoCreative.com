@@ -1,0 +1,123 @@
+---
+title: "Technical SEO Basics for People Who Don't Write Code"
+seoTitle: "Technical SEO Basics for Non-Developers"
+description: "Canonicals, robots.txt, sitemaps and crawlability explained without jargon — what each one does, which you can check yourself, and which need a developer."
+date: "2026-08-02"
+cluster: "search"
+takeaways:
+  - "Technical SEO is making sure search engines can find, read and understand your pages. It does not make a page worth ranking; it stops a good page being invisible."
+  - "A canonical tag tells search engines which URL is the real one when the same content is reachable at several addresses."
+  - "robots.txt controls what crawlers may visit. A leftover blanket disallow from a staging site is one of the most damaging single mistakes possible, and it is silent."
+  - "A sitemap lists every page you want indexed. It does not guarantee indexing; it removes the excuse of not knowing the page exists."
+  - "Half of this you can check yourself in twenty minutes with a browser. The other half needs whoever built the site."
+faqs:
+  - q: "What is technical SEO?"
+    a: "The work that makes a site findable and readable by search engines, as distinct from the content that makes it worth ranking. It covers crawlability, indexing, site speed, structured data, and the signals that tell an engine which page is authoritative. Good technical SEO does not make a weak page rank; it stops a strong page being invisible."
+  - q: "What is a canonical tag and do I need one?"
+    a: "It tells search engines which URL is the real one when the same content is reachable at several addresses — with and without a trailing slash, with tracking parameters, or duplicated across a site. Yes, you need one. Every page should carry a canonical pointing at itself, which prevents your own pages competing with each other."
+  - q: "How do I know if Google can see my website?"
+    a: "Search Google for site:yourdomain.com. If pages appear, they are indexed. If none do, something is blocking indexing — usually a leftover noindex tag from staging or a disallow in robots.txt. Google Search Console tells you exactly which pages are indexed and why the others are not."
+  - q: "Do I need a sitemap for a small website?"
+    a: "It helps and costs nothing. A sitemap lists every page you want indexed, which matters most for pages that are not well linked internally. It does not guarantee indexing — it removes the excuse of not knowing the page exists. Most platforms generate one automatically at /sitemap.xml."
+---
+
+Technical SEO is the work that lets a search engine find, read and understand your pages. It is not what makes a page worth ranking — that is the content. It is what stops a page that deserves to rank from being invisible. Most of it is set up once and then left alone, and about half of it you can check yourself in twenty minutes.
+
+## What is technical SEO actually for?
+
+Think of it as three separate questions a search engine asks about every page.
+
+**Can I reach it?** Is the page linked from somewhere, allowed by robots.txt, and reachable without a login?
+
+**Can I read it?** Is the content in the HTML, or does it only appear after JavaScript runs? Is the structure clear enough to work out what the page is about?
+
+**Should I show it?** Is this the authoritative version of this content, or a duplicate? Is it fast enough, and does it work on a phone?
+
+Content answers a fourth question — is it any good — and that one decides rankings. The first three only decide whether you are in the running.
+
+## What is a canonical tag?
+
+A short line in the page's code saying "this is the real address for this content."
+
+It matters because the same page is often reachable at several URLs: with and without a trailing slash, with and without `www`, with tracking parameters attached, or genuinely duplicated across a site. To a search engine those can look like several competing pages with identical content, which splits whatever authority the page has earned.
+
+A canonical resolves it. Every page should carry one pointing at itself — a self-referencing canonical — which is the simplest correct setup and prevents your own pages competing.
+
+**How to check:** view the page source and search for `canonical`. You should find one, and it should be the address you would want someone to share.
+
+**Common failure:** every page canonicalising to the homepage. This tells Google no page except the homepage is worth indexing, and it happens more often than you would expect after a botched plugin configuration.
+
+## What does robots.txt do?
+
+A file at `yourdomain.com/robots.txt` telling crawlers which parts of the site they may visit.
+
+It is a small file with an outsized ability to cause damage. The line `Disallow: /` blocks everything — and it is standard on staging sites, so it ships to production more often than anyone admits. The site looks perfect and quietly cannot be indexed.
+
+**How to check:** visit `yourdomain.com/robots.txt` in a browser. If you see `Disallow: /` under `User-agent: *`, that is an emergency.
+
+Two things worth knowing beyond that. Robots.txt controls *crawling*, not *indexing* — a blocked page can still appear in results if other sites link to it, just without a description. And it is where you decide whether AI crawlers may read your site: GPTBot, ClaudeBot, PerplexityBot and others obey it. [Whether you should block them](/blog/getting-cited-by-ai-assistants/) has a clear answer for most businesses, and it is no.
+
+## What is a sitemap?
+
+An XML file listing every page you want indexed, usually at `/sitemap.xml`.
+
+It does not guarantee indexing. What it does is remove the excuse — a search engine cannot claim not to have known the page existed. That matters most for pages that are not well linked from elsewhere on your site.
+
+**How to check:** visit `yourdomain.com/sitemap.xml`. You should see a list of your real pages, all returning 200, with no staging URLs and nothing you deleted six months ago.
+
+**Worth getting right:** the URLs in your sitemap should exactly match your canonicals, including trailing slashes. If your sitemap says `example.com` and your canonical says `example.com/`, you are giving two different answers about the most important page on the site. We found exactly that on this site and fixed it.
+
+## What does "crawlable" actually mean?
+
+That a search engine can reach your content by following links and reading HTML.
+
+Three things break it:
+
+**Content that only exists after JavaScript runs.** Google executes JavaScript, eventually, with a delay. Many other crawlers — including several AI ones — do not execute it at all. If your content is not in the HTML, a meaningful share of crawlers see a blank page. The fix is server-rendering or static generation.
+
+**Pages nothing links to.** A page reachable only by typing the URL is an orphan. Search engines find pages by following links; a page with no inbound links is invisible regardless of your sitemap.
+
+**Navigation that is not links.** Menus built from JavaScript click handlers rather than `<a href>` elements are not followable. If it does not open in a new tab when middle-clicked, it is probably not a link.
+
+**How to check:** right-click, View Page Source — the raw HTML, not the Inspect panel. Search for a sentence from your page. If it is not there, crawlers may not see it either.
+
+## What can you check yourself in twenty minutes?
+
+All of this, without a developer:
+
+1. **`yourdomain.com/robots.txt`** — no blanket `Disallow: /`.
+2. **`yourdomain.com/sitemap.xml`** — exists, lists real pages, no staging URLs.
+3. **`site:yourdomain.com` in Google** — pages appear, and roughly the number you expect.
+4. **View Page Source on your homepage** — your actual text is in there, and there is a canonical.
+5. **Search the source for `noindex`** — should not be present on any page you want ranked.
+6. **PageSpeed Insights, mobile tab** — [Core Web Vitals passing](/blog/core-web-vitals-explained/).
+7. **Set up Google Search Console** if you have not. It tells you which pages are indexed and why the rest are not, and it is free.
+
+That list catches the great majority of technical problems that actually cost businesses traffic.
+
+## What needs a developer?
+
+The rest, and it is worth being clear so you know what you are asking for:
+
+- **Fixing canonicals** if they are wrong at a template level.
+- **Server-rendering content** that currently requires JavaScript.
+- **Structured data** — [what it does and why](/blog/structured-data-explained/).
+- **Core Web Vitals fixes** beyond images and lazy loading.
+- **Redirects** when URLs change, so old links keep working.
+- **International or multilingual setup**, where each language version needs its own URL and the right hreflang signals.
+
+None of these are large jobs individually. All of them are much cheaper to do once, correctly, at build time than to retrofit.
+
+## What is not technical SEO?
+
+Worth naming, because agencies blur the line.
+
+Keyword research, content writing, and earning links are not technical SEO. They are the work that decides whether you rank once you are eligible. A technically flawless site with nothing worth reading ranks for nothing.
+
+The relationship runs one way: technical work sets a ceiling, content decides how close you get to it. Fixing a canonical will not make you outrank a competitor with better content. Not fixing it can stop good content from ranking at all.
+
+## Where to go next
+
+[Structured data explained](/blog/structured-data-explained/) covers the next layer, and [how businesses get found in 2026](/blog/ai-search-optimization-for-businesses/) covers where all of it is heading. If you are working in this market specifically, [SEO in Lebanon](/seo-lebanon/) covers what is different here.
+
+Every site we build ships with all of the above as standard rather than as an upgrade. If you want to know how yours looks to a crawler, [ask us](/contact/) — the audit takes a day.

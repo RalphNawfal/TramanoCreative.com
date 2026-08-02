@@ -136,10 +136,16 @@ export default function Page() {
       ]}
       related={[
         {
-          href: "/blog/ai-search-optimization-for-businesses/",
-          label: "Getting cited by AI assistants",
+          href: "/blog/local-seo-lebanon/",
+          label: "Local SEO in Lebanon",
           blurb:
-            "How ChatGPT, Claude and Google's AI decide who to recommend — and what to change so it's you.",
+            "Three scripts for the same search, neighbourhood-level intent, and whether a .lb domain is worth the paperwork.",
+        },
+        {
+          href: "/blog/ai-search-optimization-for-businesses/",
+          label: "How businesses get found in 2026",
+          blurb:
+            "How Google and AI assistants each decide who to show — and what earns you a place in both.",
         },
         {
           href: "/blog/website-speed-google-rankings/",
