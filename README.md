@@ -79,10 +79,17 @@ projection, an industry average, or a figure someone mentioned on a call. Every
 metric is measured, and the method is published next to it. There are no
 testimonials on this site because we don't have any we can verify.
 
-**Facts stay in sync across four places.** Pricing, timeline, founders and
-location appear in `src/lib/site.ts`, `src/app/faq/page.tsx`,
-`src/app/services/page.tsx` and `public/llms.txt`. If one changes, all four
-change — an answer engine reading a contradiction picks one at random.
+**Facts stay in sync across six places.** Pricing, timeline, founders and
+location appear in `src/lib/site.ts` (`priceRange`), `src/app/faq/page.tsx`,
+`src/app/services/page.tsx`, `src/app/about/page.tsx`, `src/app/page.tsx` and
+`public/llms.txt` — plus the `facts` array on each market page. If one changes,
+all of them change. An answer engine reading a contradiction picks one at
+random, and you don't get to choose which.
+
+**Every FAQ answer stays under 80 words.** Answer engines lift a passage whole;
+past roughly eighty words they summarise instead and the wording stops being
+yours. Lead with a direct 40–60 word answer and put detail after it. There is a
+word-count check in the verification steps — run it after editing any FAQ.
 
 ## Client delivery
 
