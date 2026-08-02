@@ -1,4 +1,7 @@
+import fs from "node:fs";
+import path from "node:path";
 import type { Metadata } from "next";
+import Image from "next/image";
 import SmoothScroll from "@/components/ui/SmoothScroll";
 import Section from "@/components/ui/Section";
 import Reveal from "@/components/ui/Reveal";
@@ -94,6 +97,24 @@ const pillars = [
   },
 ];
 
+
+/**
+ * The founders photo, if it has been dropped in yet.
+ *
+ * Checked on disk at build time rather than hardcoded, so adding the photo is
+ * copying a file into public/team/ — no code change, no risk of someone
+ * wiring up an <Image> to a path that doesn't exist and breaking the build.
+ * Until then the gradient plate below stands in.
+ *
+ * Roughly 4:5, warm light. A real photograph here is worth more than
+ * everything written around it: the entire pitch is that there are two
+ * specific people doing the work, and right now the page asks you to take
+ * that on trust.
+ */
+const FOUNDERS_PHOTO = "/team/founders.jpg";
+const hasFoundersPhoto = fs.existsSync(
+  path.join(process.cwd(), "public", FOUNDERS_PHOTO),
+);
 
 export default function Home() {
   return (
@@ -268,22 +289,37 @@ export default function Home() {
       <Section slate="SC. 09 — WHO YOU'D BE WORKING WITH">
         <div className="grid items-center gap-12 md:grid-cols-12 md:gap-16">
           <Reveal className="md:col-span-5">
-            {/*
-              TODO: drop a real photo of Ralph + Ramy at public/team/founders.jpg
-              (roughly 4:5, warm light) and replace this block with an <Image>.
-              A real photograph here is worth more than everything above it.
-            */}
             <div className="relative aspect-[4/5] overflow-hidden border border-edge bg-carbon-card">
-              <div
-                aria-hidden
-                className="absolute inset-0"
-                style={{
-                  background:
-                    "radial-gradient(ellipse 90% 70% at 30% 20%, rgba(63,123,255,0.20), transparent 65%)",
-                }}
-              />
+              {hasFoundersPhoto ? (
+                <Image
+                  src={FOUNDERS_PHOTO}
+                  alt="Ralph Nawfal and Ramy Al Housary, the two people behind Tramano Creative, in Beirut"
+                  fill
+                  sizes="(min-width: 768px) 40vw, 100vw"
+                  className="object-cover"
+                />
+              ) : (
+                <div
+                  aria-hidden
+                  className="absolute inset-0"
+                  style={{
+                    background:
+                      "radial-gradient(ellipse 90% 70% at 30% 20%, rgba(63,123,255,0.20), transparent 65%)",
+                  }}
+                />
+              )}
               <div className="absolute inset-0 flex items-end p-8">
-                <p className="slate">Ralph &amp; Ramy · Beirut</p>
+                <p
+                  className={`slate ${
+                    // Over a photograph the marker needs its own contrast; over
+                    // the flat plate it would just look like a stray box.
+                    hasFoundersPhoto
+                      ? "bg-carbon/70 px-3 py-2 backdrop-blur-sm"
+                      : ""
+                  }`}
+                >
+                  Ralph &amp; Ramy · Beirut
+                </p>
               </div>
             </div>
           </Reveal>
