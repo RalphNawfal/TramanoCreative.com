@@ -1,0 +1,104 @@
+---
+title: "Why Page Builders Are Slow, and What You Can Do About It"
+seoTitle: "Why Page Builders Are Slow"
+description: "What a drag-and-drop builder actually ships to the browser, why plugins compound, what caching does and doesn't fix, and when rebuilding is cheaper than tuning."
+date: "2026-08-02"
+cluster: "speed"
+takeaways:
+  - "A page builder ships the code for every layout the platform supports, not the one you built. That is the architectural reason builder sites are heavy."
+  - "Plugins compound because each was written without knowledge of the others, so twenty plugins means twenty separate scripts and stylesheets."
+  - "Caching stops the server rebuilding a page it already built. It does nothing about a four-megabyte payload, which is usually the actual problem."
+  - "A builder site can be tuned into passing territory, but every plugin update risks undoing it — you are renting the improvement rather than owning it."
+  - "If the fixes are content and configuration, fix it. If the fixes require the platform to behave differently than it does, rebuild."
+faqs:
+  - q: "Why is my WordPress site so slow?"
+    a: "Usually three things stacked: a page builder generating far more code than the page needs, a dozen plugins each adding their own scripts, and shared hosting adding delay before anything starts. Images are often the fourth. Each is fixable individually; together they are why the site is heavy."
+  - q: "Will a caching plugin fix my slow website?"
+    a: "Partly, and only if the server is your bottleneck. Caching stops the server rebuilding a page it has already built, which helps time to first byte. It does nothing about the megabytes of scripts and images the browser still has to download and run. Caching a heavy site gives you a heavy site with a cache."
+  - q: "Can Elementor or Divi sites be made fast?"
+    a: "They can be made to pass, with work: disabling unused modules, cutting plugins, optimising images and adding proper caching. What is hard is keeping them there, because updates and new pages reintroduce weight. Expect it to be maintenance rather than a fix."
+  - q: "Is it cheaper to fix a slow site or rebuild it?"
+    a: "Fix it if the problems are content and configuration — oversized images, unused plugins, a lazy-loaded hero. Rebuild if the platform itself is the weight, meaning a simple page ships megabytes before you have added anything. A rebuild often costs less than a year of fighting the architecture."
+---
+
+Page builders are slow because of what they ship, not how you use them. A drag-and-drop platform has to support every layout anyone might build, so it loads the code for all of them — then your page uses a fraction of it. Add plugins, each written without knowledge of the others, and a simple page arrives carrying several megabytes before you have added a single image.
+
+## What does a page builder actually send to the browser?
+
+Three things, and the third is the expensive one.
+
+**The content.** Your text and images. Usually a small fraction of the total.
+
+**The builder's rendering layer.** The CSS and JavaScript that turns the builder's saved layout into a page. This is generic by necessity — it has to handle every column arrangement, animation and widget the platform offers, because it cannot know in advance which you used.
+
+**Everything the platform might need.** Icon libraries loaded whole for the two icons you used. Animation libraries loaded because one section fades in. Font files for weights that appear nowhere on the page.
+
+A hand-built page contains what the page needs. A generated page contains what the generator supports. That gap does not close with optimisation, because it is architectural rather than careless.
+
+## Why do plugins compound?
+
+Because each was written in isolation.
+
+Every plugin is a separate piece of software by a separate author, and each assumes it needs to load its own resources. A contact form plugin loads its own JavaScript and CSS. A slider loads a whole animation library. An SEO plugin adds its own scripts. None of them know the others exist, so none can share anything.
+
+Twenty plugins is twenty separate requests before your content renders, plus twenty sets of code the browser has to parse. Worse, they load on every page — the contact form's scripts load on your blog posts, because the plugin cannot tell where the form is.
+
+There is also a maintenance cost that is not about speed. Every plugin is code from a third party running on your site, updating on its own schedule, occasionally conflicting with another. That is most of what "website maintenance" means on a builder platform.
+
+## What does caching actually fix?
+
+Less than people expect, and it is worth understanding why.
+
+When someone visits a database-backed site, the server queries the database, assembles a page from templates, and sends it. Caching saves the finished page so the next visitor gets it directly. That genuinely helps **time to first byte** — the delay before anything starts arriving.
+
+What caching does not touch is everything after that. The browser still downloads the same four megabytes of scripts, styles and images. It still parses the same JavaScript. Your Largest Contentful Paint, which is what Google measures, is mostly determined by that work.
+
+So caching a slow site gives you a slow site with a cache. It is worth having, and it is not a fix.
+
+The same logic applies to most speed plugins. Minification, combining files and lazy loading are all real improvements at the margin. None of them address a page shipping ten times more code than it needs.
+
+## Why does cheap hosting make it worse?
+
+Shared hosting puts hundreds of sites on one server. When another site on that machine has a traffic spike, yours slows down. You have no visibility into it and no control over it.
+
+For a database-backed site this compounds badly, because every visit requires the server to do work. Half a second of server delay lands before your page has begun, and nothing downstream can recover it.
+
+For a static site it barely matters, because there is no server work to be slow. The files are just there.
+
+This is why hosting advice differs so much depending on what you built. On a heavy platform, hosting is a genuine lever. On a static site, it is close to irrelevant and often free.
+
+## Can a builder site be made fast?
+
+It can be made to pass. Keeping it there is the hard part.
+
+The work looks like this: disable unused builder modules, audit and remove plugins, replace heavy ones with lighter alternatives, optimise every image, add proper caching, move to better hosting, and defer whatever scripts can be deferred. Done thoroughly, that moves most failing builder sites into passing territory.
+
+Then someone adds a page with a slider. A plugin updates and reintroduces a script. A new team member installs something helpful. Six months later you are back where you started.
+
+That is the honest trade-off. You are renting the improvement rather than owning it, and the rent is paid in attention.
+
+## When is rebuilding cheaper than tuning?
+
+Apply this test: **if the fixes are content and configuration, fix it. If the fixes require the platform to behave differently than it does, rebuild.**
+
+**Fix it** when the problems are oversized images, a lazy-loaded hero, missing image dimensions, three chat widgets nobody uses, or a font loading badly. These are hours of work on any platform and often move a failing score to passing on their own. Do this first regardless of what you decide next.
+
+**Rebuild** when a simple page ships megabytes before you have added anything, when you have already cut the plugins and it is still heavy, or when every improvement is followed by a regression. At that point you are optimising against the architecture, and a rebuild on a static, pre-rendered stack usually costs less than a year of fighting it.
+
+The rebuild has one advantage that is easy to miss: it stays fast without maintenance. Nothing accumulates, so the site is as fast in year four as in year one. [What a rebuild costs](/blog/how-much-does-a-custom-website-cost/) is the other half of that decision.
+
+## What should you do this week?
+
+1. Run the site through PageSpeed Insights, mobile tab. Note LCP.
+2. List your active plugins. Deactivate anything you cannot name a purpose for, and check nothing breaks.
+3. Find the largest image on your homepage. If it is over 200KB or a PNG photograph, that is probably your biggest single win.
+4. Check whether your hero image is lazy-loaded. If it is, that alone may be your LCP failure.
+5. Re-run the test. If you are still failing after all of that, the platform is the problem rather than the configuration.
+
+None of this requires a developer, and it will tell you which conversation you are actually having.
+
+## Where to go next
+
+[Core Web Vitals in plain language](/blog/core-web-vitals-explained/) explains what the numbers mean, and the [speed pillar](/blog/website-speed-google-rankings/) covers why this affects rankings and revenue at the same time. If you are weighing platforms before building, [custom vs template](/blog/custom-website-vs-template/) is the more useful starting point.
+
+We build static, pre-rendered sites for exactly these reasons — [how that works in practice](/web-design-lebanon/).

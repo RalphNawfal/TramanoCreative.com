@@ -1,0 +1,109 @@
+---
+title: "Core Web Vitals in Plain Language"
+seoTitle: "Core Web Vitals Explained Simply"
+description: "What LCP, INP and CLS actually measure, what breaks each one, and how to read your own scores without a developer. No jargon, real thresholds."
+date: "2026-08-02"
+cluster: "speed"
+takeaways:
+  - "Core Web Vitals are three measurements: how fast the main content appears (LCP), how fast the page responds to a tap (INP), and whether things move while loading (CLS)."
+  - "The thresholds are LCP under 2.5 seconds, INP under 200 milliseconds, CLS under 0.1 — measured on mobile, because that is what Google ranks on."
+  - "LCP is the one most sites fail, and the usual cause is an oversized or lazy-loaded hero image."
+  - "CLS is almost always fixed by putting explicit width and height on images so the browser reserves the space before the file arrives."
+  - "Field data in PageSpeed Insights is real visitor measurement and is what Google uses. Lab data is a simulation, useful for diagnosis only."
+faqs:
+  - q: "What are Core Web Vitals in simple terms?"
+    a: "Three measurements of how a page feels to use. LCP is how long until the main thing on screen appears. INP is how long between tapping something and the screen responding. CLS is how much the layout jumps around while loading. Google uses all three as ranking signals."
+  - q: "What is a good LCP score?"
+    a: "Under 2.5 seconds on mobile is the pass mark. Under 1 second is achievable on a well-built site and is what a fast site should target. Between 2.5 and 4 seconds needs improvement; over 4 seconds is failing, and most page-builder sites sit there on mobile."
+  - q: "Why does my PageSpeed score differ every time I run it?"
+    a: "The lab test simulates a throttled connection on shared infrastructure, so results vary run to run. Do not chase the number. Look at the field data section instead — that is real measurement from real Chrome users over 28 days, and it is what Google actually uses for ranking."
+  - q: "Does a perfect 100 score matter?"
+    a: "No. The score is a weighted summary of lab measurements, not a ranking factor. What matters is whether you pass the three Core Web Vitals thresholds in field data. A site at 100 in the lab can still fail in the field, and a site at 75 can pass comfortably."
+---
+
+Core Web Vitals are three measurements of how a page feels to use: how long until the main content appears, how fast the page responds when you tap something, and whether things jump around while it loads. Google uses all three as ranking signals. The thresholds are 2.5 seconds, 200 milliseconds and 0.1 respectively, measured on mobile.
+
+That is the whole thing. What follows is what each one means and what breaks it.
+
+## What does LCP actually measure?
+
+**Largest Contentful Paint** — the moment the biggest thing on screen finishes rendering. Usually a hero image or a headline.
+
+Not when the page starts appearing. Not when everything has finished. Just the single largest element in the initial view. Target: **under 2.5 seconds**.
+
+This is the one most sites fail, and there are four usual causes:
+
+- **An oversized hero image.** A 4000-pixel photograph displayed in an 800-pixel slot, or a PNG where a WebP would do. This is the most common single cause.
+- **A lazy-loaded hero.** Lazy loading defers images until they are needed, which is right for everything below the fold and wrong for the one element the metric is waiting on. Deferring your LCP element is a self-inflicted failure and a one-line fix.
+- **A slow server.** If the first byte takes a second, nothing downstream can save you.
+- **Fade-in animations.** A browser does not count an element at zero opacity as painted, so a fade delays LCP by the delay plus the fade duration. Our own homepage measured 2.3 seconds this way while painting in 0.27 — [the whole story is in the speed pillar](/blog/website-speed-google-rankings/).
+
+## What does INP actually measure?
+
+**Interaction to Next Paint** — the delay between tapping something and the screen visibly responding. Target: **under 200 milliseconds**.
+
+It replaced an older metric called FID in 2024, and it is stricter. FID only measured the delay before the browser started processing an interaction. INP measures the whole thing, through to the screen actually updating.
+
+High INP means the main thread is busy. The browser is single-threaded for this work, so if JavaScript is running when you tap, your tap waits. Usual causes: too much JavaScript loading at once, heavy third-party scripts, or a framework doing more work than the page needs.
+
+Most content sites pass INP without trying. It becomes a problem on sites with heavy interactivity, large scripts, or a stack of third-party tags.
+
+## What does CLS actually measure?
+
+**Cumulative Layout Shift** — how much things move after you have started reading. Target: **under 0.1**.
+
+This is the one users feel most and complain about least. You start reading a paragraph, an image finishes loading above it, and the text jumps down. Or you go to tap a button and an ad appears where it was.
+
+The cause is nearly always the same: an element arrives without the browser knowing how much space to reserve. The fix is nearly always the same too — put explicit `width` and `height` on every image, so the space is held before the file arrives. Same for ads, embeds and anything injected after load.
+
+CLS is the cheapest of the three to fix. If you are failing it, you are failing it for no reason.
+
+## How do I read my own scores?
+
+Run your site through Google's free PageSpeed Insights and read the **mobile** tab. Desktop scores flatter almost every site and mean much less, because Google ranks on mobile.
+
+Two sections, and they often disagree:
+
+**Field data** sits at the top when it exists. It is real measurement from real Chrome users over the past 28 days. **This is what Google actually uses.** If it is present, trust it over everything else on the page.
+
+**Lab data** is a simulation run on a throttled connection. It is useful for diagnosis, because it tells you *what* is slow and lists specific opportunities. It is not your score.
+
+If field data is missing, your site does not have enough traffic for Google to have collected it. That is not a failure — it just means the lab is all you have.
+
+## Why does the score change every time I run it?
+
+Because the lab test runs on shared infrastructure with simulated throttling, and conditions vary. A ten-point swing between runs is normal.
+
+Do not chase the number. Three specific things are worth caring about:
+
+1. Do you pass the three thresholds in field data?
+2. Is your LCP element the thing you would expect it to be?
+3. Are the listed opportunities things you can actually act on?
+
+A perfect 100 is not a ranking factor and is not worth optimising toward. A site scoring 75 that passes all three thresholds in field data is in better shape than one scoring 98 that fails LCP for real users.
+
+## What should I fix first?
+
+In this order, because it maps to effort against gain.
+
+1. **Your largest image.** If the homepage hero is over 200KB or is a PNG photograph, convert it to WebP and size it for its slot. This one change frequently moves a failing LCP to a passing one. [More on doing that properly](/blog/image-optimization-for-websites/).
+2. **Lazy loading on the hero.** Check whether your LCP element has `loading="lazy"`. If it does, remove it.
+3. **Image dimensions.** Add `width` and `height` everywhere. Fixes most CLS in an afternoon.
+4. **Third-party scripts.** Count them. Remove any you cannot name a purpose for. Each one is someone else's code running at a speed you do not control.
+5. **Hosting,** if the first byte is over half a second and everything else is already clean.
+
+If you are still failing after all five, the platform itself is likely the weight — and that is [a different conversation](/blog/why-page-builders-are-slow/).
+
+## Does any of this actually affect rankings?
+
+Yes, but as a tiebreaker rather than a lever. Worth being precise about, because the topic attracts overstatement in both directions.
+
+Speed will not push a page that does not answer the question onto page one. Relevance decides first. But when two pages answer a search equally well — which is the situation in most competitive categories — the faster one wins.
+
+The larger gain is usually conversion rather than ranking. The same traffic produces more enquiries when the page appears immediately, and that effect is bigger and more measurable than the ranking one. In markets with variable connectivity, [including Lebanon](/blog/building-for-slow-connections/), it is bigger still.
+
+## Where to go next
+
+The [speed pillar](/blog/website-speed-google-rankings/) covers why this matters commercially and how to tell a fixable site from one worth rebuilding. [Technical SEO basics](/blog/technical-seo-basics/) covers the rest of the foundation.
+
+If you want someone to look at your numbers and tell you plainly what is wrong, [send us the URL](/contact/) — including if the answer is that it is fine.

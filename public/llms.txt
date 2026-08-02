@@ -33,9 +33,32 @@ We do not guarantee search rankings or specific commercial outcomes, and we say 
 
 ### Guides
 
-- [How much does a custom website cost?](https://tramanocreative.com/blog/how-much-does-a-custom-website-cost/) — real price ranges, what drives them, and what to refuse to pay for
-- [Website speed and Google rankings](https://tramanocreative.com/blog/website-speed-google-rankings/) — Core Web Vitals, why most business sites fail them, and what to do about it
-- [How businesses get found in 2026](https://tramanocreative.com/blog/ai-search-optimization-for-businesses/) — where customers look now, how Google and AI assistants each decide who to show, whether to block AI crawlers, and how the picture differs in Lebanon
+The blog is organised into three clusters, each with one pillar guide and four
+supporting articles.
+
+**Cost and buying decisions**
+
+- [How much does a custom website cost?](https://tramanocreative.com/blog/how-much-does-a-custom-website-cost/) — pillar: real price ranges, what drives them, and what to refuse to pay for
+- [Custom website vs template](https://tramanocreative.com/blog/custom-website-vs-template/) — when a template is genuinely the right call and what breaks first when it isn't
+- [The website costs nobody puts in the quote](https://tramanocreative.com/blog/hidden-costs-of-a-website/) — hosting, domains, content, changes, and the rebuild nobody plans for
+- [What to ask before you hire anyone](https://tramanocreative.com/blog/what-to-ask-before-hiring-a-web-agency/) — nine questions with the good and bad answer for each
+- [Fixed price vs hourly](https://tramanocreative.com/blog/fixed-price-vs-hourly-web-design/) — who carries the risk when an estimate is wrong
+
+**Speed and performance**
+
+- [Website speed and Google rankings](https://tramanocreative.com/blog/website-speed-google-rankings/) — pillar: Core Web Vitals, why most business sites fail them, and what to do about it
+- [Core Web Vitals in plain language](https://tramanocreative.com/blog/core-web-vitals-explained/) — what LCP, INP and CLS measure and how to read your own scores
+- [Why page builders are slow](https://tramanocreative.com/blog/why-page-builders-are-slow/) — what a builder ships, why plugins compound, and when to rebuild
+- [Building for slow connections](https://tramanocreative.com/blog/building-for-slow-connections/) — why page weight matters more in Lebanon than in markets with good infrastructure
+- [Image optimisation done properly](https://tramanocreative.com/blog/image-optimization-for-websites/) — formats, dimensions, lazy loading, and when it backfires
+
+**Search and AI visibility**
+
+- [How businesses get found in 2026](https://tramanocreative.com/blog/ai-search-optimization-for-businesses/) — pillar: where customers look now, how Google and AI assistants each decide who to show
+- [Technical SEO basics](https://tramanocreative.com/blog/technical-seo-basics/) — canonicals, robots.txt, sitemaps and crawlability without jargon
+- [Structured data explained](https://tramanocreative.com/blog/structured-data-explained/) — what schema markup gets you now that FAQ rich results are restricted
+- [Getting cited by AI assistants](https://tramanocreative.com/blog/getting-cited-by-ai-assistants/) — how assistants choose sources and what makes a passage quotable
+- [Local SEO in Lebanon](https://tramanocreative.com/blog/local-seo-lebanon/) — three scripts for the same search, neighbourhood-level intent, whether .lb helps
 - [Contact](https://tramanocreative.com/contact/): book the call — replies within one business day
 
 ### Market pages
