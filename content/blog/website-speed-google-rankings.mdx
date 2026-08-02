@@ -11,6 +11,7 @@ takeaways:
   - "The three numbers Google grades are LCP (under 2.5s), INP (under 200ms) and CLS (under 0.1)."
   - "Page builders, plugin stacks, cheap shared hosting and unoptimised images cause almost every failing business site."
   - "A rebuild on a static, pre-rendered stack usually beats months spent optimising a fundamentally heavy platform."
+  - "A fast page can still fail the test. Fade-in animations delay Largest Contentful Paint, because a browser doesn't count an element at zero opacity as painted — this site's own homepage measured 2.3s for that reason until we fixed it."
 faqs:
   - q: "How fast should a website load?"
     a: "Google's threshold is 2.5 seconds for Largest Contentful Paint on mobile — the moment the main content appears. Under 1 second is achievable on a well-built site and is what we target. Anything over 3 seconds is costing you both rankings and enquiries, and most template and page-builder sites sit there on mobile."
@@ -18,6 +19,8 @@ faqs:
     a: "Run it through Google's PageSpeed Insights and read the mobile tab, because that's the one Google ranks on. If Largest Contentful Paint is over 2.5 seconds you are failing the threshold. The field data section, when present, is real visitor measurements rather than a lab simulation — trust that one first."
   - q: "Will making my website faster actually improve my Google ranking?"
     a: "It helps, but it is a tiebreaker rather than a lever. When two pages answer a search equally well, the faster one wins. Speed will not push a page that doesn't answer the question onto page one. The larger gain is usually conversion: the same traffic produces more enquiries when the page appears immediately."
+  - q: "Can animations hurt my Core Web Vitals?"
+    a: "Yes, and it catches people out. If your largest element fades in, the browser doesn't count it as painted until it becomes visible, so the delay and the fade duration both land on your LCP score. Our own homepage measured 2.3 seconds this way while painting in 0.27. Animating position instead of opacity fixes it without changing how the page looks."
   - q: "Can a caching plugin fix a slow website?"
     a: "Rarely, and never on its own. Caching stops the server rebuilding a page it has already built, which helps if the server is the bottleneck. It does nothing about a four-megabyte payload of scripts, plugins and unoptimised images, which is what is usually wrong. Caching a heavy site gives you a heavy site with a cache."
 ---
@@ -55,6 +58,16 @@ You can check your own site right now with Google's free PageSpeed Insights. Mos
 The sites that ace Core Web Vitals share an architecture: pages pre-rendered as static files, served from a CDN close to the visitor, with only the JavaScript each page actually needs. That's how this site is built — every page you're reading was rendered to plain HTML at build time, and the scroll animation on the [homepage](/) runs on transforms the browser hands to the GPU, not on scripts that block the page from appearing.
 
 This isn't exotic. It's just engineering instead of assembling. It's the same approach behind every site we build — see [how we do it in Lebanon](/web-design-lebanon/), or [the decisions behind a live build](/work/burger-shop/).
+
+## What happened when we measured our own site
+
+While updating this post, we measured our own homepage properly instead of assuming. Largest Contentful Paint came back at 2.3 seconds. Our homepage advertises load times under a second.
+
+Both things were true. The page painted its first content in 0.27 seconds — it was never slow. But the largest element on screen, the paragraph under the headline, was fading in behind an eight-tenths-of-a-second delay, and a browser does not count an element at zero opacity as painted. The animation we'd added for polish was holding the measurement hostage, and we'd been quoting a number from a different metric than the one Google grades.
+
+The fix took one line: that block now slides into place without fading, so it paints at full opacity on the first frame. LCP went from 2.3 seconds to 0.27. Nothing about how the page looks changed.
+
+We're telling you this because it is the most common version of this problem we see, and because it makes the point better than any advice could: a site can be genuinely fast and still fail the test. Ours did, on the page where we make the claim, built by people who do this for a living. Measure yours.
 
 ## What to do about it
 
