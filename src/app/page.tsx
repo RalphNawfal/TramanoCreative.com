@@ -276,6 +276,30 @@ export default function Home() {
             </Reveal>
           ))}
         </Spotlight>
+        {/*
+          The price, in plain text, on the highest-authority page on the site.
+          It wasn't stated anywhere on this page — the flight path talks around
+          it and the number only appeared on /faq/ and /services/. It is the
+          first thing anyone wants to know and the first thing an answer engine
+          is asked, and neither should have to go looking for it.
+
+          Placed here rather than in the hero deliberately: the SC.01→SC.10
+          sequence is built to be read in one pass and a price in the opening
+          frame would answer a question the visitor hasn't asked yet.
+        */}
+        <Reveal delay={0.25}>
+          <div className="mt-14 max-w-[68ch] border-l border-signal pl-7">
+            <p className="slate">What it costs</p>
+            <p className="mt-6 text-base leading-[1.7] text-grey">
+              Custom websites cost between $1,000 and $3,000, with focused
+              single-page builds from $500. Larger projects are quoted
+              individually. Every project is a fixed price in US dollars,
+              agreed before any work starts — no hourly meter, no surprise
+              invoice.
+            </p>
+          </div>
+        </Reveal>
+
         <Reveal delay={0.3}>
           <div className="mt-12">
             <CtaButton href="/services/" variant="outline">

@@ -10,7 +10,7 @@ import { site } from "@/lib/site";
 export const metadata: Metadata = {
   title: "Blog — Guides on Websites, Ads & Search",
   description:
-    "Practical guides on web design, SEO, site speed and AI search from Tramano Creative — what a website really costs, and what actually moves search rankings.",
+    "Practical guides on web design, SEO, site speed and AI search — what a website really costs and what actually moves rankings. Read them before you hire anyone.",
   alternates: { canonical: "/blog/" },
 };
 
@@ -59,7 +59,16 @@ export default function BlogIndex() {
             datePublished: post.date,
             dateModified: post.updated ?? post.date,
             url: `${site.url}/blog/${post.slug}/`,
+            // Carried here as well as on the post itself. These entries are
+            // summaries, but a crawler that only reads the index shouldn't get
+            // a BlogPosting missing the properties Google expects on one.
+            image: `${site.url}/og/blog/${post.slug}.png`,
+            mainEntityOfPage: {
+              "@type": "WebPage",
+              "@id": `${site.url}/blog/${post.slug}/`,
+            },
             author: { "@id": `${site.url}/#organization` },
+            publisher: { "@id": `${site.url}/#organization` },
           })),
         }}
       />
