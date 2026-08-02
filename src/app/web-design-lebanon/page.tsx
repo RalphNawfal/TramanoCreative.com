@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import MarketPage from "@/components/seo/MarketPage";
 
 export const metadata: Metadata = {
-  title: "Web Design in Lebanon",
+  title: "Web Design & Development in Lebanon",
   description:
     "Custom web design and development for Lebanese businesses. No templates, sub-second load times, trilingual layouts, and a fixed price agreed before we start.",
   alternates: { canonical: "/web-design-lebanon/" },
@@ -99,6 +99,32 @@ export default function Page() {
         {
           q: "Will my site rank on Google in Lebanon?",
           a: "The technical groundwork is built in from day one — clean semantic markup, structured data, fast loads, and content organised around what your customers actually search for. That is what we control. Rankings themselves depend on your competition, how long the site has been live, and links pointing at it, and they build over months. Anyone guaranteeing you a position is guessing.",
+        },
+      ]}
+      related={[
+        {
+          href: "/work/burger-shop/",
+          label: "A Beirut build, in detail",
+          blurb:
+            "The decisions behind a live Lebanese site: a bilingual menu, and a checkout that ends in WhatsApp because card processing wasn't an option.",
+        },
+        {
+          href: "/blog/how-much-does-a-custom-website-cost/",
+          label: "What a custom website actually costs",
+          blurb:
+            "Real price ranges, what moves the number up or down, and what you should refuse to pay for.",
+        },
+        {
+          href: "/seo-lebanon/",
+          label: "SEO in Lebanon",
+          blurb:
+            "Building the site is half of it. This is the work that gets it found once it's live.",
+        },
+        {
+          href: "/google-ads-lebanon/",
+          label: "Google Ads in Lebanon",
+          blurb:
+            "The faster route to traffic while search presence builds underneath it.",
         },
       ]}
     />

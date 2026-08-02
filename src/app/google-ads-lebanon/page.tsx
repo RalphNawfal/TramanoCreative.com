@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import MarketPage from "@/components/seo/MarketPage";
 
 export const metadata: Metadata = {
-  title: "Google Ads in Lebanon",
+  title: "Google Ads Management in Lebanon",
   description:
     "Google Ads for Lebanese businesses. Campaigns built on the terms buyers actually search, landing pages built to answer them, and reporting you can audit.",
   alternates: { canonical: "/google-ads-lebanon/" },
@@ -99,6 +99,32 @@ export default function Page() {
         {
           q: "How quickly do Google Ads produce results?",
           a: "Ads start showing the day they go live, which is the main reason to run them while search rankings are still building. First enquiries often arrive in the first week or two. Getting the account genuinely efficient takes a month or two of learning which terms convert and cutting the ones that don't.",
+        },
+      ]}
+      related={[
+        {
+          href: "/seo-lebanon/",
+          label: "SEO in Lebanon",
+          blurb:
+            "Ads stop the day you stop paying. This is the work that keeps producing after they do.",
+        },
+        {
+          href: "/web-design-lebanon/",
+          label: "Web design in Lebanon",
+          blurb:
+            "Every click lands somewhere. A campaign pointed at a weak page burns the budget.",
+        },
+        {
+          href: "/blog/website-speed-google-rankings/",
+          label: "Why site speed decides rankings",
+          blurb:
+            "Google scores how well your landing page matches the ad. Speed is part of that score, and it sets what you pay per click.",
+        },
+        {
+          href: "/blog/how-much-does-a-custom-website-cost/",
+          label: "What a custom website actually costs",
+          blurb:
+            "If the landing page is the bottleneck, this is what fixing it costs.",
         },
       ]}
     />

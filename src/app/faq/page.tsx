@@ -4,11 +4,14 @@ import Breadcrumbs from "@/components/seo/Breadcrumbs";
 import Reveal from "@/components/ui/Reveal";
 import CtaButton from "@/components/ui/CtaButton";
 import JsonLd from "@/components/seo/JsonLd";
+import Faq, { faqPageSchema } from "@/components/ui/Faq";
 
 export const metadata: Metadata = {
   title: "FAQ — Pricing, Timelines & Process",
   description:
-    "What a custom website costs ($500 to $3,000 for most projects), how long it takes, who owns the code, and how the ads and search work fits together. Straight answers.",
+    // 160 characters. Google truncates the snippet around here, and the old
+    // version ran to 166 — it was losing "Straight answers." mid-phrase.
+    "What a custom website costs ($500 to $3,000 for most projects), how long it takes, who owns the code, and how ads and search fit together. Straight answers.",
   alternates: { canonical: "/faq/" },
 };
 
@@ -171,32 +174,11 @@ const groupStart = faqGroups.map((_, i) =>
   faqGroups.slice(0, i).reduce((total, group) => total + group.items.length, 0),
 );
 
-/** Stable anchor so a single answer can be linked to, and cited, on its own. */
-function slugify(question: string) {
-  return question
-    .toLowerCase()
-    .replace(/['’]/g, "")
-    .replace(/[^a-z0-9]+/g, "-")
-    .replace(/^-|-$/g, "");
-}
-
 export default function FaqPage() {
   return (
     <>
       <Breadcrumbs items={[{ name: "FAQ", href: "/faq/" }]} />
-      <JsonLd
-        data={{
-          "@context": "https://schema.org",
-          "@type": "FAQPage",
-          mainEntity: faqGroups
-            .flatMap((group) => group.items)
-            .map((f) => ({
-              "@type": "Question",
-              name: f.q,
-              acceptedAnswer: { "@type": "Answer", text: f.a },
-            })),
-        }}
-      />
+      <JsonLd data={faqPageSchema(faqGroups.flatMap((group) => group.items))} />
       <div className="pt-20">
         <Section
           slate="Straight answers"
@@ -212,28 +194,11 @@ export default function FaqPage() {
                     {group.category}
                   </h2>
                 </Reveal>
-                <div className="mt-8 border-t border-edge">
-                  {group.items.map((f, i) => (
-                    <Reveal key={f.q} delay={Math.min(i * 0.05, 0.25)}>
-                      <details
-                        id={slugify(f.q)}
-                        className="group border-b border-edge scroll-mt-28"
-                      >
-                        <summary className="flex cursor-pointer list-none items-start gap-5 py-6 transition-colors marker:hidden hover:text-signal [&::-webkit-details-marker]:hidden">
-                          <span className="slate mt-1.5 shrink-0">
-                            Q{String(groupStart[g] + i + 1).padStart(2, "0")}
-                          </span>
-                          <h3 className="font-display text-lg font-medium leading-snug">
-                            {f.q}
-                          </h3>
-                        </summary>
-                        <p className="max-w-[62ch] pb-7 pl-[4.25rem] text-[15px] leading-relaxed text-grey">
-                          {f.a}
-                        </p>
-                      </details>
-                    </Reveal>
-                  ))}
-                </div>
+                <Faq
+                  items={group.items}
+                  startIndex={groupStart[g]}
+                  className="mt-8"
+                />
               </div>
             ))}
           </div>

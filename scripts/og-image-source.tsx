@@ -21,8 +21,8 @@ export const contentType = "image/png";
  * site, not assumed. The convention also silently overrides any
  * `openGraph.images` set in metadata, so the URL cannot be redirected while
  * the route exists. Deleting it is the only way to point og:image at a real
- * .png, which is why the card is now a committed static asset alongside
- * public/logo-lockup.png.
+ * .png, which is why the card is now a committed static asset at
+ * public/og.png.
  *
  * To regenerate after editing this file:
  *   1. cp scripts/og-image-source.tsx src/app/opengraph-image.tsx

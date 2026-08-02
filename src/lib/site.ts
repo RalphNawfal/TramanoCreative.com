@@ -23,7 +23,18 @@ export const site = {
   phoneHref: "+96171042427",
   founders: ["Ralph Nawfal", "Ramy Al Housary"],
   foundingDate: "2026",
-  priceRange: "$$",
+  foundingLocation: { locality: "Beirut", country: "LB" },
+
+  /**
+   * Stated as a real range rather than schema.org's `$$` convention.
+   *
+   * `$$` is a relative signal — it only means "mid-priced compared to peers",
+   * and an answer engine asked "how much does Tramano charge" can do nothing
+   * with it. The published numbers are already in plain text on /faq/,
+   * /services/ and /llms.txt, so a vague schema value was the one place the
+   * site contradicted itself. Keep this in sync with those three.
+   */
+  priceRange: "$500–$3,000+",
   formspreeEndpoint: "https://formspree.io/f/xkolykzp",
 
   /**
@@ -108,6 +119,30 @@ export const site = {
    */
   areaServed: ["Lebanon", "United Arab Emirates", "Worldwide"],
   languages: ["English", "Arabic", "French"],
+
+  /**
+   * Topics the studio is claiming competence in, for `knowsAbout`.
+   *
+   * This is entity-level context rather than a keyword list: it tells a search
+   * engine or an answer engine what subjects to consider this business a
+   * candidate for. Every entry has to be backed by a page that actually
+   * discusses it — a claim here with nothing behind it is just noise.
+   */
+  knowsAbout: [
+    "Web design",
+    "Web development",
+    "Next.js",
+    "React",
+    "Core Web Vitals",
+    "Website performance optimization",
+    "Google Ads",
+    "Pay-per-click advertising",
+    "Technical SEO",
+    "Structured data",
+    "Answer engine optimization",
+    "Arabic and right-to-left web design",
+    "E-commerce in Lebanon",
+  ],
 
   /**
    * Social/profile URLs. `sameAs` is the strongest entity-disambiguation

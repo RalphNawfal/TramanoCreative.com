@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import MarketPage from "@/components/seo/MarketPage";
 
 export const metadata: Metadata = {
-  title: "Web Design for the UAE",
+  title: "Web Design for the UAE and Dubai",
   description:
     "Custom web design and development for UAE businesses. Built to convert expensive traffic, Arabic-ready, delivered remotely with full working-hours overlap.",
   alternates: { canonical: "/web-design-uae/" },
@@ -91,6 +91,32 @@ export default function Page() {
         {
           q: "How do payments work from the UAE?",
           a: "We quote and invoice in US dollars, normally half before we start and half before launch. International bank transfer or Wise both work fine. Third-party costs like domains and hosting are billed at cost with no markup.",
+        },
+      ]}
+      related={[
+        {
+          href: "/web-design-lebanon/",
+          label: "Web design in Lebanon",
+          blurb:
+            "The home market, and where most of the constraints we design around were learned.",
+        },
+        {
+          href: "/blog/how-much-does-a-custom-website-cost/",
+          label: "What a custom website actually costs",
+          blurb:
+            "Real price ranges and what drives them — useful context if you're comparing against Dubai agency quotes.",
+        },
+        {
+          href: "/blog/website-speed-google-rankings/",
+          label: "Why site speed decides rankings",
+          blurb:
+            "Clicks are expensive in the Gulf. A slow landing page wastes them twice over.",
+        },
+        {
+          href: "/work/burger-shop/",
+          label: "A live build, in detail",
+          blurb:
+            "How one site's ordering flow was designed around what its customers could actually use.",
         },
       ]}
     />

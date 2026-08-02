@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
 import Section from "@/components/ui/Section";
 import Breadcrumbs from "@/components/seo/Breadcrumbs";
+import JsonLd from "@/components/seo/JsonLd";
 import ContactForm from "./ContactForm";
 import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Contact — Book the Call",
+  title: "Contact — Book an Honest 30-Minute Call",
   description:
     "Tell Tramano Creative about your business. One honest 30–45 minute call — questions first, recommendations second, and a reply within one business day.",
   alternates: { canonical: "/contact/" },
@@ -15,6 +16,27 @@ export default function ContactPage() {
   return (
     <>
       <Breadcrumbs items={[{ name: "Contact", href: "/contact/" }]} />
+      {/*
+        Typed as ContactPage so an assistant asked "how do I get in touch with
+        Tramano" has one unambiguous URL to name, rather than inferring it.
+        The contact details themselves stay on #organization — repeating them
+        here would create a second, separately-maintained copy.
+      */}
+      <JsonLd
+        data={{
+          "@context": "https://schema.org",
+          "@type": "ContactPage",
+          "@id": `${site.url}/contact/#contact`,
+          name: "Contact Tramano Creative",
+          description:
+            "Book a 30–45 minute call with Tramano Creative. Replies within one business day.",
+          url: `${site.url}/contact/`,
+          inLanguage: "en",
+          isPartOf: { "@id": `${site.url}/#website` },
+          about: { "@id": `${site.url}/#organization` },
+          mainEntity: { "@id": `${site.url}/#organization` },
+        }}
+      />
     <div className="pt-20">
       <Section slate="Last frame" eyebrow="Contact" title="Tell us about your business." titleAs="h1">
         <div className="grid gap-14 md:grid-cols-5">

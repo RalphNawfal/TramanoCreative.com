@@ -2,7 +2,10 @@ import type { Metadata } from "next";
 import MarketPage from "@/components/seo/MarketPage";
 
 export const metadata: Metadata = {
-  title: "SEO in Lebanon",
+  // Titles are sized against the ~60 characters Google renders, counting the
+  // " — Tramano Creative" the root layout appends. "SEO in Lebanon" left
+  // roughly a third of that width unused.
+  title: "SEO Services in Lebanon and Beirut",
   description:
     "Technical SEO for Lebanese businesses. Fast, crawlable sites, structured data, Arabic and English search, and content built to be quoted by AI answers.",
   alternates: { canonical: "/seo-lebanon/" },
@@ -106,6 +109,32 @@ export default function Page() {
         {
           q: "Can you guarantee a first-page ranking?",
           a: "No, and neither can anyone else honestly. Rankings depend on competitors, site history, links and Google's own decisions. We do the work we control and report plainly on what moved. A guaranteed ranking is either a guess or a phrase nobody searches.",
+        },
+      ]}
+      related={[
+        {
+          href: "/blog/ai-search-optimization-for-businesses/",
+          label: "Getting cited by AI assistants",
+          blurb:
+            "How ChatGPT, Claude and Google's AI decide who to recommend — and what to change so it's you.",
+        },
+        {
+          href: "/blog/website-speed-google-rankings/",
+          label: "Why site speed decides rankings",
+          blurb:
+            "Core Web Vitals feed straight into ranking. This is the part of SEO you can measure today.",
+        },
+        {
+          href: "/web-design-lebanon/",
+          label: "Web design in Lebanon",
+          blurb:
+            "Most SEO problems are build problems. This is what the foundation should look like.",
+        },
+        {
+          href: "/google-ads-lebanon/",
+          label: "Google Ads in Lebanon",
+          blurb:
+            "Search presence is the slow one. Ads cover the months before it arrives.",
         },
       ]}
     />
