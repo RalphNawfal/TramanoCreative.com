@@ -1,0 +1,131 @@
+---
+title: "Google Ads Conversion Tracking Stopped Reporting. Here's the Fix Order."
+seoTitle: "Fix Google Ads Conversion Tracking"
+description: "Conversions dropped to zero overnight? Work through these seven checks in order — tag firing, consent mode, GA4 import lag, duplicates and cross-domain."
+date: "2026-09-17"
+cluster: "ads"
+takeaways:
+  - "Conversions falling to exactly zero usually means the tag stopped firing. A partial drop usually means consent, attribution windows or an import delay."
+  - "Check the tag is firing before touching anything in the Google Ads interface. Most of the time the problem is on the website, not in the account."
+  - "GA4-imported conversions lag behind native Google Ads tags by up to 24–48 hours, so a one-day gap is often not a fault at all."
+  - "Consent Mode denying ad_storage will suppress conversions while clicks and cost continue. Traffic looks normal and results look dead."
+  - "Do not change bids while tracking is broken. Smart bidding will optimise against the missing data and take weeks to recover."
+faqs:
+  - q: "Why did my Google Ads conversions suddenly drop to zero?"
+    a: "Almost always the tag stopped firing. The usual causes are a website change that removed the tag, a consent banner now denying ad storage, a thank-you page URL that changed, or a tag manager container published without the tag. Check the tag fires before investigating anything inside Google Ads."
+  - q: "How do I test if my Google Ads conversion tag is working?"
+    a: "Use Google Tag Assistant, or open your browser's network tab, filter for 'googleads' or 'google.com/pagead', and complete a test conversion. If you see the request fire, the tag works and the problem is downstream — attribution, import lag or duplicates. If nothing fires, the problem is on the page."
+  - q: "Why do Google Ads and GA4 show different conversion numbers?"
+    a: "They count differently by design. Google Ads attributes a conversion to the click's date and uses its own attribution model; GA4 attributes to the session date and uses a different one. A gap of 10–20% is normal. A gap of 80% means something is genuinely broken."
+  - q: "How long does it take for conversions to show in Google Ads?"
+    a: "Native tags usually report within 3 hours. Conversions imported from GA4 can take 24 to 48 hours. Offline and enhanced conversions can take longer. If you are panicking about yesterday's data on a GA4-imported action, wait a day before doing anything."
+---
+
+If your conversions dropped to exactly zero, the tag has almost certainly stopped firing — start on the website, not in the Google Ads interface. If they dropped partially, suspect consent, attribution windows, or import lag before assuming a fault. Work through the checks below in order; each one rules out a class of cause, and doing them out of order wastes the most time.
+
+One rule before you start: **do not change bids while tracking is broken.** Smart bidding optimises against whatever data it receives, and feeding it a gap takes weeks to recover from.
+
+## First: is it zero, or is it just down?
+
+The shape of the drop tells you where to look.
+
+**Exactly zero, starting on a specific day.** The tag is not firing. Something changed on the website or in the tag container. Go to check 1.
+
+**Down 30–60%, gradually or overnight.** Consent, a changed attribution window, or a segment that stopped converting. Go to check 3.
+
+**Down only on one campaign.** Not a tracking fault. That campaign's landing page, targeting or budget changed.
+
+**Down since a site launch or redesign.** The tag did not survive the deploy. This is the single most common cause we see, and it is check 1.
+
+## Check 1: Is the tag firing at all?
+
+Do this before anything else, because it settles half the possibilities.
+
+**The quick way:** install Google Tag Assistant, open your site, complete a test conversion — submit the form, click the WhatsApp button, whatever counts. Watch whether the conversion tag fires.
+
+**The way that always works:** open your browser's developer tools, Network tab, and filter for `googleads` or `google.com/pagead`. Complete a test conversion. You should see a request go out. If you see nothing, the tag is not there.
+
+If the tag is not firing, the cause is usually one of:
+
+- **A site deploy dropped it.** Someone rebuilt a page and the snippet was not carried over.
+- **The thank-you page URL changed.** If your conversion is a page-view of `/thank-you/` and the form now redirects to `/thanks/`, you have a conversion action pointing at a page nobody reaches.
+- **A tag manager container was published without it,** or the trigger was edited.
+- **The form no longer redirects.** Many modern forms submit without a page change, so a page-view conversion never fires. You need an event-based conversion instead.
+
+## Check 2: Did the website change recently?
+
+If check 1 showed the tag missing, this tells you why.
+
+Ask what shipped around the date conversions stopped. A redesign, a new form plugin, a CMS update, a new privacy banner, a hosting move. Any of them can drop a tag silently, and nothing in Google Ads will warn you — the account simply reports fewer conversions and keeps spending.
+
+This is also why conversion tracking belongs in the pre-launch checklist rather than being verified afterwards.
+
+## Check 3: Is consent blocking it?
+
+The cause most often missed, because everything looks healthy from the outside.
+
+If your site runs a consent banner and a visitor declines — or Consent Mode defaults `ad_storage` to denied and nothing ever grants it — the conversion tag is suppressed. Clicks and cost continue exactly as before. Only conversions disappear.
+
+What to check:
+
+- **Did a consent banner get added or changed recently?** The date it was installed often matches the date conversions dropped.
+- **Is `ad_storage` ever granted?** A Consent Mode setup that denies by default and never updates on acceptance is a common misconfiguration.
+- **What proportion of visitors accept?** If most decline, you are not broken — you are seeing a real, smaller number, and modelled conversions may fill part of the gap.
+
+Worth being clear-eyed about the trade here. Cookieless analytics and no banner is a legitimate choice, but you cannot have that *and* full conversion tracking. Ad conversion tags set cookies. That is the same reason [this site has no cookie banner](/privacy/) and does not run ad conversion tracking on itself.
+
+## Check 4: Are you looking at an imported conversion?
+
+**Where:** Goals → Conversions → Summary, and read the Source column.
+
+Conversions imported from GA4 lag behind native Google Ads tags — commonly 24 to 48 hours, sometimes more. If you are looking at yesterday and panicking, wait a day.
+
+Check the source before assuming a fault:
+
+- **Website (Google Ads tag):** reports within about 3 hours.
+- **Google Analytics (GA4):** 24–48 hours.
+- **Offline / enhanced conversions:** longer still, and dependent on upload schedules.
+
+## Check 5: Is the conversion window doing this?
+
+**Where:** the conversion action → Edit settings → Conversion window.
+
+If someone shortened the click-through conversion window from 30 days to 7, conversions will appear to drop even though nothing broke. Long consideration cycles are affected most.
+
+Attribution model changes do the same thing. Moving from last-click to data-driven redistributes credit across campaigns, so individual campaigns can show large swings while the account total barely moves. Always check the account total before diagnosing a campaign.
+
+## Check 6: Are conversions being double-counted, or was that fixed?
+
+Double-counting inflates your numbers and hides real problems. Fixing it looks like a drop.
+
+Watch for:
+
+- **The same action counted twice** — for example both a form submission event and a thank-you page view.
+- **"Every" versus "One" conversion counting.** For lead generation, "One" is nearly always correct. "Every" counts a page refresh as a new lead.
+- **Two containers on the page,** each firing the same tag.
+
+If your conversions halved and the halving looks suspiciously exact, you may have found a fix rather than a fault.
+
+## Check 7: Cross-domain and redirect problems
+
+Two setups where clicks and conversions get disconnected:
+
+**Cross-domain.** If your ad lands on `example.com` but the form lives on `book.example.com` or a third-party booking tool, the click identifier can be lost in transit. It needs explicit cross-domain configuration.
+
+**Redirects stripping the click ID.** Google Ads appends a `gclid` parameter. If a redirect drops query parameters — a common default on force-HTTPS or www rules — the conversion can no longer be tied to a click. Test by loading your landing page with a fake `?gclid=test123` and checking the parameter survives to the final URL.
+
+## What to do once you find it
+
+**Fix the cause, then wait.** Do not simultaneously change bids, budgets and targeting. You will not know which change did what.
+
+**Expect a learning period.** If smart bidding ran without conversion data for a week, it needs roughly the same again to recalibrate.
+
+**Do not backfill by guessing.** You cannot recover conversions that were never recorded. Note the gap in your reporting so the period is not later mistaken for a real performance collapse.
+
+**Then prevent it.** Add a conversion test to your deploy checklist. Every site we ship has analytics and form tracking verified before launch, not after — it is a line item on [our delivery checklist](/blog/what-to-ask-before-hiring-a-web-agency/) for exactly this reason.
+
+## Where to go next
+
+If tracking is now clean and you want to know where the money is going, the [Google Ads audit](/blog/google-ads-audit-wasted-spend/) is the next step. If costs are the concern, [why your cost per click went up](/blog/why-did-my-cost-per-click-go-up/).
+
+We manage Google Ads on a fixed monthly fee, never a percentage of spend, with the account in your name — [how that works](/google-ads-lebanon/).
