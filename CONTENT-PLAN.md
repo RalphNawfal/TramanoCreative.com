@@ -321,3 +321,88 @@ Suggested order — highest return first, not cluster by cluster:
 4. `/web-design-beirut/`, once there's enough surrounding content to link it
    from more than the footer.
 5. Everything else.
+
+---
+
+# Batch two — outlines only, nothing written
+
+**Cadence is two posts a week, decided.** The current queue covers Tuesdays and
+Thursdays to **10 September** and then runs dry. This batch is the next six
+weeks: **15 September to 22 October**.
+
+Two things drive the choice of topics.
+
+**Google Ads has no blog content at all.** Fifteen posts across cost, speed and
+search, and nothing on one of the three services. `/google-ads-lebanon/` ranks
+for nothing supporting it.
+
+**These are bottom-of-funnel on purpose.** Someone searching "why did my traffic
+drop after a redesign" at 11pm has a problem, a budget and no patience. That
+converts at a rate "what is SEO" never will.
+
+## CLUSTER 4 — Google Ads
+
+**Pillar: How to audit a Google Ads account for wasted spend** — 2,400–2,800
+The step-by-step we actually run. Search terms report, match types, device and
+location splits, conversion actions, PMax exclusions, what to pause first.
+→ Links: `/google-ads-lebanon/`, `/services/`, all four supports.
+
+**4.1 Why did my cost per click go up?** — 1,300–1,600
+Competition, Quality Score, landing page relevance, seasonality, match-type
+drift. How to tell which one you have.
+
+**4.2 How to fix Google Ads conversion tracking that stopped reporting** — 1,400–1,700
+The single highest-intent query in this batch. Tag firing, consent mode,
+duplicate conversions, GA4 import lag, cross-domain. A diagnostic order.
+
+**4.3 Performance Max: what it hides and how to see inside it** — 1,400–1,700
+What PMax will and won't show you, how to get placement and search-term
+visibility, when to use it and when it's burning budget.
+
+**4.4 Running Google Ads when you can't take card payments online** — 1,200–1,500
+Lebanon-specific and nobody else is writing it. Optimising for WhatsApp
+enquiries and calls rather than purchases, and what to count as a conversion.
+→ Links: `/work/burger-shop/`, `/google-ads-lebanon/`.
+
+## CLUSTER 5 — Diagnostics
+
+Every one of these is somebody with a broken thing, searching for a fix.
+
+**Pillar: Why did my traffic drop, and how do I find out?** — 2,200–2,600
+A diagnostic tree: algorithm update, technical regression, seasonality, lost
+links, redesign, manual action. How to tell them apart in Search Console.
+
+**5.1 How to redesign a website without losing your rankings** — 1,500–1,800
+URL mapping, redirects, what to preserve, what to check the week after. The
+post that prevents the disaster the pillar diagnoses.
+
+**5.2 Why isn't my website showing up on Google at all?** — 1,200–1,500
+noindex left from staging, robots.txt disallow, no index coverage, brand-new
+domain, canonical pointing elsewhere. Checkable in twenty minutes.
+
+**5.3 A Core Web Vitals audit for an online store** — 1,500–1,800
+Product images, third-party scripts, checkout, infinite scroll. E-commerce
+fails differently from a brochure site.
+
+**5.4 My site is fast on desktop and slow on mobile. Why?** — 1,200–1,500
+CPU limits, network variance, images not resized per breakpoint, and why
+Google only cares about the mobile number.
+
+## Schedule
+
+Tuesdays and Thursdays, alternating cluster 4 and cluster 5, starting Tue 15
+September and running to Wed 22 October. Ten posts fills five weeks; the two
+pillars take the two remaining slots and should be written first.
+
+## What this batch must not do
+
+The strategy note that prompted this suggested real ad-account screenshots,
+original data, and a case study headlined "the framework we used to triple a
+B2B SaaS site's traffic." **None of those are available honestly.** Publishing
+a client's ad data breaks the anonymity rule in `src/lib/work.ts`; there is one
+live client and it is a burger shop; and there is no tripled SaaS site.
+
+What *is* available and is stronger: genuine expertise in building for Lebanese
+infrastructure, payment constraints and trilingual search. 4.4 and 5.x are that
+expertise. No competitor outside this market can write them, and they need no
+invented numbers.
