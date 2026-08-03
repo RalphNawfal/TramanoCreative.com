@@ -2,7 +2,10 @@ import type { Metadata } from "next";
 import MarketPage from "@/components/seo/MarketPage";
 
 export const metadata: Metadata = {
-  title: "SEO in Lebanon",
+  // Titles are sized against the ~60 characters Google renders, counting the
+  // " — Tramano Creative" the root layout appends. "SEO in Lebanon" left
+  // roughly a third of that width unused.
+  title: "SEO Services in Lebanon and Beirut",
   description:
     "Technical SEO for Lebanese businesses. Fast, crawlable sites, structured data, Arabic and English search, and content built to be quoted by AI answers.",
   alternates: { canonical: "/seo-lebanon/" },
@@ -74,6 +77,13 @@ export default function Page() {
           body: "Clean semantics, structured data and consistent business details so answer engines can understand and cite you rather than a competitor.",
         },
       ]}
+      facts={[
+        "Search work in Lebanon is quoted as a fixed monthly fee against a defined scope, never as a percentage of spend, and there is no minimum contract.",
+        "Search presence takes months to move rankings. Google Ads produces traffic the day it turns on. Most businesses run both, in that order.",
+        "Lebanese searches arrive in Arabic script, transliterated Arabic and English for the same intent. Targeting only one of the three misses traffic.",
+        "Every site Tramano Creative builds ships with structured data, sub-second load times and an llms.txt file as standard, not as an upgrade.",
+        "No agency can guarantee a search ranking. Rankings depend on competitors, domain age and links, none of which an agency controls.",
+      ]}
       faqs={[
         {
           q: "How long does SEO take to work in Lebanon?",
@@ -81,11 +91,11 @@ export default function Page() {
         },
         {
           q: "How much does SEO cost in Lebanon?",
-          a: "Monthly search work is quoted as a fixed fee against a defined scope, and what sets it is how much is genuinely being done — technical fixes, how much content is published each month, and how much reporting you want. Local rates sit well below what an agency in Dubai or London charges for the same work, which is one of the few structural advantages of operating here. You get the number before committing, and there is no minimum contract designed to keep you paying after the useful work is finished.",
+          a: "A fixed monthly fee against a defined scope. What sets it is how much is genuinely being done — technical fixes, content published each month, reporting wanted. Local rates sit well below what a Dubai or London agency charges for the same work, which is one of the few structural advantages of operating here. You get the number before committing, and there is no minimum contract.",
         },
         {
           q: "How do I get my business on Google Maps in Lebanon?",
-          a: "Through a Google Business Profile, which is free to create and is the single highest-return hour most Lebanese businesses have never spent. You need a business name, a category, a phone number and a location Google can verify — verification is usually by postcard or phone, and the postcard route can be slow here. Once it is live, the profile is what puts you in the map results above the normal listings, and keeping it filled in with photos, hours, services and replies to reviews is most of what decides where you sit in that pack.",
+          a: "Through a Google Business Profile, which is free and is the highest-return hour most Lebanese businesses have never spent. You need a name, a category, a phone number and a location Google can verify — usually by postcard or phone, and the postcard route can be slow here. Keeping it filled in with photos, hours, services and replies to reviews is most of what decides where you sit in the map pack.",
         },
         {
           q: "Should I do SEO or Google Ads first?",
@@ -106,6 +116,60 @@ export default function Page() {
         {
           q: "Can you guarantee a first-page ranking?",
           a: "No, and neither can anyone else honestly. Rankings depend on competitors, site history, links and Google's own decisions. We do the work we control and report plainly on what moved. A guaranteed ranking is either a guess or a phrase nobody searches.",
+        },
+        {
+          q: "Do people in Lebanon search in Arabic script or transliterated?",
+          a: "Both, and the split changes by category. Plenty of searches come in Latin letters — 'mankouche near me', 'kahwe Achrafieh' — rather than Arabic script, because that is how people type on a phone keyboard set to English. Targeting only formal Arabic misses that traffic entirely. We check what your customers actually type before deciding which to write for.",
+        },
+        {
+          q: "How do I get my business to show up in ChatGPT answers?",
+          a: "Make your facts easy to extract and consistent everywhere they appear. Publish direct answers to real customer questions, mark them up with structured data, keep the content in the HTML rather than rendered by JavaScript, and state your name, location and services identically across the site. There is no way to pay for placement, which is exactly the opportunity.",
+        },
+        {
+          q: "Is SEO worth it for a small local business here?",
+          a: "It depends on whether people search for what you sell. A dentist, a garage or a contractor gets steady search demand and SEO compounds well. A business whose customers only ever arrive through Instagram or word of mouth may get more from ads or from a better site. We will tell you which one you look like before you pay for anything.",
+        },
+        {
+          q: "What do I do if a competitor has fake reviews?",
+          a: "Report them, then stop looking at them. Reporting is worth the ten minutes and occasionally works. Beyond that, the durable answer is volume of real reviews and a site that answers questions properly — both of which you control, unlike a competitor's behaviour. Buying reviews to compete puts your own listing at risk of removal.",
+        },
+      ]}
+      related={[
+        {
+          href: "/blog/local-seo-lebanon/",
+          label: "Local SEO in Lebanon",
+          blurb:
+            "Three scripts for the same search, neighbourhood-level intent, and whether a .lb domain is worth the paperwork.",
+        },
+        {
+          href: "/blog/ai-search-optimization-for-businesses/",
+          label: "How businesses get found in 2026",
+          blurb:
+            "How Google and AI assistants each decide who to show — and what earns you a place in both.",
+        },
+        {
+          href: "/blog/website-speed-google-rankings/",
+          label: "Why site speed decides rankings",
+          blurb:
+            "Core Web Vitals feed straight into ranking. This is the part of SEO you can measure today.",
+        },
+        {
+          href: "/web-design-lebanon/",
+          label: "Web design in Lebanon",
+          blurb:
+            "Most SEO problems are build problems. This is what the foundation should look like.",
+        },
+        {
+          href: "/web-design-beirut/",
+          label: "Web design in Beirut",
+          blurb:
+            "Ranking at neighbourhood level rather than city level, and how Beirut customers actually type what they're looking for.",
+        },
+        {
+          href: "/google-ads-lebanon/",
+          label: "Google Ads in Lebanon",
+          blurb:
+            "Search presence is the slow one. Ads cover the months before it arrives.",
         },
       ]}
     />

@@ -121,7 +121,20 @@ export default function RootLayout({
                   addressLocality: "Beirut",
                   addressCountry: "LB",
                 },
+                // Where the studio was founded, as distinct from where it
+                // works. `areaServed` below is the far larger set, and without
+                // this the two get conflated — an answer engine reading only
+                // areaServed has no basis to call this a Beirut business.
+                foundingLocation: {
+                  "@type": "Place",
+                  address: {
+                    "@type": "PostalAddress",
+                    addressLocality: site.foundingLocation.locality,
+                    addressCountry: site.foundingLocation.country,
+                  },
+                },
                 ...(site.sameAs.length > 0 ? { sameAs: site.sameAs } : {}),
+                knowsAbout: site.knowsAbout,
                 knowsLanguage: site.languages,
                 areaServed: site.areaServed.map((area) =>
                   area === "Worldwide"

@@ -1,0 +1,116 @@
+---
+title: "How to Get Cited by ChatGPT, Claude and Google's AI"
+seoTitle: "Getting Cited by AI Assistants"
+description: "How assistants choose sources, what makes a passage quotable, whether to block AI crawlers, and how to tell if you're being cited — plus what you can't control."
+date: "2026-09-10"
+cluster: "search"
+takeaways:
+  - "Assistants cite what they can retrieve, parse and corroborate. Content that only appears after JavaScript runs fails at the first step."
+  - "A quotable passage is short, declarative and self-contained — no pronouns pointing at the previous paragraph, no 'as mentioned above'."
+  - "Keep answers under about 80 words. Past that an assistant summarises rather than quotes, and the wording stops being yours."
+  - "If you sell something, do not block AI crawlers. Blocking removes you from answers your customers are already asking for."
+  - "There is no dashboard for AI citation. The only direct check is asking the assistants yourself, periodically, in the phrasing a customer would use."
+faqs:
+  - q: "How do I get ChatGPT to recommend my business?"
+    a: "Make your facts easy to retrieve and easy to corroborate. Publish direct answers to real customer questions, keep the content in the HTML rather than rendered by JavaScript, mark it up with structured data, and state your name, location and services identically everywhere. There is no way to pay for placement, which is exactly the opportunity."
+  - q: "Should I block AI crawlers from my site?"
+    a: "If your website exists to generate enquiries, no. Blocking GPTBot, ClaudeBot or PerplexityBot removes you from answers your customers are actively asking for. Publishers whose product is the content itself have a genuine argument for blocking, because a summary replaces the visit they monetise. A business selling services is in the opposite position."
+  - q: "How do I know if AI assistants are citing my business?"
+    a: "Ask them. Every few weeks, put the question a customer would ask, phrased the way a customer would phrase it, to ChatGPT, Claude, Perplexity and Google's AI mode. Note whether you appear and what they say about you. It is crude and unrepeatable, and it is the only direct visibility anyone currently has."
+  - q: "Does llms.txt actually do anything?"
+    a: "It is an emerging convention, not a standard, and no assistant is documented as requiring it. Nothing breaks without one. It takes about an hour to write a plain-language summary of your business and key pages, which makes it a reasonable bet at that price and a bad one if someone is charging meaningfully for it."
+---
+
+Assistants cite sources they can retrieve, parse and corroborate. That means content in the HTML rather than rendered by JavaScript, written as short self-contained statements rather than flowing narrative, and consistent with what the rest of the web says about you. There is no way to pay for placement — which is exactly why the businesses doing the unglamorous version of this are winning it.
+
+## How do assistants actually choose sources?
+
+Different systems work differently, and none publish their retrieval logic. But the observable pattern is consistent enough to act on.
+
+**They retrieve, then generate.** For anything current or specific, an assistant searches, pulls a handful of pages, and writes an answer from them. Your job is to be in that handful and to be easy to quote once you are.
+
+**They favour direct answers.** A page titled with the question, answering it in the first two sentences, beats a page that covers the same ground across four paragraphs of context.
+
+**They corroborate.** A fact stated on your site and nowhere else is weaker than one stated consistently across your site, your listings and anywhere else you appear. Contradictions get resolved by picking one, and you do not get to choose which.
+
+**They weight recency.** A page with a visible and structured modified date reads as current. An undated page of unknown age reads as risky.
+
+## What makes a passage quotable?
+
+This is the part most content gets wrong, and it is fixable without rewriting anything.
+
+**It stands alone.** No "as mentioned above", no "this approach", no pronoun pointing at the previous paragraph. Assume the passage will be lifted out with nothing around it, because it will be.
+
+**It is short.** Under about 80 words. Past that an assistant summarises instead of quoting, and once it is summarising, the wording is its own rather than yours. Every FAQ answer on this site is under that limit for exactly this reason.
+
+**It is specific.** "Competitive pricing" is unquotable. "Custom websites in Lebanon typically cost between $1,000 and $3,000, with focused single-page builds starting at $500" is a complete, checkable claim that can be repeated verbatim.
+
+**It is declarative.** State the fact. Narrative that builds to a conclusion reads well and cites badly, because there is no single sentence carrying the point.
+
+Most sites do not need new content for this. They need a few short, factual paragraphs added alongside the prose they already have.
+
+## Why is the FAQ page suddenly the most valuable page you own?
+
+Because the format matches how the question arrives.
+
+Someone asking an assistant "how much should I pay for a website in Lebanon" is asking almost exactly what your FAQ heading should be. A narrative pricing page contains the same information in a form that has to be extracted and reassembled. The FAQ is already in the shape of an answer.
+
+Three rules make the difference:
+
+- **Write the question the way a customer says it.** "Is it worth building custom or just using Wix" beats "custom website vs template comparison." Assistants receive conversational phrasing, not keyword strings.
+- **Answer in under 80 words**, self-contained.
+- **Mark it up with FAQPage schema** so the pairing is unambiguous — though be aware [FAQ rich results are gone for ordinary sites](/blog/structured-data-explained/); the reason to add it now is machine parsing, not star ratings.
+
+## Should you block AI crawlers?
+
+If you sell something: no.
+
+Blocking GPTBot, ClaudeBot or PerplexityBot removes you from answers your customers are actively asking for. You are not protecting anything — you are opting out of a channel.
+
+The businesses with a genuine argument for blocking are publishers whose product *is* the content. If an assistant summarises your article, the reader never visits, and you lose the ad revenue you exist on. That is a real conflict and blocking is a defensible response.
+
+A business whose website exists to generate enquiries is in the opposite position entirely. You want your prices, services and location repeated as widely as possible. Being quoted is the goal.
+
+**Check your robots.txt** for a blanket disallow left from a staging site. It happens, it blocks everything including AI crawlers, and it is silent. Our own robots.txt names twelve AI crawlers and allows all of them — deliberately, so the decision is visible rather than a default.
+
+## What is llms.txt and does it work?
+
+A plain-text file at your site root summarising who you are, what you offer and where your key pages are, written for AI crawlers rather than people.
+
+Honest assessment: it is an emerging convention, not a standard, and no assistant is documented as requiring or preferring it. Nothing breaks without one, and nobody can currently demonstrate a lift from having one.
+
+What it costs is about an hour. At that price it is a reasonable bet on a convention that may become meaningful, and a bad purchase if someone is charging you meaningfully for it. Ours is at [/llms.txt](/llms.txt) if you want a model.
+
+The more reliable version of the same idea: make the actual pages clear. An assistant reading a well-structured services page gets everything an llms.txt would have told it.
+
+## What can't you control?
+
+Worth stating plainly, because this field attracts overclaiming.
+
+**You cannot see retrieval.** No log tells you an assistant read your page. No analytics dashboard shows AI referrals reliably.
+
+**You cannot influence training data.** Whatever a model learned during training is fixed. You are competing for retrieval — the live search step — not for what the model already knows.
+
+**You cannot guarantee accuracy.** An assistant may state your prices wrong. The fix is making the correct version unambiguous and consistent, not appealing.
+
+**You cannot buy placement.** No ad product exists here. This is temporary — it will not stay this way — and it is the whole reason the window is open.
+
+Anyone selling you an "AI visibility score" is selling you a number they invented.
+
+## How do you tell if it is working?
+
+Four signals, descending in reliability.
+
+**Ask the assistants directly.** Every few weeks, put the customer's question to ChatGPT, Claude, Perplexity and Google's AI mode, phrased the way a customer would. Note whether you appear and what they say. Crude, unrepeatable, and the only direct visibility available.
+
+**Watch what they get wrong.** If an assistant misstates your prices or places you in the wrong city, that is a specific, fixable signal — something on your site is ambiguous or contradicts itself somewhere else.
+
+**Search Console impressions.** If impressions rise while clicks flatten, you are being shown and summarised rather than visited. Worth knowing rather than panicking about.
+
+**Enquiry quality.** Softer, but real. People who arrive already knowing your price range and delivery time read it somewhere, and they close faster.
+
+## Where to go next
+
+[How businesses get found in 2026](/blog/ai-search-optimization-for-businesses/) is the wider picture across Google and assistants both. [Structured data explained](/blog/structured-data-explained/) covers the markup layer, and [technical SEO basics](/blog/technical-seo-basics/) covers the foundation underneath.
+
+This is the work we call [search presence](/services/), and [SEO in Lebanon](/seo-lebanon/) covers how it plays out in this market specifically.

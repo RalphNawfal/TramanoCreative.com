@@ -44,6 +44,26 @@ export function readConsent(): ConsentState {
   }
 }
 
+/**
+ * Deletes a consent choice left over from when analytics was enabled.
+ *
+ * Turning GA4 off stops anything new being written, but a visitor who used the
+ * site while it was on still has `tc-consent` on their device. The privacy
+ * policy now states without qualification that this site stores nothing —
+ * no cookies, no local storage — and that has to be true for returning
+ * visitors too, not just new ones.
+ *
+ * Safe to keep permanently: it only runs while analytics is disabled, so
+ * re-enabling GA4 stops the purge and the banner asks again from a clean slate.
+ */
+export function purgeStoredConsent(): void {
+  try {
+    window.localStorage.removeItem(STORAGE_KEY);
+  } catch {
+    // Blocked storage means there was nothing to remove.
+  }
+}
+
 export function setConsent(state: "granted" | "denied"): void {
   try {
     window.localStorage.setItem(STORAGE_KEY, state);

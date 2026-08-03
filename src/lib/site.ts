@@ -23,7 +23,18 @@ export const site = {
   phoneHref: "+96171042427",
   founders: ["Ralph Nawfal", "Ramy Al Housary"],
   foundingDate: "2026",
-  priceRange: "$$",
+  foundingLocation: { locality: "Beirut", country: "LB" },
+
+  /**
+   * Stated as a real range rather than schema.org's `$$` convention.
+   *
+   * `$$` is a relative signal — it only means "mid-priced compared to peers",
+   * and an answer engine asked "how much does Tramano charge" can do nothing
+   * with it. The published numbers are already in plain text on /faq/,
+   * /services/ and /llms.txt, so a vague schema value was the one place the
+   * site contradicted itself. Keep this in sync with those three.
+   */
+  priceRange: "$500–$3,000+",
   formspreeEndpoint: "https://formspree.io/f/xkolykzp",
 
   /**
@@ -58,11 +69,22 @@ export const site = {
      * at all until a visitor accepts. Setting this ID is what makes the
      * consent banner and the cookie sections of the privacy policy appear.
      *
-     * Get it: analytics.google.com → Admin → Data streams → Web → your
-     * stream → Measurement ID. Link the property to Google Ads under Admin →
-     * Product links if you want `generate_lead` importable as a conversion.
+     * Deliberately empty. GA4 was removed to get rid of the consent banner,
+     * which is the only honest way to remove one — a banner exists because
+     * cookies are being set, so the fix is to stop setting them, not to stop
+     * asking. Everything downstream is derived, so clearing this ID removed
+     * the banner and the cookie sections of the privacy policy on its own.
+     *
+     * What it costs: no `generate_lead` import into Google Ads as a
+     * conversion. If this site ever runs paid traffic to itself and needs
+     * conversion tracking, that tag sets cookies too and the banner comes
+     * back with it. That is the trade, and it is a real one.
+     *
+     * To restore: analytics.google.com → Admin → Data streams → Web → your
+     * stream → Measurement ID. The banner and policy sections return
+     * automatically.
      */
-    ga4MeasurementId: "G-T8WWNZEN8P" as string,
+    ga4MeasurementId: "" as string,
   },
 
   /**
@@ -110,11 +132,43 @@ export const site = {
   languages: ["English", "Arabic", "French"],
 
   /**
-   * Social/profile URLs. `sameAs` is the strongest entity-disambiguation
-   * signal available to a small business — Google uses it to decide that the
-   * site, the Google Business Profile and the social accounts are all the
-   * same company. Add every profile that exists, including the GBP listing
-   * once it's created.
+   * Topics the studio is claiming competence in, for `knowsAbout`.
+   *
+   * This is entity-level context rather than a keyword list: it tells a search
+   * engine or an answer engine what subjects to consider this business a
+   * candidate for. Every entry has to be backed by a page that actually
+   * discusses it — a claim here with nothing behind it is just noise.
+   */
+  knowsAbout: [
+    "Web design",
+    "Web development",
+    "Next.js",
+    "React",
+    "Core Web Vitals",
+    "Website performance optimization",
+    "Google Ads",
+    "Pay-per-click advertising",
+    "Technical SEO",
+    "Structured data",
+    "Answer engine optimization",
+    "Arabic and right-to-left web design",
+    "E-commerce in Lebanon",
+  ],
+
+  /**
+   * Social/profile URLs.
+   *
+   * Empty because the studio has no social accounts, not because this is
+   * waiting to be filled in. The layout only emits `sameAs` when this has
+   * entries, so nothing ships an empty array — an empty `sameAs` is worse
+   * than none, since it asserts that no other profiles exist.
+   *
+   * Worth knowing what the gap costs: `sameAs` is the strongest
+   * entity-disambiguation signal available to a small business. It's how
+   * Google concludes that the site, the profiles and the listings are all one
+   * company rather than several similarly-named ones. With none of them, the
+   * only thing tying this entity together is the site itself. Add any profile
+   * the moment it exists.
    */
   sameAs: [] as string[],
 
@@ -127,9 +181,15 @@ export const site = {
     { label: "Contact", href: "/contact/" },
   ],
 
-  /** Market pages — linked from the footer and the services hub. */
+  /**
+   * Market pages — linked from the footer, the services hub and the sitemap.
+   *
+   * Order is deliberate: Beirut sits under Lebanon because it is the narrower
+   * page, and a visitor scanning this list should meet the broader one first.
+   */
   markets: [
     { label: "Web design in Lebanon", href: "/web-design-lebanon/" },
+    { label: "Web design in Beirut", href: "/web-design-beirut/" },
     { label: "Google Ads in Lebanon", href: "/google-ads-lebanon/" },
     { label: "SEO in Lebanon", href: "/seo-lebanon/" },
     { label: "Web design in the UAE", href: "/web-design-uae/" },

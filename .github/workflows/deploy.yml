@@ -4,6 +4,17 @@ on:
   push:
     branches: [main]
   workflow_dispatch:
+  # Daily rebuild at 06:00 UTC (09:00 Beirut).
+  #
+  # Blog posts publish by date — see getAllPosts in src/lib/blog.ts. A post
+  # dated in the future isn't built at all, so it needs a build to happen on or
+  # after its date to appear. Without this schedule, a post dated for next
+  # Tuesday sits unpublished until someone pushes something unrelated.
+  #
+  # Deleting this line silently breaks scheduled publishing. It won't error;
+  # posts just never appear.
+  schedule:
+    - cron: "0 6 * * *"
 
 permissions:
   contents: read
@@ -24,6 +35,12 @@ jobs:
           node-version: 22
           cache: npm
       - run: npm ci
+      # Lint and typecheck gate the deploy rather than running after it. Both
+      # pass today; without a step here nothing stops a future commit from
+      # shipping while they don't. `next build` runs tsc over the app, but not
+      # over files no route imports.
+      - run: npm run lint
+      - run: npx tsc --noEmit
       - run: npm run build
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3

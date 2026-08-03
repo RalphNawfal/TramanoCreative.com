@@ -1,0 +1,106 @@
+---
+title: "Structured Data, Explained Without the Jargon"
+seoTitle: "Structured Data Explained Without Jargon"
+description: "What schema markup is, what it actually gets you now that FAQ rich results are restricted, which types matter for a small business, and how to check yours."
+date: "2026-09-03"
+cluster: "search"
+takeaways:
+  - "Structured data is a block of machine-readable facts about a page — your name, address, prices, services — written in a format built for software rather than people."
+  - "FAQPage schema no longer produces rich results for ordinary businesses. Google restricted those to government and health sites in 2023."
+  - "It is still worth adding, because answer engines parse it. Anyone selling you FAQ schema on the promise of star ratings is selling you 2022."
+  - "Organization is the minimum. Add BreadcrumbList, Article for posts, and FAQPage where visible FAQs exist."
+  - "Schema that contradicts the visible page is a guidelines violation. Both must say the same thing."
+faqs:
+  - q: "What is schema markup in simple terms?"
+    a: "A block of code on your page listing facts about it in a format software can read directly — business name, address, phone, prices, opening hours, author, publication date. The visible page says the same things in prose. Schema removes the guesswork for anything reading the page mechanically."
+  - q: "Does FAQ schema still show rich results in Google?"
+    a: "Not for ordinary businesses. Google restricted FAQ rich results to well-known government and health sites in 2023, so most sites see no visible change from adding it. It remains worth adding because AI answer engines parse it, but anyone promising you star ratings or expanded listings from FAQ schema is describing 2022."
+  - q: "What structured data does a small business actually need?"
+    a: "Organization or LocalBusiness with consistent name, address and contact details, on every page. BreadcrumbList on everything except the homepage. Article or BlogPosting on posts. FAQPage where you have visible FAQs. Product and Review only if you genuinely have them — inventing reviews in schema is a fast route to a manual penalty."
+  - q: "How do I check my structured data is working?"
+    a: "Paste your URL into Google's Rich Results Test or the Schema Markup Validator at validator.schema.org. Both parse the page and list what they found plus any errors. Check the raw page source too — if your schema only appears after JavaScript runs, many crawlers never see it."
+---
+
+Structured data is a block of machine-readable facts attached to a page: your business name, address, phone number, prices, opening hours, who wrote an article and when. The visible page says the same things in prose; the structured data says them in a format built for software. It removes guesswork for anything reading your page mechanically — which now includes AI assistants as well as search engines.
+
+## What does it actually look like?
+
+A block of JSON-LD, usually in the page's `<head>`, that never appears on screen. It might say: this is an organisation, called Tramano Creative, in Beirut, Lebanon, offering web design, at these contact details.
+
+A human reads your about page and infers all of that from sentences. A machine reading the same page has to guess — is "Beirut" your location, a service area, or a word in a testimonial? Structured data answers directly, with no inference.
+
+That is the whole concept. Everything else is which vocabulary to use and which properties matter.
+
+## What does it actually get you in 2026?
+
+Three things, in descending order of certainty. This section matters because the honest answer has changed and a lot of advice has not.
+
+**Entity clarity.** The most valuable and least discussed. Structured data is how a search engine concludes that the site, the business and any listings are all the same company rather than several similar ones. For a small business with a common name, this is the difference between being understood and being conflated.
+
+**AI citation.** Answer engines parse structured data because it is the cleanest available statement of fact on a page. If an assistant is deciding whether it can confidently state your prices, a schema block saying so is stronger evidence than a sentence buried in paragraph four. [More on being citable](/blog/getting-cited-by-ai-assistants/).
+
+**Rich results — sometimes.** Enhanced search listings: breadcrumb trails, article dates, product prices, review stars. Real, valuable, and far more restricted than they used to be.
+
+Here is the part agencies skip: **FAQPage schema no longer produces rich results for ordinary sites.** Google restricted FAQ rich results to well-known government and health domains in 2023. If someone is selling you FAQ schema on the promise of expanded listings, they are describing a version of Google that no longer exists.
+
+We still put FAQPage schema on every page with visible FAQs on this site, and we would recommend you do too — because answer engines parse it and the cost is nothing. But the reason has changed, and you should know which reason you are buying.
+
+## Which types matter for a small business?
+
+Start here and stop:
+
+**Organization** (or **LocalBusiness** if you have a physical premises customers visit). Name, URL, logo, contact details, address, area served. This goes on every page and is the single most important one. Consistency matters more than completeness — the same name and details everywhere they appear.
+
+**BreadcrumbList** on every page except the homepage. Cheap, still produces a visible trail in results instead of a bare URL.
+
+**Article** or **BlogPosting** on posts. Headline, author, published date, modified date, image. Powers article treatments and helps assistants judge recency, which they weight heavily.
+
+**FAQPage** where you have visible FAQs. See above for what it does and does not do now.
+
+**Service** if you sell defined services. Useful for entity clarity even without a visible result.
+
+**Product** and **Review** only if you genuinely have them. Do not invent reviews in schema — it is a guidelines violation, it is detectable, and it earns manual penalties.
+
+## What breaks structured data?
+
+Four failure modes, roughly in order of how often we see them.
+
+**It only exists after JavaScript runs.** If schema is injected client-side, crawlers that do not execute JavaScript — including several AI ones — never see it. Check the raw page source, not the Inspect panel. This is the one that silently wastes the whole effort.
+
+**It contradicts the visible page.** Schema saying you are open until 10pm when the page says 6pm, or listing prices that appear nowhere. This is a guidelines violation, not just an inconsistency. Both must say the same thing.
+
+**FAQPage schema with no visible FAQs.** Adding Q&A markup to a page that shows no questions is exactly the abuse the restriction was aimed at. Do not do it — it is a guidelines violation, and it is why we do not put FAQ schema on our own homepage despite the temptation.
+
+**Multiple conflicting blocks.** Two plugins each emitting an Organization block with different phone numbers. Pick one source of truth.
+
+**Dangling references.** Advanced setups link nodes by ID. If a reference points at something that does not exist on the page, the graph is broken and may be ignored entirely.
+
+## How do you check yours?
+
+Three tools, all free:
+
+**Google's Rich Results Test** — paste a live URL. Shows what Google detected and which rich results you are eligible for. Needs the page to be publicly reachable, so it cannot test staging.
+
+**Schema Markup Validator** at `validator.schema.org` — more thorough on the vocabulary itself, without Google's eligibility filtering. Better for catching structural mistakes.
+
+**View Page Source** — search for `application/ld+json`. If it is not in the raw HTML, it is client-side rendered and half your crawlers cannot see it.
+
+Do all three. The first tells you what Google will do with it, the second tells you whether it is correct, and the third tells you whether it is actually there.
+
+## Is it worth paying someone for?
+
+Depends what you are being sold.
+
+**Worth it:** structured data built into the site properly, server-rendered, consistent across every page, kept in sync with the visible content automatically so it cannot drift. On a custom build this is a design decision rather than a line item.
+
+**Not worth much:** a plugin installed and left at defaults. It will emit something, it will often be partial, and it will occasionally conflict with whatever else is emitting.
+
+**Not worth anything:** a monthly fee for "schema optimisation." Structured data is set up once and updated when your facts change. It is not a subscription.
+
+The test: ask whether the schema is generated from the same source as the visible content. If it is, they cannot drift apart. If it is maintained separately, they will.
+
+## Where to go next
+
+[Technical SEO basics](/blog/technical-seo-basics/) covers the layer underneath this, and [getting cited by AI assistants](/blog/getting-cited-by-ai-assistants/) covers what structured data buys you in the channel where it now matters most.
+
+Every page on this site carries server-rendered structured data generated from the same data as the visible copy — [that is part of what we mean by search presence](/services/).

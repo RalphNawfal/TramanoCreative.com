@@ -3,13 +3,30 @@ import Link from "next/link";
 import Section from "@/components/ui/Section";
 import Breadcrumbs from "@/components/seo/Breadcrumbs";
 import Reveal from "@/components/ui/Reveal";
+import JsonLd from "@/components/seo/JsonLd";
 import { getAllPosts } from "@/lib/blog";
+import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Blog — Guides on Websites, Ads & Search",
   description:
-    "Practical guides on web design, SEO, site speed and AI search from Tramano Creative — what a website really costs, and what actually moves search rankings.",
+    "Practical guides on web design, SEO, site speed and AI search — what a website really costs and what actually moves rankings. Read them before you hire anyone.",
   alternates: { canonical: "/blog/" },
+};
+
+/**
+ * Human labels for the `cluster` frontmatter key.
+ *
+ * Shown as a marker on each card rather than as section headings. With one
+ * post per cluster, three headings over three single-item lists would be
+ * scaffolding pretending to be structure. Once a cluster has three or four
+ * posts, group the list by these instead.
+ */
+const CLUSTERS: Record<string, string> = {
+  cost: "Cost & buying",
+  speed: "Speed & performance",
+  search: "Search & AI visibility",
+  ads: "Google Ads",
 };
 
 export default function BlogIndex() {
@@ -18,6 +35,44 @@ export default function BlogIndex() {
   return (
     <>
       <Breadcrumbs items={[{ name: "Blog", href: "/blog/" }]} />
+      {/*
+        The index had no schema of its own, so nothing tied the individual
+        BlogPosting nodes together into a publication. `blogPost` states the
+        membership explicitly rather than leaving a crawler to infer it from
+        URL structure.
+      */}
+      <JsonLd
+        data={{
+          "@context": "https://schema.org",
+          "@type": "Blog",
+          "@id": `${site.url}/blog/#blog`,
+          name: `${site.name} — Blog`,
+          description:
+            "Guides on what websites cost, why site speed decides rankings, and how businesses get found across Google and AI assistants.",
+          url: `${site.url}/blog/`,
+          inLanguage: "en",
+          isPartOf: { "@id": `${site.url}/#website` },
+          publisher: { "@id": `${site.url}/#organization` },
+          blogPost: posts.map((post) => ({
+            "@type": "BlogPosting",
+            headline: post.title,
+            description: post.description,
+            datePublished: post.date,
+            dateModified: post.updated ?? post.date,
+            url: `${site.url}/blog/${post.slug}/`,
+            // Carried here as well as on the post itself. These entries are
+            // summaries, but a crawler that only reads the index shouldn't get
+            // a BlogPosting missing the properties Google expects on one.
+            image: `${site.url}/og/blog/${post.slug}.png`,
+            mainEntityOfPage: {
+              "@type": "WebPage",
+              "@id": `${site.url}/blog/${post.slug}/`,
+            },
+            author: { "@id": `${site.url}/#organization` },
+            publisher: { "@id": `${site.url}/#organization` },
+          })),
+        }}
+      />
     <div className="pt-20">
       <Section slate="Notes" eyebrow="Blog" title="What we’ve learned, written down." titleAs="h1">
         <p className="-mt-6 max-w-[58ch] text-lg leading-relaxed text-grey">
@@ -42,6 +97,14 @@ export default function BlogIndex() {
                   </time>
                   <span aria-hidden>·</span>
                   <span>{post.readingMinutes} min read</span>
+                  {post.cluster && CLUSTERS[post.cluster] && (
+                    <>
+                      <span aria-hidden>·</span>
+                      <span className="text-signal">
+                        {CLUSTERS[post.cluster]}
+                      </span>
+                    </>
+                  )}
                 </div>
                 <h2 className="mt-4 max-w-[30ch] font-display text-2xl font-semibold leading-snug tracking-[-0.015em] transition-colors group-hover:text-signal md:text-3xl">
                   {post.title}
