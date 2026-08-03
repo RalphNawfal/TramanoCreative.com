@@ -16,10 +16,23 @@ const cfEnabled = Boolean(site.analytics.cloudflareToken);
 const ga4Enabled = Boolean(site.analytics.ga4MeasurementId);
 const anyAnalytics = cfEnabled || ga4Enabled;
 
+/**
+ * Whether GA4 is gated behind a banner.
+ *
+ * When it isn't, this page is the only place a visitor can find out what is
+ * being set on their device — so the `askConsent === false` branch below has
+ * to be specific: both cookie names, what they hold, how long they last, and
+ * real ways to refuse. That specificity is the whole justification for not
+ * asking. Weakening it turns a disclosed practice into an undisclosed one.
+ */
+const askConsent = ga4Enabled && site.analytics.requireConsent;
+
 export const metadata: Metadata = {
   title: "Privacy Policy",
-  description: ga4Enabled
+  description: askConsent
     ? "How Tramano Creative handles your data. Analytics cookies only if you accept them, no advertising trackers, and the information you type into the contact form."
+    : ga4Enabled
+    ? "How Tramano Creative handles your data — exactly which analytics cookies are set, what they hold, and three ways to refuse them. No advertising trackers."
     : anyAnalytics
       ? "How Tramano Creative handles your data. No cookies, no tracking, no profiling — anonymous visit counts and the information you type into the contact form."
       : "How Tramano Creative handles your data. No cookies, no analytics, no tracking — the only information we hold is what you type into the contact form.",
@@ -42,7 +55,19 @@ export default function PrivacyPage() {
             </p>
 
             <h2>The short version</h2>
-            {ga4Enabled ? (
+            {ga4Enabled && !askConsent ? (
+              <p>
+                This website uses <strong>Google Analytics</strong> to count
+                visits, and it loads on every visit. It sets{" "}
+                <strong>two first-party cookies</strong> holding a random
+                number — no name, no email, nothing you typed. There is no
+                cookie banner; we describe it here instead, and{" "}
+                <a href="#cookies">how to refuse it</a> is three clicks away.
+                There are <strong>no advertising tags, remarketing pixels or
+                third-party embeds</strong>, and we do not sell or share your
+                information.
+              </p>
+            ) : ga4Enabled ? (
               <p>
                 This website asks before it measures anything. Google Analytics
                 is used to count visits, and because it sets cookies{" "}
@@ -142,7 +167,86 @@ export default function PrivacyPage() {
             </p>
 
             <h2 id="cookies">Cookies and tracking</h2>
-            {ga4Enabled ? (
+            {ga4Enabled && !askConsent ? (
+              <>
+                <p>
+                  <strong>
+                    This website uses Google Analytics, and it loads on every
+                    visit.
+                  </strong>{" "}
+                  There is no cookie banner. We would rather tell you plainly
+                  what is set and how to refuse it than interrupt you with a
+                  dialog most people click through without reading.
+                </p>
+                <p>Google Analytics sets two first-party cookies:</p>
+                <ul>
+                  <li>
+                    <code>_ga</code> — a random identifier used to recognise a
+                    returning browser so one person is not counted as several.
+                    Expires after two years.
+                  </li>
+                  <li>
+                    <code>_ga_{site.analytics.ga4MeasurementId.replace("G-", "")}</code>{" "}
+                    — holds session state for this specific property. Expires
+                    after two years.
+                  </li>
+                </ul>
+                <p>
+                  Neither holds your name, your email, or anything you typed.
+                  They hold a random number. We use what they measure to see
+                  which pages are worth writing more of, and nothing else.
+                </p>
+                <p>This site does not:</p>
+                <ul>
+                  <li>
+                    run advertising, remarketing or conversion pixels — Google
+                    Consent Mode is set to deny ad storage, ad user data and ad
+                    personalisation on every page load, so this data cannot be
+                    used to target you;
+                  </li>
+                  <li>
+                    embed third-party widgets, iframes, maps, chat tools or
+                    video players;
+                  </li>
+                  <li>fingerprint your device;</li>
+                  <li>sell or share what it measures with anyone.</li>
+                </ul>
+                <p>
+                  IP anonymisation is enabled, so your address is truncated by
+                  Google before it is stored.
+                </p>
+                <p>
+                  <strong>How to refuse.</strong> Any of these work and none of
+                  them degrade the site:
+                </p>
+                <ul>
+                  <li>
+                    Block third-party and analytics cookies in your browser
+                    settings. Firefox and Safari block much of this by default.
+                  </li>
+                  <li>
+                    Install Google&apos;s official{" "}
+                    <a
+                      href="https://tools.google.com/dlpage/gaoptout"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Analytics Opt-out Browser Add-on
+                    </a>
+                    , which stops GA on every site you visit, not just this one.
+                  </li>
+                  <li>
+                    Use a content blocker. We do not detect, circumvent or
+                    complain about them.
+                  </li>
+                </ul>
+                <p>
+                  If you would rather we removed the tag entirely, say so at{" "}
+                  <a href={`mailto:${site.email}`}>{site.email}</a> and we will
+                  tell you plainly what we decide.
+                </p>
+              </>
+            ) : ga4Enabled ? (
               <>
                 <p>
                   <strong>
@@ -229,20 +333,23 @@ export default function PrivacyPage() {
               fetched from Google&apos;s servers when you visit. Most sites using
               Google Fonts disclose your IP address to Google on every page
               load. This one does not
-              {ga4Enabled
+              {askConsent
                 ? " — reading a page here contacts Google only if you accepted analytics, and never merely to render type."
-                : " — no request leaves your browser for Google, or for any other third party, simply by reading a page here."}
+                : ga4Enabled
+                  ? " — the analytics request described above is the only one that reaches Google, and never one merely to render type."
+                  : " — no request leaves your browser for Google, or for any other third party, simply by reading a page here."}
             </p>
             {anyAnalytics && <h2 id="analytics">Visitor measurement</h2>}
             {ga4Enabled && (
               <>
                 <p>
-                  If you accept, we use <strong>Google Analytics 4</strong> to
-                  see which pages are read, how people reach us, and which of
-                  them go on to contact us. Alongside page views we record a
-                  small number of named actions: submitting the contact form,
-                  pressing a call-to-action, tapping a phone or email link, and
-                  how far down a long page you read.
+                  {askConsent ? "If you accept, we use" : "We use"}{" "}
+                  <strong>Google Analytics 4</strong> to see which pages are
+                  read, how people reach us, and which of them go on to contact
+                  us. Alongside page views we record a small number of named
+                  actions: submitting the contact form, pressing a
+                  call-to-action, tapping a phone or email link, and how far
+                  down a long page you read.
                 </p>
                 <p>
                   Those actions are recorded as counts against a page, not
@@ -250,7 +357,8 @@ export default function PrivacyPage() {
                   address or any other identifier from the contact form into
                   Analytics, and we have not enabled Google Signals, advertising
                   personalisation or remarketing audiences — the advertising
-                  consent flags stay switched off even for visitors who accept.
+                  consent flags stay switched off{" "}
+                  {askConsent ? "even for visitors who accept" : "on every page load"}.
                   IP addresses are anonymised before storage.
                 </p>
                 <p>
@@ -363,9 +471,10 @@ export default function PrivacyPage() {
               )}
               {ga4Enabled && (
                 <li>
-                  <strong>Google</strong> — provides Google Analytics, and only
-                  for visitors who accepted it. If you declined, Google receives
-                  nothing from your visit at all.
+                  <strong>Google</strong> — provides Google Analytics.{" "}
+                  {askConsent
+                    ? "Only for visitors who accepted it; if you declined, Google receives nothing from your visit at all."
+                    : "It runs on every visit, and Google receives the page views and events described above. The ways to prevent that are listed under cookies and tracking."}
                 </li>
               )}
             </ul>

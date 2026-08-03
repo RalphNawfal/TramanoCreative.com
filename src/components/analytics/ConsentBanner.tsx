@@ -18,12 +18,14 @@ import { purgeStoredConsent, setConsent, useConsent } from "@/lib/consent";
  */
 export default function ConsentBanner() {
   const consent = useConsent();
-  const analyticsDisabled = !site.analytics.ga4MeasurementId;
+  // No banner when analytics is off (nothing to consent to) or when consent
+  // isn't being asked for (the privacy policy carries the disclosure instead).
+  const analyticsDisabled =
+    !site.analytics.ga4MeasurementId || !site.analytics.requireConsent;
 
-  // With analytics off there is nothing to consent to, so any stored choice is
-  // a leftover from when there was. Clear it, or the privacy policy's flat
-  // claim that this site stores nothing on your device is false for anyone who
-  // visited before the change.
+  // Any stored choice is a leftover from a period when consent was asked for.
+  // Clear it: while no banner is shown, `tc-consent` would sit on the device
+  // permanently, unreadable and unchangeable by the visitor.
   useEffect(() => {
     if (analyticsDisabled) purgeStoredConsent();
   }, [analyticsDisabled]);
