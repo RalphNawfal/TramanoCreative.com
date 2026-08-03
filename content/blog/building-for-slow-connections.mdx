@@ -1,0 +1,99 @@
+---
+title: "Building Websites for Connections That Aren't Fast"
+seoTitle: "Building for Slow Connections"
+description: "Why page weight matters more in Lebanon than in markets with good infrastructure, what breaks first on a bad connection, and how to test on one deliberately."
+date: "2026-08-06"
+cluster: "speed"
+takeaways:
+  - "A page that takes two seconds on office fibre can take eight on mobile data during a bad hour in Beirut. The people on that connection leave first."
+  - "What breaks first is rarely the text. It is the images, the fonts and the JavaScript — in that order."
+  - "Design for the worst connection your customers actually use, not the average one. Averages hide the visitors you are losing."
+  - "Test deliberately with your browser's network throttling set to Slow 4G, and check the site still works with JavaScript disabled entirely."
+  - "A lighter site out-converts a prettier slow one, and the gap is wider in markets with variable infrastructure than in ones without."
+faqs:
+  - q: "How do I test my website on a slow connection?"
+    a: "Open Chrome DevTools, go to the Network tab, and set throttling to Slow 4G. Reload and watch what appears, in what order, and how long the page takes to become usable. Then try it with JavaScript disabled entirely — if the page is blank, crawlers and anyone with a failed script request see nothing."
+  - q: "How small should a web page be?"
+    a: "Under 500KB total for a content page is a reasonable target, and under 200KB is achievable. Most business sites ship two to four megabytes. The single largest component is almost always images, followed by JavaScript. Text is never the problem."
+  - q: "Does this matter if my customers are in cities?"
+    a: "Yes. Connection quality is not just about location — it is about mobile data during peak hours, older phones, and networks under load. A customer standing outside your shop on a phone is on a worse connection than the same person at their desk, and that customer is closer to buying."
+  - q: "Will my website work during a power cut in Lebanon?"
+    a: "Your site will, if it is served as static files from a global network rather than a server in Lebanon — the grid here has no effect on whether it loads. What is affected is your visitors' connections and your own ability to answer enquiries. That is a reason to build light pages, not a reason to worry about uptime."
+---
+
+A page that loads in two seconds on office fibre can take eight on mobile data in Beirut during a bad hour. The visitors on that connection are the ones who leave first, because they have learned to. If a meaningful share of your customers browse on variable connections — which in Lebanon is most of them — page weight matters more than design polish, and the gap is wider than it would be in a market with reliable infrastructure.
+
+## Why does this matter more here?
+
+Three reasons that compound.
+
+**Mobile data does most of the work.** A large share of browsing here happens on phones, on networks whose performance varies by the hour and by the neighbourhood. The connection someone had yesterday is not the one they have now.
+
+**Power cuts change how people browse.** Someone browsing during an outage is on mobile data, possibly on a tower under load, on a battery they are conserving. That visitor has no patience for a four-megabyte page, and correctly so.
+
+**Older devices stay in service longer.** Page weight is not only bandwidth — JavaScript has to be parsed and executed, and that is CPU work. A phone three or four years old does that work considerably slower than the one a designer is testing on.
+
+The commercial consequence is straightforward. In a market with good infrastructure, a heavy site is a mild disadvantage. Here, it is a filter that removes customers before they see anything, and you never learn who they were.
+
+## What actually breaks first?
+
+Rarely the text. In order:
+
+**Images.** Almost always the largest thing on the page and almost always the least optimised. A single uncompressed hero photograph can outweigh an entire well-built site. We measured a live restaurant site recently carrying 1.9MB in five PNG heroes that should have been WebP — that one issue was most of its load time.
+
+**Fonts.** A custom font loaded badly leaves text invisible until the file arrives. On a slow connection that can be several seconds of blank space where your headline should be. Loaded properly, the page renders in a fallback and swaps.
+
+**JavaScript.** The slowest to recover from, because it has to download, parse and execute before anything depending on it works. A site that renders its content with JavaScript shows a blank page until all of that finishes. If a script request fails — which happens on unstable connections — it may never finish.
+
+**Third-party scripts.** Chat widgets, analytics, embedded maps, tracking pixels. Each is a request to someone else's server at a speed you do not control. If their server is slow today, your page is slow today.
+
+Notice that none of these are your content. The thing your visitor came for is usually a few kilobytes of text, arriving last, behind everything else.
+
+## What does building light actually involve?
+
+Five decisions, made early, that are hard to retrofit.
+
+**Render on the server, not the browser.** Send finished HTML. The page should be readable before any JavaScript runs, so a failed or slow script degrades the experience rather than preventing it.
+
+**Ship images in a modern format, sized for their slot.** WebP or AVIF rather than PNG or JPEG, at the dimensions actually displayed. This is usually the single biggest available win — [the details are here](/blog/image-optimization-for-websites/).
+
+**Load only what the page uses.** Not the whole framework because one page needs a carousel. Most pages need very little JavaScript, and most sites send all of it to all of them.
+
+**Reserve space for everything.** Explicit width and height on images so nothing jumps when a slow image finally lands. On a bad connection, layout shift is far more disruptive than on a fast one, because the gap between text arriving and images arriving is longer.
+
+**Prioritise the visible.** The hero image should load first and never be lazy-loaded. Everything below the fold should wait. Getting this backwards is common and costly.
+
+## How do you test on a bad connection deliberately?
+
+You cannot judge this from your own machine. Test it properly:
+
+1. **Chrome DevTools → Network → throttling → Slow 4G.** Reload and watch what appears and in what order. This is the closest easy approximation of a real bad connection.
+2. **Disable JavaScript entirely** and reload. If the page is blank, you have learned something important — that is roughly what a crawler sees, and what a visitor whose script request failed sees.
+3. **Use a real phone on mobile data,** not wifi, ideally an older one. Simulations miss CPU limits.
+4. **Check the field data in PageSpeed Insights.** Real visitor measurement, including everyone whose connection is worse than yours.
+
+The gap between the lab simulation and your own experience of the site is usually the surprise. Most people building websites are on good connections on new hardware, which is the least representative possible test environment.
+
+## Isn't this a trade-off against design?
+
+Less than people assume, and the assumption costs money.
+
+Weight comes from unoptimised assets and unnecessary code far more often than from ambition. A generous, confident layout with good typography can be under 200KB. A cluttered one with a stock-photo slider can be four megabytes. The heavy one is not more designed — it is less edited.
+
+Where there is a genuine trade-off, it is usually about motion and imagery, and it is worth making deliberately. An animation that delays your largest paint is costing you visitors. One that runs on transforms after the page is readable costs nothing. That is a technical decision inside a design one, and it is exactly where a lot of otherwise good sites lose.
+
+The version of this we hit ourselves: our own homepage measured a 2.3-second Largest Contentful Paint because a hero paragraph faded in behind a delay. The page painted in 0.27 seconds. The animation, not the page, was the problem — [the full account is in the speed pillar](/blog/website-speed-google-rankings/).
+
+## What about the site itself going down?
+
+Worth separating from load speed, because they get conflated locally.
+
+A site served as static files from a global network does not go down when the grid does. There is no server in Beirut to lose power. The files sit on edge locations worldwide and are served from whichever is nearest the visitor.
+
+What an outage affects is your visitors' connections and your ability to respond to enquiries. Neither is fixed by hosting choices. Both are eased by a site light enough to load on a degraded connection and clear enough that someone can act without your involvement — which is most of the argument for [handing the order to WhatsApp rather than a checkout](/work/burger-shop/).
+
+## Where to go next
+
+[Core Web Vitals in plain language](/blog/core-web-vitals-explained/) covers how this is measured, and [why page builders are slow](/blog/why-page-builders-are-slow/) covers the most common structural cause.
+
+This is the constraint we design around first for Lebanese clients — [how that works in practice](/web-design-lebanon/), and [what it meant for one Beirut business](/work/burger-shop/).

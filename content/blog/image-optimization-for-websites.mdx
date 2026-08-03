@@ -1,0 +1,105 @@
+---
+title: "Image Optimisation, Done Properly"
+seoTitle: "Image Optimisation for Websites"
+description: "Which format to use when, how big an image should actually be, why a 4000px photo in an 800px slot costs you, and when lazy loading backfires."
+date: "2026-09-08"
+cluster: "speed"
+takeaways:
+  - "Images are almost always the largest thing on a page and almost always the least optimised. This is the highest-return technical work available on most sites."
+  - "Use WebP for photographs and screenshots. AVIF is smaller again but slower to encode. Keep PNG only for images that genuinely need transparency or sharp flat colour."
+  - "An image should be roughly the pixel width it is displayed at, doubled for high-density screens. A 4000px photo in an 800px slot wastes about 95% of its bytes."
+  - "Never lazy-load the image that is your Largest Contentful Paint. Deferring the element the metric waits on is the most common self-inflicted speed failure."
+  - "Always set explicit width and height so the browser reserves space before the file arrives. This is most of what fixes Cumulative Layout Shift."
+faqs:
+  - q: "What image format should I use on my website?"
+    a: "WebP for photographs, screenshots and almost everything else — same visual quality as JPEG at roughly half the size, supported everywhere that matters. AVIF is smaller again if your tooling supports it. Keep PNG only for images needing real transparency or flat graphics with sharp edges, and use SVG for logos and icons."
+  - q: "How big should website images be in KB?"
+    a: "A full-width hero should land between 50KB and 150KB. Content images should be under 100KB, and thumbnails under 30KB. If any single image on your site is over 300KB, it is almost certainly the wrong format, the wrong dimensions, or both."
+  - q: "Does lazy loading images help or hurt?"
+    a: "Both, depending on where. Lazy loading everything below the fold is correct and saves real bandwidth. Lazy loading the hero image is a mistake, because a browser cannot start fetching it until it works out the image is needed — which delays the exact element your Largest Contentful Paint is measuring."
+  - q: "Why does my site jump around while images load?"
+    a: "Because the browser does not know how much space to reserve until the file arrives, so it lays out the page without the image and then reflows when it appears. Setting explicit width and height attributes on every image fixes it, and that is most of what fixes a failing Cumulative Layout Shift score."
+---
+
+Images are almost always the largest thing on a web page and almost always the least optimised. Getting them right is usually the single highest-return piece of technical work available on a slow site — often the difference between failing and passing Core Web Vitals, achievable in an afternoon, and requiring no changes to how the site is built.
+
+Four decisions: format, dimensions, loading behaviour, and reserved space.
+
+## Which format should you use?
+
+**WebP for almost everything.** Photographs, screenshots, illustrations. Same visual quality as JPEG at roughly half the size, and supported by every browser that matters. If you change one thing, change this.
+
+**AVIF if your tooling supports it.** Smaller again — often 20–30% below WebP — at the cost of slower encoding. Worth it for images that will be served millions of times, overkill for a small business site.
+
+**PNG only when you need it.** Real transparency, or flat graphics with sharp edges where compression artefacts would show. A PNG photograph is the most common single cause of an oversized image, because PNG is lossless and photographs are exactly what lossless compression handles worst.
+
+**SVG for logos, icons and anything drawn.** Vector, so it scales to any size, and usually a fraction of the bytes. If your logo is a PNG, that is free weight.
+
+The most common real-world mistake is a photograph exported as PNG because it was the default. A 600KB PNG hero becomes a 60KB WebP with no visible difference.
+
+## How large should an image actually be?
+
+Roughly the pixel width it is displayed at, doubled for high-density screens.
+
+If a hero image displays 800 pixels wide, export it at around 1600. If a thumbnail displays at 200, export at 400. A 4000-pixel photograph in an 800-pixel slot ships about twenty-five times the pixels it needs — the browser downloads all of them, then throws most away.
+
+Reasonable file-size targets:
+
+- **Full-width hero:** 50–150KB
+- **Content image:** under 100KB
+- **Thumbnail:** under 30KB
+- **Logo (SVG):** a few KB
+
+If any single image on your site is over 300KB, it is the wrong format, the wrong dimensions, or both. Find the largest image on your homepage before doing anything else — that one file is frequently most of your load time.
+
+## What about different screen sizes?
+
+A phone does not need the desktop hero. Serving one image to everything means either mobile visitors download far more than they need, or desktop visitors get something soft.
+
+The `srcset` attribute solves this: you provide several sizes and let the browser pick based on the screen. Most modern frameworks do it automatically. If yours does not, two versions — one around 800px for phones, one around 1600px for desktop — captures most of the benefit without much work.
+
+One caveat worth knowing: some setups disable automatic image optimisation entirely. Static exports often do, which means whatever file you commit is exactly what ships. That is our situation on this site, which is why every image here is pre-encoded to WebP before it is committed rather than optimised at request time. Check which you are in, because the assumption that "the framework handles it" is sometimes wrong.
+
+## When does lazy loading backfire?
+
+Lazy loading defers images until they are about to be needed. Below the fold, this is straightforwardly correct — there is no reason to download six images a visitor may never scroll to.
+
+Above the fold it is a mistake, and specifically: **never lazy-load the image that is your Largest Contentful Paint.**
+
+The browser cannot begin fetching a lazy image until it has worked out the image is needed, which requires layout, which happens after the initial parse. So you have deliberately delayed the exact element the metric is waiting on. It is the most common self-inflicted speed failure we see, it is invisible unless you look, and it is a one-line fix.
+
+We had it ourselves: every image on this site was lazy-loaded, including the first screenshot on the homepage and the work page, which was the LCP candidate on both. Marking that one image as high priority and leaving the rest lazy was the whole fix.
+
+The rule: **the first meaningful image loads eagerly, ideally with high priority. Everything else lazy-loads.**
+
+## Why does the page jump around while images load?
+
+Because the browser does not know how much space to reserve until the file arrives. It lays out the page without the image, then reflows when it lands — pushing your paragraph down mid-sentence.
+
+The fix is `width` and `height` attributes on every image. The browser uses the ratio to reserve the correct space before the file arrives, so nothing moves.
+
+This is most of what fixes a failing Cumulative Layout Shift score, it takes an afternoon, and it is the cheapest of all Core Web Vitals problems to solve. If you are failing CLS, you are almost certainly failing it for no reason. [More on what CLS measures](/blog/core-web-vitals-explained/).
+
+## What about alt text?
+
+Not a speed matter, but the other thing every image needs, and it costs nothing to do while you are already in there.
+
+Alt text describes what the image shows, for people using screen readers and for search engines that cannot see it. Describe the content, not the file: "menu grid showing item cards with English and Arabic descriptions" rather than "image1" or "restaurant website."
+
+Decorative images that carry no information take `alt=""` — an empty attribute, not a missing one. That tells a screen reader to skip it rather than announce a filename.
+
+## What should you do this week?
+
+1. **Find your largest image.** Open your homepage, right-click, Inspect, Network tab, filter by images, sort by size. The top entry is your first job.
+2. **Convert PNG photographs to WebP.** Free tools do this in bulk. Expect 50–80% savings.
+3. **Resize anything more than twice its display width.**
+4. **Check your hero is not lazy-loaded.** If it is, fix it — this alone may be your LCP failure.
+5. **Add width and height attributes** everywhere.
+
+That sequence takes an afternoon on most sites and frequently moves a failing Core Web Vitals score to a passing one without touching anything else.
+
+## Where to go next
+
+[Core Web Vitals in plain language](/blog/core-web-vitals-explained/) covers what the numbers mean, [building for slow connections](/blog/building-for-slow-connections/) covers why weight matters more in some markets than others, and the [speed pillar](/blog/website-speed-google-rankings/) covers what all of it is worth commercially.
+
+If you want someone to tell you what is heavy on your site, [send us the URL](/contact/).

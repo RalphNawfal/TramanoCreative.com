@@ -3,12 +3,24 @@ import Section from "@/components/ui/Section";
 import Reveal from "@/components/ui/Reveal";
 import CtaButton from "@/components/ui/CtaButton";
 import Spotlight from "@/components/ui/Spotlight";
+import Faq from "@/components/ui/Faq";
 import JsonLd from "./JsonLd";
 import Breadcrumbs from "./Breadcrumbs";
+import { isScheduledHref } from "@/lib/blog";
 import { site } from "@/lib/site";
 
 export type MarketFaq = { q: string; a: string };
 export type MarketBlock = { heading: string; paras: string[] };
+
+/**
+ * A contextual link out of this page, with a reason to click.
+ *
+ * The market pages used to connect to the rest of the site almost entirely
+ * through the footer, which distributes link equity evenly and tells a crawler
+ * nothing about topical relationships. These are in-content, described, and
+ * chosen per page.
+ */
+export type MarketLink = { href: string; label: string; blurb: string };
 
 export type MarketPageProps = {
   slate: string;
@@ -25,6 +37,18 @@ export type MarketPageProps = {
   /** Three short "what you get" columns */
   deliverables: { title: string; body: string }[];
   faqs: MarketFaq[];
+  /**
+   * Short declarative statements about this market, each complete on its own.
+   *
+   * The `blocks` prose above is written to be read in order, which is right
+   * for a person and useless to anything trying to quote it — nearly every
+   * sentence leans on the one before. These don't. No pronouns pointing
+   * backwards, no "that's why", no "the other one". An answer engine lifts a
+   * passage whole, and this is the passage it can lift.
+   */
+  facts?: string[];
+  /** Sibling market pages and topically relevant posts, linked in-content. */
+  related?: MarketLink[];
 };
 
 /**
@@ -47,6 +71,8 @@ export default function MarketPage({
   blocks,
   deliverables,
   faqs,
+  facts = [],
+  related = [],
 }: MarketPageProps) {
   return (
     <>
@@ -89,6 +115,21 @@ export default function MarketPage({
             </CtaButton>
           </div>
 
+          {facts.length > 0 && (
+            <Reveal delay={0.1}>
+              <div className="mt-16 max-w-[68ch] border-l border-signal pl-7">
+                <p className="slate">In plain terms</p>
+                <ul className="mt-6 space-y-4">
+                  {facts.map((fact) => (
+                    <li key={fact} className="text-base leading-[1.7] text-grey">
+                      {fact}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </Reveal>
+          )}
+
           <div className="prose-tramano mt-24 max-w-[68ch]">
             {blocks.map((block) => (
               <div key={block.heading}>
@@ -126,23 +167,36 @@ export default function MarketPage({
         </Section>
 
         <Section slate="Questions" eyebrow="FAQ" title={`${areaServed}, specifically.`}>
-          <div className="max-w-3xl border-t border-edge">
-            {faqs.map((f, i) => (
-              <Reveal key={f.q} delay={Math.min(i * 0.05, 0.25)}>
-                <details className="group border-b border-edge">
-                  <summary className="flex cursor-pointer list-none items-start gap-5 py-6 font-medium leading-snug transition-colors marker:hidden hover:text-signal [&::-webkit-details-marker]:hidden">
-                    <span className="slate mt-1.5 shrink-0">
-                      Q{String(i + 1).padStart(2, "0")}
-                    </span>
-                    {f.q}
-                  </summary>
-                  <p className="max-w-[62ch] pb-7 pl-[4.25rem] text-[15px] leading-[1.65] text-grey">
-                    {f.a}
-                  </p>
-                </details>
-              </Reveal>
-            ))}
-          </div>
+          {/* h2 rather than h3: the section heading above is itself an h2, so
+              there is no category level between it and the questions here. */}
+          <Faq items={faqs} questionAs="h2" className="max-w-3xl" />
+
+          {/* A related link to an unpublished post is a 404. Drop it until the
+              post's date arrives; the next build brings it back. */}
+          {related.filter((r) => !isScheduledHref(r.href)).length > 0 && (
+            <div className="mt-16 max-w-3xl border-t border-edge pt-10">
+              <h2 className="font-display text-xl uppercase leading-none">
+                Related
+              </h2>
+              <ul className="mt-8 grid gap-6 md:grid-cols-2">
+                {related.filter((r) => !isScheduledHref(r.href)).map((r) => (
+                  <li key={r.href}>
+                    <Link
+                      href={r.href}
+                      className="group block border-l border-edge pl-5 transition-colors hover:border-signal"
+                    >
+                      <span className="font-medium leading-snug transition-colors group-hover:text-signal">
+                        {r.label}
+                      </span>
+                      <span className="mt-2 block text-[15px] leading-[1.65] text-grey">
+                        {r.blurb}
+                      </span>
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
 
           <div className="mt-16 border-t border-edge pt-10">
             <p className="text-base text-grey">

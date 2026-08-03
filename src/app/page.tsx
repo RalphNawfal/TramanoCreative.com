@@ -1,4 +1,7 @@
+import fs from "node:fs";
+import path from "node:path";
 import type { Metadata } from "next";
+import Image from "next/image";
 import SmoothScroll from "@/components/ui/SmoothScroll";
 import Section from "@/components/ui/Section";
 import Reveal from "@/components/ui/Reveal";
@@ -95,6 +98,24 @@ const pillars = [
 ];
 
 
+/**
+ * The founders photo, if it has been dropped in yet.
+ *
+ * Checked on disk at build time rather than hardcoded, so adding the photo is
+ * copying a file into public/team/ — no code change, no risk of someone
+ * wiring up an <Image> to a path that doesn't exist and breaking the build.
+ * Until then the gradient plate below stands in.
+ *
+ * Roughly 4:5, warm light. A real photograph here is worth more than
+ * everything written around it: the entire pitch is that there are two
+ * specific people doing the work, and right now the page asks you to take
+ * that on trust.
+ */
+const FOUNDERS_PHOTO = "/team/founders.jpg";
+const hasFoundersPhoto = fs.existsSync(
+  path.join(process.cwd(), "public", FOUNDERS_PHOTO),
+);
+
 export default function Home() {
   return (
     <>
@@ -122,9 +143,28 @@ export default function Home() {
             className="max-w-[15ch] font-display text-[clamp(2.4rem,6vw,5.5rem)] uppercase leading-[0.88]"
           />
 
-          {/* Copy left, ask right — both starting on their own column line */}
+          {/*
+            Copy left, ask right — both starting on their own column line.
+
+            The delays below used to run 0.8 / 0.95 / 1.1, and this paragraph
+            is the page's LCP element. Measured on the built site that put LCP
+            at 2.3s — near Google's 2.5s failure threshold, on the page whose
+            entire pitch is sub-second loading. The page was never slow; first
+            paint is 0.16s. The choreography was deferring the largest paint,
+            because a browser does not count an element at opacity 0 as
+            painted.
+
+            So this one block slides without fading (`fade={false}`) and starts
+            immediately: it paints at full opacity on the first frame and the
+            movement costs the metric nothing. The two blocks after it keep the
+            fade and the stagger, which is where the sequencing was doing the
+            work anyway.
+
+            This is the one place on the site where an animation delay is also
+            a ranking signal. Re-measure before changing it.
+          */}
           <div className="mt-9 grid grid-cols-12 gap-x-6 gap-y-9 md:mt-12">
-            <Reveal delay={0.8} className="col-span-12 md:col-span-5">
+            <Reveal fade={false} className="col-span-12 md:col-span-5">
               <p className="max-w-[46ch] text-base leading-[1.65] text-grey md:text-lg">
                 Websites, Google Ads, and the search work that keeps them
                 found. Two people, a short list of clients, and work
@@ -138,7 +178,7 @@ export default function Home() {
               that visitor should not have to hunt for the booking link.
             */}
             <Reveal
-              delay={0.95}
+              delay={0.42}
               className="col-span-12 md:col-span-6 md:col-start-7"
             >
               <div className="flex flex-wrap items-center gap-x-7 gap-y-5">
@@ -156,7 +196,7 @@ export default function Home() {
           </div>
 
           {/* Proof row — four equal cells, dividers on the quarter columns */}
-          <Reveal delay={1.1}>
+          <Reveal delay={0.54}>
             {/*
               Two columns on mobile, four on desktop. The divider classes are
               written out per cell rather than derived — at two columns the
@@ -236,6 +276,30 @@ export default function Home() {
             </Reveal>
           ))}
         </Spotlight>
+        {/*
+          The price, in plain text, on the highest-authority page on the site.
+          It wasn't stated anywhere on this page — the flight path talks around
+          it and the number only appeared on /faq/ and /services/. It is the
+          first thing anyone wants to know and the first thing an answer engine
+          is asked, and neither should have to go looking for it.
+
+          Placed here rather than in the hero deliberately: the SC.01→SC.10
+          sequence is built to be read in one pass and a price in the opening
+          frame would answer a question the visitor hasn't asked yet.
+        */}
+        <Reveal delay={0.25}>
+          <div className="mt-14 max-w-[68ch] border-l border-signal pl-7">
+            <p className="slate">What it costs</p>
+            <p className="mt-6 text-base leading-[1.7] text-grey">
+              Custom websites cost between $1,000 and $3,000, with focused
+              single-page builds from $500. Larger projects are quoted
+              individually. Every project is a fixed price in US dollars,
+              agreed before any work starts — no hourly meter, no surprise
+              invoice.
+            </p>
+          </div>
+        </Reveal>
+
         <Reveal delay={0.3}>
           <div className="mt-12">
             <CtaButton href="/services/" variant="outline">
@@ -249,22 +313,37 @@ export default function Home() {
       <Section slate="SC. 09 — WHO YOU'D BE WORKING WITH">
         <div className="grid items-center gap-12 md:grid-cols-12 md:gap-16">
           <Reveal className="md:col-span-5">
-            {/*
-              TODO: drop a real photo of Ralph + Ramy at public/team/founders.jpg
-              (roughly 4:5, warm light) and replace this block with an <Image>.
-              A real photograph here is worth more than everything above it.
-            */}
             <div className="relative aspect-[4/5] overflow-hidden border border-edge bg-carbon-card">
-              <div
-                aria-hidden
-                className="absolute inset-0"
-                style={{
-                  background:
-                    "radial-gradient(ellipse 90% 70% at 30% 20%, rgba(63,123,255,0.20), transparent 65%)",
-                }}
-              />
+              {hasFoundersPhoto ? (
+                <Image
+                  src={FOUNDERS_PHOTO}
+                  alt="Ralph Nawfal and Ramy Al Housary, the two people behind Tramano Creative, in Beirut"
+                  fill
+                  sizes="(min-width: 768px) 40vw, 100vw"
+                  className="object-cover"
+                />
+              ) : (
+                <div
+                  aria-hidden
+                  className="absolute inset-0"
+                  style={{
+                    background:
+                      "radial-gradient(ellipse 90% 70% at 30% 20%, rgba(63,123,255,0.20), transparent 65%)",
+                  }}
+                />
+              )}
               <div className="absolute inset-0 flex items-end p-8">
-                <p className="slate">Ralph &amp; Ramy · Beirut</p>
+                <p
+                  className={`slate ${
+                    // Over a photograph the marker needs its own contrast; over
+                    // the flat plate it would just look like a stray box.
+                    hasFoundersPhoto
+                      ? "bg-carbon/70 px-3 py-2 backdrop-blur-sm"
+                      : ""
+                  }`}
+                >
+                  Ralph &amp; Ramy · Beirut
+                </p>
               </div>
             </div>
           </Reveal>

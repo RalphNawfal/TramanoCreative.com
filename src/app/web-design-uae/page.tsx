@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import MarketPage from "@/components/seo/MarketPage";
 
 export const metadata: Metadata = {
-  title: "Web Design for the UAE",
+  title: "Web Design for the UAE and Dubai",
   description:
     "Custom web design and development for UAE businesses. Built to convert expensive traffic, Arabic-ready, delivered remotely with full working-hours overlap.",
   alternates: { canonical: "/web-design-uae/" },
@@ -67,6 +67,13 @@ export default function Page() {
           body: "One hour behind Dubai, so questions get answered while you're still at your desk. Remote delivery with live preview links at every stage.",
         },
       ]}
+      facts={[
+        "Tramano Creative works with UAE clients remotely from Beirut, one hour behind Dubai, which gives a full working-day overlap rather than an overnight lag.",
+        "Custom websites cost between $1,000 and $3,000, with focused single-page builds from $500, quoted as a fixed price in US dollars before work starts.",
+        "A typical website launches 3 to 6 weeks after kickoff. Landing pages ship in under two weeks.",
+        "Arabic builds use real right-to-left layouts, where navigation, buttons and reading order all mirror, rather than a translation plugin over an English design.",
+        "Paid traffic in the UAE is expensive, so landing pages are built to convert it rather than to introduce the business generally.",
+      ]}
       faqs={[
         {
           q: "Do you work with businesses in Dubai and Abu Dhabi?",
@@ -91,6 +98,56 @@ export default function Page() {
         {
           q: "How do payments work from the UAE?",
           a: "We quote and invoice in US dollars, normally half before we start and half before launch. International bank transfer or Wise both work fine. Third-party costs like domains and hosting are billed at cost with no markup.",
+        },
+        {
+          q: "How long does a website take, working across time zones?",
+          a: "Three to six weeks from kickoff, the same as any other project — the hour of difference between Beirut and Dubai does not slow anything down. Landing pages ship in under two weeks. You get the launch date before we start, and it assumes feedback comes back within the agreed windows rather than sitting over a weekend.",
+        },
+        {
+          q: "How does working with a studio outside the UAE actually work?",
+          a: "Calls, a shared channel for questions, and a live preview link you can open at any stage to see exactly where the build is. We are one hour behind Dubai, so you get a full working-day overlap rather than the overnight lag of a European or American studio. Most clients never feel the distance.",
+        },
+        {
+          q: "Do I need a UAE trade licence to have a website?",
+          a: "Not to have one built. A licence matters for what you do commercially — taking payments, advertising certain categories, and registering a .ae domain, which requires a licence. A .com has no such requirement. If you are still setting up, we build on a .com and add the .ae later if you want it.",
+        },
+        {
+          q: "Why are Dubai agency quotes so much higher for the same site?",
+          a: "Overheads, mostly. A Dubai agency carries office rent in one of the world's more expensive cities, visa costs per employee, account managers and project managers. That is real payroll, and it lands in the quote. You are paying for a structure, not necessarily for better design or code. Ask what proportion of the fee reaches the people building it.",
+        },
+        {
+          q: "Can you build for Ramadan or seasonal campaigns?",
+          a: "Yes, and it is worth planning early because the calendar is unforgiving. Ramadan and Eid shift each year and compress buying into a short, intense window. A landing page for a seasonal campaign ships in under two weeks, but it needs to exist before the ads start rather than being built while spend is already running.",
+        },
+        {
+          q: "Do you understand the UAE market or just build for it remotely?",
+          a: "Honest answer: we build for it remotely, from Beirut, and our deepest market knowledge is Lebanese. What transfers is the technical work, multilingual and right-to-left builds, and designing for expensive paid traffic. What we will not do is claim local ground knowledge we do not have. If a project genuinely needs someone in the room in Dubai, we will say so.",
+        },
+      ]}
+      related={[
+        {
+          href: "/web-design-lebanon/",
+          label: "Web design in Lebanon",
+          blurb:
+            "The home market, and where most of the constraints we design around were learned.",
+        },
+        {
+          href: "/blog/how-much-does-a-custom-website-cost/",
+          label: "What a custom website actually costs",
+          blurb:
+            "Real price ranges and what drives them — useful context if you're comparing against Dubai agency quotes.",
+        },
+        {
+          href: "/blog/website-speed-google-rankings/",
+          label: "Why site speed decides rankings",
+          blurb:
+            "Clicks are expensive in the Gulf. A slow landing page wastes them twice over.",
+        },
+        {
+          href: "/work/burger-shop/",
+          label: "A live build, in detail",
+          blurb:
+            "How one site's ordering flow was designed around what its customers could actually use.",
         },
       ]}
     />

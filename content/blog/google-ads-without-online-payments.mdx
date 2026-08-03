@@ -1,0 +1,124 @@
+---
+title: "Running Google Ads When You Can't Take Card Payments Online"
+seoTitle: "Google Ads Without Online Payments"
+description: "How to run and measure Google Ads when the sale finishes on WhatsApp, on the phone or in person — what to count, how to track it, and what stays invisible."
+date: "2026-09-24"
+cluster: "ads"
+takeaways:
+  - "Most standard Google Ads advice assumes an online checkout. If your sale finishes on WhatsApp or the phone, the measurement approach has to change or the campaign optimises toward nothing."
+  - "Count the action that starts a real conversation — a WhatsApp click, a call, a form submission — not a page view."
+  - "A WhatsApp click is trackable as an outbound link click. What happens inside WhatsApp is not, so treat it as a lead indicator rather than a sale."
+  - "Smart bidding needs conversion volume. Below roughly 30 a month, manual or enhanced CPC is usually more predictable."
+  - "Ask every enquiry how they found you. On small budgets that one question is better data than most attribution modelling."
+faqs:
+  - q: "Can I run Google Ads without an online store?"
+    a: "Yes, and most local service businesses do. The difference is what you count as a conversion. Instead of a purchase, count the action that begins a real conversation — a WhatsApp click, a phone call over a certain length, or a form submission. Google optimises toward whatever you tell it to, so the definition matters more than the campaign settings."
+  - q: "How do I track WhatsApp orders from Google Ads?"
+    a: "Track the click on the WhatsApp link as an outbound click conversion. That tells you the ad produced an intent to message. What happens inside WhatsApp is invisible to any web analytics, so treat that number as a lead indicator, not a sale, and reconcile against actual orders manually."
+  - q: "Can I count phone calls as Google Ads conversions?"
+    a: "Yes. Google's call reporting can count calls from a call extension or from a forwarding number placed on your site, and you can require a minimum duration so a 5-second wrong number does not count as a lead. Set that threshold to roughly the shortest length a genuine enquiry takes."
+  - q: "Is it worth advertising if I can't measure the sale?"
+    a: "Often yes, but only with a plan for approximating it. Track the enquiry, ask every customer how they found you, and reconcile monthly against actual revenue. That is rougher than e-commerce tracking and considerably better than nothing. If you cannot commit to the reconciliation, spend the money on the website first."
+---
+
+If your sale finishes on WhatsApp, over the phone or in person, most Google Ads advice does not apply to you. It assumes a checkout that fires a purchase event with a value attached. Without one, the fix is to count the action that starts a real conversation — a WhatsApp click, a qualifying call, a form submission — and to reconcile those against actual orders by hand. Get that definition right and everything else follows; get it wrong and the campaign will optimise efficiently toward nothing.
+
+This is the normal situation in Lebanon, where getting a small business approved for online card payments is slow and frequently does not happen at all.
+
+## What should you count as a conversion?
+
+The action that begins a conversation you can convert. Not a page view.
+
+Ranked by how much they actually mean:
+
+1. **Form submission** — the strongest, because you capture the details and can follow up on your own schedule.
+2. **Phone call over a minimum duration** — strong, and the duration threshold is what makes it trustworthy.
+3. **WhatsApp click** — good intent signal, but you cannot see what happened next.
+4. **Click-to-email** — weak. People click and never send.
+5. **Page view of the contact page** — not a conversion. Count this and you will buy visits to your contact page.
+
+Pick one or two as **Primary**. Everything else goes to **Secondary** so it is visible in reporting without steering the bidding.
+
+## How do you actually track a WhatsApp click?
+
+As an outbound link click.
+
+Your WhatsApp button is a link to `wa.me/…`. Fire a conversion event when someone clicks it. Google Tag Manager handles this with a click trigger matching that URL; on a hand-built site it is a few lines on the click handler.
+
+What that number means, precisely: **somebody intended to message you.** It does not mean they sent anything, and it does not mean they bought. WhatsApp is a closed system — no analytics tool can see inside it.
+
+So treat it as a lead indicator and reconcile monthly. Count the actual orders that arrived via WhatsApp, compare against tracked clicks, and you will get a ratio. On our [Beirut burger shop build](/work/burger-shop/) the entire order path ends in a WhatsApp message composed by the site, which is exactly this situation.
+
+Two things that make the reconciliation easier:
+
+- **Pre-fill the message** with something identifiable — the item, or a page reference. You get context and a rough source signal in the message itself.
+- **Use one number for ads** if you can, separate from the one on your printed material.
+
+## How do you track calls?
+
+Two mechanisms, and it is worth using both.
+
+**Call extensions** — the phone number in the ad itself. Someone taps and calls without visiting the site. Google reports these directly.
+
+**Website call tracking** — Google swaps your displayed number for a forwarding number when a visitor arrives from an ad, then reports calls made from the site.
+
+The setting that matters more than either: **minimum call duration.** Set it to roughly the shortest length a real enquiry takes — usually 30 to 60 seconds. Without it, wrong numbers and instant hangups count as leads, and smart bidding will happily buy you more of them.
+
+## What breaks if you get the definition wrong?
+
+The campaign works perfectly and produces nothing.
+
+Google optimises toward the action you nominated. If that action is "reached the contact page", it will find people who reach the contact page and leave. Those are cheap to buy and worth nothing, and your reporting will look healthy while the phone stays quiet.
+
+This is the single most common failure we see on small local accounts. Not bad keywords, not bad ads — an account efficiently buying the wrong action.
+
+If your conversion numbers look strong and your enquiries do not, that mismatch is the first thing to check. [The audit covers it in order](/blog/google-ads-audit-wasted-spend/).
+
+## Should you use smart bidding?
+
+Usually not at first.
+
+Smart bidding needs conversion volume to learn from. Below roughly 30 conversions a month it is guessing, and it guesses expensively. Local service businesses running modest budgets frequently sit below that line.
+
+A workable sequence:
+
+1. **Start on manual or enhanced CPC** with tracking you trust.
+2. **Accumulate 30+ conversions a month** consistently for two months.
+3. **Then move to Maximise Conversions**, and only then consider a target.
+
+Moving too early is how small accounts lose money to automation that had nothing to learn from.
+
+## What about consent and tracking?
+
+Worth knowing, because it is a real constraint rather than a technicality.
+
+Conversion tracking sets cookies. In markets where consent is required, a visitor who declines is not counted — clicks and cost continue while conversions disappear, which looks exactly like broken tracking. [The distinction matters when diagnosing](/blog/fix-google-ads-conversion-tracking/).
+
+You cannot have complete ad conversion tracking *and* a site with no cookie banner. That is a genuine trade-off, not a configuration problem. This site chose the second: [no banner, no ad tracking on ourselves](/privacy/). A business whose enquiries depend on paid traffic should usually choose the first.
+
+## What stays invisible no matter what?
+
+Say this out loud rather than pretending otherwise:
+
+- **What happens inside WhatsApp.** Message content, whether they ordered, what they spent.
+- **Walk-ins who saw the ad.** Somebody searched, found you, and came in. Nothing connects those.
+- **Repeat customers.** The ad brought them once; the second order is unattributed.
+- **Word of mouth started by an ad.** One click, three customers, one recorded.
+
+The practical answer to all four is the same and it is unglamorous: **ask every enquiry how they found you, and write it down.** On a small budget that single question produces better data than any attribution model, because it captures exactly the paths tracking cannot see.
+
+## A workable monthly routine
+
+1. **Weekly:** read the search terms report, add negatives.
+2. **Weekly:** check tracked conversions against enquiries you actually received. A widening gap means the tracking or the definition is wrong.
+3. **Monthly:** reconcile against real orders and revenue. This is the number that decides whether the campaign is worth running.
+4. **Monthly:** review the "how did you find us" answers against what the account reports.
+5. **Quarterly:** full audit.
+
+That routine is more manual than an e-commerce account, and it is the honest version for a business whose sale does not finish on the website.
+
+## Where to go next
+
+[The full account audit](/blog/google-ads-audit-wasted-spend/) for where budget leaks, and [conversion tracking diagnostics](/blog/fix-google-ads-conversion-tracking/) if the numbers stopped making sense.
+
+For the local picture: [Google Ads in Lebanon](/google-ads-lebanon/), and [the burger shop build](/work/burger-shop/) for what a WhatsApp order path looks like in practice.

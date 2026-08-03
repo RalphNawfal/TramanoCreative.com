@@ -1,0 +1,134 @@
+---
+title: "How to Audit a Google Ads Account for Wasted Spend"
+seoTitle: "Auditing Google Ads for Wasted Spend"
+description: "The audit we run on every account we take over — search terms, match types, conversion actions, PMax. Where the money leaks and what to pause first."
+date: "2026-09-15"
+cluster: "ads"
+takeaways:
+  - "Start with the search terms report. It shows what people actually typed, as opposed to the keywords you bid on, and the gap between the two is where most waste lives."
+  - "Broad match without a solid negative keyword list is the single most expensive default in Google Ads."
+  - "Check that your conversion actions count what you actually want. An account optimising toward page views will efficiently buy you page views."
+  - "Performance Max hides its placements by default. You can get most of that visibility back through the placement report and a script."
+  - "Audit before you optimise. Changing bids on an account with broken tracking makes the data worse, not better."
+faqs:
+  - q: "How do I know if my Google Ads budget is being wasted?"
+    a: "Open the search terms report and read the last 30 days. If you see queries unrelated to what you sell, you are paying for them. Then check whether your conversion actions count enquiries rather than page views. Those two checks find most waste in most accounts, and both take under ten minutes."
+  - q: "What is a good click-through rate for Google Ads?"
+    a: "It depends heavily on industry and whether the terms are branded, so treat published benchmarks with suspicion. A more useful test is relative: compare your ad groups against each other. A group well below the others usually has a keyword-to-ad mismatch rather than a bad ad."
+  - q: "Should I use broad match keywords?"
+    a: "Only with a well-maintained negative keyword list and conversion tracking you trust. Broad match hands Google discretion over which searches you pay for, which works when the algorithm has good conversion data to learn from and burns money when it does not. Start on phrase match if tracking is new."
+  - q: "How often should a Google Ads account be audited?"
+    a: "Search terms weekly for the first two months, then monthly. A full structural audit quarterly, or immediately after any significant change in results. Accounts drift — Google adds features and changes defaults, and settings you never touched can start behaving differently."
+---
+
+Most wasted Google Ads spend comes from four places: search terms you never intended to bid on, conversion actions that count the wrong thing, campaign types with settings you did not choose, and budget sitting on keywords that have never produced an enquiry. This is the audit we run on every account we take over, in the order we run it.
+
+Work through it before changing any bids. Optimising an account with broken tracking makes the data worse rather than better.
+
+## Where does the money actually leak?
+
+Almost always in the gap between the keywords you bought and the searches you paid for.
+
+You bid on "web design Beirut". Google, on broad match, may also show your ad for "free website builder", "web design jobs", "how to design a website" and "web design course". Every one of those is a click you paid for from someone who was never going to hire you.
+
+That gap is invisible from the keywords tab. It is only visible in the search terms report, which is why that is step one.
+
+## Step 1: Read the search terms report
+
+**Where:** Campaigns → Insights and reports → Search terms. Set the date range to the last 30 days and sort by cost, descending.
+
+Read the top 50 by spend. For each, ask one question: *would I want this person to call me?*
+
+Three categories emerge, and each has a different fix:
+
+- **Relevant and converting.** Leave alone. Consider adding as an exact-match keyword in its own ad group.
+- **Relevant but not converting.** Do not pause yet — this may be a landing page problem rather than a keyword problem. Note it and check the page it lands on.
+- **Irrelevant.** Add as a negative keyword. This is the money you get back today.
+
+Common irrelevant patterns worth having as negatives from day one: `free`, `cheap`, `jobs`, `salary`, `course`, `tutorial`, `template`, `download`, `how to`, `DIY`, and the names of any large competitor you are not trying to conquest.
+
+## Step 2: Check what your conversions actually count
+
+**Where:** Goals → Conversions → Summary.
+
+This is the check that most often changes how an account performs, because an account optimising toward the wrong action will do it efficiently.
+
+Look at each conversion action and ask what it counts. Watch for:
+
+- **Page views counted as conversions.** A "thank you page view" is reasonable. "Any visit to the contact page" is not — you will buy visits to the contact page.
+- **Duplicate conversions.** The same enquiry counted by both a form submission and a page view, doubling your reported results and halving your apparent cost per lead.
+- **Actions marked Primary that should be Secondary.** Only what you actually want more of should be Primary. Newsletter signups and PDF downloads usually belong in Secondary.
+- **Nothing at all.** Accounts running without conversion tracking are optimising toward clicks, which Google will deliver.
+
+If tracking is broken, stop the audit and fix it first. Everything downstream depends on it, and [conversion tracking has its own diagnostic order](/blog/fix-google-ads-conversion-tracking/).
+
+## Step 3: Check match types and negatives
+
+**Where:** the Keywords tab, with the Match type column added.
+
+Broad match is the default and the most expensive one to get wrong. It hands Google discretion over which searches you pay for. That works when the algorithm has plenty of good conversion data to learn from, and burns money when it does not.
+
+Three practical rules:
+
+- **New accounts start on phrase match.** Move to broad only once conversion tracking has been reliable for a month or more.
+- **Every campaign needs a negative list.** If your negative keyword list is empty, that alone explains a large share of your waste.
+- **Watch for keywords competing with each other.** Two ad groups bidding on near-identical terms raises your own cost per click.
+
+## Step 4: Look at the segments — device, location, time
+
+**Where:** any campaign → Segment, or the Locations and Ad schedule tabs.
+
+Three splits that regularly reveal waste:
+
+**Device.** If mobile costs twice as much per conversion as desktop, that is usually a landing page problem, not an audience problem. Check the page on a phone before adjusting bids down. Adjusting the bid hides the symptom and keeps the cause.
+
+**Location.** Check the setting under Locations → Location options. The default in many accounts is "presence or interest", which shows your ads to people *interested in* your area rather than in it. For a local business that can mean paying for clicks from other countries. "Presence" is usually what you meant.
+
+**Time.** If you are a restaurant closing at midnight, ads running at 4am are buying clicks nobody can act on. Ad schedules are underused.
+
+## Step 5: Open up Performance Max
+
+PMax is the campaign type most likely to be spending money you cannot see, because its reporting is deliberately thin.
+
+What to check:
+
+- **Brand terms.** Without brand exclusions, PMax will often take credit for people searching your own business name — traffic you would have got for free. Add brand exclusions and watch what happens to reported conversions.
+- **The placement report.** Campaigns → Insights and reports → When and where ads showed. It is less detailed than a normal display placement report but shows the worst offenders.
+- **Asset group performance.** Weak assets drag the whole campaign, and PMax will not tell you plainly which ones.
+- **Whether it should exist at all.** PMax needs conversion volume to learn from. On a small account with a handful of conversions a month, a well-built search campaign usually outperforms it and is far easier to diagnose.
+
+## Step 6: Match the landing page to the ad
+
+Not a settings check, and often the largest single gain available.
+
+Google scores how closely your landing page matches the ad and the search behind it. A better score means you pay less per click for the same position — so a mismatched page costs you twice, once in conversion rate and once in click price.
+
+The test: read the search term, then look at the page it lands on. Does the page answer that exact question in the first screen? If someone searched for one specific service and landed on your homepage, the answer is no. [Why landing pages beat homepages](/google-ads-lebanon/) covers the mechanics.
+
+## What do you actually change first?
+
+In this order, because it maps to how quickly the money comes back:
+
+1. **Add negative keywords** from the search terms report. Same-day saving.
+2. **Fix conversion tracking** if anything looked wrong. Everything else depends on it.
+3. **Fix the location setting** if it was on "presence or interest" and you are local.
+4. **Pause keywords** with significant spend and no conversions over a meaningful period — at least 100 clicks or a month, whichever comes first.
+5. **Then, and only then, adjust bids.**
+
+Resist reorganising the account structure on day one. It is satisfying and it resets the algorithm's learning, which costs you two weeks of performance for a benefit you have not yet proven you need.
+
+## What if the account is small?
+
+Most advice assumes budgets that most businesses do not have. On a small account:
+
+- **Fewer campaigns, not more.** Splitting a small budget across six campaigns starves all of them and none ever accumulates enough data to optimise.
+- **Ignore most automated bidding.** Smart bidding needs conversion volume. Below roughly 30 conversions a month, manual or enhanced CPC is often more predictable.
+- **Check weekly, change fortnightly.** Small accounts are noisy, and reacting to noise is its own form of waste.
+
+## How we work
+
+We audit before proposing anything, and the management fee is a fixed monthly number for a defined scope — never a percentage of your ad spend, because that model rewards an agency for spending more of your money. You own the account and pay Google directly.
+
+If you want the audit run on your account, [ask](/contact/). We will tell you what we find, including if the answer is that it is already well run.
+
+More on this in practice: [Google Ads in Lebanon](/google-ads-lebanon/), and [why your cost per click went up](/blog/why-did-my-cost-per-click-go-up/) if that is the specific thing that brought you here.
