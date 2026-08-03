@@ -6,7 +6,7 @@ import JsonLd from "@/components/seo/JsonLd";
 import Breadcrumbs from "@/components/seo/Breadcrumbs";
 import Faq, { faqPageSchema } from "@/components/ui/Faq";
 import KeyTakeaways from "@/components/blog/KeyTakeaways";
-import { getAllPosts, getPost } from "@/lib/blog";
+import { getAllPosts, getPost, unlinkScheduled } from "@/lib/blog";
 import { site } from "@/lib/site";
 
 export function generateStaticParams() {
@@ -168,7 +168,13 @@ export default async function BlogPost({
               </div>
             )}
             <div className="mt-16 space-y-6 text-[17px] leading-[1.75] text-grey [&_a]:text-signal [&_a]:underline [&_a]:underline-offset-4 [&_h2]:mt-14 [&_h2]:font-display [&_h2]:text-[1.75rem] [&_h2]:font-semibold [&_h2]:leading-snug [&_h2]:tracking-[-0.015em] [&_h2]:text-white [&_h3]:mt-10 [&_h3]:font-display [&_h3]:text-xl [&_h3]:font-semibold [&_h3]:text-white [&_li]:ml-5 [&_li]:list-disc [&_strong]:text-white">
-              <MDXRemote source={post.content} />
+              {/*
+                Links to posts that haven't published yet are flattened to
+                plain text and restored automatically once they do — see
+                unlinkScheduled. Without it a pillar ships 404s to its own
+                supports for weeks.
+              */}
+              <MDXRemote source={unlinkScheduled(post.content)} />
             </div>
 
             {post.faqs && post.faqs.length > 0 && (

@@ -64,6 +64,26 @@ scripts/prep-blog-og.mjs    Per-post share cards. Re-run after adding a post.
 Share cards are committed PNGs, not a generated route, so a new post otherwise
 ships pointing at an image that doesn't exist.
 
+## Scheduled publishing
+
+Posts publish by their `date:` frontmatter. A post dated in the future is not
+built at all — no route, no sitemap entry, no card on the index. Commit the
+whole queue whenever you like; each post appears on its date.
+
+Three things make that work, and breaking any one of them breaks it silently:
+
+- **`getAllPosts()` in `src/lib/blog.ts`** filters out future dates.
+- **The daily cron in `.github/workflows/deploy.yml`** rebuilds at 06:00 UTC.
+  Publication happens at *build* time, not at midnight, so without a scheduled
+  build a post sits unpublished until someone pushes something else.
+- **`unlinkScheduled()`** flattens links pointing at unpublished posts to plain
+  text, and `isScheduledHref()` drops them from `related` blocks. Write internal
+  links normally on day one; they activate on their own. Without this, a pillar
+  ships 404s to its own supports for weeks.
+
+To preview the queue locally, `getAllPosts(true)` includes scheduled posts.
+Never call it from a page.
+
 **To add the founders photo:** drop it at `public/team/founders.jpg` (roughly
 4:5). The homepage checks for it at build time and swaps the placeholder plate
 automatically — no code change.
