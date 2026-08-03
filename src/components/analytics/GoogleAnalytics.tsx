@@ -18,7 +18,12 @@ export default function GoogleAnalytics() {
   const id = site.analytics.ga4MeasurementId;
   const consent = useConsent();
 
-  if (!id || consent !== "granted") return null;
+  // With `requireConsent: false` the tag loads for everyone and no banner is
+  // shown. The privacy policy carries the disclosure instead — see the note on
+  // that flag in src/lib/site.ts before changing this.
+  const allowed = site.analytics.requireConsent ? consent === "granted" : true;
+
+  if (!id || !allowed) return null;
 
   return (
     <>

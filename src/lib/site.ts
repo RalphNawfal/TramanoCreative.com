@@ -69,22 +69,33 @@ export const site = {
      * at all until a visitor accepts. Setting this ID is what makes the
      * consent banner and the cookie sections of the privacy policy appear.
      *
-     * Deliberately empty. GA4 was removed to get rid of the consent banner,
-     * which is the only honest way to remove one — a banner exists because
-     * cookies are being set, so the fix is to stop setting them, not to stop
-     * asking. Everything downstream is derived, so clearing this ID removed
-     * the banner and the cookie sections of the privacy policy on its own.
-     *
-     * What it costs: no `generate_lead` import into Google Ads as a
-     * conversion. If this site ever runs paid traffic to itself and needs
-     * conversion tracking, that tag sets cookies too and the banner comes
-     * back with it. That is the trade, and it is a real one.
-     *
-     * To restore: analytics.google.com → Admin → Data streams → Web → your
-     * stream → Measurement ID. The banner and policy sections return
-     * automatically.
+     * Get it: analytics.google.com → Admin → Data streams → Web → your
+     * stream → Measurement ID. Link the property to Google Ads under Admin →
+     * Product links if you want `generate_lead` importable as a conversion.
      */
-    ga4MeasurementId: "" as string,
+    ga4MeasurementId: "G-T8WWNZEN8P" as string,
+
+    /**
+     * Whether GA4 waits for consent before loading.
+     *
+     * `false` means it loads for everyone on first paint, with no banner. That
+     * is a deliberate decision, not an oversight, and it comes with a
+     * condition: the privacy policy must describe exactly what is set, and it
+     * does — see the `askConsent === false` branch in src/app/privacy/page.tsx,
+     * which names both cookies, their lifetime, and three ways to opt out.
+     * Turning this off without updating that page would make the policy false.
+     *
+     * What disclosure does not solve: the EU/UK ePrivacy rules require prior
+     * consent for storing anything non-essential on a device, and analytics
+     * cookies are not essential. Disclosure satisfies the honesty question and
+     * not the legal one for European visitors. Primary markets here are
+     * Lebanon and the UAE, where notice is the operative standard, so this is
+     * an accepted, informed risk rather than an unnoticed one.
+     *
+     * Set to `true` and the banner, the consent gate and the consent sections
+     * of the policy all return together.
+     */
+    requireConsent: false,
   },
 
   /**
