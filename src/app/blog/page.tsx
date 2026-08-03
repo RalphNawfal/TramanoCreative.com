@@ -26,6 +26,7 @@ const CLUSTERS: Record<string, string> = {
   cost: "Cost & buying",
   speed: "Speed & performance",
   search: "Search & AI visibility",
+  ads: "Google Ads",
 };
 
 export default function BlogIndex() {
