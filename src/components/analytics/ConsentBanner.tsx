@@ -1,8 +1,9 @@
 "use client";
 
+import { useEffect } from "react";
 import Link from "next/link";
 import { site } from "@/lib/site";
-import { setConsent, useConsent } from "@/lib/consent";
+import { purgeStoredConsent, setConsent, useConsent } from "@/lib/consent";
 
 /**
  * Shown only when GA4 is configured and the visitor hasn't chosen yet.
@@ -17,10 +18,19 @@ import { setConsent, useConsent } from "@/lib/consent";
  */
 export default function ConsentBanner() {
   const consent = useConsent();
+  const analyticsDisabled = !site.analytics.ga4MeasurementId;
+
+  // With analytics off there is nothing to consent to, so any stored choice is
+  // a leftover from when there was. Clear it, or the privacy policy's flat
+  // claim that this site stores nothing on your device is false for anyone who
+  // visited before the change.
+  useEffect(() => {
+    if (analyticsDisabled) purgeStoredConsent();
+  }, [analyticsDisabled]);
 
   // "unknown" during prerender and first hydration pass, so the static HTML
   // ships no banner and nobody who already answered sees one flash past.
-  if (!site.analytics.ga4MeasurementId || consent !== "unset") {
+  if (analyticsDisabled || consent !== "unset") {
     return null;
   }
 
