@@ -6,6 +6,7 @@ import Spotlight from "@/components/ui/Spotlight";
 import Faq from "@/components/ui/Faq";
 import JsonLd from "./JsonLd";
 import Breadcrumbs from "./Breadcrumbs";
+import { isScheduledHref } from "@/lib/blog";
 import { site } from "@/lib/site";
 
 export type MarketFaq = { q: string; a: string };
@@ -170,13 +171,15 @@ export default function MarketPage({
               there is no category level between it and the questions here. */}
           <Faq items={faqs} questionAs="h2" className="max-w-3xl" />
 
-          {related.length > 0 && (
+          {/* A related link to an unpublished post is a 404. Drop it until the
+              post's date arrives; the next build brings it back. */}
+          {related.filter((r) => !isScheduledHref(r.href)).length > 0 && (
             <div className="mt-16 max-w-3xl border-t border-edge pt-10">
               <h2 className="font-display text-xl uppercase leading-none">
                 Related
               </h2>
               <ul className="mt-8 grid gap-6 md:grid-cols-2">
-                {related.map((r) => (
+                {related.filter((r) => !isScheduledHref(r.href)).map((r) => (
                   <li key={r.href}>
                     <Link
                       href={r.href}

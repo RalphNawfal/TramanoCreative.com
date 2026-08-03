@@ -83,14 +83,81 @@ function parse(slug: string, raw: string): Post {
   };
 }
 
-export function getAllPosts(): PostMeta[] {
+/**
+ * Today in UTC, as `YYYY-MM-DD`, for comparing against frontmatter dates.
+ *
+ * String comparison rather than Date maths: both sides are ISO dates, which
+ * sort correctly as strings, and it sidesteps the timezone question of what
+ * "published on the 4th" means when the build runs on a US-hosted runner.
+ */
+function today() {
+  return new Date().toISOString().slice(0, 10);
+}
+
+/**
+ * Every post whose publish date has arrived.
+ *
+ * A post dated in the future is excluded from the index, the sitemap, and
+ * `generateStaticParams` — so it isn't built at all and has no URL to find.
+ * That is what makes scheduling real on a static export: without this, a
+ * future `date` is decoration and the post is live the moment it is committed.
+ *
+ * The catch worth knowing: publication happens at BUILD time, not at midnight.
+ * A scheduled post appears on the next build after its date. The daily cron in
+ * .github/workflows/deploy.yml exists for exactly this reason — remove it and
+ * scheduled posts sit unpublished until someone happens to push.
+ *
+ * `includeScheduled` is for local previewing. Never use it in a page.
+ */
+export function getAllPosts(includeScheduled = false): PostMeta[] {
+  const now = today();
   return fs
     .readdirSync(BLOG_DIR)
     .filter((f) => f.endsWith(".mdx"))
     .map((f) =>
       parse(f.replace(/\.mdx$/, ""), fs.readFileSync(path.join(BLOG_DIR, f), "utf8")),
     )
+    .filter((post) => includeScheduled || post.date <= now)
     .sort((a, b) => (a.date < b.date ? 1 : -1));
+}
+
+/** Posts still waiting for their date. Build tooling only. */
+export function getScheduledPosts(): PostMeta[] {
+  const now = today();
+  return getAllPosts(true).filter((p) => p.date > now);
+}
+
+/**
+ * True if `href` points at a blog post that hasn't published yet.
+ *
+ * Scheduling creates a problem that isn't obvious until it bites: a published
+ * pillar links down to its supports, and those supports don't exist for weeks.
+ * Left alone that ships real 404s on the highest-traffic pages on the site.
+ */
+export function isScheduledHref(href: string): boolean {
+  const m = /^\/blog\/([a-z0-9-]+)\/?$/.exec(href);
+  if (!m) return false;
+  return getScheduledPosts().some((p) => p.slug === m[1]);
+}
+
+/**
+ * Removes markdown links that point at unpublished posts, keeping the text.
+ *
+ * `[Core Web Vitals](/blog/core-web-vitals-explained/)` becomes plain
+ * "Core Web Vitals" until that post's date arrives, at which point the next
+ * build restores the link automatically.
+ *
+ * Chosen over the alternatives deliberately: stripping the sentence loses
+ * meaning, and leaving the link ships a 404. Authors get to write the internal
+ * links properly on day one and forget about the schedule entirely.
+ */
+export function unlinkScheduled(markdown: string): string {
+  const scheduled = new Set(getScheduledPosts().map((p) => p.slug));
+  if (scheduled.size === 0) return markdown;
+  return markdown.replace(
+    /\[([^\]]+)\]\(\/blog\/([a-z0-9-]+)\/?\)/g,
+    (whole, text: string, slug: string) => (scheduled.has(slug) ? text : whole),
+  );
 }
 
 export function getPost(slug: string): Post {
