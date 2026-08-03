@@ -70,9 +70,18 @@ automatically — no code change.
 
 ## Rules that aren't negotiable
 
+**This repo is tramanocreative.com and nothing else.** No client project files,
+no client source, no raw client captures — not even temporarily. Client work
+lives in its own folder. The only client-derived things here are the anonymised
+case-study screenshots in `public/work/`, which are marketing assets for this
+site rather than deliverables for anyone else.
+
 **Client work is anonymous.** No client names, no links to client sites, and
-screenshots cropped so no wordmark or phone number survives. The constraint and
-its one permitted exception are documented at the top of `src/lib/work.ts`.
+screenshots cropped so no wordmark or phone number survives. "Not in copy, not
+in filenames" includes committed scripts — `scripts/prep-*.mjs` refer to source
+captures by the published anonymous slug, never by the client's name. The
+constraint and its one permitted exception are documented at the top of
+`src/lib/work.ts`.
 
 **No invented numbers.** Nothing in `src/lib/case-studies.ts` may be a
 projection, an industry average, or a figure someone mentioned on a call. Every

@@ -11,6 +11,11 @@
 // rect below was measured against the raw capture — if you recapture at a
 // different viewport, remeasure rather than assuming these still hold.
 //
+// Source filenames use the published anonymous slug, never the client's name.
+// The rule in src/lib/work.ts is "not in copy, not in filenames", and it applies
+// to a committed script exactly as it applies to a page — both are public. Keep
+// the raw captures themselves outside this repo entirely.
+//
 // Run from the repo root with the raw captures present:
 //   node scripts/prep-case-shots.mjs
 import sharp from "sharp";
@@ -21,7 +26,7 @@ const OUT = path.join(process.cwd(), "public", "work", "burger-shop");
 
 const shots = [
   {
-    src: "jsbite-menu-raw.png",
+    src: "burger-shop-menu-raw.png",
     out: "menu-desktop.webp",
     // top 62 drops the nav row and its wordmark; height stops at 610 so the
     // third card row — which contains an item named after the shop — is out.
@@ -29,7 +34,7 @@ const shots = [
     extract: { left: 0, top: 62, width: 1440 - 18, height: 548 },
   },
   {
-    src: "jsbite-cart-raw.png",
+    src: "burger-shop-cart-raw.png",
     out: "cart-mobile.webp",
     // The drawer only occupies x 22–378. Cropping to it removes the sliver of
     // the page behind, which included part of the header.

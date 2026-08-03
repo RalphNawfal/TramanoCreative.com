@@ -18,8 +18,8 @@ const OUT = path.join(process.cwd(), "public", "work");
 // bottom = pixels to remove from the bottom (kills anything identifying low in the frame)
 // right = scrollbar trim
 const shots = [
-  { src: "jsbite-desktop.png", out: "reel-01-desktop.webp", top: 74, bottom: 0, right: 16 },
-  { src: "jsbite-mobile.png", out: "reel-01-mobile.webp", top: 60, bottom: 0, right: 12 },
+  { src: "burger-shop-desktop.png", out: "reel-01-desktop.webp", top: 74, bottom: 0, right: 16 },
+  { src: "burger-shop-mobile.png", out: "reel-01-mobile.webp", top: 60, bottom: 0, right: 12 },
   { src: "build-01-desktop.png", out: "reel-02-desktop.webp", top: 74, bottom: 0, right: 16 },
   { src: "build-01-mobile.png", out: "reel-02-mobile.webp", top: 58, bottom: 0, right: 12 },
   { src: "build-02-desktop.png", out: "reel-03-desktop.webp", top: 66, bottom: 0, right: 16 },
