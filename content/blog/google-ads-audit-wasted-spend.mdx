@@ -1,7 +1,7 @@
 ---
 title: "How to Audit a Google Ads Account for Wasted Spend"
 seoTitle: "Auditing Google Ads for Wasted Spend"
-description: "The audit we run on every account we take over — search terms, match types, conversion actions, PMax. Where the money leaks and what to pause first."
+description: "The eleven-step audit we run on every account we take over, in order — search terms, tracking, match types, PMax, structure, bidding, budget. Plus a 30-minute version and a scoring table."
 date: "2026-09-15"
 cluster: "ads"
 takeaways:
@@ -19,9 +19,17 @@ faqs:
     a: "Only with a well-maintained negative keyword list and conversion tracking you trust. Broad match hands Google discretion over which searches you pay for, which works when the algorithm has good conversion data to learn from and burns money when it does not. Start on phrase match if tracking is new."
   - q: "How often should a Google Ads account be audited?"
     a: "Search terms weekly for the first two months, then monthly. A full structural audit quarterly, or immediately after any significant change in results. Accounts drift — Google adds features and changes defaults, and settings you never touched can start behaving differently."
+  - q: "How long does a Google Ads audit take?"
+    a: "A full eleven-step pass on a small account takes two to three hours, most of it reading rather than changing. Large accounts with many campaigns take a day. The abbreviated version — search terms, conversion actions, location settings, campaign list — takes half an hour and finds the majority of the waste in most accounts."
+  - q: "What date range should I audit?"
+    a: "Thirty to ninety days. Seven days on a small account is noise, and you will chase random variation. If you are checking whether something specific broke, compare the thirty days before and after the date it changed rather than looking at one window."
+  - q: "Should I fix problems as I find them?"
+    a: "Read the whole account first, then act. Half the findings in a typical audit share a single underlying cause — usually broken tracking or an unmaintained negative list — and fixing that once resolves several symptoms. Changing things mid-audit also means the data you are still reading no longer describes the account you have."
+  - q: "What is the first thing to change after an audit?"
+    a: "Negative keywords from the search terms report. It is the only change that saves money the same day and carries no risk of disrupting what already works. Everything else — bids, structure, bidding strategy — should wait until tracking is confirmed accurate."
 ---
 
-Most wasted Google Ads spend comes from four places: search terms you never intended to bid on, conversion actions that count the wrong thing, campaign types with settings you did not choose, and budget sitting on keywords that have never produced an enquiry. This is the audit we run on every account we take over, in the order we run it.
+Most wasted Google Ads spend comes from four places: search terms you never intended to bid on, conversion actions that count the wrong thing, campaign types with settings you did not choose, and budget sitting on keywords that have never produced an enquiry. This is the audit we run on every account we take over, in the order we run it — eleven steps, ordered so the fastest savings come first and each step's findings stay usable for the next. If a full pass is not realistic today, the abbreviated four-check version near the end finds most of the waste in half an hour, and the scoring list after it is for tracking an account over time.
 
 Work through it before changing any bids. Optimising an account with broken tracking makes the data worse rather than better.
 
@@ -104,6 +112,94 @@ Not a settings check, and often the largest single gain available.
 Google scores how closely your landing page matches the ad and the search behind it. A better score means you pay less per click for the same position — so a mismatched page costs you twice, once in conversion rate and once in click price.
 
 The test: read the search term, then look at the page it lands on. Does the page answer that exact question in the first screen? If someone searched for one specific service and landed on your homepage, the answer is no. [Why landing pages beat homepages](/google-ads-lebanon/) covers the mechanics.
+
+## Step 7: Account structure
+
+**Where:** the campaign list, then Ad groups, with the Keywords column visible.
+
+Structure problems do not waste money as visibly as a bad search term, but they make every other problem harder to see and slower to fix.
+
+- **Ad groups covering too many themes.** The test: can you write one ad that is genuinely relevant to every keyword in the group? If not, the group is too broad, and Ad relevance will show it.
+- **Campaigns split for no reason.** Separate campaigns are for things needing separate budgets, locations or schedules. Splitting by theme alone belongs at ad group level.
+- **Single-keyword ad groups everywhere.** A fashion a few years ago, and mostly counterproductive now — it starves each group of data.
+- **Branded and non-branded in the same campaign.** Brand terms are cheap and convert well. Mixed in with cold traffic, they flatter the campaign average and hide that the non-brand half is failing.
+- **Orphaned campaigns.** Paused-then-unpaused campaigns from a previous manager, still spending. Sort the campaign list by cost and check you recognise everything in it.
+
+## Step 8: Read the ads and assets
+
+**Where:** the Ads tab, with the Ad strength column added.
+
+- **How many ads per group?** Fewer than two and there is nothing to compare. Three responsive search ads is plenty.
+- **Ad strength below "Good".** Not a ranking factor in itself, but a reliable flag for thin or repetitive headlines.
+- **Pinned headlines everywhere.** Pinning every asset removes the testing that makes responsive ads work. Pin the one thing that must always appear — a price qualifier, a location — and let the rest rotate.
+- **Missing sitelinks, callouts and structured snippets.** These are free extra space on the results page and free extra reasons to click. An account without them is buying a smaller ad for the same money.
+- **Call assets with no schedule.** A phone number showing while you are closed generates missed calls, which cost the same as answered ones.
+- **Ad text that does not repeat the keyword.** The closer the ad language matches the search, the better the relevance score, and the less you pay.
+
+## Step 9: Audiences and remarketing
+
+**Where:** Campaigns → Audiences.
+
+- **Observation vs Targeting.** Set to Targeting, an audience restricts who sees your ads — often applied accidentally, and it can throttle a campaign to near-zero impressions. Observation is usually what was meant.
+- **No remarketing list at all.** The cheapest traffic available is people who already visited. If no list exists, nothing is being collected, and you cannot build a list retroactively.
+- **Remarketing with no frequency cap.** Following the same person around the internet forty times a week does not make them likelier to call.
+- **Customer lists never uploaded.** If you have a list of past customers, it is both an audience and an exclusion — useful for repeat business, and useful for excluding people who already bought.
+
+## Step 10: Bidding strategy
+
+**Where:** Campaign → Settings → Bidding, then Tools → Change history.
+
+- **Smart bidding on thin data.** Below roughly 30 conversions a month, the algorithm is guessing. Manual or enhanced CPC is more predictable until volume arrives.
+- **Target CPA set too high.** It reads as permission to pay far more per click than you intended. Set it near your actual historical cost per acquisition, not your hoped-for one.
+- **Target ROAS on an account that cannot measure revenue.** If conversions have no values attached, a revenue target is optimising against nothing.
+- **Strategy changed recently.** Check the change history. A CPC shift right after a bidding change is the strategy working as designed, not a problem to solve.
+- **Portfolio strategies nobody remembers creating.** These sit above campaigns and quietly override what you set at campaign level.
+
+## Step 11: Budget and allocation
+
+**Where:** the campaign list, sorted by cost, with Search impression share and Search lost IS (budget) added as columns.
+
+- **Budget-limited campaigns that convert well.** "Limited by budget" on your best campaign is the easiest win in the account — that is proven demand you are declining.
+- **Full budget on campaigns that never convert.** The opposite problem, and more common.
+- **Shared budgets hiding the picture.** Convenient, but they make per-campaign spend hard to reason about during an audit.
+- **Impression share lost to rank rather than budget.** A different problem with a different fix: rank means relevance and bid, not money.
+- **Seasonal budgets nobody reset.** A raise for a busy period that stayed raised.
+
+## The 30-minute version
+
+If a full pass is not realistic, these four checks find most of the waste in most accounts:
+
+1. **Search terms report, last 30 days, sorted by cost.** Read the top 20. Add negatives. (10 minutes, immediate saving.)
+2. **Goals → Conversions.** Confirm each action counts an enquiry, not a page view, and that nothing is double-counted. (5 minutes.)
+3. **Locations → Location options.** Change "presence or interest" to "presence" if you are a local business. (2 minutes.)
+4. **Campaign list sorted by cost.** Check you recognise every line, and look for "Limited by budget" on anything profitable. (10 minutes.)
+
+## Scoring the account
+
+Score each category out of 5, where 5 means no action needed and 1 means it is actively costing money. What a 5 looks like:
+
+- **Search terms** — reviewed within the last month, negatives applied.
+- **Conversion tracking** — one action per outcome, no duplicates, everything firing.
+- **Match types** — deliberate rather than default, with a maintained negative list.
+- **Segments** — location set to presence, schedule matching your opening hours.
+- **Performance Max** — brand excluded and placements reviewed, or not running at all.
+- **Landing pages** — each ad group points at a page that answers that search.
+- **Structure** — one theme per ad group, brand split from non-brand.
+- **Ads and assets** — two or three responsive search ads per group, sitelinks and callouts present.
+- **Audiences** — remarketing collecting, set to Observation rather than Targeting.
+- **Bidding** — strategy matched to the conversion volume actually available.
+- **Budget** — nothing profitable sitting at "Limited by budget".
+
+Anything scoring 1 or 2 goes on the fix list. The total out of 55 is only useful as a before-and-after measure — the individual low scores are what you act on.
+
+## Common audit mistakes
+
+- **Changing things while auditing.** Read the whole account first. Half the findings turn out to share one cause, and you will fix it once instead of six times.
+- **Auditing on too short a window.** Seven days of data on a small account is noise. Use 30 to 90 days.
+- **Trusting the conversion column before checking what it counts.** Every downstream judgement inherits that error.
+- **Restructuring on day one.** It resets the algorithm's learning and costs roughly two weeks of performance for a benefit you have not yet proven.
+- **Comparing to published benchmarks.** Industry averages blend branded and non-branded traffic across wildly different markets. Compare your ad groups against each other instead.
+- **Auditing the account but never the landing page.** Half of Quality Score lives on your website, not in the account.
 
 ## What do you actually change first?
 
