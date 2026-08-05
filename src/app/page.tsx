@@ -319,16 +319,26 @@ export default function Home() {
             <h2 className="font-display text-[clamp(1.9rem,5vw,3.75rem)] uppercase leading-[0.94]">
               We&apos;d rather tell you to walk than underdeliver.
             </h2>
+            {/*
+              The line under the heading carries it — white, not grey, because
+              it is the actual claim and the paragraphs below are only the
+              mechanics of honouring it.
+            */}
+            <p className="mt-8 max-w-[46ch] text-lg leading-[1.5] text-white md:text-xl">
+              If your business isn&apos;t the right fit, we&apos;ll say so
+              before you pay us anything.
+            </p>
             <p className="mt-8 max-w-[54ch] text-base leading-[1.65] text-grey md:text-lg">
               The first conversation is thirty to forty-five minutes, and it
-              costs nothing. We ask about your business, what&apos;s working,
-              and what you&apos;ve already tried. Sometimes the honest answer is
-              that you don&apos;t need a new website yet — and we&apos;ll say
-              so.
+              costs nothing. We ask what the business does, where the work
+              comes from now, and what you&apos;ve already tried. Mostly we
+              listen.
             </p>
             <p className="mt-6 max-w-[54ch] text-base leading-[1.65] text-grey md:text-lg">
               If there is a fit, you get a plain recommendation and a fixed
-              price before anyone commits to anything.
+              price before anyone commits to anything. If there isn&apos;t, you
+              still leave knowing what we&apos;d have built — and what we think
+              you should do instead.
             </p>
           </Reveal>
         </div>
