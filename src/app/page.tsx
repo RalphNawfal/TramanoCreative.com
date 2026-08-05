@@ -317,7 +317,7 @@ export default function Home() {
 
           <Reveal delay={0.15} className="md:col-span-7">
             <h2 className="font-display text-[clamp(1.9rem,5vw,3.75rem)] uppercase leading-[0.94]">
-              We&apos;d rather tell you no than sell you something.
+              We&apos;d rather tell you to walk than underdeliver.
             </h2>
             <p className="mt-8 max-w-[54ch] text-base leading-[1.65] text-grey md:text-lg">
               The first conversation is thirty to forty-five minutes, and it
