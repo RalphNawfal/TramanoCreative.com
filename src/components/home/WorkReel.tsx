@@ -85,7 +85,7 @@ function ReelItem({
         >
           <Image
             src={shot.desktop.src}
-            alt={`${shot.title} — desktop view`}
+            alt={shot.desktop.alt}
             width={shot.desktop.width}
             height={shot.desktop.height}
             sizes="(min-width: 768px) 58vw, 100vw"
@@ -118,7 +118,7 @@ function ReelItem({
             <div className="plate overflow-hidden">
               <Image
                 src={shot.mobile.src}
-                alt={`${shot.title} — mobile view`}
+                alt={shot.mobile.alt}
                 width={shot.mobile.width}
                 height={shot.mobile.height}
                 sizes="20vw"
