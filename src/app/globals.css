@@ -40,6 +40,47 @@ body {
 }
 
 /*
+ * Keyboard focus.
+ *
+ * The browser default is a 0.8px grey hairline, which on carbon is close to
+ * invisible — a keyboard user could tab the whole header without ever being
+ * sure where they were. Signal at 2px with an offset reads against every
+ * surface on the site, including the one full-blue block on the homepage.
+ *
+ * :focus-visible rather than :focus, so clicking a button doesn't leave a ring
+ * behind it. Anything wanting a different treatment can still override.
+ */
+:focus-visible {
+  outline: 2px solid var(--signal);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/*
+ * Skip link. Off-screen until focused, so it costs nothing visually and is the
+ * first thing a keyboard user reaches — otherwise every page starts with eight
+ * header controls between them and the content.
+ */
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 100;
+  background: var(--signal);
+  color: var(--carbon);
+  font-family: var(--font-geist-mono), ui-monospace, monospace;
+  font-size: 0.6875rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  padding: 0.85rem 1.25rem;
+  border-radius: 0 0 4px 0;
+}
+
+.skip-link:focus {
+  left: 0;
+}
+
+/*
  * The display voice. Archivo's wdth axis pushed to its 125 maximum is what
  * makes the headlines read as a poster rather than a default grotesque —
  * this is the single rule doing most of the visual work on the site.

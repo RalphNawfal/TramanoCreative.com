@@ -1,13 +1,14 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { site } from "@/lib/site";
 import CtaButton from "./CtaButton";
 
 export default function Nav() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const toggleRef = useRef<HTMLButtonElement>(null);
 
   // Transparent over the title card, solid once the trailer starts.
   useEffect(() => {
@@ -16,6 +17,23 @@ export default function Nav() {
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  /*
+   * Escape closes the menu and puts focus back on the button that opened it.
+   * Without the second half, dismissing the menu drops focus to <body> and the
+   * next Tab starts from the top of the document again.
+   */
+  useEffect(() => {
+    if (!open) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        setOpen(false);
+        toggleRef.current?.focus();
+      }
+    };
+    document.addEventListener("keydown", onKey);
+    return () => document.removeEventListener("keydown", onKey);
+  }, [open]);
 
   return (
     <header
@@ -47,9 +65,11 @@ export default function Nav() {
         </div>
 
         <button
+          ref={toggleRef}
           type="button"
           aria-label={open ? "Close menu" : "Open menu"}
           aria-expanded={open}
+          aria-controls="mobile-menu"
           onClick={() => setOpen(!open)}
           className="flex h-10 w-14 items-center justify-end text-white md:hidden"
         >
@@ -60,7 +80,10 @@ export default function Nav() {
       </nav>
 
       {open && (
-        <div className="border-t border-edge bg-carbon px-5 py-8 md:hidden">
+        <div
+          id="mobile-menu"
+          className="border-t border-edge bg-carbon px-5 py-8 md:hidden"
+        >
           <div className="flex flex-col gap-6">
             {site.nav.map((item) => (
               <Link
