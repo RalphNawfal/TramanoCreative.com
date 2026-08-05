@@ -387,7 +387,7 @@ export default function Home() {
             SC. 10 — Fade out
           </p>
           <h2 className="mt-8 max-w-[16ch] font-display text-[clamp(2.5rem,8vw,6.5rem)] uppercase leading-[0.9] text-carbon">
-            One honest call. Then you decide.
+            One call. Then you decide.
           </h2>
           <p className="mt-10 max-w-[46ch] text-base leading-[1.65] text-carbon/80 md:text-lg">
             No deck, no pressure, no follow-up sequence. Just a conversation

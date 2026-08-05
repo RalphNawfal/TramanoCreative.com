@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Section from "@/components/ui/Section";
 import Breadcrumbs from "@/components/seo/Breadcrumbs";
 import Reveal from "@/components/ui/Reveal";
@@ -30,6 +31,25 @@ const facts = [
   "Every project is a fixed price in US dollars, agreed before work starts. There is no hourly billing and no percentage of ad spend.",
   "A typical website launches 3 to 6 weeks after kickoff.",
   "Clients are primarily in Lebanon and the United Arab Emirates, and anywhere else remotely.",
+];
+
+/**
+ * Both portraits are cropped to an identical 4:5 at 720x900 so the two-up grid
+ * reads as one set. They were shot separately — different cameras, different
+ * nights — so a mild desaturation pulls the two colour temperatures closer
+ * together. Drop the `saturate` class if the pair ever gets reshot together.
+ */
+const founders = [
+  {
+    name: "Ralph Nawfal",
+    src: "/team/ralph-nawfal.webp",
+    alt: "Ralph Nawfal, co-founder of Tramano Creative, photographed in Beirut at night.",
+  },
+  {
+    name: "Ramy Al Housary",
+    src: "/team/ramy-al-housary.webp",
+    alt: "Ramy Al Housary, co-founder of Tramano Creative, photographed in Beirut at night.",
+  },
 ];
 
 const principles = [
@@ -91,6 +111,33 @@ export default function AboutPage() {
                 </li>
               ))}
             </ul>
+          </div>
+        </Reveal>
+        {/*
+          Deliberately narrower than the prose above it. Two portraits at full
+          page width would be the loudest thing on a page whose argument is
+          that the studio is small.
+        */}
+        <Reveal delay={0.15}>
+          <div className="mt-20 grid max-w-2xl gap-px overflow-hidden border border-edge bg-edge sm:grid-cols-2">
+            {founders.map((person) => (
+              <figure key={person.name} className="bg-carbon">
+                <Image
+                  src={person.src}
+                  alt={person.alt}
+                  width={720}
+                  height={900}
+                  sizes="(min-width: 640px) 20rem, 100vw"
+                  className="h-auto w-full saturate-[0.85]"
+                />
+                <figcaption className="p-6">
+                  <p className="font-display text-lg leading-snug tracking-[-0.015em] text-white">
+                    {person.name}
+                  </p>
+                  <p className="slate mt-2">Co-founder</p>
+                </figcaption>
+              </figure>
+            ))}
           </div>
         </Reveal>
       </Section>
