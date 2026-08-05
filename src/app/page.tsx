@@ -1,5 +1,3 @@
-import fs from "node:fs";
-import path from "node:path";
 import type { Metadata } from "next";
 import Image from "next/image";
 import SmoothScroll from "@/components/ui/SmoothScroll";
@@ -11,6 +9,7 @@ import Spotlight from "@/components/ui/Spotlight";
 import ZoomStory from "@/components/home/ZoomStory";
 import WorkReel from "@/components/home/WorkReel";
 import { reel } from "@/lib/work";
+import { founders } from "@/lib/team";
 import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -97,24 +96,6 @@ const pillars = [
   },
 ];
 
-
-/**
- * The founders photo, if it has been dropped in yet.
- *
- * Checked on disk at build time rather than hardcoded, so adding the photo is
- * copying a file into public/team/ — no code change, no risk of someone
- * wiring up an <Image> to a path that doesn't exist and breaking the build.
- * Until then the gradient plate below stands in.
- *
- * Roughly 4:5, warm light. A real photograph here is worth more than
- * everything written around it: the entire pitch is that there are two
- * specific people doing the work, and right now the page asks you to take
- * that on trust.
- */
-const FOUNDERS_PHOTO = "/team/founders.jpg";
-const hasFoundersPhoto = fs.existsSync(
-  path.join(process.cwd(), "public", FOUNDERS_PHOTO),
-);
 
 export default function Home() {
   return (
@@ -312,40 +293,26 @@ export default function Home() {
       {/* ── The founders ───────────────────────────────────────── */}
       <Section slate="SC. 09 — WHO YOU'D BE WORKING WITH">
         <div className="grid items-center gap-12 md:grid-cols-12 md:gap-16">
+          {/*
+            Two portraits side by side rather than one frame. Each keeps its
+            own 4:5 — fitting both into the single 4:5 plate that used to sit
+            here would squeeze each to 2:5 and crop the faces out of them.
+          */}
           <Reveal className="md:col-span-5">
-            <div className="relative aspect-[4/5] overflow-hidden border border-edge bg-carbon-card">
-              {hasFoundersPhoto ? (
+            <div className="grid grid-cols-2 gap-px overflow-hidden border border-edge bg-edge">
+              {founders.map((person) => (
                 <Image
-                  src={FOUNDERS_PHOTO}
-                  alt="Ralph Nawfal and Ramy Al Housary, the two people behind Tramano Creative, in Beirut"
-                  fill
-                  sizes="(min-width: 768px) 40vw, 100vw"
-                  className="object-cover"
+                  key={person.name}
+                  src={person.src}
+                  alt={person.alt}
+                  width={person.width}
+                  height={person.height}
+                  sizes="(min-width: 768px) 20vw, 50vw"
+                  className="h-auto w-full saturate-[0.85]"
                 />
-              ) : (
-                <div
-                  aria-hidden
-                  className="absolute inset-0"
-                  style={{
-                    background:
-                      "radial-gradient(ellipse 90% 70% at 30% 20%, rgba(63,123,255,0.20), transparent 65%)",
-                  }}
-                />
-              )}
-              <div className="absolute inset-0 flex items-end p-8">
-                <p
-                  className={`slate ${
-                    // Over a photograph the marker needs its own contrast; over
-                    // the flat plate it would just look like a stray box.
-                    hasFoundersPhoto
-                      ? "bg-carbon/70 px-3 py-2 backdrop-blur-sm"
-                      : ""
-                  }`}
-                >
-                  Ralph &amp; Ramy · Beirut
-                </p>
-              </div>
+              ))}
             </div>
+            <p className="slate mt-5">Ralph &amp; Ramy · Beirut</p>
           </Reveal>
 
           <Reveal delay={0.15} className="md:col-span-7">

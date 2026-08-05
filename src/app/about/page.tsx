@@ -4,6 +4,7 @@ import Section from "@/components/ui/Section";
 import Breadcrumbs from "@/components/seo/Breadcrumbs";
 import Reveal from "@/components/ui/Reveal";
 import CtaButton from "@/components/ui/CtaButton";
+import { founders } from "@/lib/team";
 import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -33,24 +34,14 @@ const facts = [
   "Clients are primarily in Lebanon and the United Arab Emirates, and anywhere else remotely.",
 ];
 
-/**
+/*
  * Both portraits are cropped to an identical 4:5 at 720x900 so the two-up grid
  * reads as one set. They were shot separately — different cameras, different
  * nights — so a mild desaturation pulls the two colour temperatures closer
- * together. Drop the `saturate` class if the pair ever gets reshot together.
+ * together. Drop the `saturate` class here and on the homepage if the pair
+ * ever gets reshot together. The list itself lives in src/lib/team.ts, since
+ * the homepage founders section renders the same two images.
  */
-const founders = [
-  {
-    name: "Ralph Nawfal",
-    src: "/team/ralph-nawfal.webp",
-    alt: "Ralph Nawfal, co-founder of Tramano Creative, photographed in Beirut at night.",
-  },
-  {
-    name: "Ramy Al Housary",
-    src: "/team/ramy-al-housary.webp",
-    alt: "Ramy Al Housary, co-founder of Tramano Creative, photographed in Beirut at night.",
-  },
-];
 
 const principles = [
   {
@@ -125,8 +116,8 @@ export default function AboutPage() {
                 <Image
                   src={person.src}
                   alt={person.alt}
-                  width={720}
-                  height={900}
+                  width={person.width}
+                  height={person.height}
                   sizes="(min-width: 640px) 20rem, 100vw"
                   className="h-auto w-full saturate-[0.85]"
                 />
@@ -134,7 +125,7 @@ export default function AboutPage() {
                   <p className="font-display text-lg leading-snug tracking-[-0.015em] text-white">
                     {person.name}
                   </p>
-                  <p className="slate mt-2">Co-founder</p>
+                  <p className="slate mt-2">{person.role}</p>
                 </figcaption>
               </figure>
             ))}
