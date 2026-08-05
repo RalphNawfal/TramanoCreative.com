@@ -78,7 +78,12 @@ export default function Footer() {
           <p className="font-mono text-[11px] tracking-[0.15em] text-grey-deep">
             © {new Date().getFullYear()} {site.name}.
           </p>
-          <ul className="flex flex-wrap items-center gap-x-6 gap-y-2">
+          {/*
+            gap-y-3 not gap-y-2: at 11px these links are ~14px tall, so 8px of
+            vertical gap left them a couple of pixels under the 24px minimum
+            target spacing once the row wraps on a phone.
+          */}
+          <ul className="flex flex-wrap items-center gap-x-6 gap-y-3">
             {site.legal.map((item) => (
               <li key={item.href}>
                 <Link

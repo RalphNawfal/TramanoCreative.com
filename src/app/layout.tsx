@@ -89,6 +89,14 @@ export default function RootLayout({
       className={`${archivo.variable} ${geist.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-carbon text-white">
+        {/*
+          First focusable element on every page, by position in the DOM. Has to
+          stay above SignalHud and Nav or it isn't the first thing tabbed to,
+          which is the entire point of it.
+        */}
+        <a href="#main" className="skip-link">
+          Skip to content
+        </a>
         <JsonLd
           data={{
             "@context": "https://schema.org",
@@ -179,7 +187,9 @@ export default function RootLayout({
         <SignalHud />
         <MotionProvider>
           <Nav />
-          <main className="flex-1">{children}</main>
+          <main id="main" className="flex-1">
+            {children}
+          </main>
           <Footer />
         </MotionProvider>
         <Attribution />

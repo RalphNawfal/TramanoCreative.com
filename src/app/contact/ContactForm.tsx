@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { site } from "@/lib/site";
 import { attributionFields } from "@/lib/attribution";
 import { track, LEAD_EVENT } from "@/lib/analytics";
@@ -15,6 +15,17 @@ export default function ContactForm() {
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">(
     "idle",
   );
+  const sentRef = useRef<HTMLDivElement>(null);
+
+  /*
+   * Success replaces the whole form, which drops keyboard focus back to
+   * <body> — a keyboard user is silently returned to the top of the document
+   * with no idea the send worked. Moving focus to the confirmation both
+   * announces it and leaves the next Tab somewhere sensible.
+   */
+  useEffect(() => {
+    if (status === "sent") sentRef.current?.focus();
+  }, [status]);
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -55,7 +66,12 @@ export default function ContactForm() {
 
   if (status === "sent") {
     return (
-      <div className="border border-edge bg-carbon-lift p-12 text-center">
+      <div
+        ref={sentRef}
+        tabIndex={-1}
+        role="status"
+        className="border border-edge bg-carbon-lift p-12 text-center"
+      >
         <p className="slate">Got it</p>
         <p className="mt-6 font-display text-3xl font-semibold leading-snug tracking-[-0.02em]">
           We&apos;ll write back within one business day.
@@ -65,7 +81,11 @@ export default function ContactForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-6">
+    <form
+      onSubmit={handleSubmit}
+      aria-busy={status === "sending"}
+      className="space-y-6"
+    >
       <div className="grid gap-6 sm:grid-cols-2">
         <div>
           <label htmlFor="name" className={labelClass}>
@@ -159,8 +179,17 @@ export default function ContactForm() {
         {status === "sending" ? "Sending…" : "Send message"}
       </button>
 
+      {/*
+        The button label changing to "Sending…" is invisible to a screen reader
+        on its own — the accessible name of the focused element doesn't get
+        re-announced when it changes underneath you. This says it out loud.
+      */}
+      <p className="sr-only" role="status">
+        {status === "sending" ? "Sending your message" : ""}
+      </p>
+
       {status === "error" && (
-        <p className="text-sm text-signal">
+        <p role="alert" className="text-sm text-signal">
           That didn&apos;t send. Email us directly at{" "}
           <a href={`mailto:${site.email}`} className="text-white underline">
             {site.email}
