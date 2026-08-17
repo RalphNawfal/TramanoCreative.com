@@ -49,15 +49,56 @@ export type MarketPageProps = {
   facts?: string[];
   /** Sibling market pages and topically relevant posts, linked in-content. */
   related?: MarketLink[];
+
+  /**
+   * FAQ section title. Defaults to `${areaServed}, specifically.`, which is
+   * right for a page segmented by geography and wrong for anything else — an
+   * industry page would head its restaurant questions "Lebanon, specifically."
+   *
+   * `IndustryPage` makes this required rather than optional, because a
+   * forgotten override here fails silently: the heading is simply wrong, and
+   * nothing errors.
+   */
+  faqTitle?: string;
+
+  /**
+   * Who the page is written for, when it is segmented by sector rather than by
+   * geography — "restaurants and cafés". Emits schema.org `audience`.
+   *
+   * Absent on the geographic market pages, where the audience genuinely is any
+   * business selling in that country, and a declared one would narrow the page
+   * for no reason.
+   */
+  audience?: string;
+
+  /** `Service.name` override. Defaults to `${serviceName} — ${areaServed}`. */
+  schemaName?: string;
+
+  /**
+   * The page above this one in the breadcrumb — for an industry page, the
+   * market page it sits under.
+   *
+   * The URLs are deliberately flat (see the route comments), so the hierarchy
+   * is declared here instead of encoded in the path. GitHub Pages has no
+   * redirect mechanism, which makes a URL that carries taxonomy a URL that
+   * can't be reorganised later without 404ing.
+   */
+  parentCrumb?: { href: string; name: string };
 };
 
 /**
- * Shared shell for the market pages.
+ * Shared shell for the market pages and the industry pages.
  *
- * Only the *chrome* is shared — every page passes its own genuinely
- * market-specific prose. Near-identical location pages are treated as doorway
- * pages and demoted, so this component deliberately has no default copy to
- * fall back on: if a page has nothing real to say, it can't be built.
+ * Only the *chrome* is shared — every page passes its own genuinely specific
+ * prose. Near-identical location pages are treated as doorway pages and
+ * demoted, so this component deliberately has no default copy to fall back on:
+ * if a page has nothing real to say, it can't be built.
+ *
+ * That rule carries over to the industry pages unchanged, and it is the whole
+ * reason they route through here rather than through a shell of their own. Four
+ * sector pages that are the Lebanon page with a noun swapped are the same
+ * doorway pattern as four thin neighbourhood pages, and would damage the pages
+ * that already rank. See IndustryPage.
  */
 export default function MarketPage({
   slate,
@@ -73,21 +114,41 @@ export default function MarketPage({
   faqs,
   facts = [],
   related = [],
+  faqTitle,
+  audience,
+  schemaName,
+  parentCrumb,
 }: MarketPageProps) {
   return (
     <>
-      <Breadcrumbs items={[{ name: breadcrumbName, href }]} />
+      <Breadcrumbs
+        items={[
+          ...(parentCrumb ? [parentCrumb] : []),
+          { name: breadcrumbName, href },
+        ]}
+      />
       <JsonLd
         data={{
           "@context": "https://schema.org",
           "@graph": [
             {
               "@type": "Service",
-              name: `${serviceName} — ${areaServed}`,
+              name: schemaName ?? `${serviceName} — ${areaServed}`,
               description: lead,
               serviceType: serviceName,
               provider: { "@id": `${site.url}/#organization` },
+              // Stays a Country even on an industry page: "web design for
+              // restaurants" is still offered *in Lebanon*, so this property is
+              // correct rather than a leftover. The sector goes in `audience`.
               areaServed: { "@type": "Country", name: areaServed },
+              ...(audience
+                ? {
+                    audience: {
+                      "@type": "BusinessAudience",
+                      audienceType: audience,
+                    },
+                  }
+                : {}),
               url: `${site.url}${href}`,
             },
             {
@@ -166,7 +227,11 @@ export default function MarketPage({
           </Spotlight>
         </Section>
 
-        <Section slate="Questions" eyebrow="FAQ" title={`${areaServed}, specifically.`}>
+        <Section
+          slate="Questions"
+          eyebrow="FAQ"
+          title={faqTitle ?? `${areaServed}, specifically.`}
+        >
           {/* h2 rather than h3: the section heading above is itself an h2, so
               there is no category level between it and the questions here. */}
           <Faq items={faqs} questionAs="h2" className="max-w-3xl" />

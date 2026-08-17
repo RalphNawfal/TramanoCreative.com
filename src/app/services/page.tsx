@@ -241,6 +241,31 @@ export default function ServicesPage() {
           </ul>
         </Section>
 
+        <Section slate="By industry" eyebrow="Who we build for" title="Different trade, different site.">
+          <p className="max-w-[58ch] text-lg leading-[1.65] text-grey">
+            A menu, a booking form, a spec sheet and a property listing are four
+            different problems wearing the same word. These pages cover what
+            actually changes between them.
+          </p>
+          <ul className="mt-12 border-t border-edge">
+            {site.industries.map((industry) => (
+              <li key={industry.href}>
+                <Link
+                  href={industry.href}
+                  className="group flex items-baseline justify-between gap-6 border-b border-edge py-7 transition-colors"
+                >
+                  <span className="font-display text-xl uppercase leading-[1] transition-colors group-hover:text-signal md:text-2xl">
+                    {industry.label}
+                  </span>
+                  <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-grey-deep transition-colors group-hover:text-signal">
+                    Read →
+                  </span>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </Section>
+
         <Section
           slate="Questions"
           eyebrow="FAQ"
