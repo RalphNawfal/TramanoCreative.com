@@ -1,5 +1,6 @@
 import { getAllPosts } from "@/lib/blog";
 import { caseStudies } from "@/lib/case-studies";
+import clusterData from "@/lib/clusters.json";
 import { site } from "@/lib/site";
 
 export const dynamic = "force-static";
@@ -24,23 +25,25 @@ export const dynamic = "force-static";
  * question.
  */
 
-/** Cluster keys to the headings used on the blog index. */
-const CLUSTER_LABELS: Record<string, string> = {
-  cost: "Cost and buying decisions",
-  speed: "Speed and performance",
-  search: "Search and AI visibility",
-  ads: "Google Ads",
-};
+/*
+ * Cluster keys, labels, ordering and pillars all come from
+ * src/lib/clusters.json — the one place they are declared. The labels here are
+ * the `long` variants, deliberately more descriptive than the markers on the
+ * blog index: this file is read by machines with no layout budget, so a fuller
+ * heading is free.
+ */
 
-const CLUSTER_ORDER = ["cost", "speed", "search", "ads"];
+/** Cluster keys to the headings used in this file. */
+const CLUSTER_LABELS: Record<string, string> = Object.fromEntries(
+  Object.entries(clusterData.clusters).map(([key, c]) => [key, c.long]),
+);
+
+const CLUSTER_ORDER = clusterData.order;
 
 /** The one substantial guide in each cluster; the rest support it. */
-const PILLARS = new Set([
-  "how-much-does-a-custom-website-cost",
-  "website-speed-google-rankings",
-  "ai-search-optimization-for-businesses",
-  "google-ads-audit-wasted-spend",
-]);
+const PILLARS = new Set(
+  Object.values(clusterData.clusters).map((c) => c.pillar),
+);
 
 function blogSection() {
   const posts = getAllPosts();

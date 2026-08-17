@@ -5,6 +5,7 @@ import Breadcrumbs from "@/components/seo/Breadcrumbs";
 import Reveal from "@/components/ui/Reveal";
 import JsonLd from "@/components/seo/JsonLd";
 import NewsletterSignup from "@/components/blog/NewsletterSignup";
+import clusterData from "@/lib/clusters.json";
 import { getAllPosts } from "@/lib/blog";
 import { site } from "@/lib/site";
 
@@ -22,13 +23,14 @@ export const metadata: Metadata = {
  * post per cluster, three headings over three single-item lists would be
  * scaffolding pretending to be structure. Once a cluster has three or four
  * posts, group the list by these instead.
+ *
+ * Read from src/lib/clusters.json rather than declared here, because the same
+ * key set is needed by /llms.txt and by scripts/prep-blog-og.mjs — and when it
+ * was written out three times, one copy silently fell behind.
  */
-const CLUSTERS: Record<string, string> = {
-  cost: "Cost & buying",
-  speed: "Speed & performance",
-  search: "Search & AI visibility",
-  ads: "Google Ads",
-};
+const CLUSTERS: Record<string, string> = Object.fromEntries(
+  Object.entries(clusterData.clusters).map(([key, c]) => [key, c.short]),
+);
 
 export default function BlogIndex() {
   const posts = getAllPosts();
