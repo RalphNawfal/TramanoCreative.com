@@ -38,6 +38,29 @@ export const site = {
   formspreeEndpoint: "https://formspree.io/f/xkolykzp",
 
   /**
+   * A second Formspree form, for newsletter subscriptions only.
+   *
+   * Separate from the enquiry form rather than the same endpoint with a
+   * different hidden `source` field, because the two have different retention
+   * rules: /privacy/ promises enquiries are deleted within 24 months, and a
+   * subscriber list has no such expiry. A `source` field separates the streams
+   * in the inbox but not in the stored archive, which would make that promise
+   * unkeepable and "delete my enquiry" ambiguous. Separate forms also let the
+   * subscribe confirmation autoresponse exist without attaching one to
+   * enquiries.
+   *
+   * Empty until the form is created, and empty means genuinely off in the same
+   * way the analytics tokens below do: no signup form renders, and the privacy
+   * policy's newsletter sections stay absent while its "we do not add you to a
+   * mailing list" statement stays unqualified. Fill this in and the policy
+   * relaxes exactly the claims it invalidates, automatically.
+   *
+   * Formspree captures the address; it does not send the newsletter. Whatever
+   * sends it is a fourth processor and has to be added to /privacy/ by hand.
+   */
+  formspreeNewsletterEndpoint: "" as string,
+
+  /**
    * Measurement and search-engine tokens.
    *
    * Every value here is public by design — verification meta tags and the
@@ -160,6 +183,7 @@ export const site = {
     "Google Ads",
     "Pay-per-click advertising",
     "Technical SEO",
+    "Local SEO",
     "Structured data",
     "Answer engine optimization",
     "Arabic and right-to-left web design",

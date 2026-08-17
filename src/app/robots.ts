@@ -27,13 +27,24 @@ const AI_CRAWLERS = [
   // retrieval input for several of the ones above, so blocking it would quietly
   // undo part of the list.
   "CCBot",
-  "Bingbot",
 ];
+
+/**
+ * Conventional search crawlers, named explicitly.
+ *
+ * The `*` rule already allows these, so these groups are redundant to a crawler
+ * and exist for the reader. Bing earns the mention because Copilot and ChatGPT
+ * search both read its index — see site.verification.bing — which makes it an
+ * answer-engine dependency even though the crawler itself isn't one. Googlebot
+ * is deliberately absent: there is nothing to say about it that `*` doesn't.
+ */
+const SEARCH_CRAWLERS = ["Bingbot"];
 
 export default function robots(): MetadataRoute.Robots {
   return {
     rules: [
       { userAgent: "*", allow: "/" },
+      ...SEARCH_CRAWLERS.map((userAgent) => ({ userAgent, allow: "/" })),
       ...AI_CRAWLERS.map((userAgent) => ({ userAgent, allow: "/" })),
     ],
     sitemap: `${site.url}/sitemap.xml`,

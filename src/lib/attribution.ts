@@ -1,5 +1,6 @@
 /**
- * First-touch attribution, carried through the contact form.
+ * First-touch attribution, carried through the contact form and the newsletter
+ * form.
  *
  * The goal is narrow and deliberately un-clever: when an enquiry lands in the
  * inbox, we want to know which page earned it and what brought that person to
@@ -15,8 +16,14 @@
  * follow someone from a blog post to the contact form, and it keeps the
  * privacy policy's "stores nothing on your device" claim literally true.
  *
- * Nothing here is sent anywhere until the visitor presses Send. If they never
- * submit the form, this data never leaves the browser.
+ * That claim is load-bearing, and the newsletter is where it would most
+ * plausibly be broken: do NOT add an "already subscribed" suppression flag or a
+ * double-opt-in token to localStorage. A repeat subscribe is harmless — Formspree
+ * de-duplicates on our side — and persisting anything here would turn a
+ * disclosed practice into an undisclosed one.
+ *
+ * Nothing here is sent anywhere until the visitor presses Send or Subscribe. If
+ * they submit neither form, this data never leaves the browser.
  */
 
 const UTM_KEYS = [
