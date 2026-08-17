@@ -15,6 +15,19 @@ declare global {
 /** GA4 reserved name for a qualified lead — maps to a conversion in Ads. */
 export const LEAD_EVENT = "generate_lead";
 
+/**
+ * A newsletter subscription.
+ *
+ * Deliberately not LEAD_EVENT. That event maps to a Google Ads conversion, and
+ * folding subscribers into it would corrupt the one number that decides ad
+ * spend — a free email address and a project enquiry are not the same thing and
+ * must not average together.
+ *
+ * Also not GA4's reserved `sign_up`, which implies an account being created.
+ * Nothing is created here, and the report should say what actually happened.
+ */
+export const NEWSLETTER_EVENT = "newsletter_signup";
+
 export function track(
   event: string,
   params: Record<string, string | number> = {},
