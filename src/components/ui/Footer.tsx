@@ -74,6 +74,30 @@ export default function Footer() {
           </ul>
         </div>
 
+        {/*
+          Industry pages — the internal links that carry commercial intent.
+          Below the markets block, not above it: someone scanning this should
+          meet the broader geographic list first, the same ordering principle
+          the markets array itself is arranged on. No "…and anything else" tail
+          line here — that one belongs to geography, and inviting sectors we
+          have no page for would point at nothing.
+        */}
+        <div className="mt-10 border-t border-edge pt-8">
+          <p className="slate">What we build</p>
+          <ul className="mt-5 flex flex-wrap gap-x-8 gap-y-3">
+            {site.industries.map((industry) => (
+              <li key={industry.href}>
+                <Link
+                  href={industry.href}
+                  className="text-sm text-grey transition-colors hover:text-signal"
+                >
+                  {industry.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+
         <div className="mt-12 flex flex-col items-start justify-between gap-5 border-t border-edge pt-8 md:flex-row md:items-center">
           <p className="font-mono text-[11px] tracking-[0.15em] text-grey-deep">
             © {new Date().getFullYear()} {site.name}.

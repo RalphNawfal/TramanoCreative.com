@@ -139,7 +139,7 @@ export default function Page() {
         },
         {
           q: "Do you build sites for restaurants and cafés in Beirut?",
-          a: "Yes, and it is the category where the ordering path matters most. A menu that takes three taps to reach, or a checkout that cannot take payment, loses the order to the place next door. Our live build is a Beirut food business and the case study covers exactly those decisions.",
+          a: "Yes, and it is the category where the ordering path matters most. A menu that takes three taps to reach, or a checkout that cannot take payment, loses the order to the place next door. Our live build is a Beirut food business and the case study covers exactly those decisions. There is a page on restaurant sites specifically, linked below.",
         },
         {
           q: "What if I only have an Instagram and a WhatsApp number?",
@@ -158,6 +158,12 @@ export default function Page() {
           label: "Web design in Lebanon",
           blurb:
             "The wider picture — connectivity, trilingual layouts, currency, and what the local agency market gets wrong.",
+        },
+        {
+          href: "/restaurant-website-design-lebanon/",
+          label: "Restaurant and café websites",
+          blurb:
+            "Why a photographed menu is invisible, what Instagram can't do, and the aggregator-versus-direct margin question.",
         },
         {
           href: "/seo-lebanon/",

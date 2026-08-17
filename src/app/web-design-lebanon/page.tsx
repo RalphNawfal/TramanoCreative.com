@@ -127,6 +127,18 @@ export default function Page() {
       ]}
       related={[
         {
+          href: "/restaurant-website-design-lebanon/",
+          label: "Restaurant and café websites",
+          blurb:
+            "The sector page: menus that can be read, ordering that ends on WhatsApp, and hours that stay true.",
+        },
+        {
+          href: "/ecommerce-website-design-lebanon/",
+          label: "Online shops and retail",
+          blurb:
+            "Dual-currency pricing, stock you can keep honest without an ERP, and when a hosted platform is the better answer.",
+        },
+        {
           href: "/web-design-beirut/",
           label: "Web design in Beirut",
           blurb:

@@ -10,7 +10,7 @@ export const dynamic = "force-static";
  * every build tells crawlers the whole site changed when nothing did, which
  * is noise they learn to ignore. Bump this when content actually changes.
  */
-const CONTENT_UPDATED = new Date("2026-07-28");
+const CONTENT_UPDATED = new Date("2026-08-17");
 
 export default function sitemap(): MetadataRoute.Sitemap {
   // The homepage is "/" rather than "" so its <loc> carries the trailing slash
@@ -27,6 +27,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // Market pages carry the location-intent search terms.
   const markets = site.markets.map((market) => ({
     url: `${site.url}${market.href}`,
+    lastModified: CONTENT_UPDATED,
+    changeFrequency: "monthly" as const,
+    priority: 0.9,
+  }));
+
+  // Industry pages carry the commercial-intent search terms. Same priority as
+  // the market pages — these are their peers, not pages beneath them.
+  const industries = site.industries.map((industry) => ({
+    url: `${site.url}${industry.href}`,
     lastModified: CONTENT_UPDATED,
     changeFrequency: "monthly" as const,
     priority: 0.9,
@@ -63,5 +72,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.6,
   }));
 
-  return [...primary, ...markets, ...work, ...secondary, ...posts, ...legal];
+  return [
+    ...primary,
+    ...markets,
+    ...industries,
+    ...work,
+    ...secondary,
+    ...posts,
+    ...legal,
+  ];
 }

@@ -99,6 +99,20 @@ function marketSection() {
 }
 
 /**
+ * Annotated, unlike marketSection above.
+ *
+ * A market page's label already says what the page is — "SEO in Lebanon" needs
+ * no gloss. A sector label doesn't: "Restaurant & café websites" gives a
+ * retrieval system no way to tell whether the page answers a question about
+ * menus, about payments or about opening hours. The blurb is that answer.
+ */
+function industrySection() {
+  return site.industries
+    .map((i) => `- [${i.label}](${site.url}${i.href}) — ${i.blurb}`)
+    .join("\n");
+}
+
+/**
  * Privacy line, derived so it cannot describe the wrong thing. This is the
  * sentence that went stale before.
  */
@@ -156,6 +170,10 @@ ${blogSection()}
 ### Market pages
 
 ${marketSection()}
+
+### Industry pages
+
+${industrySection()}
 
 ### Legal
 

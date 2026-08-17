@@ -188,6 +188,13 @@ export const site = {
     "Answer engine optimization",
     "Arabic and right-to-left web design",
     "E-commerce in Lebanon",
+    // Each of these is backed by an industry page under site.industries. Added
+    // with those pages, not before them — a claim here with nothing behind it is
+    // just noise.
+    "Restaurant and menu website design",
+    "Medical and clinic website design",
+    "Real estate website design",
+    "Online payments in Lebanon",
   ],
 
   /**
@@ -228,6 +235,54 @@ export const site = {
     { label: "Google Ads in Lebanon", href: "/google-ads-lebanon/" },
     { label: "SEO in Lebanon", href: "/seo-lebanon/" },
     { label: "Web design in the UAE", href: "/web-design-uae/" },
+  ],
+
+  /**
+   * Industry pages — the commercial-intent layer between the market pages and
+   * the blog.
+   *
+   * A separate array from `markets` rather than more entries in it, because all
+   * the copy around that one is geographic and says so: "Where we work" in the
+   * footer, "Same work, different market." on the services hub, "carry the
+   * location-intent search terms" in the sitemap, "### Market pages" in
+   * /llms.txt. Filing a sector under any of those headings reads as a mistake.
+   *
+   * Same rule as the market pages and it is not negotiable: an industry page has
+   * to say things that are not true of /web-design-lebanon/, or it does not get
+   * built. Four near-identical sector pages are the same doorway pattern as four
+   * near-identical neighbourhood pages, and CONTENT-PLAN.md already turned those
+   * down for the same reason.
+   *
+   * `blurb` exists because /llms.txt annotates these links, unlike the market
+   * ones. The annotation is what tells a retrieval system which page answers
+   * which question, so it is written as a description of the contents rather
+   * than as a pitch.
+   */
+  industries: [
+    {
+      label: "Restaurant & café websites",
+      href: "/restaurant-website-design-lebanon/",
+      blurb:
+        "Menus as data rather than a PDF, ordering that finishes on WhatsApp, and what changes when card payments aren't an option.",
+    },
+    {
+      label: "Clinic & medical websites",
+      href: "/clinic-website-design-lebanon/",
+      blurb:
+        "Appointment requests without an EMR, practitioner credentials as trust signals, and why patient details never belong in a web form.",
+    },
+    {
+      label: "E-commerce & retail websites",
+      href: "/ecommerce-website-design-lebanon/",
+      blurb:
+        "Which payment processors actually work in Lebanon, dual-currency pricing, delivery zones, and when a hosted platform is the honest answer.",
+    },
+    {
+      label: "Real estate websites",
+      href: "/real-estate-website-design-lebanon/",
+      blurb:
+        "Listings as indexable pages, what happens to a URL when a property sells, image weight at listing scale, and enquiries that end in WhatsApp.",
+    },
   ],
 
   legal: [
