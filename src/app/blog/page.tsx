@@ -4,6 +4,7 @@ import Section from "@/components/ui/Section";
 import Breadcrumbs from "@/components/seo/Breadcrumbs";
 import Reveal from "@/components/ui/Reveal";
 import JsonLd from "@/components/seo/JsonLd";
+import NewsletterSignup from "@/components/blog/NewsletterSignup";
 import { getAllPosts } from "@/lib/blog";
 import { site } from "@/lib/site";
 
@@ -118,6 +119,16 @@ export default function BlogIndex() {
               </Link>
             </Reveal>
           ))}
+        </div>
+
+        {/*
+          Catches the archive browser, who has scrolled a list of nineteen
+          titles without picking one. Renders nothing until the endpoint is
+          configured, so the border comes with it rather than leaving an empty
+          rule across the page.
+        */}
+        <div className="mt-16 max-w-2xl border-t border-edge pt-12 empty:mt-0 empty:border-0 empty:pt-0">
+          <NewsletterSignup location="blog_index" />
         </div>
       </Section>
     </div>

@@ -5,7 +5,9 @@ import Section from "@/components/ui/Section";
 import JsonLd from "@/components/seo/JsonLd";
 import Breadcrumbs from "@/components/seo/Breadcrumbs";
 import Faq, { faqPageSchema } from "@/components/ui/Faq";
+import CtaButton from "@/components/ui/CtaButton";
 import KeyTakeaways from "@/components/blog/KeyTakeaways";
+import NewsletterSignup from "@/components/blog/NewsletterSignup";
 import { getAllPosts, getPost, unlinkScheduled } from "@/lib/blog";
 import { site } from "@/lib/site";
 
@@ -186,20 +188,30 @@ export default async function BlogPost({
               </section>
             )}
 
-            <footer className="mt-20 border-t border-edge pt-12">
-              <p className="font-display text-2xl font-semibold tracking-[-0.015em]">
-                Want a site built like this?
-              </p>
-              <p className="mt-3 text-base text-grey">
-                Tell us about your project — we write back within one business
-                day.
-              </p>
-              <Link
-                href="/contact/"
-                className="mt-8 inline-flex items-center justify-center rounded-full bg-signal px-7 py-3.5 font-mono text-xs uppercase tracking-[0.22em] text-carbon transition-colors hover:bg-signal-deep"
-              >
-                Book the call
-              </Link>
+            {/*
+              Two asks, deliberately unequal. Booking the call is the money
+              action and keeps the left column and the filled button; the
+              newsletter is the consolation prize for the overwhelming majority
+              who are not going to call today, and it must not out-shout the
+              thing that pays. The signup renders nothing at all until the
+              endpoint is configured, so this is a single column until then.
+            */}
+            <footer className="mt-20 grid gap-12 border-t border-edge pt-12 md:grid-cols-2 md:gap-16">
+              <div>
+                <p className="slate">Your project</p>
+                <p className="mt-4 font-display text-2xl font-semibold leading-snug tracking-[-0.015em]">
+                  Want a site built like this?
+                </p>
+                <p className="mt-3 text-base leading-[1.65] text-grey">
+                  Tell us about your project — we write back within one business
+                  day.
+                </p>
+                <div className="mt-8">
+                  <CtaButton href="/contact/">Book the call</CtaButton>
+                </div>
+              </div>
+
+              <NewsletterSignup location="post_footer" />
             </footer>
           </article>
         </Section>
