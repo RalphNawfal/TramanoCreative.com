@@ -25,16 +25,19 @@ import matter from "gray-matter";
 const BLOG_DIR = path.join(process.cwd(), "content", "blog");
 const OUT = path.join(process.cwd(), "public", "og", "blog");
 
-// Keep in step with CLUSTERS in src/app/blog/page.tsx and CLUSTER_LABELS in
-// src/app/llms.txt/route.ts. A key missing here doesn't error — it silently
-// falls through to "Notes" below, which is how four Google Ads posts shipped
-// share cards labelled as if they were uncategorised.
-const CLUSTERS = {
-  cost: "Cost & buying",
-  speed: "Speed & performance",
-  search: "Search & AI visibility",
-  ads: "Google Ads",
-};
+// Read from the same file the two TS consumers import, rather than restated
+// here. It used to be restated, the `ads` key went missing from this copy, and
+// four Google Ads posts shipped share cards kickered "Notes" — a missing key
+// doesn't error, it falls through to the default below.
+//
+// readFile rather than import: this is plain Node, so it cannot import a .ts
+// module, which is the whole reason the shared map is JSON.
+const clusterData = JSON.parse(
+  await readFile(path.join(process.cwd(), "src", "lib", "clusters.json"), "utf8"),
+);
+const CLUSTERS = Object.fromEntries(
+  Object.entries(clusterData.clusters).map(([key, c]) => [key, c.short]),
+);
 
 await mkdir(OUT, { recursive: true });
 
