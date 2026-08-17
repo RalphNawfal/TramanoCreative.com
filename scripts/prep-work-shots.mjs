@@ -2,12 +2,14 @@
 // wordmark or contact detail survives), trims the scrollbar, and re-encodes to WebP.
 // Run from the repo root with the raw *.png captures present:  node scripts/prep-work-shots.mjs
 //
-// DESTRUCTIVE. This deletes public/work and rebuilds it from the raw captures,
-// so it needs every source PNG below present. The guard further down refuses
-// to start if any are missing — without it, running this with a partial set
-// wiped the shipped reel and the case-study assets alongside it. If you only
-// need to recrop one shot, use scripts/prep-case-shots.mjs as the model: write
-// into a subdirectory and delete nothing.
+// Rewrites only the reel frames listed below. It used to delete all of
+// public/work and rebuild it, which meant a run also destroyed the per-case-study
+// subdirectories — and those are built from raw captures kept outside the repo,
+// so they could not be regenerated. Now each output is replaced individually and
+// nothing else in public/work is touched.
+//
+// The guard further down still refuses to start with a partial source set, so a
+// half-finished run can't leave the reel in a mixed state.
 import sharp from "sharp";
 import { access, mkdir, rm } from "node:fs/promises";
 import path from "node:path";
@@ -44,14 +46,20 @@ if (missing.length > 0) {
   console.error(
     `Refusing to run: ${missing.length} source capture(s) missing.\n` +
       missing.map((f) => `  - ${f}`).join("\n") +
-      `\n\nThis script deletes ${OUT} and rebuilds it. Running without every\n` +
-      `capture present would drop the shots it can't regenerate.`,
+      `\n\nAll ${shots.length} captures have to be present, so a run either replaces\n` +
+      `the whole reel or changes nothing.`,
   );
   process.exit(1);
 }
 
-await rm(OUT, { recursive: true, force: true });
 await mkdir(OUT, { recursive: true });
+
+// Only the files this run is about to write. A recursive delete of OUT would
+// take the case-study subdirectories with it, and those can't be rebuilt from
+// anything in the repo.
+for (const shot of shots) {
+  await rm(path.join(OUT, shot.out), { force: true });
+}
 
 const manifest = [];
 

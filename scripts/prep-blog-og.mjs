@@ -25,10 +25,15 @@ import matter from "gray-matter";
 const BLOG_DIR = path.join(process.cwd(), "content", "blog");
 const OUT = path.join(process.cwd(), "public", "og", "blog");
 
+// Keep in step with CLUSTERS in src/app/blog/page.tsx and CLUSTER_LABELS in
+// src/app/llms.txt/route.ts. A key missing here doesn't error — it silently
+// falls through to "Notes" below, which is how four Google Ads posts shipped
+// share cards labelled as if they were uncategorised.
 const CLUSTERS = {
   cost: "Cost & buying",
   speed: "Speed & performance",
   search: "Search & AI visibility",
+  ads: "Google Ads",
 };
 
 await mkdir(OUT, { recursive: true });

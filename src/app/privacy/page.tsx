@@ -27,19 +27,38 @@ const anyAnalytics = cfEnabled || ga4Enabled;
  */
 const askConsent = ga4Enabled && site.analytics.requireConsent;
 
+/**
+ * Whether a newsletter signup exists anywhere on the site.
+ *
+ * Derived from the endpoint for the same reason the analytics claims are
+ * derived from their tokens: the sentence "we do not add you to a mailing list"
+ * is true today and becomes false the moment a signup form ships. Gating on the
+ * endpoint means it cannot be left behind.
+ *
+ * A subscription is the one thing on this site processed on the basis of
+ * consent rather than legitimate interest, so the sections below say so
+ * explicitly — the distinction decides which rights apply.
+ */
+const newsletterEnabled = Boolean(site.formspreeNewsletterEndpoint);
+
+/** "the contact form", or both forms once the newsletter exists. */
+const formsPhrase = newsletterEnabled
+  ? "the contact form or the newsletter form"
+  : "the contact form";
+
 export const metadata: Metadata = {
   title: "Privacy Policy",
   description: askConsent
-    ? "How Tramano Creative handles your data. Analytics cookies only if you accept them, no advertising trackers, and the information you type into the contact form."
+    ? "How Tramano Creative handles your data. Analytics cookies only if you accept them, no advertising trackers, and the information you type into our forms."
     : ga4Enabled
     ? "How Tramano Creative handles your data — exactly which analytics cookies are set, what they hold, and three ways to refuse them. No advertising trackers."
     : anyAnalytics
-      ? "How Tramano Creative handles your data. No cookies, no tracking, no profiling — anonymous visit counts and the information you type into the contact form."
-      : "How Tramano Creative handles your data. No cookies, no analytics, no tracking — the only information we hold is what you type into the contact form.",
+      ? "How Tramano Creative handles your data. No cookies, no tracking, no profiling — anonymous visit counts and the information you type into our forms."
+      : `How Tramano Creative handles your data. No cookies, no analytics, no tracking — the only information we hold is what you type into ${formsPhrase}.`,
   alternates: { canonical: "/privacy/" },
 };
 
-const UPDATED = "27 July 2026";
+const UPDATED = newsletterEnabled ? "17 August 2026" : "27 July 2026";
 
 export default function PrivacyPage() {
   return (
@@ -101,7 +120,10 @@ export default function PrivacyPage() {
             )}
             <p>
               The only personal information we receive is what you choose to
-              type into the contact form and send us.
+              type into {formsPhrase} and send us.
+              {newsletterEnabled
+                ? " Subscribing and enquiring are separate: neither one signs you up for the other."
+                : ""}
             </p>
 
             <h2>Who we are</h2>
@@ -140,14 +162,64 @@ export default function PrivacyPage() {
             </p>
             <p>
               We use this for one purpose: to reply to you and, if it goes
-              further, to discuss and deliver a project. We do not add you to a
-              mailing list, and we do not send marketing sequences.
+              further, to discuss and deliver a project.{" "}
+              {newsletterEnabled ? (
+                <>
+                  Sending this form does{" "}
+                  <strong>not</strong> add you to our mailing list — that is a
+                  separate form you fill in deliberately, described below — and
+                  we do not send marketing sequences.
+                </>
+              ) : (
+                <>
+                  We do not add you to a mailing list, and we do not send
+                  marketing sequences.
+                </>
+              )}
             </p>
             <p>
               The lawful basis under the UK and EU GDPR is our legitimate
               interest in responding to enquiries about our services, and —
               where a project proceeds — the performance of a contract with you.
             </p>
+
+            {newsletterEnabled && (
+              <>
+                <h3>Information you send us when you subscribe</h3>
+                <p>
+                  If you subscribe to our newsletter from the blog, we receive{" "}
+                  <strong>one field: your email address</strong>. There is no
+                  name field, and nothing else is required.
+                </p>
+                <p>
+                  As with the contact form, the submission also tells us which
+                  page you subscribed from and, if you arrived from a search
+                  engine or a link elsewhere, where that click came from. It is
+                  read at the moment you press Subscribe; it is not stored on
+                  your device beforehand, and if you never subscribe we never
+                  receive it. We use it to learn which articles are worth
+                  writing more of.
+                </p>
+                <p>
+                  We use your address for one thing: telling you when we publish
+                  something new. We do not sell it, share it, or use it to
+                  advertise to you elsewhere, and subscribing is not a route into
+                  a sales sequence.
+                </p>
+                <p>
+                  <strong>
+                    The lawful basis here is your consent — not legitimate
+                    interest.
+                  </strong>{" "}
+                  That is a deliberate distinction: it means you can withdraw it
+                  at any time and we must stop, with no balancing test on our
+                  side. Use the unsubscribe link in any email we send, or just
+                  email{" "}
+                  <a href={`mailto:${site.email}`}>{site.email}</a> and we will
+                  remove you.
+                </p>
+              </>
+            )}
 
             <h3>Information collected automatically by our host</h3>
             <p>
@@ -444,11 +516,15 @@ export default function PrivacyPage() {
             </p>
             <ul>
               <li>
-                <strong>Formspree</strong> — processes our contact form. When
-                you press Send, the form fields go to Formspree, which forwards
-                them to our inbox and also retains a copy in our Formspree
-                account. Formspree may additionally log technical details of the
-                submission such as your IP address and browser, under its own{" "}
+                <strong>Formspree</strong> — processes our contact form
+                {newsletterEnabled
+                  ? " and, as a separate form, our newsletter signups"
+                  : ""}
+                . When you press Send, the form fields go to Formspree, which
+                forwards them to our inbox and also retains a copy in our
+                Formspree account. Formspree may additionally log technical
+                details of the submission such as your IP address and browser,
+                under its own{" "}
                 <a
                   href="https://formspree.io/legal/privacy-policy/"
                   target="_blank"
@@ -489,7 +565,7 @@ export default function PrivacyPage() {
             <p>
               We are based in Lebanon and work with clients in the Gulf, Europe,
               North America and elsewhere. Formspree and GitHub are US-based, so
-              information you send through the contact form is processed outside
+              information you send through {formsPhrase} is processed outside
               your country and, if you are in the UK or EEA, outside those
               areas. If you would rather not use the form, email or call us
               directly using the details above.
@@ -504,6 +580,16 @@ export default function PrivacyPage() {
               obligations afterwards. You can ask us to delete your enquiry at
               any time and we will.
             </p>
+            {newsletterEnabled && (
+              <p>
+                Newsletter subscriptions work differently, because a list has no
+                natural expiry: we keep your address{" "}
+                <strong>until you unsubscribe</strong>, and remove it within 30
+                days of that. The 24-month rule above applies to enquiries, not
+                to the list — which is why the two are kept as separate forms
+                rather than one.
+              </p>
+            )}
 
             <h2>Your rights</h2>
             <p>
@@ -518,6 +604,13 @@ export default function PrivacyPage() {
                 stop or limit how we use it, including objecting to processing
                 based on legitimate interests.
               </li>
+              {newsletterEnabled && (
+                <li>
+                  withdraw your consent to the newsletter at any time, which we
+                  must act on because consent — not legitimate interest — is the
+                  basis we rely on for it.
+                </li>
+              )}
             </ul>
             <p>
               Email <a href={`mailto:${site.email}`}>{site.email}</a> and we will
@@ -537,8 +630,10 @@ export default function PrivacyPage() {
             <p>
               The site is served over HTTPS. Because it is a static website with
               no database, no login and no server-side code of ours, there is no
-              account to breach and no stored customer database on our side. The
-              form data resides with Formspree and in our email.
+              account to breach and no stored customer database on our side.{" "}
+              {newsletterEnabled
+                ? "Both the enquiry data and the subscriber list reside with Formspree and in our email."
+                : "The form data resides with Formspree and in our email."}
             </p>
 
             <h2>Changes to this policy</h2>
