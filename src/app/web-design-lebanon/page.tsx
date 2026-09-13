@@ -40,7 +40,7 @@ export default function Page() {
           heading: "Pricing, payment and the currency question",
           paras: [
             "We quote in US dollars and we quote a fixed price. Given how the lira has behaved, a fixed number in a stable currency is the only honest way to price work that takes weeks — and it means the figure you agree at the start is the figure you pay at the end.",
-            "Most projects land between $1,000 and $3,000 depending on how many pages there are, how much of the content needs writing, and how much custom design and motion is involved. A small, focused build — a single strong page doing one job — starts at $500. Larger or more complex work is quoted individually. We tell you which of those you actually need, and we have talked people out of the bigger option more than once.",
+            "Most projects land between $1,000 and $2,000 depending on how many pages there are, how much of the content needs writing, and how much custom design and motion is involved. A small, focused build — a single strong page doing one job — starts at $500. Larger or more complex work is quoted individually. We tell you which of those you actually need, and we have talked people out of the bigger option more than once.",
             "Payment is normally half before we start and half before launch, and we can work with bank transfer, OMT, or Wise depending on what suits you. Third-party costs like domains and hosting are yours and are billed at cost — we do not mark them up.",
           ],
         },
@@ -68,7 +68,7 @@ export default function Page() {
         },
       ]}
       facts={[
-        "Custom websites in Lebanon typically cost between $1,000 and $3,000. Focused single-page builds start at $500, and larger projects are quoted individually.",
+        "Custom websites in Lebanon typically cost between $1,000 and $2,000. Focused single-page builds start at $500, and larger projects are quoted individually.",
         "Every project is quoted as a fixed price in US dollars, agreed before work starts. The price you agree is the price you pay regardless of what the lira does.",
         "A typical website launches 3 to 6 weeks after kickoff. Landing pages ship in under two weeks.",
         "Tramano Creative is two people — Ralph Nawfal and Ramy Al Housary — working from Beirut. There are no account managers and no hand-offs.",
@@ -78,7 +78,7 @@ export default function Page() {
       faqs={[
         {
           q: "How much does a website cost in Lebanon?",
-          a: "Most custom websites in Lebanon run between $1,000 and $3,000, with small focused builds starting at $500 and larger projects quoted individually. Scope is what moves the number: page count, how much content needs writing, and how much custom design and motion is involved. You get a fixed price in USD after a discovery call, so there is no surprise invoice at the end.",
+          a: "Most custom websites in Lebanon run between $1,000 and $2,000, with small focused builds starting at $500 and larger projects quoted individually. Scope is what moves the number: page count, how much content needs writing, and how much custom design and motion is involved. You get a fixed price in USD after a discovery call, so there is no surprise invoice at the end.",
         },
         {
           q: "Can you build a site in Arabic, French and English?",

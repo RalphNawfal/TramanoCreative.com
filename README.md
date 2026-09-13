@@ -54,7 +54,7 @@ src/app/sitemap.ts          Generated sitemap.xml.
 src/components/seo/         JsonLd, Breadcrumbs, MarketPage shell.
 src/components/ui/          Section, Faq, CtaButton, Reveal, Nav, Footer, …
 src/components/delivery/    SiteCredit — the client footer credit. See below.
-public/llms.txt             Hand-written summary for AI crawlers.
+src/app/llms.txt/route.ts   Generated summary for AI crawlers (lists published posts only).
 scripts/prep-work-shots.mjs Reel asset prep. Wipes public/work — read it first.
 scripts/prep-case-shots.mjs Case-study asset prep. Additive, safe to re-run.
 scripts/prep-blog-og.mjs    Per-post share cards. Re-run after adding a post.
@@ -111,7 +111,7 @@ testimonials on this site because we don't have any we can verify.
 **Facts stay in sync across six places.** Pricing, timeline, founders and
 location appear in `src/lib/site.ts` (`priceRange`), `src/app/faq/page.tsx`,
 `src/app/services/page.tsx`, `src/app/about/page.tsx`, `src/app/page.tsx` and
-`public/llms.txt` — plus the `facts` array on each market page. If one changes,
+`src/app/llms.txt/route.ts` — plus the `facts` array on each market page. If one changes,
 all of them change. An answer engine reading a contradiction picks one at
 random, and you don't get to choose which.
 

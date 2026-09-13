@@ -39,8 +39,8 @@ export default function Page() {
         {
           heading: "How the money works",
           paras: [
-            "Your ad budget is paid by you directly to Google, on your own card, in your own account. You own the account, you can see every figure in it, and if you stop working with us you keep all of it including the history. We never take a cut of ad spend, because that creates an incentive to spend more rather than to spend well.",
-            "Our fee is separate and is for managing the campaigns. Payment cards issued by Lebanese banks can be awkward with Google Ads billing depending on your bank and limits — we have dealt with this before and will help you get billing working, whether that is a particular card, a foreign card, or a prepaid arrangement.",
+            "Your ad budget is paid by you directly to Google, on your own card, in your own account. You own the account, you can see every figure in it, and if you stop working with us you keep all of it including the history. Our management fee is 20% of that monthly spend, with a $200 minimum, invoiced separately — so the budget and the fee are always two numbers you can see side by side.",
+            "Because the fee rises with spend, every budget we recommend comes with the numbers behind it, and you set the ceiling. Payment cards issued by Lebanese banks can be awkward with Google Ads billing depending on your bank and limits — we have dealt with this before and will help you get billing working, whether that is a particular card, a foreign card, or a prepaid arrangement.",
             "Reporting is monthly and plain: what was spent, what came in, which search terms produced it, and what we changed. No dashboard screenshots inflated with impression counts that mean nothing.",
           ],
         },
@@ -68,7 +68,7 @@ export default function Page() {
         },
       ]}
       facts={[
-        "Google Ads management is a fixed monthly fee for a defined scope. Tramano Creative never charges a percentage of ad spend, because that model rewards an agency for spending more of your money.",
+        "Google Ads management is 20% of monthly ad spend, with a $200 monthly minimum. The ad budget is paid by the client directly to Google; the fee is invoiced separately.",
         "The client owns the Google Ads account and pays Google directly. The ad budget is separate from the management fee and never passes through us.",
         "Google bills in US dollars, and some Lebanese cards are blocked for international recurring charges. Billing is confirmed before a campaign is built.",
         "Ads produce traffic the day they turn on. First enquiries commonly arrive within one to two weeks; efficiency takes a month or two of cutting terms that don't convert.",
@@ -80,12 +80,12 @@ export default function Page() {
           a: "Clicks here are cheap compared to the Gulf or Europe, so meaningful testing is possible on a modest budget — many local service businesses learn a lot from a few hundred dollars a month. The right number depends on how many people search for what you sell and what a customer is worth to you, and we will work that out with you on the call rather than quote a figure blind.",
         },
         {
-          q: "Do you take a percentage of ad spend?",
-          a: "No. Our fee is fixed and separate from your budget. Charging a percentage rewards us for spending more of your money, which is the wrong incentive. Your ad budget goes straight from you to Google.",
+          q: "How is your Google Ads management fee worked out?",
+          a: "It is 20% of your monthly ad spend, with a $200 minimum — so on a $1,500 budget the fee is $300, and below $1,000 the minimum applies. The budget goes straight from you to Google and our fee is invoiced separately. Because the fee rises with spend, every budget recommendation comes with the numbers behind it, and you decide the ceiling.",
         },
         {
           q: "Is my ad budget included in your management fee?",
-          a: "No — they are two separate things, and it matters that you can see both. Your ad budget goes directly from you to Google on your own billing, so you can log in and see every dollar of it. Our management fee is a fixed monthly amount covering campaign build, keyword and competitor research, ad copy, conversion tracking, landing pages and reporting. Nobody sits between you and Google, and there is no markup hidden inside the spend.",
+          a: "No — they are two separate things, and it matters that you can see both. Your ad budget goes directly from you to Google on your own billing, so you can log in and see every dollar of it. Our management fee is 20% of that spend, with a $200 monthly minimum, and covers campaign build, keyword and competitor research, ad copy, conversion tracking, landing pages and reporting. Nobody sits between you and Google, and there is no markup hidden inside the spend.",
         },
         {
           q: "Can I pay for Google Ads with a Lebanese bank card?",

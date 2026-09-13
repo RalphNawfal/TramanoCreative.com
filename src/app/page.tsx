@@ -13,7 +13,7 @@ import { founders } from "@/lib/team";
 import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: `${site.name} — Websites, Google Ads & Search Presence`,
+  title: `${site.name} — Web Design, Google Ads & SEO in Lebanon`,
   description:
     "Custom websites, Google Ads and SEO from a two-person studio in Beirut. No templates, sub-second loads, and a fixed price agreed before any work starts.",
   alternates: { canonical: "/" },
@@ -282,7 +282,7 @@ export default function Home() {
           <div className="mt-14 max-w-[68ch] border-l border-signal pl-7">
             <p className="slate">What it costs</p>
             <p className="mt-6 text-base leading-[1.7] text-grey">
-              Custom websites cost between $1,000 and $3,000, with focused
+              Custom websites cost between $1,000 and $2,000, with focused
               single-page builds from $500. Larger projects are quoted
               individually. Every project is a fixed price in US dollars,
               agreed before any work starts — no hourly meter, no surprise

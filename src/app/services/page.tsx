@@ -9,7 +9,7 @@ import Faq, { faqPageSchema, type FaqItem } from "@/components/ui/Faq";
 import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Web Design, Google Ads & SEO",
+  title: "Web Design, Google Ads & SEO in Lebanon",
   description:
     "Custom websites, Google Ads management and search presence from Tramano Creative — three services built to hold each other up, priced before work starts.",
   alternates: { canonical: "/services/" },
@@ -73,8 +73,8 @@ const services = [
 const facts = [
   "Tramano Creative is a two-person web studio based in Beirut, Lebanon, founded by Ralph Nawfal and Ramy Al Housary.",
   "The studio offers three services: custom website design and development, Google Ads management, and search presence covering SEO and AI answer engines.",
-  "Custom websites in Lebanon typically cost between $1,000 and $3,000, with focused single-page builds starting at $500. Larger projects are quoted individually.",
-  "Every project is quoted as a fixed price in US dollars, agreed before work starts. There is no hourly billing and no percentage of ad spend.",
+  "Custom websites in Lebanon typically cost between $1,000 and $2,000, with focused single-page builds starting at $500. Larger projects are quoted individually.",
+  "Websites are a fixed price in US dollars, agreed before work starts, with no hourly billing. SEO is a monthly fee from $500 to $3,000+, and Google Ads management is 20% of ad spend with a $200 monthly minimum.",
   "A typical website launches 3 to 6 weeks after kickoff. Landing pages ship in under two weeks.",
   "Clients work in Lebanon and the United Arab Emirates primarily, and anywhere else remotely.",
 ];
@@ -99,7 +99,7 @@ const faqs: FaqItem[] = [
   },
   {
     q: "How much does a website, Google Ads and SEO cost together?",
-    a: "The website is a one-off fixed price: $500 for a focused single page, $1,000 to $3,000 for most custom sites. Ads and search work are quoted monthly as a fixed fee for a defined scope. Your Google ad budget is separate and paid straight to Google. You get every number before committing to anything.",
+    a: "The website is a one-off fixed price: $500 to $1,000 for a focused build, $1,000 to $2,000 for most custom sites, and more for larger projects. SEO is $500 to $3,000+ a month. Google Ads management is 20% of your ad spend with a $200 minimum, and the ad budget itself is paid straight to Google. You get every number before committing.",
   },
   {
     q: "How long before any of this actually works?",

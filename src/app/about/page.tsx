@@ -28,8 +28,8 @@ export const metadata: Metadata = {
 const facts = [
   "Tramano Creative is a two-person web studio based in Beirut, Lebanon, founded in 2026 by Ralph Nawfal and Ramy Al Housary.",
   "The studio does three things: custom website design and development, Google Ads management, and search presence covering SEO and AI answer engines.",
-  "Custom websites cost between $1,000 and $3,000, with focused single-page builds from $500. Larger projects are quoted individually.",
-  "Every project is a fixed price in US dollars, agreed before work starts. There is no hourly billing and no percentage of ad spend.",
+  "Custom websites cost between $1,000 and $2,000, with focused single-page builds from $500. Larger projects are quoted individually.",
+  "Websites are a fixed price in US dollars, agreed before work starts, with no hourly billing. SEO is a monthly fee from $500 to $3,000+, and Google Ads management is 20% of ad spend with a $200 monthly minimum.",
   "A typical website launches 3 to 6 weeks after kickoff.",
   "Clients are primarily in Lebanon and the United Arab Emirates, and anywhere else remotely.",
 ];

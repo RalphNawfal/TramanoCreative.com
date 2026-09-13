@@ -69,7 +69,7 @@ export default function Page() {
       ]}
       facts={[
         "Tramano Creative works with UAE clients remotely from Beirut, one hour behind Dubai, which gives a full working-day overlap rather than an overnight lag.",
-        "Custom websites cost between $1,000 and $3,000, with focused single-page builds from $500, quoted as a fixed price in US dollars before work starts.",
+        "Custom websites cost between $1,000 and $2,000, with focused single-page builds from $500, quoted as a fixed price in US dollars before work starts.",
         "A typical website launches 3 to 6 weeks after kickoff. Landing pages ship in under two weeks.",
         "Arabic builds use real right-to-left layouts, where navigation, buttons and reading order all mirror, rather than a translation plugin over an English design.",
         "Paid traffic in the UAE is expensive, so landing pages are built to convert it rather than to introduce the business generally.",
@@ -81,7 +81,7 @@ export default function Page() {
         },
         {
           q: "How much does a website cost compared to a Dubai agency?",
-          a: "Materially less for comparable quality, because our cost base is lower and you are not paying for an office in a Dubai tower or an account management layer. Most projects run between $1,000 and $3,000 depending on scope, with small focused builds from $500 and larger work quoted individually — a fixed price in USD, agreed before anything starts. What you are paying for is two experienced people doing the work directly.",
+          a: "Materially less for comparable quality, because our cost base is lower and you are not paying for an office in a Dubai tower or an account management layer. Most projects run between $1,000 and $2,000 depending on scope, with small focused builds from $500 and larger work quoted individually — a fixed price in USD, agreed before anything starts. What you are paying for is two experienced people doing the work directly.",
         },
         {
           q: "Do I need an Arabic version of my site?",
