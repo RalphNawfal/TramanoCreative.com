@@ -9,8 +9,14 @@ export const dynamic = "force-static";
  * Stable date rather than `new Date()`. Regenerating every lastModified on
  * every build tells crawlers the whole site changed when nothing did, which
  * is noise they learn to ignore. Bump this when content actually changes.
+ *
+ * It sat at 2026-08-17 through the 13 September release — new prices on
+ * nearly every page, Lebanon in the titles, two new reel builds, a new case
+ * study and four industry pages going live — so for a day the sitemap told
+ * Google none of that had happened. Any commit that changes a non-blog page's
+ * content bumps this in the same commit.
  */
-const CONTENT_UPDATED = new Date("2026-08-17");
+const CONTENT_UPDATED = new Date("2026-09-13");
 
 export default function sitemap(): MetadataRoute.Sitemap {
   // The homepage is "/" rather than "" so its <loc> carries the trailing slash
@@ -41,9 +47,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.9,
   }));
 
+  // The blog index gains a card every time a scheduled post publishes, which
+  // CONTENT_UPDATED never sees — so its date follows the newest published post.
+  // getAllPosts() is sorted newest first and already excludes scheduled posts.
+  const newestPost = getAllPosts()[0];
   const secondary = ["/about/", "/blog/", "/faq/"].map((route) => ({
     url: `${site.url}${route}`,
-    lastModified: CONTENT_UPDATED,
+    lastModified:
+      route === "/blog/" && newestPost
+        ? new Date(newestPost.date)
+        : CONTENT_UPDATED,
     changeFrequency: "monthly" as const,
     priority: 0.7,
   }));
