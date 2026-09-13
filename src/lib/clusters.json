@@ -1,6 +1,6 @@
 {
   "_note": "Single source of truth for blog cluster keys. JSON rather than TypeScript because scripts/prep-blog-og.mjs is plain Node and cannot import a .ts module — that limitation is exactly why this map used to exist in three places, and why the `ads` key went missing from one of them and shipped four posts with the wrong share-card kicker. tsconfig has resolveJsonModule, so the two TS consumers import this directly; the script reads and parses it. Adding a cluster means adding it here and nowhere else. `short` is the marker on the blog index card and the OG card kicker; `long` is the section heading in /llms.txt, deliberately more descriptive because that file is read by machines with no layout constraints. `pillar` is the substantial guide in the cluster that the rest support.",
-  "order": ["cost", "speed", "search", "ads"],
+  "order": ["cost", "speed", "search", "ads", "diagnostics"],
   "clusters": {
     "cost": {
       "short": "Cost & buying",
@@ -21,6 +21,11 @@
       "short": "Google Ads",
       "long": "Google Ads",
       "pillar": "google-ads-audit-wasted-spend"
+    },
+    "diagnostics": {
+      "short": "Diagnostics",
+      "long": "Diagnosing traffic, indexing and speed problems",
+      "pillar": "why-did-my-traffic-drop"
     }
   }
 }

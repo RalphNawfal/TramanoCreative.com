@@ -153,7 +153,7 @@ export default function CaseStudy({ study }: { study: CaseStudyData }) {
             </h2>
             <p className="mt-6 max-w-[54ch] text-lg leading-relaxed text-grey">
               Custom websites in Lebanon typically cost between $1,000 and
-              $3,000, with focused single-page builds from $500. You get a fixed
+              $2,000, with focused single-page builds from $500. You get a fixed
               price in US dollars before any work starts.
             </p>
             <div className="mt-10 flex flex-wrap items-center gap-8">

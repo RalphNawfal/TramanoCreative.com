@@ -78,7 +78,7 @@ export default function Page() {
         },
       ]}
       facts={[
-        "Search work in Lebanon is quoted as a fixed monthly fee against a defined scope, never as a percentage of spend, and there is no minimum contract.",
+        "Search work in Lebanon is a monthly fee from $500 to $3,000+, set by how many search terms are targeted, the timeline and the content involved. There is no minimum contract.",
         "Search presence takes months to move rankings. Google Ads produces traffic the day it turns on. Most businesses run both, in that order.",
         "Lebanese searches arrive in Arabic script, transliterated Arabic and English for the same intent. Targeting only one of the three misses traffic.",
         "Every site Tramano Creative builds ships with structured data, sub-second load times and an llms.txt file as standard, not as an upgrade.",
@@ -91,7 +91,7 @@ export default function Page() {
         },
         {
           q: "How much does SEO cost in Lebanon?",
-          a: "A fixed monthly fee against a defined scope. What sets it is how much is genuinely being done — technical fixes, content published each month, reporting wanted. Local rates sit well below what a Dubai or London agency charges for the same work, which is one of the few structural advantages of operating here. You get the number before committing, and there is no minimum contract.",
+          a: "From $500 to $3,000+ a month. Where it lands depends on how many search terms we target, how quickly you want to move, and how much content is written each month. Local rates sit well below what a Dubai or London agency charges for the same work. You get the number before committing, and there is no minimum contract.",
         },
         {
           q: "How do I get my business on Google Maps in Lebanon?",

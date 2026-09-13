@@ -53,7 +53,7 @@ export default function Page() {
         "When a property sells, deleting its page discards the only URL on the site that had accumulated any search ranking. Keeping it, marked as sold and pointing to comparable listings, retains that value.",
         "A single property listing commonly carries twenty to thirty photographs, which makes image handling an architectural decision rather than an optimisation applied at the end.",
         "An agency website and a developer website are different products: one presents a changing inventory of many properties, the other sells a single development over a long decision cycle.",
-        "Custom real estate websites from Tramano Creative cost between $1,000 and $3,000, quoted as a fixed price in US dollars before work starts. Large listing systems with agent accounts are quoted individually.",
+        "Custom real estate websites from Tramano Creative cost between $1,000 and $2,000, quoted as a fixed price in US dollars before work starts. Large listing systems with agent accounts are quoted individually.",
       ]}
       blocks={[
         {
@@ -151,7 +151,7 @@ export default function Page() {
         },
         {
           q: "How much does a real estate website cost?",
-          a: "Between $1,000 and $3,000 for most builds, fixed price in US dollars after one short call. A large listing system with agent accounts, portal imports and saved searches is a bigger project and quoted individually. A single-development site for a builder usually sits in the standard range.",
+          a: "Between $1,000 and $2,000 for most builds, fixed price in US dollars after one short call. A large listing system with agent accounts, portal imports and saved searches is a bigger project and quoted individually. A single-development site for a builder usually sits in the standard range.",
         },
         {
           q: "Do you have a property case study?",

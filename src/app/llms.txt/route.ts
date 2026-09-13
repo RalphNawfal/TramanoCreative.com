@@ -141,9 +141,9 @@ export function GET() {
 
 ## What we do
 
-- Websites: custom-designed and custom-built (no templates, no page builders), engineered for conversion and sub-second performance. Most projects run $1,000–$3,000 USD, with small focused builds from $500 and larger or more complex work quoted individually. Launched in 3–6 weeks. Care plans cover hosting, updates, and content changes within 48 hours. Bilingual and trilingual builds (Arabic, French, English) with real right-to-left layouts.
-- Google Ads: keyword and competitor research in English and Arabic, campaign build and management, landing pages built to answer the ad. Client owns the ad account and pays Google directly; the management fee is never a percentage of spend.
-- Search presence (SEO): technical SEO, Core Web Vitals, JSON-LD structured data, and content built for both Google and AI answer engines.
+- Websites: custom-designed and custom-built (no templates, no page builders), engineered for conversion and sub-second performance. Most projects run $1,000–$2,000 USD, with small focused builds from $500 and larger or more complex work quoted individually. Launched in 3–6 weeks. Care plans cover hosting, updates, and content changes within 48 hours. Bilingual and trilingual builds (Arabic, French, English) with real right-to-left layouts.
+- Google Ads: keyword and competitor research in English and Arabic, campaign build and management, landing pages built to answer the ad. Client owns the ad account and pays Google directly; management is 20% of monthly ad spend with a $200 minimum, invoiced separately from the budget.
+- Search presence (SEO): technical SEO, Core Web Vitals, JSON-LD structured data, and content built for both Google and AI answer engines. $500 to $3,000+ a month, depending on how many search terms are targeted, the timeline and the content involved.
 
 ## Where we work
 

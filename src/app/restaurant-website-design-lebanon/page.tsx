@@ -52,7 +52,7 @@ export default function Page() {
       lead="Your menu is the product, and most restaurant websites publish it as a photograph nobody can search, read aloud, or update without a designer. We build the other kind."
       facts={[
         "A menu published as a JPEG or a PDF cannot be read by Google, by an AI assistant, or by a screen reader. A menu built as structured text can be read by all three.",
-        "Custom restaurant websites from Tramano Creative cost between $1,000 and $3,000, with focused single-page builds from $500, quoted as a fixed price in US dollars before work starts.",
+        "Custom restaurant websites from Tramano Creative cost between $1,000 and $2,000, with focused single-page builds from $500, quoted as a fixed price in US dollars before work starts.",
         "Tramano Creative's one live client build is a Lebanese food business, with a published case study including measured performance figures.",
         "Delivery aggregators charge a commission on every order. A direct ordering path on a restaurant's own site does not, which is why the two are a margin decision rather than a design preference.",
         "Restaurant opening hours change more often than any other content on a restaurant website, and a wrong closing time costs a customer who is already standing outside.",
@@ -116,7 +116,7 @@ export default function Page() {
         },
         {
           q: "How much does a restaurant website cost in Lebanon?",
-          a: "Between $1,000 and $3,000 for most custom builds, and from $500 for a single focused page with a menu and an ordering path. You get a fixed price in US dollars after one short call, and that number does not move. A large multi-branch build with live availability is quoted individually.",
+          a: "Between $1,000 and $2,000 for most custom builds, and from $500 for a single focused page with a menu and an ordering path. You get a fixed price in US dollars after one short call, and that number does not move. A large multi-branch build with live availability is quoted individually.",
         },
         {
           q: "Can customers order directly from the site?",

@@ -74,8 +74,8 @@ export default function TermsPage() {
               by you directly.
             </p>
             <p>
-              Advertising budgets are paid by you to the platform. Our fee is
-              for managing the campaigns and is separate from what you spend on
+              Advertising budgets are paid by you to the platform. Our management fee is
+              a percentage of that spend with a monthly minimum, as set out in your quote, and is invoiced separately from what you spend on
               ads.
             </p>
 

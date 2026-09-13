@@ -52,7 +52,7 @@ export default function Page() {
       facts={[
         "A clinic website should not collect symptoms, medical history or any other health information through a web form. Form contents pass through a third-party processing service, which is appropriate for an enquiry and not for medical data.",
         "An appointment request is not a confirmed booking. A website with no connection to the practice's calendar can honestly offer the first and should never display the second.",
-        "Custom clinic and practice websites from Tramano Creative cost between $1,000 and $3,000, quoted as a fixed price in US dollars before work starts.",
+        "Custom clinic and practice websites from Tramano Creative cost between $1,000 and $2,000, quoted as a fixed price in US dollars before work starts.",
         "Practitioner credentials — qualifications, syndicate registration, years in practice, hospital affiliations — are the single most load-bearing content on a medical website, and belong above the fold rather than on an About page.",
         "Google restricts advertising for many health-related services and treatments, so what a clinic can promote in search ads is narrower than what it can describe on its own website.",
       ]}
@@ -120,7 +120,7 @@ export default function Page() {
         },
         {
           q: "How much does a clinic website cost in Lebanon?",
-          a: "Between $1,000 and $3,000 for most practice websites, quoted as a fixed price in US dollars after one short call. Multi-practitioner sites with a page per doctor, or a build connected to scheduling software, are quoted individually.",
+          a: "Between $1,000 and $2,000 for most practice websites, quoted as a fixed price in US dollars after one short call. Multi-practitioner sites with a page per doctor, or a build connected to scheduling software, are quoted individually.",
         },
         {
           q: "Should my credentials really be at the top of the page?",

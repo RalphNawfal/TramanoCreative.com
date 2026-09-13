@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   description:
     // 160 characters. Google truncates the snippet around here, and the old
     // version ran to 166 — it was losing "Straight answers." mid-phrase.
-    "What a custom website costs ($500 to $3,000 for most projects), how long it takes, who owns the code, and how ads and search fit together. Straight answers.",
+    "What a custom website costs ($500 to $2,000+ depending on scope), how long it takes, who owns the code, and how ads and search fit together. Straight answers.",
   alternates: { canonical: "/faq/" },
 };
 
@@ -36,11 +36,11 @@ const faqGroups: { category: string; items: Faq[] }[] = [
     items: [
       {
         q: "How much does a custom website cost?",
-        a: "Most of our projects land between $1,000 and $3,000. Small, focused builds start at $500, and larger or more complex work is quoted individually. Scope is what moves the number: how many pages, how much of the content needs writing, and how much custom design and motion is involved. You get a fixed price after a short call — no hourly meter, no surprise invoice at the end.",
+        a: "Most of our projects land between $1,000 and $2,000. Small, focused builds start at $500, and larger or more complex work is quoted individually. Scope is what moves the number: how many pages, how much of the content needs writing, and how much custom design and motion is involved. You get a fixed price after a short call — no hourly meter, no surprise invoice at the end.",
       },
       {
         q: "What is the cheapest website you will build?",
-        a: "$500, and it buys one genuinely good page rather than a stripped-down version of a bigger site: custom design, copy that works, sub-second loading, one clear action. It does not include multiple pages, a blog, a content system you log into, or ongoing search work. If you need those, you are in the $1,000–$3,000 range — and we would rather say so on the call than sell you the cheap option twice.",
+        a: "$500, and it buys one genuinely good page rather than a stripped-down version of a bigger site: custom design, copy that works, sub-second loading, one clear action. It does not include multiple pages, a blog, a content system you log into, or ongoing search work. If you need those, you are in the $1,000–$2,000 range — and we would rather say so on the call than sell you the cheap option twice.",
       },
       {
         q: "Why are you cheaper than other agencies?",
@@ -48,7 +48,7 @@ const faqGroups: { category: string; items: Faq[] }[] = [
       },
       {
         q: "How much does SEO or Google Ads management cost per month?",
-        a: "A fixed monthly fee for a defined scope — never a percentage of your ad spend, because that model quietly rewards an agency for spending more of your money. What sets the fee is how much is actually being done: campaigns running, content published, reporting wanted. You get the number before committing, and your ad budget is separate and paid straight to Google.",
+        a: "SEO runs $500 to $3,000+ a month, depending on how many search terms we target, the timeline and how much content is involved. Google Ads management is 20% of your monthly ad spend, with a $200 minimum; the ad budget itself is paid straight to Google. You get the number before committing to anything.",
       },
       {
         q: "Do you offer payment plans?",

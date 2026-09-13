@@ -43,7 +43,7 @@ export default function Page() {
       lead="Custom websites for Beirut businesses, built by two people who work here. You can meet us, or never meet us — but the people on the call are the people writing the code."
       facts={[
         "Tramano Creative is based in Beirut. Ralph Nawfal and Ramy Al Housary are the only two people in the studio, and both work on every project.",
-        "Custom websites for Beirut businesses cost between $1,000 and $3,000, with focused single-page builds from $500, quoted as a fixed price in US dollars before work starts.",
+        "Custom websites for Beirut businesses cost between $1,000 and $2,000, with focused single-page builds from $500, quoted as a fixed price in US dollars before work starts.",
         "A typical website launches 3 to 6 weeks after kickoff. Landing pages ship in under two weeks.",
         "In-person meetings in Beirut are possible but not required. Most of the work runs over calls, a shared channel and a live preview link.",
         "Beirut customers search in Arabic script, transliterated Arabic and English for the same thing, often with a neighbourhood name attached.",
@@ -99,7 +99,7 @@ export default function Page() {
       faqs={[
         {
           q: "How much does a website cost in Beirut?",
-          a: "Between $1,000 and $3,000 for most custom business sites, and from $500 for a single focused page. You get a fixed price in US dollars after one short call, and that number does not move. Larger or more complex builds are quoted individually.",
+          a: "Between $1,000 and $2,000 for most custom business sites, and from $500 for a single focused page. You get a fixed price in US dollars after one short call, and that number does not move. Larger or more complex builds are quoted individually.",
         },
         {
           q: "Can we meet in person in Beirut?",

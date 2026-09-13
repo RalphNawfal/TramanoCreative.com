@@ -48,7 +48,7 @@ export default function Page() {
       facts={[
         "Pricing in two currencies is a design decision before it is a technical one: a shop has to establish which number is authoritative and what happens to a displayed price when the exchange rate moves.",
         "Overselling — taking payment for something out of stock — costs a customer permanently, and is caused more often by a stock number nobody updates than by a software failure.",
-        "Custom e-commerce builds from Tramano Creative cost between $1,000 and $3,000, quoted as a fixed price in US dollars before work starts. Catalogues of substantial size are quoted individually.",
+        "Custom e-commerce builds from Tramano Creative cost between $1,000 and $2,000, quoted as a fixed price in US dollars before work starts. Catalogues of substantial size are quoted individually.",
         "A hosted platform such as Shopify is sometimes the correct choice over a custom build, and Tramano Creative says so when it is rather than selling the more expensive option.",
         "Delivery cost in Lebanon varies by area in a way a flat shipping rate cannot express, and an unexpected delivery charge at the last step is a common reason a cart is abandoned.",
       ]}
@@ -143,7 +143,7 @@ export default function Page() {
         },
         {
           q: "How much does an online shop cost?",
-          a: "Between $1,000 and $3,000 for most custom builds, fixed price in US dollars after one short call. A large catalogue, wholesale pricing tiers or spec-level filtering pushes it above that and is quoted individually. If Shopify is the better answer we will say so, and that costs you a platform subscription instead.",
+          a: "Between $1,000 and $2,000 for most custom builds, fixed price in US dollars after one short call. A large catalogue, wholesale pricing tiers or spec-level filtering pushes it above that and is quoted individually. If Shopify is the better answer we will say so, and that costs you a platform subscription instead.",
         },
         {
           q: "Can you build filtering for technical products?",
