@@ -482,3 +482,91 @@ foundation. Links: `/seo-lebanon/`, the cost pillar, `/blog/technical-seo-basics
 carry a link. Add each post to its service page's `related` list instead —
 `MarketPage` already drops related links to posts that haven't published, so
 they can be added the day the post is committed.
+
+---
+
+# Refresh queue — one existing post every other week
+
+**Added 2026-09-13.** On top of the two new posts a week, never instead of one.
+New posts publish by date; refreshes don't — they go live when they're pushed, so
+each slot below is a target week, not a publish date.
+
+Nothing on the blog had a refresh routine. Three pillars were revised once on
+2 August, and the cost pillar again on 13 September when prices changed. That
+is maintenance by accident, and three pillars carry the year in their title or
+description, so they will read as out of date on 1 January.
+
+## What counts as a refresh
+
+A refresh changes what the post says. Bumping `updated:` without that is the
+thing Google penalises and the thing a reader notices, so it never happens alone.
+
+- **Re-check every claim.** Prices must match the site (see the fees in Batch
+  three). Anything Google has changed since — metrics, thresholds, features —
+  gets corrected, and a claim that can no longer be sourced comes out.
+- **Re-read the opening.** The first 2–3 sentences still have to answer the
+  title question completely and truthfully.
+- **Link forward.** Add in-content links to posts published since this one went
+  out, especially supports its cluster pillar didn't have yet.
+- **Re-check the FAQs.** Still accurate, still under 80 words each.
+- **Set `updated: "YYYY-MM-DD"`.** It drives the visible "Updated" date and the
+  `dateModified` in the post's schema.
+- **Never change the slug.** The site is a static export on GitHub Pages, which
+  can't redirect, so a renamed or deleted post is a 404 for every link to it.
+- **If the title changes, rerun `node scripts/prep-blog-og.mjs`** and commit the
+  card. Cards are committed PNGs and drift silently — three shipped stale
+  headlines for two weeks in August.
+- **If `seoTitle` or `description` changes,** check it doesn't start competing
+  with a service page for the head term (the local SEO post did until
+  13 September).
+- **After deploy,** submit the URL to IndexNow as a full `https://` URL, dry-run
+  first — Git Bash rewrites a leading `/path` into a Windows path.
+
+## Picking posts from Search Console
+
+Slots marked *Search Console* are filled from the Performance export
+(Queries + Pages, last 3 months), in this order:
+
+1. **Position 5–20 with real impressions.** Close enough to page one that better
+   content can move it. The biggest opportunity per hour.
+2. **High impressions, low click-through.** The post ranks but the result doesn't
+   get chosen — rewrite the `seoTitle` and `description` first, content second.
+3. **No impressions after 90 days.** The post answers something nobody searches.
+   Refocus it on a phrase people do use, or fold its best material into a
+   stronger post and link across. Don't delete it (see slugs above).
+
+Record why each post was picked in the table.
+
+## Queue
+
+| Target week | Post | What changes | Why |
+|---|---|---|---|
+| Wed 7 Oct | *Search Console* | | Waiting on export |
+| Wed 21 Oct | *Search Console* | | Waiting on export |
+| Wed 4 Nov | *Search Console* | | Waiting on export |
+| Wed 18 Nov | *Search Console* | | Waiting on export |
+| Wed 2 Dec | `how-much-does-a-custom-website-cost` | Full content pass: tiers, examples, what moves the price, FAQs. Leave "2026" in place until 30 Dec. | Cost pillar; the highest commercial intent on the blog |
+| Wed 16 Dec | `ai-search-optimization-for-businesses` | Full content pass: what changed in AI answers and Google's AI results during 2026. Leave "2026" in place until 30 Dec. | AI search moves fastest; a pillar dated June will be stale by December |
+| Wed 30 Dec | `website-speed-google-rankings` + year change on all three pillars | Content pass on the speed pillar, then 2026 → 2027 in one commit (list below). Rerun `prep-blog-og.mjs` for the two retitled cards. | Titles and descriptions would read as last year from 1 January |
+
+**The 30 Dec year change, exactly** — everything else that says 2026 in these
+posts is re-read, not blindly replaced:
+
+- `ai-search-optimization-for-businesses`: `title`, `seoTitle`, and the opening
+  line "Getting found in 2026…". Title changes, so regenerate the card.
+- `how-much-does-a-custom-website-cost`: `title`, `description`, the H2 "What does
+  a custom website cost in 2026?" and the sentence opening "In 2026, …". Title
+  changes, so regenerate the card.
+- `website-speed-google-rankings`: `description` and the H2 "What does a fast site
+  look like in 2026?". The title has no year, so no new card. Leave "INP replaced
+  … FID in 2024" alone — that's history, not a date.
+
+## Refresh now, without waiting for a slot
+
+- **Prices change.** Every post quoting them, the same day (the list lives in
+  README's "facts stay in sync" note).
+- **Google changes something a post explains** — a Core Web Vitals metric or
+  threshold, an Ads policy, a Search Console report.
+- **A post contradicts a service page or another post.**
+- **A new case study is the best evidence for a claim a post already makes.**
+  Link it; don't invent a claim to fit it.
