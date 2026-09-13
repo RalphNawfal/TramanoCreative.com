@@ -5,13 +5,15 @@ import JsonLd from "@/components/seo/JsonLd";
 import Reveal from "@/components/ui/Reveal";
 import CtaButton from "@/components/ui/CtaButton";
 import WorkReel from "@/components/home/WorkReel";
-import { reel } from "@/lib/work";
+import { reel, reelSummary, upperFirst } from "@/lib/work";
 import { site } from "@/lib/site";
 
+const summary = reelSummary();
+
 export const metadata: Metadata = {
-  title: "Work — Five Builds, No Templates",
+  title: `Work — ${summary.builds.replace(/\b\w/g, (c) => c.toUpperCase())}, No Templates`,
   description:
-    "A live restaurant site and four concept builds from Tramano Creative — custom design, sub-second loads, one clear action per page. See the full case study.",
+    "Live client sites and concept builds from Tramano Creative — custom design, fast loads, one clear action per page. Read the case studies behind them.",
   alternates: { canonical: "/work/" },
 };
 
@@ -49,14 +51,20 @@ export default function WorkPage() {
         }}
       />
     <div className="pt-20">
-      <Section slate="The reel" eyebrow="Five builds" title="Every site carries our name." titleAs="h1">
+      {/*
+        The title used to be "Every site carries our name." Not every client
+        can allow a footer credit — some work is under NDA — so the page no
+        longer promises one.
+      */}
+      <Section slate="The reel" eyebrow={upperFirst(summary.builds)} title="Judge the work, not the logo." titleAs="h1">
         <Reveal>
           <p className="-mt-6 max-w-[58ch] text-lg leading-relaxed text-grey">
-            Each site we ship links back here from its footer, so the work has
-            to hold up every day without us in the room. One of these is live;
-            four are concept builds. We keep the names off them — what&apos;s
-            worth looking at is the thinking, not the logo in the corner. The
-            live one has a full write-up of the decisions behind it.
+            Where a client allows it, the sites we ship link back here from
+            their footer, so the work has to hold up every day without us in
+            the room. {upperFirst(summary.breakdown)}. We keep the names off
+            all of them — what&apos;s worth looking at is the thinking, not the
+            logo in the corner. The builds with a write-up link to the
+            decisions behind them.
           </p>
         </Reveal>
 

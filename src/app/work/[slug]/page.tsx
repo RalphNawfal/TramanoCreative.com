@@ -39,6 +39,13 @@ export async function generateMetadata({
         },
       ],
     },
+    // Declared explicitly so the X card stays in step with og:image if a
+    // per-study card is ever added. `twitter` is inherited separately from
+    // `openGraph`.
+    twitter: {
+      card: "summary_large_image",
+      images: ["/og.png"],
+    },
   };
 }
 

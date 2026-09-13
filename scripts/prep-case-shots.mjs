@@ -55,9 +55,33 @@ const JOBS = {
     // neighbourhood — more identifying than anything else we publish. These two
     // frames show the menu system and the ordering flow instead.
   ],
+  // Under NDA. Both frames are element captures taken with the identifying
+  // parts hidden in the page first — the phone line under the form in
+  // particular sits inside the card, where no rect could reach it. So the
+  // extracts are the full capture: there is nothing left in them to cut.
+  "commercial-contractor": [
+    {
+      src: "case-05-services-desktop.png",
+      out: "services-desktop.webp",
+      extract: { left: 0, top: 0, width: 1425, height: 627 },
+    },
+    {
+      src: "case-05-form-mobile.png",
+      out: "form-mobile.webp",
+      // Captured with a margin around the card — 16px at the sides and bottom,
+      // 10px on top, because a service-area line sits 16px above the card and
+      // must stay out of frame. Without the margin the labels sat flush
+      // against the image edge.
+      extract: { left: 0, top: 0, width: 367, height: 763 },
+    },
+  ],
 };
 
+// Optional `--src <dir>` after the slug: where the raw captures are. They belong
+// outside this repo, so this usually points at a scratch folder.
 const slug = process.argv[2];
+const srcFlag = process.argv.indexOf("--src");
+const SRC = srcFlag === -1 ? process.cwd() : path.resolve(process.argv[srcFlag + 1] ?? "");
 if (!slug || !JOBS[slug]) {
   console.error(
     `Usage: node scripts/prep-case-shots.mjs <slug>\n` +
@@ -78,7 +102,7 @@ await mkdir(OUT, { recursive: true });
 const manifest = [];
 
 for (const shot of shots) {
-  const info = await sharp(shot.src)
+  const info = await sharp(path.join(SRC, shot.src))
     .extract(shot.extract)
     .resize({ width: Math.min(shot.extract.width, 1600), withoutEnlargement: true })
     // Matches the reel's encoder settings. `images.unoptimized` is forced on by
