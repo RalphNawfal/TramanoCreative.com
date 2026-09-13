@@ -85,7 +85,7 @@ export default function Page() {
         },
         {
           q: "Is my ad budget included in your management fee?",
-          a: "No — they are two separate things, and it matters that you can see both. Your ad budget goes directly from you to Google on your own billing, so you can log in and see every dollar of it. Our management fee is 20% of that spend, with a $200 monthly minimum, and covers campaign build, keyword and competitor research, ad copy, conversion tracking, landing pages and reporting. Nobody sits between you and Google, and there is no markup hidden inside the spend.",
+          a: "No — they are two separate things. Your ad budget goes directly from you to Google on your own billing, so you can log in and see every dollar of it. Our management fee is 20% of that spend, with a $200 monthly minimum, and covers campaign build, keyword and competitor research, ad copy, conversion tracking, landing pages and reporting. Nobody sits between you and Google, and there is no markup hidden inside the spend.",
         },
         {
           q: "Can I pay for Google Ads with a Lebanese bank card?",

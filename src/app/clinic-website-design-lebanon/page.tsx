@@ -116,7 +116,7 @@ export default function Page() {
         },
         {
           q: "Why won't you add a field for patients to describe their symptoms?",
-          a: "Because form submissions on a static site pass through a third-party processing service that keeps a copy, and health information about an identifiable person should not sit there. That service is appropriate for an enquiry and not for medical data. The form collects what is needed to make contact; the clinical conversation happens on the phone or in the room. If you genuinely need intake data beforehand, that is a system built for it, not a field on a contact page.",
+          a: "Because form submissions on a static site pass through a third-party processing service that keeps a copy, and health information about an identifiable person should not sit there. That service is appropriate for an enquiry and not for medical data. The form collects what is needed to make contact; the clinical conversation happens on the phone or in the room. If you need intake data beforehand, that is a system built for it, not a field on a contact page.",
         },
         {
           q: "How much does a clinic website cost in Lebanon?",
