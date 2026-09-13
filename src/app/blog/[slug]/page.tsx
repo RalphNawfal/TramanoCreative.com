@@ -60,6 +60,13 @@ export async function generateMetadata({
         },
       ],
     },
+    // Needed as well as the openGraph image above. `twitter` is a separate key,
+    // so the layout's twitter.images (the generic /og.png) was still being
+    // inherited, and X showed the site card instead of this post's card.
+    twitter: {
+      card: "summary_large_image",
+      images: [postOgImage(slug)],
+    },
   };
 }
 

@@ -27,7 +27,11 @@ export type ReelShot = {
   title: string;
   /** What it had to solve */
   body: string;
-  status: "Live" | "Concept build";
+  /**
+   * "In build" is real client work that hasn't launched. It isn't a concept,
+   * and it can't be called Live until the site is public — flip it on launch day.
+   */
+  status: "Live" | "Concept build" | "In build";
   /** Short craft notes shown as small caps under the frame */
   notes: string[];
   /*
@@ -41,6 +45,46 @@ export type ReelShot = {
   desktop: { src: string; width: number; height: number; alt: string };
   mobile?: { src: string; width: number; height: number; alt: string };
 };
+
+const NUMBER_WORDS = ["no", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten"];
+
+function words(n: number) {
+  return NUMBER_WORDS[n] ?? String(n);
+}
+
+export function upperFirst(s: string) {
+  return s.charAt(0).toUpperCase() + s.slice(1);
+}
+
+/**
+ * The reel's count, in words, derived from the array below.
+ *
+ * "Five builds — one live, four concept builds" used to be typed out on the
+ * homepage, on /work/ twice and in /llms.txt. Adding one build meant finding
+ * all four, and nothing failed if one was missed. Lowercase, so callers
+ * capitalise wherever it opens a sentence.
+ */
+export function reelSummary() {
+  const count = (status: ReelShot["status"]) =>
+    reel.filter((shot) => shot.status === status).length;
+  const live = count("Live");
+  const concept = count("Concept build");
+  const building = count("In build");
+
+  const parts = [
+    live && `${words(live)} live`,
+    concept && `${words(concept)} concept build${concept === 1 ? "" : "s"}`,
+    building && `${words(building)} still in build`,
+  ].filter(Boolean) as string[];
+
+  return {
+    builds: `${words(reel.length)} builds`,
+    breakdown:
+      parts.length > 1
+        ? `${parts.slice(0, -1).join(", ")} and ${parts[parts.length - 1]}`
+        : (parts[0] ?? ""),
+  };
+}
 
 export const reel: ReelShot[] = [
   {
@@ -121,16 +165,48 @@ export const reel: ReelShot[] = [
     },
   },
   {
+    // Under NDA: no name, no location, no credential mark — in copy, alt text
+    // or the frames themselves. See scripts/prep-work-shots.mjs for how the
+    // frames were cleaned.
+    slug: "commercial-contractor",
     slate: "SC. 05",
-    title: "A calm, high-touch service brand",
-    body: "Soft palette, generous spacing, and an offer you understand in one screen. Everything is arranged around booking an appointment without feeling sold to.",
-    status: "Concept build",
-    notes: ["Brand direction", "Service menu", "Booking"],
+    title: "A contractor that had to win the bid before the first call",
+    body: "The visitor is an estimator with a scope document open. Credentials sit beside the quote form, the form asks for exactly what a price needs, and nothing on the page competes with sending it.",
+    status: "Live",
+    notes: ["Quote request", "Credentials up front", "Mobile call bar"],
     desktop: {
       src: "/work/reel-05-desktop.webp",
-      width: 1424,
-      height: 663,
-      alt: "At-home skincare service site in soft cream and rose: “Your Sleeping Beauty Treatments, Delivered” in serif type with an italic accent, beside a What We Offer panel listing six treatments and two tiles reading 30–90 minutes per treatment and a free treatment every 15.",
+      width: 1425,
+      height: 882,
+      alt: "Commercial cladding contractor homepage: “Cladding installed right, documented, and on schedule.” in bold white type over a dark photo of a building under construction, a short checklist of installer credentials, and a white Send your scope form with name, company, email, phone, an enquiry-type dropdown and a scope and schedule box above a blue Send Request button.",
+    },
+    mobile: {
+      src: "/work/reel-05-mobile.webp",
+      width: 375,
+      height: 443,
+      alt: "The contractor site's hero on a phone: the headline stacked over four lines, a line about unionized crews and a documented quality standard, and a three-item checklist of installer credentials, over a dark photo of a building under construction.",
+    },
+  },
+  {
+    // Client work, not yet launched. No name, street, founding year or staff
+    // names anywhere — and the site's own rule applies too: it isn't pitched as
+    // a dive bar. Flip `status` to "Live" on launch day.
+    slate: "SC. 06",
+    title: "An old bar where the walls do the talking",
+    body: "The room is the brand — names on the walls, flags on the ceiling. So the site gets out of its way: dark, warm, photographs doing the work, and a call or directions one tap away from any screen.",
+    status: "In build",
+    notes: ["Photo-led story", "Menu page", "Call & directions bar"],
+    desktop: {
+      src: "/work/reel-06-desktop.webp",
+      width: 1425,
+      height: 769,
+      alt: "Bar website hero over a warmly lit photograph of the room — wood panelling covered in signatures, wall lanterns and a ship's wheel. A gold subheading about people passing through and leaving something behind sits above an opening-hours line, Call, Get Directions and See the Menu buttons, and a paragraph about the airline crews, sailors and journalists who signed the wall. The bar's name and location are blurred out.",
+    },
+    mobile: {
+      src: "/work/reel-06-mobile.webp",
+      width: 375,
+      height: 659,
+      alt: "The same bar hero on a phone: the gold subheading and opening hours stacked above Call and Get Directions buttons, See the Menu beneath them, and the paragraph about who signed the wall. The name and location are blurred out.",
     },
   },
 ];

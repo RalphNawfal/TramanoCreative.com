@@ -110,7 +110,17 @@ export default function CaseStudy({ study }: { study: CaseStudyData }) {
       </Section>
 
       <Section slate="Measured" eyebrow="Results" title="Numbers we can show you.">
-        <Spotlight className="grid gap-px overflow-hidden border border-edge bg-edge md:grid-cols-4">
+        {/*
+          Column count follows the metric count. It was fixed at four, so a
+          study with three measured numbers left an empty cell — and padding
+          it with a fourth figure would break the measured-only rule.
+          Written out in full so Tailwind can see both class names.
+        */}
+        <Spotlight
+          className={`grid gap-px overflow-hidden border border-edge bg-edge ${
+            study.metrics.length === 3 ? "md:grid-cols-3" : "md:grid-cols-4"
+          }`}
+        >
           {study.metrics.map((metric, i) => (
             <Reveal
               key={metric.label}

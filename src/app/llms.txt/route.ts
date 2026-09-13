@@ -2,6 +2,7 @@ import { getAllPosts } from "@/lib/blog";
 import { caseStudies } from "@/lib/case-studies";
 import clusterData from "@/lib/clusters.json";
 import { site } from "@/lib/site";
+import { reelSummary } from "@/lib/work";
 
 export const dynamic = "force-static";
 
@@ -161,7 +162,7 @@ We do not guarantee search rankings or specific commercial outcomes, and we say 
 ## Key pages
 
 - [Services](${site.url}/services/): the three things we do, in detail
-- [Work](${site.url}/work/): five builds — one live, four concept builds
+- [Work](${site.url}/work/): ${reelSummary().builds} — ${reelSummary().breakdown}
 ${caseStudySection()}
 - [About](${site.url}/about/): who we are and how we operate
 - [FAQ](${site.url}/faq/): pricing, timelines and process, answered in 27 questions

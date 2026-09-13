@@ -8,7 +8,7 @@ import CtaButton from "@/components/ui/CtaButton";
 import Spotlight from "@/components/ui/Spotlight";
 import ZoomStory from "@/components/home/ZoomStory";
 import WorkReel from "@/components/home/WorkReel";
-import { reel } from "@/lib/work";
+import { reel, reelSummary, upperFirst } from "@/lib/work";
 import { founders } from "@/lib/team";
 import { site } from "@/lib/site";
 
@@ -123,6 +123,16 @@ export default function Home() {
             delay={0.1}
             className="max-w-[15ch] font-display text-[clamp(2.4rem,6vw,5.5rem)] uppercase leading-[0.88]"
           />
+          {/*
+            The H1 is brand copy and carries no location, so this is where the
+            page says what it is and where. Plain markup with no Reveal: it
+            sits directly above the LCP paragraph (see below), and anything
+            that fades in here costs the metric. "Working worldwide" keeps
+            to the decision in site.ts not to pin the studio to one city.
+          */}
+          <h2 className="slate mt-6">
+            Web design &amp; development studio in Beirut, working worldwide
+          </h2>
 
           {/*
             Copy left, ask right — both starting on their own column line.
@@ -219,13 +229,13 @@ export default function Home() {
       <Section
         id="reel"
         slate="SC. 07 — THE WORK"
-        eyebrow="Five builds"
+        eyebrow={upperFirst(reelSummary().builds)}
         title="This is what we mean."
       >
         <Reveal>
           <p className="-mt-6 mb-20 max-w-[58ch] text-lg leading-relaxed text-grey">
-            One live, four concept builds. We&apos;re keeping the names off
-            these — what matters is the thinking, not the logo in the corner.
+            {upperFirst(reelSummary().breakdown)}. We&apos;re keeping the names
+            off these — what matters is the thinking, not the logo in the corner.
           </p>
         </Reveal>
         <WorkReel shots={reel} />

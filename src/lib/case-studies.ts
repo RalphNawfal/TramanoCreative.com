@@ -31,7 +31,7 @@ export type CaseStudy = {
   slate: string;
   /** Sector-neutral title, same one the reel uses. */
   title: string;
-  status: "Live" | "Concept build";
+  status: "Live" | "Concept build" | "In build";
   /** One-sentence framing, used as the page lead and the meta description base. */
   lead: string;
   /** SEO title, 50–60 characters once " — Tramano Creative" is appended. */
@@ -141,6 +141,97 @@ export const caseStudies: CaseStudy[] = [
     ],
     metricsMethod:
       "Performance measured 2 August 2026 on the live site from a desktop connection, using the browser's own Navigation Timing and Layout Instability APIs — figures you can re-take yourself. We don't publish conversion or revenue numbers for client work. We'd have to take someone's word for them, and a number we can't verify isn't proof of anything.",
+  },
+  {
+    // Under NDA. Sector only — no name, no location, no credential or
+    // certification name, nothing a reader could search back to the client.
+    slug: "commercial-contractor",
+    slate: "SC. 05",
+    title: "A contractor that had to win the bid before the first call",
+    status: "Live",
+    lead: "A commercial building-envelope contractor whose work arrives as tender packages, and who needed a site that turns an estimator's scope into an enquiry.",
+    seoTitle: "Case Study — Contractor Bid-Request Site",
+    metaDescription:
+      "How we built a contractor website around one job: getting a general contractor's scope into a quote request — credentials first, form in the first screen.",
+    facts: [
+      "The homepage puts the quote-request form in the first screen, beside the headline, rather than on a separate contact page.",
+      "The form's enquiry field sorts requests by type — including manpower only and requests for references — so the reply can be prepared before anyone calls back.",
+      "Spam is filtered with a hidden honeypot field rather than a captcha, so a real enquiry never has to solve a puzzle.",
+      "On phones, a sticky bar keeps Request a Quote and Call Now on screen for the whole page.",
+    ],
+    scope: [
+      "Custom design and build",
+      "Quote-request form",
+      "Credentials and standards content",
+      "Mobile call bar",
+    ],
+    blocks: [
+      {
+        heading: "The visitor is an estimator, not a homeowner",
+        paras: [
+          "Commercial installation work doesn't arrive through browsing. It arrives as a tender package on a general contractor's desk, and the person reading the site is comparing subcontractors against a scope and a schedule. They want three answers quickly: do you install this system, can your crews hold the programme, and how do I get a price.",
+          "A site built for a homeowner — a big photo, a slogan, a contact page three clicks away — answers none of them. So the first screen was designed as the answer to all three.",
+        ],
+      },
+      {
+        heading: "The form asks for a quote, not a conversation",
+        paras: [
+          "The form sits in the hero, beside the headline. It asks for name, company, email and phone, then what the enquiry is — the panel systems the contractor installs, manpower only, or a request for references — and a single box for scope and schedule, prompted with the four things an estimate actually needs: system, location, approximate area and target dates.",
+          "The reply time is promised directly under the heading, so nobody sends a scope wondering if it will be read. When the form sends, the confirmation replaces it in the same space rather than moving the page. Spam is caught by a hidden field that people never see and scripts always fill, instead of a captcha — the one visitor who matters shouldn't be asked to prove they're human.",
+        ],
+      },
+      {
+        heading: "Credentials before claims",
+        paras: [
+          "Next to the headline sits a short checklist of the things a general contractor checks before shortlisting anyone. Further down, the installation standard gets its own section, with the documentation it produces and an offer of a sample report — evidence a buyer can hold, rather than an adjective.",
+          "Safety gets its own section too. On commercial sites a subcontractor's safety programme is part of how they are vetted, so it is laid out as a numbered process rather than a line in the footer.",
+        ],
+      },
+      {
+        heading: "Built for the site office and the site itself",
+        paras: [
+          "Estimators read at a desk; site supervisors read on a phone, outdoors, between other things. On mobile the layout collapses to a single column, and a two-button bar — request a quote, call now — stays pinned to the bottom of the screen the entire way down.",
+          "The same page also recruits. A careers section speaks to installers directly, because for a contractor that sells crews, hiring is part of being able to say yes to the next job.",
+        ],
+      },
+    ],
+    shots: [
+      {
+        src: "/work/commercial-contractor/services-desktop.webp",
+        width: 1425,
+        height: 627,
+        alt: "Services grid under the heading What we install: six bordered cards for cladding and architectural panel, insulated metal panels, corrugated metal siding, building envelope support, substructure and detail work, and union manpower support, each with a short description.",
+        caption:
+          "Six systems, each described the way an estimator would check it against a specification.",
+      },
+      {
+        src: "/work/commercial-contractor/form-mobile.webp",
+        width: 367,
+        height: 763,
+        alt: "Mobile quote-request form titled Send your scope, promising a reply within one business day, with fields for name, company, email and phone, an enquiry dropdown set to Cladding, a scope and schedule box, and a blue Send Request button.",
+        caption:
+          "The whole enquiry on one phone screen: who you are, which system, and when.",
+      },
+    ],
+    metrics: [
+      {
+        label: "Layout shift",
+        value: "0",
+        note: "Google's threshold is 0.1. Nothing moves while it loads, form included.",
+      },
+      {
+        label: "Requests to render",
+        value: "8",
+        note: "The whole homepage, images included, in eight requests.",
+      },
+      {
+        label: "Third-party hosts",
+        value: "0",
+        note: "Every file comes from the site's own domain. No tag manager, no chat widget, no font service.",
+      },
+    ],
+    metricsMethod:
+      "Measured 12 September 2026 on the live site from a desktop browser, using the browser's own Navigation Timing, Resource Timing and Layout Instability APIs — figures you can re-take yourself. Load times aren't listed: they were taken from another continent to a server near the client, and a number that mostly measures the distance between the two isn't a fair one. We don't publish conversion or revenue numbers for client work; a number we can't verify isn't proof of anything.",
   },
 ];
 
