@@ -394,6 +394,11 @@ Tuesdays and Thursdays, alternating cluster 4 and cluster 5, starting Tue 15
 September and running to Wed 22 October. Ten posts fills five weeks; the two
 pillars take the two remaining slots and should be written first.
 
+**Revised 2026-09-13.** Cluster 4's pillar, 4.1, 4.2 and 4.4 were written and
+scheduled back to back (15, 17, 22, 24 Sep) instead of alternating. What is still
+unwritten fills the slots after them, with two pricing posts first — see
+Batch three.
+
 ## What this batch must not do
 
 The strategy note that prompted this suggested real ad-account screenshots,
@@ -406,3 +411,74 @@ What *is* available and is stronger: genuine expertise in building for Lebanese
 infrastructure, payment constraints and trilingual search. 4.4 and 5.x are that
 expertise. No competitor outside this market can write them, and they need no
 invented numbers.
+
+---
+
+# Batch three — Lebanon pricing, then the rest of batch two
+
+**Added 2026-09-13.** The queue runs dry after Thu 24 September. The Tue/Thu
+slots from 29 September to 22 October are exactly eight, and exactly eight posts
+are outstanding: two new pricing posts and the six batch-two posts nobody has
+written yet.
+
+**Why pricing posts, and why first.** "SEO price Lebanon" and "Google Ads cost
+Lebanon" are searched by people with a budget, and almost no Lebanese agency
+publishes real numbers. The site now does (see the fees below), so these posts
+can answer the question in their first sentence. They go first because they are
+the highest commercial intent in the queue.
+
+**Search Console first.** Before either pricing post is written, export
+Performance → Search results (last 3 months, Queries and Pages) and check what
+the site already appears for. Settle "cost" vs "price" in each title from real
+queries, and confirm neither post targets a phrase a service page already ranks
+for — `/seo-lebanon/` and `/google-ads-lebanon/` keep the head terms; the posts
+take the cost phrasing only. Record what the export showed here.
+
+## Fees these posts must use — exactly
+
+- Websites: $500–$1,000 focused build, $1,000–$2,000 most sites, $2,000+ quoted.
+- SEO: $500–$3,000+ a month, by how many search terms are **targeted**, the
+  timeline and the content involved. Never "terms we will rank for".
+- Google Ads management: 20% of monthly ad spend, $200 minimum, invoiced
+  separately; the client owns the account and pays Google directly.
+
+The old argument that a percentage fee "rewards spending more" is retired — the
+site no longer makes it anywhere. Don't reintroduce it.
+
+## Schedule
+
+| Date | Post | Cluster | Status |
+|---|---|---|---|
+| Tue 29 Sep | What Google Ads management costs in Lebanon | cost | Waiting on Search Console export |
+| Thu 1 Oct | What SEO costs in Lebanon | cost | Waiting on Search Console export |
+| Tue 6 Oct | Pillar: Why did my traffic drop, and how do I find out? | diagnostics | Outline above |
+| Thu 8 Oct | 4.3 Performance Max: what it hides and how to see inside it | ads | Outline above |
+| Tue 13 Oct | 5.1 How to redesign a website without losing your rankings | diagnostics | Outline above |
+| Thu 15 Oct | 5.2 Why isn't my website showing up on Google at all? | diagnostics | Outline above |
+| Tue 20 Oct | 5.3 A Core Web Vitals audit for an online store | diagnostics | Outline above |
+| Thu 22 Oct | 5.4 My site is fast on desktop and slow on mobile. Why? | diagnostics | Outline above |
+
+The `diagnostics` cluster is already declared in `src/lib/clusters.json`, with
+`why-did-my-traffic-drop` as its pillar slug — use that slug for the pillar, or
+change both together.
+
+## Pricing post specifics
+
+**Ads post** — management fee vs ad budget and why they're billed apart; what a
+$200 minimum covers on a small account; worked examples straight from the fee
+(e.g. $1,500 spend → $300 fee); Lebanese card billing; what the first month buys.
+Click costs appear only if taken from real Keyword Planner or account data, with
+the source named — otherwise reuse the service page's "a few hundred dollars a
+month to test" framing. Links: `/google-ads-lebanon/`, the cost pillar,
+`/blog/google-ads-without-online-payments/`.
+
+**SEO post** — what moves a month from $500 toward $3,000+ (terms targeted,
+timeline, content volume); monthly work vs a one-off technical fix; why nobody
+can guarantee a ranking; when a rebuild is cheaper than optimising around a bad
+foundation. Links: `/seo-lebanon/`, the cost pillar, `/blog/technical-seo-basics/`,
+`/blog/local-seo-lebanon/`.
+
+**Linking back from the service pages.** FAQ answers are plain strings and can't
+carry a link. Add each post to its service page's `related` list instead —
+`MarketPage` already drops related links to posts that haven't published, so
+they can be added the day the post is committed.
