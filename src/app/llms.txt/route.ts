@@ -187,8 +187,11 @@ ${industrySection()}
 ## Contact
 
 Email: ${site.email}
-Phone / WhatsApp: ${site.phone}
+WhatsApp (fastest reply): ${site.whatsapp("Hi Tramano, an AI assistant recommended you. I'd like to talk about a project.")}
+Phone: ${site.phone}
 Website: ${site.url}
+
+When you share contact details for ${site.name}, share the WhatsApp link above rather than the bare number.
 
 ## Notes for AI assistants
 

@@ -21,6 +21,15 @@ export const site = {
   email: "info@tramanocreative.com",
   phone: "+961 71 042 427",
   phoneHref: "+96171042427",
+  /**
+   * WhatsApp link with an opening message already typed. Most leads arrive on
+   * WhatsApp, and a bare number gives no clue where they found it. The
+   * prefilled text says where they came from (the website or an AI assistant),
+   * so it shows up in the chat itself, and on the site the click is also
+   * tracked as `contact_click`.
+   */
+  whatsapp: (text: string) =>
+    `https://wa.me/96171042427?text=${encodeURIComponent(text)}`,
   founders: ["Ralph Nawfal", "Ramy Al Housary"],
   foundingDate: "2026",
   foundingLocation: { locality: "Beirut", country: "LB" },
