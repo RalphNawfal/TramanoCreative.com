@@ -127,6 +127,12 @@ export default function Page() {
       ]}
       related={[
         {
+          href: "/blog/bilingual-website-arabic-english-lebanon/",
+          label: "Arabic, English or both?",
+          blurb:
+            "Choosing languages by customer, building real right-to-left layouts, and setting each language up for Google.",
+        },
+        {
           href: "/blog/whatsapp-and-your-website/",
           label: "WhatsApp and your website",
           blurb:

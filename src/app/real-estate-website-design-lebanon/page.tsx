@@ -160,6 +160,12 @@ export default function Page() {
       ]}
       related={[
         {
+          href: "/blog/real-estate-listings-no-enquiries-lebanon/",
+          label: "Views but no enquiries?",
+          blurb:
+            "The five gaps that stop a Lebanese listing turning into a call, and the order to fix them.",
+        },
+        {
           href: "/web-design-lebanon/",
           label: "Web design in Lebanon",
           blurb:
