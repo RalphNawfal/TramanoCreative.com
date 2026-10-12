@@ -496,6 +496,63 @@ live. Keep "2026" until the 30 Dec year change.
   Clutch/GoodFirms profiles. Each is a real link from a site Google trusts.
 - **Ask every finished client for a Google review.**
 
+## Scale plan — set 12 October 2026
+
+Ralph: "set up the seo strat to scale asap". There is no Google Business
+Profile yet. Three engines run at once, each with a weekly quota:
+
+**1. Industry pages: one a week until the list is done.** These are the only
+pages that rank top 5, so they get the most build time. They come on top of the
+two posts, not instead of them.
+
+| Week of | Page | Status |
+|---|---|---|
+| 12 Oct | Hotels & guesthouses | Built 12 Oct |
+| 12 Oct | Law firms | Built 12 Oct. Ralph to confirm the bar-rules framing with a lawyer |
+| 19 Oct | Dental practices (only if it says things the clinic page doesn't: cosmetic work, before/after consent, price transparency) | — |
+| 26 Oct | Schools and nurseries (registration season, parents abroad) | — |
+| 2 Nov | Gyms and studios (class schedules, memberships without online payment) | — |
+| 9 Nov | Salons and beauty (booking through Instagram and WhatsApp) | — |
+| 16 Nov | Car dealers and rentals | — |
+
+Every new industry page:
+- **Feeds the money pages.** It links the matching blog post in `related`, and
+  the blog post links it back.
+- **Gets added to `site.industries`** and `knowsAbout`. The footer, sitemap and
+  llms.txt pick it up from there.
+
+**2. Posts: two a week, written two weeks ahead.** The queue above stays. It is
+written in batches so a busy week never leaves an empty slot. Pricing posts
+were written 12 Oct (13 and 15 Oct). Write 20–29 Oct next.
+
+**3. Off-site: the real ceiling.** Money pages sit at positions 42–64 because
+nobody links to the domain. Ralph and Ramy do this; the repo can't:
+
+1. **Google Business Profile, this week.** Make it a service-area business:
+   the address stays hidden, which keeps the "no street address" decision in
+   `site.ts` intact. List Lebanon and the UAE as the service area, the three
+   services, real work photos and the WhatsApp number. Then claim **Bing
+   Places**, which can import from the profile. Bing feeds ChatGPT search and
+   Copilot.
+2. **Directory profiles, 2 a week:** Clutch, GoodFirms, DesignRush, Sortlist,
+   then Lebanese directories and the Beirut chamber of commerce. Use the same
+   name, phone and URL everywhere, exactly as they appear in `site.ts`.
+3. **Credit links on every non-NDA client site.** J's Bite already has one,
+   and it sends visits.
+4. **Reviews:** ask J's Bite now, then every client at handover.
+5. **Ask every lead "how did you find us?"** and log the answer. It's the
+   only way to measure AI recommendations.
+
+**After each deploy:** run IndexNow for the changed URLs (full https URLs,
+`--dry-run` first). Then use Search Console → URL inspection → Request
+indexing for each new page.
+
+**90-day targets, checked at the monthly check:**
+- **Non-brand Google clicks:** from ~8 a quarter to 100+.
+- **Industry pages ranking top 5:** from 3 of 4 to 8+.
+- **Money pages:** `/web-design-lebanon/` and `/seo-lebanon/` onto page 1–2.
+- **ChatGPT referrals:** at least one lead a month that says "AI recommended you".
+
 ## Monthly check (first Monday)
 
 Read it in GA4 (property p547320555, *not* the J's Bite one) and Search Console:
