@@ -16,6 +16,8 @@ import {
  * The bars are plain divs sized by percentage of the best month, so they
  * render at build time with no chart library and no client JavaScript.
  */
+const COUNT = ["no", "one", "two", "three", "four", "five", "six"];
+
 export default function CampaignResults() {
   const [lead, ...rest] = campaigns;
 
@@ -23,7 +25,7 @@ export default function CampaignResults() {
     <div>
       <p className="max-w-[60ch] text-lg leading-[1.65] text-grey">
         Ralph has built and managed search campaigns for businesses in Canada.
-        These are five of them, with the numbers copied straight from the
+        Here are {COUNT[campaigns.length] ?? campaigns.length} of them, with the numbers copied straight from the
         campaign dashboards and the client names left off. No quotes, no star
         ratings — just what the campaigns did.
       </p>
@@ -86,8 +88,12 @@ function LeadCampaign({ campaign }: { campaign: Campaign }) {
         <dl className="mt-8 grid grid-cols-3 gap-6 md:mt-0 md:min-w-[22rem]">
           <Figure label="Clicks" value={campaign.clicks} />
           <Figure label="Rate" value={campaign.conversionRate} />
-          {campaign.costPerConversion && (
+          {campaign.costPerConversion ? (
             <Figure label="Per conversion" value={campaign.costPerConversion} />
+          ) : (
+            campaign.calls !== undefined && (
+              <Figure label="Calls" value={campaign.calls} />
+            )
           )}
         </dl>
       </div>

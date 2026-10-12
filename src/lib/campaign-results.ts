@@ -60,14 +60,13 @@ export const campaignMethod =
 export const campaigns: Campaign[] = [
   {
     sector: "Online store",
-    span: "First five months",
-    clicks: 3234,
-    conversions: 979,
-    conversionRate: "30.27%",
-    calls: 20,
-    costPerConversion: "$1.79",
+    span: "First twelve months",
+    clicks: 8524,
+    conversions: 3072,
+    conversionRate: "36.04%",
+    calls: 48,
     summary:
-      "The first month produced 179 clicks and no conversions at all, with 98% of the clicks coming from Bing. By month three, 93% came from Google search and 93 of them converted. By month five, 256 did, at $1.17 each.",
+      "Month one: 179 clicks, 98% of them from Bing, and not one conversion. By month three, 93% of the clicks came from Google search and 93 converted. By month five, 256 did, at $1.17 each. Five months in, the store had 979 conversions at $1.79 each. Twelve months in, it had 3,072.",
     months: [
       {
         period: "13 Aug – 13 Sep 2025",
@@ -98,38 +97,18 @@ export const campaigns: Campaign[] = [
     ],
   },
   {
-    sector: "A second online store",
-    span: "Lifetime of the campaign",
-    clicks: 8524,
-    conversions: 3072,
-    conversionRate: "36.04%",
-    calls: 48,
-    summary:
-      "More than one in three clicks became a conversion, and 92% of the clicks came from Google search.",
-  },
-  {
-    sector: "B2B consulting firm",
-    span: "Lifetime of the campaign",
-    clicks: 4134,
-    conversions: 1297,
-    conversionRate: "31.37%",
-    calls: 21,
-    summary:
-      "A business-to-business service, where each enquiry is worth far more than a click. Nearly a third of the clicks converted.",
-  },
-  {
-    sector: "Local business",
+    sector: "Home services",
     span: "Eleven months",
     clicks: 579,
     conversions: 75,
     conversionRate: "12.95%",
     calls: 29,
     summary:
-      "A small budget, kept running for eleven months. 75 conversions and 29 phone calls from 579 clicks.",
+      "A small budget, kept running for eleven months. The first month alone brought 11 conversions and 4 calls from 54 clicks. Over eleven months: 75 conversions and 29 phone calls from 579 clicks.",
   },
   {
     sector: "Commercial real estate",
-    span: "Lifetime of the campaign",
+    span: "Overall",
     clicks: 1112,
     conversions: 57,
     conversionRate: "5.13%",
