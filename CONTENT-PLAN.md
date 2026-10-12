@@ -638,8 +638,8 @@ Record why each post was picked in the table.
 |---|---|---|---|
 | Wed 7 Oct | — | | Missed: blocked on the export, which turned out to be unnecessary (data read in Chrome 12 Oct) |
 | Wed 21 Oct | `how-much-does-a-custom-website-cost` | Full content pass plus a Lebanon section with the real tiers; link both pricing posts. Leave "2026" in place until 30 Dec. | Moved up from 2 Dec: 173 impressions at position 64 for exactly the searches buyers type |
-| Wed 4 Nov | *Search Console* | | Waiting on export |
-| Wed 18 Nov | *Search Console* | | Waiting on export |
+| Wed 4 Nov | *Search Console* | | Pick at the 2 Nov monthly check |
+| Wed 18 Nov | *Search Console* | | Pick at the 2 Nov monthly check |
 | Wed 2 Dec | *Search Console* | | Pick at the 2 Nov monthly check |
 | Wed 16 Dec | `ai-search-optimization-for-businesses` | Full content pass: what changed in AI answers and Google's AI results during 2026. Leave "2026" in place until 30 Dec. | AI search moves fastest; a pillar dated June will be stale by December |
 | Wed 30 Dec | `website-speed-google-rankings` + year change on all three pillars | Content pass on the speed pillar, then 2026 → 2027 in one commit (list below). Rerun `prep-blog-og.mjs` for the two retitled cards. | Titles and descriptions would read as last year from 1 January |
