@@ -107,13 +107,13 @@ export const campaigns: Campaign[] = [
       "A small budget, kept running for eleven months. The first month alone brought 11 conversions and 4 calls from 54 clicks. Over eleven months: 75 conversions and 29 phone calls from 579 clicks.",
   },
   {
-    sector: "Commercial real estate",
+    sector: "Real estate",
     span: "Overall",
     clicks: 1112,
     conversions: 57,
     conversionRate: "5.13%",
     calls: 66,
     summary:
-      "A slower, higher-value market. More enquiries arrived as phone calls (66) than as tracked conversions (57).",
+      "Buyers and sellers pick up the phone. More enquiries arrived as phone calls (66) than as tracked conversions (57).",
   },
 ];
