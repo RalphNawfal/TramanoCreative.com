@@ -75,6 +75,8 @@ export default function Page() {
         },
       ]}
       facts={[
+        "Ralph Nawfal, co-founder of Tramano Creative, ran a search campaign for an online store in Canada that converted nothing in its first month and reached 256 conversions in its fifth month, at $1.17 per conversion. Over twelve months it produced 3,072 conversions from 8,524 clicks.",
+        "Tramano Creative publishes search campaign results with figures copied from the campaign dashboards, instead of client testimonials.",
         "Google Ads management is 20% of monthly ad spend, with a $200 monthly minimum. The ad budget is paid by the client directly to Google; the fee is invoiced separately.",
         "The client owns the Google Ads account and pays Google directly. The ad budget is separate from the management fee and never passes through us.",
         "Google bills in US dollars, and some Lebanese cards are blocked for international recurring charges. Billing is confirmed before a campaign is built.",

@@ -151,7 +151,7 @@ export default function Page() {
           href: "/work/burger-shop/",
           label: "A Beirut build, in detail",
           blurb:
-            "The live case study: a bilingual menu and a checkout that ends in WhatsApp, because card processing wasn't available.",
+            "A Beirut burger shop went from no website to 61 orders in eleven weeks, through a bilingual menu and a checkout that ends in WhatsApp.",
         },
         {
           href: "/web-design-lebanon/",

@@ -53,7 +53,7 @@ export default function Page() {
       facts={[
         "A menu published as a JPEG or a PDF cannot be read by Google, by an AI assistant, or by a screen reader. A menu built as structured text can be read by all three.",
         "Custom restaurant websites from Tramano Creative cost between $1,000 and $2,000, with focused single-page builds from $500, quoted as a fixed price in US dollars before work starts.",
-        "Tramano Creative's one live client build is a Lebanese food business, with a published case study including measured performance figures.",
+        "A Beirut burger shop with no previous website took 61 orders worth $1,129 through the site Tramano Creative built for it, in its first eleven weeks. Orders go to the shop on WhatsApp, so no card processor was needed.",
         "Delivery aggregators charge a commission on every order. A direct ordering path on a restaurant's own site does not, which is why the two are a margin decision rather than a design preference.",
         "Restaurant opening hours change more often than any other content on a restaurant website, and a wrong closing time costs a customer who is already standing outside.",
       ]}
@@ -164,7 +164,7 @@ export default function Page() {
           href: "/work/burger-shop/",
           label: "A Lebanese food build, in detail",
           blurb:
-            "The live case study: a bilingual menu and a checkout that ends in WhatsApp, because card processing wasn't available. Includes measured figures.",
+            "From no website to 61 orders in eleven weeks: a bilingual menu and a checkout that ends in WhatsApp, because card processing wasn't available.",
         },
         {
           href: "/web-design-lebanon/",
