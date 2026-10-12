@@ -47,7 +47,7 @@ export default function ContactForm() {
       if (res.ok) {
         // Fires on confirmed success only — a failed POST is not a lead.
         // Budget and project type ride along as dimensions so the GA4 report
-        // can separate a $15k enquiry from a tyre-kick, which is the only
+        // can separate a $5k enquiry from a tyre-kick, which is the only
         // segmentation that matters at this volume.
         track(LEAD_EVENT, {
           project_type: String(body.get("projectType") ?? ""),
@@ -120,6 +120,7 @@ export default function ContactForm() {
             <option>New website</option>
             <option>Redesign</option>
             <option>SEO / content</option>
+            <option>Google Ads</option>
             <option>Care plan</option>
             <option>Something else</option>
           </select>
@@ -132,10 +133,10 @@ export default function ContactForm() {
             <option value="" disabled>
               Select…
             </option>
-            <option>Under $3k</option>
-            <option>$3k – $8k</option>
-            <option>$8k – $15k</option>
-            <option>$15k+</option>
+            <option>Under $1k</option>
+            <option>$1k – $2k</option>
+            <option>$2k – $5k</option>
+            <option>$5k+</option>
             <option>Not sure yet</option>
           </select>
         </div>
