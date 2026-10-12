@@ -161,6 +161,12 @@ export default function Page() {
       ]}
       related={[
         {
+          href: "/blog/restaurant-google-maps-menu-lebanon/",
+          label: "Menus, orders and Google Maps",
+          blurb:
+            "Getting the Maps listing right, a menu Google can read, and direct orders that skip the app commission.",
+        },
+        {
           href: "/work/burger-shop/",
           label: "A Lebanese food build, in detail",
           blurb:

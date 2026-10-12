@@ -127,6 +127,12 @@ export default function Page() {
       ]}
       related={[
         {
+          href: "/blog/whatsapp-and-your-website/",
+          label: "WhatsApp and your website",
+          blurb:
+            "Prefilled messages, complete orders and knowing where each chat came from.",
+        },
+        {
           href: "/restaurant-website-design-lebanon/",
           label: "Restaurant and café websites",
           blurb:

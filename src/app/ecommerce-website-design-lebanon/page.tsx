@@ -156,6 +156,12 @@ export default function Page() {
       ]}
       related={[
         {
+          href: "/blog/selling-online-lebanon-without-card-payments/",
+          label: "Selling online without card payments",
+          blurb:
+            "WhatsApp orders, cash on delivery and transfer apps — the payment routes that actually work here, and how to build around them.",
+        },
+        {
           href: "/web-design-lebanon/",
           label: "Web design in Lebanon",
           blurb:

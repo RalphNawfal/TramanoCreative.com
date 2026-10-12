@@ -509,7 +509,7 @@ two posts, not instead of them.
 |---|---|---|
 | 12 Oct | Hotels & guesthouses | Built 12 Oct |
 | 12 Oct | Law firms | Built 12 Oct. Ralph to confirm the bar-rules framing with a lawyer |
-| 19 Oct | Dental practices (only if it says things the clinic page doesn't: cosmetic work, before/after consent, price transparency) | — |
+| 19 Oct | Dental clinics | Built 12 Oct (treatment pages, price ranges, patients abroad, before/after consent) |
 | 26 Oct | Schools and nurseries (registration season, parents abroad) | — |
 | 2 Nov | Gyms and studios (class schedules, memberships without online payment) | — |
 | 9 Nov | Salons and beauty (booking through Instagram and WhatsApp) | — |
@@ -523,7 +523,7 @@ Every new industry page:
 
 **2. Posts: two a week, written two weeks ahead.** The queue above stays. It is
 written in batches so a busy week never leaves an empty slot. Pricing posts
-were written 12 Oct (13 and 15 Oct). Write 20–29 Oct next.
+were written 12 Oct (13 and 15 Oct), and so were 20–29 Oct (cluster `lebanon`, pillar = the selling-online post). Write 3–12 Nov next.
 
 **3. Off-site: the real ceiling.** Money pages sit at positions 42–64 because
 nobody links to the domain. Ralph and Ramy do this; the repo can't:
