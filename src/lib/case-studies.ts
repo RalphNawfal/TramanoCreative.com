@@ -73,16 +73,17 @@ export const caseStudies: CaseStudy[] = [
     slate: "SC. 01",
     title: "A burger shop that had to look hungry",
     status: "Live",
-    lead: "A halal smashed-burger shop in Beirut with no website at all. Eleven weeks after launch, the site had taken 61 orders worth $1,129 — without a card processor.",
+    lead: "A halal smashed-burger shop in Beirut with no website at all. Eleven weeks after launch, the site had taken 61 orders worth $1,129, with no ad spend and no card processor.",
     seoTitle: "Case Study — Burger Shop, Zero to 61 Orders",
     metaDescription:
-      "A Beirut burger shop went from no website to 61 orders and $1,129 in eleven weeks, through a bilingual menu and a WhatsApp checkout. No card processor.",
+      "A Beirut burger shop went from no website to 61 orders and $1,129 in eleven weeks with no ad spend — a bilingual menu, a WhatsApp checkout and basic SEO.",
     facts: [
       "The site takes orders through WhatsApp rather than a card processor, because card payment approval is slow and often unavailable for small food businesses in Lebanon.",
       "Every menu item is written in both English and Arabic, in the same card, rather than behind a language switch.",
       "The menu runs to eight categories and is built as a cart: items are added in place and the order is composed before the customer ever opens WhatsApp.",
       "The build is mobile-first because the shop trades late — most orders arrive on a phone, one-handed, after dark.",
       "In its first eleven weeks the site had 3,310 visits and sent 61 orders to the shop on WhatsApp, worth $1,129 at menu prices.",
+      "None of it was paid for. The shop ran no ads: visits came from its own Instagram posts, from people typing the address, and from Google search.",
       "When the shop pushed on Instagram in October, the site took 25 orders in 16 days — more than either of its first two full months.",
     ],
     scope: [
@@ -90,6 +91,7 @@ export const caseStudies: CaseStudy[] = [
       "Bilingual menu system",
       "Cart and WhatsApp checkout",
       "Mobile-first layout",
+      "Basic SEO",
     ],
     blocks: [
       {
@@ -125,7 +127,7 @@ export const caseStudies: CaseStudy[] = [
         paras: [
           "Before launch the shop had no website. Search its name and you found an Instagram profile; want to order and you typed it out by hand in a DM or a WhatsApp chat. Nothing was measured, because there was nothing to measure.",
           "The first month brought 839 visits and 22 orders. The second was quieter: 803 visits, 14 orders. That dip is the honest part of the story. A website on its own doesn't create demand — nobody stumbles onto a burger menu.",
-          "Then in October the shop started pushing on Instagram, and the site did the job it was built for. In 16 days it had 1,668 visits, 1,219 of them from Instagram, and 93% of those visits were engaged ones — people who stayed and browsed rather than bouncing. 25 orders came through, worth $569 — more than either full month before it. The posts created the hunger. The site was where it turned into an order.",
+          "Then in October the shop started posting regularly on Instagram — its own posts, no paid promotion — and the site did the job it was built for. In 16 days it had 1,668 visits, 1,219 of them from Instagram, and 93% of those visits were engaged ones — people who stayed and browsed rather than bouncing. 25 orders came through, worth $569 — more than either full month before it. The posts created the hunger. The site was where it turned into an order.",
         ],
       },
     ],
@@ -180,11 +182,11 @@ export const caseStudies: CaseStudy[] = [
           visits: 1668,
           orders: 25,
           value: 569,
-          note: "Instagram push. Half a month, more orders than either full one.",
+          note: "Regular Instagram posts, unpaid. Half a month, more orders than either full one.",
         },
       ],
       summary:
-        "Eleven weeks, 3,310 visits, 61 orders, $1,129 at menu prices. No card processor, no app, no delivery platform taking a cut.",
+        "Eleven weeks, 3,310 visits, 61 orders, $1,129 at menu prices. No ad spend, no card processor, no app, no delivery platform taking a cut. The work was the website and basic SEO.",
     },
     metrics: [
       {
