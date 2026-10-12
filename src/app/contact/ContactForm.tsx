@@ -33,12 +33,22 @@ export default function ContactForm() {
     const form = e.currentTarget;
     try {
       const body = new FormData(form);
+      // A bot that fills every field fills the hidden one too. Show it the
+      // success screen and send nothing, so it never reaches the inbox or GA4.
+      if (body.get("_gotcha")) {
+        setStatus("sent");
+        return;
+      }
       // Appended at submit rather than rendered as hidden inputs: the values
       // depend on how this visit started, which the statically exported HTML
       // cannot know at build time.
       for (const [name, value] of Object.entries(attributionFields())) {
         body.append(name, value);
       }
+      // The same ID goes into the email and the GA4 event, so a lead in the
+      // report can be matched to the message in the inbox, one for one.
+      const leadId = Math.random().toString(36).slice(2, 8).toUpperCase();
+      body.append("lead_id", leadId);
       const res = await fetch(site.formspreeEndpoint, {
         method: "POST",
         headers: { Accept: "application/json" },
@@ -53,6 +63,7 @@ export default function ContactForm() {
           project_type: String(body.get("projectType") ?? ""),
           budget: String(body.get("budget") ?? ""),
           timeline: String(body.get("timeline") ?? ""),
+          lead_id: leadId,
         });
         setStatus("sent");
         form.reset();
@@ -171,6 +182,15 @@ export default function ContactForm() {
       </div>
 
       <input type="hidden" name="source" value="tramanocreative.com contact form" />
+      {/* Honeypot. Hidden from people and screen readers; Formspree drops any submission that fills it. */}
+      <input
+        type="text"
+        name="_gotcha"
+        tabIndex={-1}
+        autoComplete="off"
+        aria-hidden="true"
+        className="absolute -left-[9999px] h-px w-px opacity-0"
+      />
 
       <button
         type="submit"

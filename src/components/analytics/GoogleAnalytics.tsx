@@ -23,6 +23,12 @@ export default function GoogleAnalytics() {
   // that flag in src/lib/site.ts before changing this.
   const allowed = site.analytics.requireConsent ? consent === "granted" : true;
 
+  // Our own visits. Opening any page with ?internal=1 flags that browser and
+  // GA4 stops sending from it; ?internal=0 undoes it. Before this, our own
+  // test sends counted as leads (GA4 had 8 in 90 days, the inbox 5). The flag
+  // only exists on browsers we set it on, so visitors never get it and the
+  // privacy policy stays accurate.
+
   if (!id || !allowed) return null;
 
   return (
@@ -34,6 +40,12 @@ export default function GoogleAnalytics() {
       />
       <Script id="ga4-init" strategy="afterInteractive">
         {`
+          try {
+            var internal = new URLSearchParams(location.search).get('internal');
+            if (internal === '1') localStorage.setItem('tc_internal', '1');
+            if (internal === '0') localStorage.removeItem('tc_internal');
+            if (localStorage.getItem('tc_internal') === '1') window['ga-disable-${id}'] = true;
+          } catch (e) {}
           window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
           window.gtag = gtag;
