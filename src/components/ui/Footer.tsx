@@ -47,6 +47,15 @@ export default function Footer() {
             >
               {site.phone}
             </a>
+            <br />
+            <a
+              href={site.whatsapp("Hi Tramano, I found you on your website. I'd like to talk about a project.")}
+              target="_blank"
+              rel="noopener"
+              className="mt-2 inline-block text-sm text-white transition-colors hover:text-signal"
+            >
+              WhatsApp us
+            </a>
             <p className="mt-5 text-sm leading-relaxed text-grey">
               Saw our name at the bottom of a site you liked? That&apos;s how
               most of this starts.

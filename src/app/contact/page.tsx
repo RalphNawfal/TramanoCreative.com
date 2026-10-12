@@ -53,7 +53,16 @@ export default function ContactPage() {
             >
               {site.email}
             </a>
-            <p className="slate mt-8">Phone / WhatsApp</p>
+            <p className="slate mt-8">WhatsApp</p>
+            <a
+              href={site.whatsapp("Hi Tramano, I found you on your website. I'd like to talk about a project.")}
+              target="_blank"
+              rel="noopener"
+              className="mt-3 inline-block text-white transition-colors hover:text-signal"
+            >
+              Message us on WhatsApp
+            </a>
+            <p className="slate mt-8">Phone</p>
             <a
               href={`tel:${site.phoneHref}`}
               className="mt-3 inline-block text-white transition-colors hover:text-signal"
