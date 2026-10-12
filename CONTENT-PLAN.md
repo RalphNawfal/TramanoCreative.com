@@ -414,7 +414,102 @@ invented numbers.
 
 ---
 
+# Strategy reset — 12 October 2026
+
+**This section overrides the schedules below it.** Batch two's diagnostics
+posts and 4.3 are parked, not cancelled. Two new posts a week stays.
+
+## What the data showed (14 Jul – 11 Oct, read in GA4 and Search Console)
+
+- **Visitors convert, but there are very few of them.** GA4 saw 137 visits from
+  90 people and recorded 8 leads; the inbox got 5, so GA4 overcounted (fixed in
+  `0db110f`). Even at 5, that's a strong rate. The problem is reach, not the site.
+- **Google sent 32 clicks in 90 days, and 24 landed on the homepage,** mostly from
+  people who already know the name ("tramano" ranks 4th). Only about 8 clicks
+  came from people who didn't search for us.
+- **The money pages sit on page 5–7:** `/web-design-lebanon/` at 46 (428
+  impressions), `/seo-lebanon/` at 64 (314), `/web-design-beirut/` at 64 (210),
+  `/google-ads-lebanon/` at 42 (105; "google ads lebanon" itself at 20.8).
+- **The blog brings in almost nothing.** Only about 10 of the 19 posts have
+  appeared in search, and only one has been clicked. Generic topics (Core Web Vitals,
+  structured data, page builders) get shown to US searchers, and they never click:
+  642 US impressions, 0 clicks. Lebanon: 601 impressions, 28 clicks.
+- **The industry pages rank top 5:** clinic 3.3, real estate 1.5, restaurant
+  5.7. The impressions are tiny, but they're the only pages that win their searches.
+  Narrow Lebanese searches are winnable now; broad ones aren't, yet.
+- **Search Console phrasing:** buyers write **"cost"** ("custom website cost", "how
+  much does a custom website cost"). Nobody searched "SEO price Lebanon" or "Google
+  Ads cost Lebanon" yet. SEO searches are "seo services/company/agency lebanon" and
+  Ads searches are "google ads lebanon/agency/management". Those head terms belong
+  to the service pages, so the pricing posts take the "cost" phrasing.
+
+## The change
+
+1. **Every new post targets a Lebanese (or Gulf) business reality,** not a topic
+   that Moz or Ahrefs already own. Test it before writing: would a business owner in
+   Beirut search this, and would the top result today be a foreign site that
+   doesn't fit them? If it fails either question, it waits.
+2. **Every post feeds a page that sells.** Link the matching service or industry
+   page in the first 150 words, and add the post to that page's `related` list.
+   The blog's job is to pass relevance and authority to the money pages, not to
+   win global traffic.
+3. **More industry pages.** They're the only pages already ranking. Candidates:
+   law firms, hotels and guesthouses, schools, dental, gyms, salons. They aren't
+   blog posts, so they don't count toward the two a week.
+4. **Authority comes from off the site. The service pages sit at 46–64 because the
+   domain is new and nobody links to it.** That can't be fixed in this repo; see
+   the off-site list.
+
+## New queue
+
+| Date | Post | Feeds |
+|---|---|---|
+| Tue 13 Oct | What Google Ads management costs in Lebanon | `/google-ads-lebanon/` |
+| Thu 15 Oct | What SEO costs in Lebanon | `/seo-lebanon/` |
+| Tue 20 Oct | Selling online in Lebanon without card payments: WhatsApp orders, cash on delivery, local wallets | `/ecommerce-website-design-lebanon/` |
+| Thu 22 Oct | WhatsApp and your website: turning chats into bookings | `/web-design-lebanon/` |
+| Tue 27 Oct | Clinic websites in Lebanon: what patients check before they book | `/clinic-website-design-lebanon/` |
+| Thu 29 Oct | Restaurant websites in Lebanon: menus, orders and Google Maps | `/restaurant-website-design-lebanon/` |
+| Tue 3 Nov | Arabic, English or both? Bilingual websites for Lebanese businesses | `/web-design-lebanon/` |
+| Thu 5 Nov | Real estate websites in Lebanon: listings that get enquiries | `/real-estate-website-design-lebanon/` |
+| Tue 10 Nov | .lb or .com? Domains and hosting for a Lebanese business | `/web-design-beirut/` |
+| Thu 12 Nov | Selling to the Gulf from Lebanon: what the website has to do | `/web-design-uae/` |
+
+The pricing posts follow "Pricing post specifics" and the exact fees below.
+Restaurant post: the burger-shop case study is the evidence, and it stays
+anonymous like the case study itself.
+
+**Refresh, Wed 21 Oct (moved up from 2 Dec):** `how-much-does-a-custom-website-cost`.
+It gets 173 impressions at position 64 for the exact searches buyers type. Add a
+Lebanon section with the real price tiers, and link both pricing posts once they're
+live. Keep "2026" until the 30 Dec year change.
+
+## Off-site (Ralph and Ramy, not the repo)
+
+- **Google Business Profile** for Tramano Creative, with the service area, all
+  three services and photos of real work. For "web design lebanon" searches, the
+  map results sit above every organic result.
+- **A credit link on every client site we build** ("Website by Tramano Creative"
+  in the footer, linking to the site), when the client agrees. NDA sites (see the
+  reel rules) never get one.
+- **Listings** in Lebanese business directories and chambers of commerce, plus
+  Clutch/GoodFirms profiles. Each is a real link from a site Google trusts.
+- **Ask every finished client for a Google review.**
+
+## Monthly check (first Monday)
+
+Read it in GA4 (property p547320555, *not* the J's Bite one) and Search Console:
+1. Leads in GA4 vs leads in the inbox, matched by lead ID.
+2. Clicks from Google that didn't come from someone searching the brand name.
+3. Positions of the five money pages and the industry pages.
+4. Which posts gained impressions in Lebanon. That decides the next refresh.
+
+---
+
 # Batch three — Lebanon pricing, then the rest of batch two
+
+> **Superseded 12 Oct 2026** by the strategy reset above. The fees and pricing
+> post specifics below still apply; the schedule does not.
 
 **Added 2026-09-13.** The queue runs dry after Thu 24 September. The Tue/Thu
 slots from 29 September to 22 October are exactly eight, and exactly eight posts
@@ -541,11 +636,11 @@ Record why each post was picked in the table.
 
 | Target week | Post | What changes | Why |
 |---|---|---|---|
-| Wed 7 Oct | *Search Console* | | Waiting on export |
-| Wed 21 Oct | *Search Console* | | Waiting on export |
+| Wed 7 Oct | — | | Missed: blocked on the export, which turned out to be unnecessary (data read in Chrome 12 Oct) |
+| Wed 21 Oct | `how-much-does-a-custom-website-cost` | Full content pass plus a Lebanon section with the real tiers; link both pricing posts. Leave "2026" in place until 30 Dec. | Moved up from 2 Dec: 173 impressions at position 64 for exactly the searches buyers type |
 | Wed 4 Nov | *Search Console* | | Waiting on export |
 | Wed 18 Nov | *Search Console* | | Waiting on export |
-| Wed 2 Dec | `how-much-does-a-custom-website-cost` | Full content pass: tiers, examples, what moves the price, FAQs. Leave "2026" in place until 30 Dec. | Cost pillar; the highest commercial intent on the blog |
+| Wed 2 Dec | *Search Console* | | Pick at the 2 Nov monthly check |
 | Wed 16 Dec | `ai-search-optimization-for-businesses` | Full content pass: what changed in AI answers and Google's AI results during 2026. Leave "2026" in place until 30 Dec. | AI search moves fastest; a pillar dated June will be stale by December |
 | Wed 30 Dec | `website-speed-google-rankings` + year change on all three pillars | Content pass on the speed pillar, then 2026 → 2027 in one commit (list below). Rerun `prep-blog-og.mjs` for the two retitled cards. | Titles and descriptions would read as last year from 1 January |
 
