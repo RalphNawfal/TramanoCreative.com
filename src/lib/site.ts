@@ -204,6 +204,7 @@ export const site = {
     "Medical and clinic website design",
     "Real estate website design",
     "Online payments in Lebanon",
+    "Dental clinic website design",
     "Hotel and guesthouse website design",
     "Law firm website design",
   ],
@@ -293,6 +294,12 @@ export const site = {
       href: "/real-estate-website-design-lebanon/",
       blurb:
         "Listings as indexable pages, what happens to a URL when a property sells, image weight at listing scale, and enquiries that end in WhatsApp.",
+    },
+    {
+      label: "Dental clinic websites",
+      href: "/dental-clinic-website-design-lebanon/",
+      blurb:
+        "A page per treatment, price ranges patients can plan around, patients abroad booking treatment around a trip home, and consent behind every before-and-after.",
     },
     {
       label: "Hotel & guesthouse websites",

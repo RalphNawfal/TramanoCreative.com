@@ -1,0 +1,97 @@
+---
+title: "WhatsApp and Your Website: Turning Chats Into Bookings"
+seoTitle: "WhatsApp Button on Your Website: Doing It Right"
+description: "How to connect your website to WhatsApp so a visitor's message arrives ready to answer and you can tell where it came from: prefilled links, order messages and tracking."
+date: "2026-10-22"
+cluster: "lebanon"
+takeaways:
+  - "In Lebanon most enquiries end up on WhatsApp whatever the website does, so the website's job is to make that first message complete and easy to answer."
+  - "A WhatsApp link can open with a message already typed. That one detail gives you context and tells you which page the customer came from."
+  - "A plain 'chat with us' button produces 'hi' messages. A site that composes the order, booking or question into the message produces enquiries you can act on straight away."
+  - "WhatsApp clicks can be tracked on your website. What's said inside WhatsApp can't, so ask every new contact how they found you."
+  - "The free WhatsApp Business app is enough for most small businesses. The paid API matters only at high volume or with automated replies."
+faqs:
+  - q: "How do I add WhatsApp to my website?"
+    a: "Use a click-to-chat link in the form wa.me/ followed by your number in international format with no plus sign or spaces, then ?text= and a URL-encoded message. Put it on a clear button. On phones it opens the app; on desktop it opens WhatsApp Web."
+  - q: "Can a WhatsApp link include a pre-written message?"
+    a: "Yes. Add ?text= and your message to the link. When the visitor taps it, WhatsApp opens with the message already typed, and they only press send. Use it to say which page they came from or what they want, so you can answer properly."
+  - q: "Can I track WhatsApp clicks from my website?"
+    a: "Yes. Track the click on the WhatsApp link as an event in Google Analytics or as a conversion in Google Ads. That tells you someone intended to message you. Whether they sent it, and what they said, stays inside WhatsApp."
+  - q: "Do I need the WhatsApp Business API?"
+    a: "Usually not. The free WhatsApp Business app covers a profile, catalogue, quick replies, labels and away messages, which is plenty for most small businesses. The API is a paid service priced by Meta and is worth it only for high volumes, shared team inboxes or automated messages."
+  - q: "Should I put a floating WhatsApp button on every page?"
+    a: "On phones, a small fixed button is useful because WhatsApp is how people here prefer to contact a business. Make sure it doesn't cover content or other buttons, and give it a prefilled message that names the page."
+---
+
+In Lebanon, most customers will message you on WhatsApp whatever your website says. The website's job is to make that first message complete, so you can answer it straight away, and to tell you where it came from. Both come down to the same small detail: a WhatsApp link that opens with a message already typed. Done properly, a visitor taps once and you receive "I'd like to book a table for four on Friday at 8" instead of "hi". See how we build this into [websites in Lebanon](/web-design-lebanon/).
+
+## Why does WhatsApp matter more here than a contact form?
+
+Because it's where your customers already are. People here message businesses on WhatsApp the way people elsewhere fill in forms or send emails. A form asks them to switch to a slower, less familiar channel and wait for a reply in their inbox. WhatsApp gives them a conversation that continues on their phone.
+
+That doesn't mean removing the form. Some people prefer it, and it's better for anything long or formal. But for most Lebanese businesses, WhatsApp is the main route, and it deserves to be designed rather than bolted on.
+
+## How does a WhatsApp link work?
+
+A click-to-chat link looks like this:
+
+`https://wa.me/9617XXXXXXX?text=Hi%2C%20I%27d%20like%20to%20book`
+
+- **The number** comes after `wa.me/`, in international format, with no plus sign, spaces or leading zero.
+- **The message** comes after `?text=`, encoded so spaces and punctuation survive.
+
+On a phone it opens the WhatsApp app with the message typed and ready. On a computer it opens WhatsApp Web. The visitor only has to press send.
+
+## What should the prefilled message say?
+
+Two things: what the visitor wants, and where they came from.
+
+The **"what"** saves a round of questions. A button on a menu page can say "I'd like to order". A button on a room page can name the room. A button on a service page can name the service.
+
+The **"where"** solves a problem most businesses don't notice they have: once a conversation starts on WhatsApp, you have no idea how the person found you. A message that opens with "I found you on your website" or "I saw your clinic page" tells you, inside the chat itself.
+
+We did this on our own site after two leads arrived on WhatsApp with no trace of where they'd come from. Every WhatsApp link on the site now opens with a message that names its source.
+
+## How do you turn a chat into a booking or an order?
+
+Go one step further than the prefilled sentence: let the website build the whole message.
+
+- **For a restaurant or shop:** the customer fills a cart on the site, adds their name, phone and area, and the site composes the full order into one message. Our [burger shop build](/work/burger-shop/) works this way, and it sent 61 complete orders in its first eleven weeks.
+- **For a clinic, salon or guesthouse:** the visitor picks a service, a preferred day and time, and the site sends a structured request. You confirm by reply.
+- **For a service business:** a short set of choices (what they need, where they are, when) becomes the first message, so your first reply can be a price or a time rather than a question.
+
+The pattern is the same each time. The website does the typing, and you receive something you can act on.
+
+## Can you track WhatsApp enquiries?
+
+Partly, and it's worth knowing exactly where the line is.
+
+**On the website:** every click on a WhatsApp link can be recorded as an event in Google Analytics, and as a conversion in Google Ads. That tells you which pages and which ads produce intent to message.
+
+**Inside WhatsApp:** nothing is visible to any analytics tool. You can't see whether they sent the message, what they asked or whether they bought.
+
+So combine the two. Track the click, use the prefilled source message, and ask every new contact how they found you. Once a month, compare tracked clicks with real enquiries. [Running Google Ads without online payments](/blog/google-ads-without-online-payments/) goes into the measurement in more depth.
+
+## Do you need the WhatsApp Business app or the API?
+
+For most small businesses, the free **WhatsApp Business app** is enough. It gives you:
+
+- **A business profile** with your hours, address and website.
+- **A catalogue** of products or services.
+- **Quick replies** for the questions you answer every day.
+- **Labels** to sort new enquiries, confirmed orders and follow-ups.
+- **Greeting and away messages,** so a message at midnight gets an answer.
+
+The **WhatsApp Business Platform (API)** is a paid service, priced by Meta per conversation. It's worth it for businesses handling a high volume, needing several staff on one number, or sending automated confirmations. Most businesses we work with don't need it yet.
+
+## Where should the WhatsApp button go?
+
+Where the decision is made, not only in the footer:
+
+- **On every page that sells something,** next to the thing being sold.
+- **As a small fixed button on phones,** placed so it never covers content or another button.
+- **On the contact page,** alongside the phone number and form.
+
+Each one gets its own prefilled message, so you can tell the menu button from the contact-page button.
+
+If most of your enquiries already arrive on WhatsApp and you can't tell where they come from, [let's look at your site](/contact/). It's usually one of the cheapest fixes we do.

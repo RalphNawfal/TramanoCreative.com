@@ -161,6 +161,18 @@ export default function Page() {
       ]}
       related={[
         {
+          href: "/blog/clinic-websites-what-patients-check/",
+          label: "What patients check before they book",
+          blurb:
+            "Credentials, location, hours, insurance and how to book — in the order patients ask.",
+        },
+        {
+          href: "/dental-clinic-website-design-lebanon/",
+          label: "Dental clinic websites",
+          blurb:
+            "Treatment pages, price ranges and patients planning around a trip home — what dentistry adds.",
+        },
+        {
           href: "/web-design-lebanon/",
           label: "Web design in Lebanon",
           blurb:
