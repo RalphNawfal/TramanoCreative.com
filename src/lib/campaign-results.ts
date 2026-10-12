@@ -59,7 +59,7 @@ export const campaignMethod =
  */
 export const campaigns: Campaign[] = [
   {
-    sector: "Service business",
+    sector: "Online store",
     span: "First five months",
     clicks: 3234,
     conversions: 979,
@@ -98,7 +98,7 @@ export const campaigns: Campaign[] = [
     ],
   },
   {
-    sector: "Online store",
+    sector: "A second online store",
     span: "Lifetime of the campaign",
     clicks: 8524,
     conversions: 3072,
