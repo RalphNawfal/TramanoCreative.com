@@ -148,6 +148,12 @@ export default function Page() {
       ]}
       related={[
         {
+          href: "/blog/lb-or-com-domain-lebanon/",
+          label: ".lb or .com?",
+          blurb:
+            "Which domain to choose, where to host, and why the domain must be in your name.",
+        },
+        {
           href: "/work/burger-shop/",
           label: "A Beirut build, in detail",
           blurb:

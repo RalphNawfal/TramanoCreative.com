@@ -510,10 +510,14 @@ two posts, not instead of them.
 | 12 Oct | Hotels & guesthouses | Built 12 Oct |
 | 12 Oct | Law firms | Built 12 Oct. Ralph to confirm the bar-rules framing with a lawyer |
 | 19 Oct | Dental clinics | Built 12 Oct (treatment pages, price ranges, patients abroad, before/after consent) |
-| 26 Oct | Schools and nurseries (registration season, parents abroad) | — |
+| 12 Oct | Contractors & construction | Built 12 Oct. Links the anonymous contractor case study (NDA rules apply) |
+| 26 Oct | Interior design & architecture firms | — |
 | 2 Nov | Gyms and studios (class schedules, memberships without online payment) | — |
 | 9 Nov | Salons and beauty (booking through Instagram and WhatsApp) | — |
-| 16 Nov | Car dealers and rentals | — |
+
+Schools were dropped 12 Oct. Their buying cycles are slow and committee-led,
+and almost nobody searches for a school website designer. Car dealers are
+parked.
 
 Every new industry page:
 - **Feeds the money pages.** It links the matching blog post in `related`, and
@@ -523,7 +527,7 @@ Every new industry page:
 
 **2. Posts: two a week, written two weeks ahead.** The queue above stays. It is
 written in batches so a busy week never leaves an empty slot. Pricing posts
-were written 12 Oct (13 and 15 Oct), and so were 20–29 Oct (cluster `lebanon`, pillar = the selling-online post). Write 3–12 Nov next.
+were written 12 Oct (13 and 15 Oct), and so were 20 Oct – 12 Nov (cluster `lebanon`, pillar = the selling-online post). The queue is written to 12 Nov. Next, plan and write the posts from 17 Nov.
 
 **3. Off-site: the real ceiling.** Money pages sit at positions 42–64 because
 nobody links to the domain. Ralph and Ramy do this; the repo can't:

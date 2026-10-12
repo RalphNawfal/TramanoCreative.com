@@ -126,6 +126,12 @@ export default function Page() {
       ]}
       related={[
         {
+          href: "/blog/selling-to-the-gulf-from-lebanon/",
+          label: "Selling to the Gulf from Lebanon",
+          blurb:
+            "What a buyer in Dubai or Riyadh checks on your site before they ever call.",
+        },
+        {
           href: "/web-design-lebanon/",
           label: "Web design in Lebanon",
           blurb:
