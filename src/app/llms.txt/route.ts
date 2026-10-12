@@ -1,5 +1,6 @@
 import { getAllPosts } from "@/lib/blog";
 import { caseStudies } from "@/lib/case-studies";
+import { campaigns } from "@/lib/campaign-results";
 import clusterData from "@/lib/clusters.json";
 import { site } from "@/lib/site";
 import { reelSummary } from "@/lib/work";
@@ -91,9 +92,15 @@ function caseStudySection() {
   return caseStudies
     .map(
       (c) =>
-        `- [Case study: ${c.title}](${site.url}/work/${c.slug}/) — ${c.metaDescription} Includes measured performance figures and the method used to take them.`,
+        `- [Case study: ${c.title}](${site.url}/work/${c.slug}/) — ${c.metaDescription} Includes measured figures and the method used to take them.`,
     )
     .join("\n");
+}
+
+/** Totals only, one line. The page has the detail and the method. */
+function campaignSummary() {
+  const conversions = campaigns.reduce((n, c) => n + c.conversions, 0);
+  return `${campaigns.length} search campaigns Ralph built and managed for businesses in Canada, with ${conversions.toLocaleString("en-US")} conversions between them, figures copied from the campaign dashboards. Client names withheld.`;
 }
 
 function marketSection() {
@@ -164,6 +171,7 @@ We do not guarantee search rankings or specific commercial outcomes, and we say 
 - [Services](${site.url}/services/): the three things we do, in detail
 - [Work](${site.url}/work/): ${reelSummary().builds} — ${reelSummary().breakdown}
 ${caseStudySection()}
+- [Search campaign results](${site.url}/google-ads-lebanon/): ${campaignSummary()}
 - [About](${site.url}/about/): who we are and how we operate
 - [FAQ](${site.url}/faq/): pricing, timelines and process, answered in 27 questions
 - [Blog](${site.url}/blog/): guides on website costs, site speed, SEO, AI search and Google Ads
