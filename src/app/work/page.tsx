@@ -5,6 +5,7 @@ import JsonLd from "@/components/seo/JsonLd";
 import Reveal from "@/components/ui/Reveal";
 import CtaButton from "@/components/ui/CtaButton";
 import WorkReel from "@/components/home/WorkReel";
+import CampaignResults from "@/components/work/CampaignResults";
 import { reel, reelSummary, upperFirst } from "@/lib/work";
 import { site } from "@/lib/site";
 
@@ -71,6 +72,21 @@ export default function WorkPage() {
         <div className="mt-24">
           {/* Directly under the page h1 here, so the item titles are h2. */}
           <WorkReel shots={reel} headingLevel="h2" />
+        </div>
+
+        {/*
+          Search campaign results sit under the reel rather than on a page of
+          their own: the reel shows how the sites look, this shows what paid
+          traffic does once it lands. Both are evidence, not quotes.
+        */}
+        <div className="mt-32 border-t border-edge pt-14">
+          <p className="slate">Receipts</p>
+          <h2 className="mt-6 max-w-[24ch] font-display text-[clamp(1.8rem,4vw,3rem)] font-semibold leading-[1.05] tracking-[-0.02em]">
+            Search campaigns, by the numbers.
+          </h2>
+          <div className="mt-8">
+            <CampaignResults />
+          </div>
         </div>
 
         <Reveal delay={0.2}>

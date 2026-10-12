@@ -109,16 +109,19 @@ export default function CaseStudy({ study }: { study: CaseStudyData }) {
         </div>
       </Section>
 
+      {study.growth && <Growth growth={study.growth} />}
+
       <Section slate="Measured" eyebrow="Results" title="Numbers we can show you.">
         {/*
           Column count follows the metric count. It was fixed at four, so a
           study with three measured numbers left an empty cell — and padding
           it with a fourth figure would break the measured-only rule.
+          Three columns for three or six, four otherwise.
           Written out in full so Tailwind can see both class names.
         */}
         <Spotlight
           className={`grid gap-px overflow-hidden border border-edge bg-edge ${
-            study.metrics.length === 3 ? "md:grid-cols-3" : "md:grid-cols-4"
+            study.metrics.length % 3 === 0 ? "md:grid-cols-3" : "md:grid-cols-4"
           }`}
         >
           {study.metrics.map((metric, i) => (
@@ -192,5 +195,64 @@ export default function CaseStudy({ study }: { study: CaseStudyData }) {
         </Reveal>
       </Section>
     </div>
+  );
+}
+
+/**
+ * Launch-to-now climb. Bars are scaled to the best period's orders, plain divs
+ * with no chart library, so the whole thing renders at build time.
+ */
+function Growth({
+  growth,
+}: {
+  growth: NonNullable<CaseStudyData["growth"]>;
+}) {
+  const best = Math.max(1, ...growth.steps.map((s) => s.orders));
+
+  return (
+    <Section slate="Since launch" eyebrow="Growth" title={growth.title}>
+      <ol className="space-y-10">
+        {growth.steps.map((step, i) => (
+          <li key={step.label}>
+            <Reveal
+              delay={i * 0.08}
+              className="md:grid md:grid-cols-12 md:items-center md:gap-8"
+            >
+              <div className="md:col-span-3">
+                <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-white">
+                  {step.label}
+                </p>
+                <p className="mt-1 text-[13px] text-grey-deep">{step.period}</p>
+              </div>
+              <div className="mt-4 md:col-span-5 md:mt-0">
+                <div className="flex items-center gap-4">
+                  <div className="h-2 flex-1 bg-edge">
+                    <div
+                      className="h-full bg-signal"
+                      style={{ width: `${(step.orders / best) * 100}%` }}
+                    />
+                  </div>
+                  <p className="w-24 text-right font-display text-xl tabular-nums">
+                    {step.orders} <span className="text-sm text-grey">orders</span>
+                  </p>
+                </div>
+                <p className="mt-2 text-[13px] text-grey-deep tabular-nums">
+                  {step.visits.toLocaleString("en-US")} visits · $
+                  {step.value.toLocaleString("en-US")}
+                </p>
+              </div>
+              <p className="mt-3 text-[15px] leading-[1.6] text-grey md:col-span-4 md:mt-0">
+                {step.note}
+              </p>
+            </Reveal>
+          </li>
+        ))}
+      </ol>
+      <Reveal delay={0.3}>
+        <p className="mt-14 max-w-[60ch] border-l border-signal pl-7 text-lg leading-[1.65] text-white">
+          {growth.summary}
+        </p>
+      </Reveal>
+    </Section>
   );
 }

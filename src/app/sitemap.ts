@@ -16,7 +16,7 @@ export const dynamic = "force-static";
  * Google none of that had happened. Any commit that changes a non-blog page's
  * content bumps this in the same commit.
  */
-const CONTENT_UPDATED = new Date("2026-09-13");
+const CONTENT_UPDATED = new Date("2026-10-12");
 
 export default function sitemap(): MetadataRoute.Sitemap {
   // The homepage is "/" rather than "" so its <loc> carries the trailing slash

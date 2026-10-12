@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import MarketPage from "@/components/seo/MarketPage";
+import CampaignResults from "@/components/work/CampaignResults";
 
 export const metadata: Metadata = {
   title: "Google Ads Management in Lebanon",
@@ -18,6 +19,12 @@ export default function Page() {
       breadcrumbName="Google Ads in Lebanon"
       serviceName="Google Ads management"
       areaServed="Lebanon"
+      proof={{
+        slate: "Receipts",
+        eyebrow: "Campaign results",
+        title: "Numbers, not testimonials.",
+        body: <CampaignResults />,
+      }}
       lead="Search ads for Lebanese businesses, built around what your buyers actually type and pointed at pages built to answer them. Small budgets that work beat big ones that look busy."
       blocks={[
         {

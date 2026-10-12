@@ -51,6 +51,13 @@ export type MarketPageProps = {
   related?: MarketLink[];
 
   /**
+   * Evidence section, rendered after "What the work covers" and before the
+   * FAQ. Optional and page-specific: only the Google Ads page has campaign
+   * numbers to show, and an empty "Results" section would be worse than none.
+   */
+  proof?: { slate: string; eyebrow: string; title: string; body: React.ReactNode };
+
+  /**
    * FAQ section title. Defaults to `${areaServed}, specifically.`, which is
    * right for a page segmented by geography and wrong for anything else — an
    * industry page would head its restaurant questions "Lebanon, specifically."
@@ -114,6 +121,7 @@ export default function MarketPage({
   faqs,
   facts = [],
   related = [],
+  proof,
   faqTitle,
   audience,
   schemaName,
@@ -226,6 +234,12 @@ export default function MarketPage({
             ))}
           </Spotlight>
         </Section>
+
+        {proof && (
+          <Section slate={proof.slate} eyebrow={proof.eyebrow} title={proof.title}>
+            {proof.body}
+          </Section>
+        )}
 
         <Section
           slate="Questions"
