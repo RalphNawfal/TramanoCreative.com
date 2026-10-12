@@ -135,6 +135,12 @@ export default function Page() {
       ]}
       related={[
         {
+          href: "/blog/google-ads-management-cost-lebanon/",
+          label: "What Google Ads management costs in Lebanon",
+          blurb:
+            "The fee and the budget, worked through with real numbers — and what the first month actually buys.",
+        },
+        {
           href: "/seo-lebanon/",
           label: "SEO in Lebanon",
           blurb:

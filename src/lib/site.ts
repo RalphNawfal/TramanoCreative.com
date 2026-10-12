@@ -204,6 +204,8 @@ export const site = {
     "Medical and clinic website design",
     "Real estate website design",
     "Online payments in Lebanon",
+    "Hotel and guesthouse website design",
+    "Law firm website design",
   ],
 
   /**
@@ -291,6 +293,18 @@ export const site = {
       href: "/real-estate-website-design-lebanon/",
       blurb:
         "Listings as indexable pages, what happens to a URL when a property sells, image weight at listing scale, and enquiries that end in WhatsApp.",
+    },
+    {
+      label: "Hotel & guesthouse websites",
+      href: "/hotel-guesthouse-website-design-lebanon/",
+      blurb:
+        "Direct bookings that skip the platform commission, deposits without a card processor, guests planning from abroad, and directions that survive a mountain road at night.",
+    },
+    {
+      label: "Law firm websites",
+      href: "/law-firm-website-design-lebanon/",
+      blurb:
+        "A page per practice area, Arabic, French and English, clients abroad dealing with inheritance and property, and an enquiry form that collects no case details.",
     },
   ],
 

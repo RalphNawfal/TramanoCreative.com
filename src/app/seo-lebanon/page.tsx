@@ -136,6 +136,12 @@ export default function Page() {
       ]}
       related={[
         {
+          href: "/blog/seo-cost-lebanon/",
+          label: "What SEO costs in Lebanon",
+          blurb:
+            "What moves a month from $500 toward $3,000+, and when a one-off fix is all you need.",
+        },
+        {
           href: "/blog/local-seo-lebanon/",
           label: "Local SEO in Lebanon",
           blurb:

@@ -155,7 +155,7 @@ export default function Page() {
         },
         {
           q: "Do you have a property case study?",
-          a: "Not yet, and we would rather say so than show you something adjacent and imply otherwise. The nearest genuine work is a concept build of a technical catalogue, where the problems are the same ones: a dense grid of items, filtering on the numbers buyers care about, and a lot of imagery kept fast. You can see it on the work page.",
+          a: "Not yet, and we would rather say so than show you something adjacent and imply otherwise. The nearest genuine work is a concept build of a technical catalogue, where the problems are the same ones: a dense grid of items, filtering on the numbers buyers care about, and a lot of imagery kept fast. You can see it on the work page. On the advertising side, Ralph has run a real estate search campaign in Canada that produced 57 conversions and 66 phone calls; the numbers are on the Google Ads page.",
         },
       ]}
       related={[
