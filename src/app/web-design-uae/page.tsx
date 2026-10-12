@@ -147,7 +147,7 @@ export default function Page() {
           href: "/work/burger-shop/",
           label: "A live build, in detail",
           blurb:
-            "How one site's ordering flow was designed around what its customers could actually use.",
+            "How one site's ordering flow was designed around what its customers could actually use — and took 61 orders in its first eleven weeks.",
         },
       ]}
     />

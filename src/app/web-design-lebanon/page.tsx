@@ -148,7 +148,7 @@ export default function Page() {
           href: "/work/burger-shop/",
           label: "A Beirut build, in detail",
           blurb:
-            "The decisions behind a live Lebanese site: a bilingual menu, and a checkout that ends in WhatsApp because card processing wasn't an option.",
+            "A Beirut burger shop went from no website to 61 orders in eleven weeks. The decisions behind it: a bilingual menu, and a checkout that ends in WhatsApp.",
         },
         {
           href: "/blog/how-much-does-a-custom-website-cost/",
