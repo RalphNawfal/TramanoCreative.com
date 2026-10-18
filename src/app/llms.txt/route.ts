@@ -175,7 +175,7 @@ Quoting and invoicing is in US dollars at a fixed price agreed before work start
 
 ## How we work
 
-Two builders and a deliberately small client roster. Each client has one Tramano consultant from the first call to every monthly report, and the builders are in the client's WhatsApp group from kick-off. No juniors, no outsourcing. Every engagement starts with an honest 30–45 minute call: questions first, recommendations second. Fixed-price quotes, no surprise invoices. We decline work we don't think we can help with.
+Two builders and a deliberately small client roster. A Tramano consultant handles the first call, the recommendation and the agreement. Once it is signed and the deposit is paid, Ralph and Ramy take over everything: the build, the client's WhatsApp group and every monthly report. No juniors, no outsourcing. Every engagement starts with an honest 30–45 minute call: questions first, recommendations second. Fixed-price quotes, no surprise invoices. We decline work we don't think we can help with.
 
 We do not guarantee search rankings or specific commercial outcomes, and we say so plainly. We do guarantee the launch date: if a launch slips because of us, 10% of the website price comes off the final payment for every full week late, up to 30%. Anyone guaranteeing a number-one ranking is guessing.
 

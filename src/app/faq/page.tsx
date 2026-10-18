@@ -73,7 +73,7 @@ const faqGroups: { category: string; items: Faq[] }[] = [
       },
       {
         q: "Who actually does the work?",
-        a: "One person runs your account from the first call onwards: your Tramano consultant, who puts together your recommendation, answers your messages and sends your monthly reports. Ralph Nawfal and Ramy Al Housary build the site and run the search and ads work. You meet them at kick-off, and they are in your WhatsApp group from then on. No juniors and no outsourcing, and we keep the roster small so that stays true.",
+        a: "A Tramano consultant handles the first call: they ask the questions, put together your recommendation and fixed price, and send the agreement. Once it's signed and the deposit is paid, Ralph Nawfal and Ramy Al Housary take over everything. They build the site, run the search and ads work, answer your messages in your WhatsApp group and send your monthly reports. No juniors and no outsourcing, and we keep the roster small so that stays true.",
       },
       {
         q: "What happens after launch?",

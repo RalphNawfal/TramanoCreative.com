@@ -62,9 +62,9 @@ const beats = [
   },
   {
     slate: "SC. 05 — WHO YOU DEAL WITH",
-    title: "One contact. Two builders.",
-    accent: "Two builders.",
-    body: "Your Tramano consultant runs your account from the first call to every monthly report. Ralph and Ramy, in Beirut, build it. No junior handed your project after you sign, which is why the roster stays short and why we sometimes say no.",
+    title: "You sign. The builders take over.",
+    accent: "The builders take over.",
+    body: "A Tramano consultant takes your first call and puts the recommendation and the price together. Once you've signed and paid the deposit, Ralph and Ramy, in Beirut, run everything: the build, your messages, every monthly report. No junior handed your project after you sign, which is why the roster stays short and why we sometimes say no.",
     set: "none" as const,
     origin: "50% 50%",
   },

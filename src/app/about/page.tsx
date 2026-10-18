@@ -10,7 +10,7 @@ import { site } from "@/lib/site";
 export const metadata: Metadata = {
   title: "About — The Two People Doing the Work",
   description:
-    "Tramano Creative is Ralph Nawfal and Ramy Al Housary, working from Beirut — a deliberately small roster and one contact from the first call to every monthly report.",
+    "Tramano Creative is Ralph Nawfal and Ramy Al Housary, working from Beirut — a deliberately small roster, and once you sign, you deal directly with the two people building your work.",
   alternates: { canonical: "/about/" },
 };
 
@@ -45,8 +45,8 @@ const facts = [
 
 const principles = [
   {
-    title: "One contact, the whole way",
-    body: "One Tramano consultant runs your account from the first call to every monthly report, and the two of us build the work behind them, in the same WhatsApp group. No departments and no juniors, and what you told us on the call is written down before a line of code.",
+    title: "After you sign, you deal with the builders",
+    body: "A Tramano consultant takes your first call, puts your recommendation together and agrees the price. Once the agreement is signed and the deposit is paid, the two of us take over everything: we build the work, answer your WhatsApp messages and send every monthly report. No departments and no juniors, and what you told the consultant is written down and handed to us before a line of code.",
   },
   {
     title: "Questions before recommendations",
@@ -63,7 +63,7 @@ export default function AboutPage() {
     <>
       <Breadcrumbs items={[{ name: "About", href: "/about/" }]} />
     <div className="pt-20">
-      <Section slate="Who we are" eyebrow="About" title="Two builders. One contact." titleAs="h1">
+      <Section slate="Who we are" eyebrow="About" title="Two builders. No layers." titleAs="h1">
         <div className="max-w-[58ch] space-y-6 text-lg leading-relaxed text-grey">
           <p>
             Tramano Creative is <span className="text-white">Ralph Nawfal</span>{" "}

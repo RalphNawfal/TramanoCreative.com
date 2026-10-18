@@ -54,7 +54,7 @@ export default function Page() {
           paras: [
             "Plenty of studios will build you a website from another country and never say so. That is a legitimate way to work — we do it ourselves for clients in the Gulf and further out. But when the studio is in the same city as the business, a few practical things get easier: sitting down together early, seeing the premises before designing a page about them, photographing the actual product instead of licensing a stock image of something similar.",
             "None of that is mandatory. Most Beirut projects still run the way every other project runs, over calls and a preview link, because that is faster for everyone and nobody wants a meeting for its own sake. The point is that it is available, and that there is somebody to hold accountable who is an hour away rather than a time zone away.",
-            "The two people who build the work are Ralph Nawfal and Ramy Al Housary. One Tramano consultant runs your account from the first call, and the builders sit in the same WhatsApp group, so nothing is lost between the person who understood your business and the people building it.",
+            "The two people who build the work are Ralph Nawfal and Ramy Al Housary. A Tramano consultant takes your first call and writes down what you told them. Once you sign, Ralph and Ramy take over and run everything from your WhatsApp group, so what you said reaches the people building it before any work starts.",
           ],
         },
         {
@@ -127,7 +127,7 @@ export default function Page() {
         },
         {
           q: "Is a Beirut studio cheaper than hiring abroad?",
-          a: "Usually, and the reason is structural rather than a discount: no office lease and no salaried layers: one consultant runs your account and two people build it. The trade-off is availability — we take a small number of projects at a time and are not always free. If you need a department of twelve, we are the wrong studio and will say so.",
+          a: "Usually, and the reason is structural rather than a discount: no office lease and no account managers: once you sign, you deal with the two people building it. The trade-off is availability — we take a small number of projects at a time and are not always free. If you need a department of twelve, we are the wrong studio and will say so.",
         },
         {
           q: "Can you redo a site another Beirut agency built?",
