@@ -265,7 +265,7 @@ export const site = {
    * Same rule as the market pages and it is not negotiable: an industry page has
    * to say things that are not true of /web-design-lebanon/, or it does not get
    * built. Four near-identical sector pages are the same doorway pattern as four
-   * near-identical neighbourhood pages, and CONTENT-PLAN.md already turned those
+   * near-identical neighbourhood pages, and docs/CONTENT-PLAN.md already turned those
    * down for the same reason.
    *
    * `blurb` exists because /llms.txt annotates these links, unlike the market

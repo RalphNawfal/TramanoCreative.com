@@ -128,4 +128,4 @@ lost in a redesign.
 
 The canonical component is `src/components/delivery/SiteCredit.tsx` — copy it
 into the client project. The full pre-launch list, including the credit and the
-ways it commonly gets broken, is **[DELIVERY-CHECKLIST.md](./DELIVERY-CHECKLIST.md)**.
+ways it commonly gets broken, is **[docs/DELIVERY-CHECKLIST.md](./docs/DELIVERY-CHECKLIST.md)**.

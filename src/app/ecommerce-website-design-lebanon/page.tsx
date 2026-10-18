@@ -30,7 +30,7 @@ export const metadata: Metadata = {
  *
  * No conversion-rate figures, no cart-abandonment percentages, no "shops
  * typically see" anywhere. The claims are structural or observational. A number
- * added later needs a source, per CONTENT-PLAN.md.
+ * added later needs a source, per docs/CONTENT-PLAN.md.
  */
 export default function Page() {
   return (
