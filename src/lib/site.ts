@@ -45,6 +45,8 @@ export const site = {
    */
   priceRange: "$500–$3,000+",
   formspreeEndpoint: "https://formspree.io/f/xkolykzp",
+  /** The inbound assistant's /form URL (Cloudflare Worker). Empty = off. */
+  assistantEndpoint: "",
 
   /**
    * A second Formspree form, for newsletter subscriptions only.

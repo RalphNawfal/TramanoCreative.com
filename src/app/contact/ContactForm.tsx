@@ -55,6 +55,17 @@ export default function ContactForm() {
         body,
       });
       if (res.ok) {
+        // The inbound assistant answers the lead by email within seconds.
+        // Fire-and-forget: Formspree is the record, so a failure here never
+        // shows the visitor an error.
+        if (site.assistantEndpoint) {
+          fetch(site.assistantEndpoint, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(Object.fromEntries(body)),
+            keepalive: true,
+          }).catch(() => {});
+        }
         // Fires on confirmed success only — a failed POST is not a lead.
         // Budget and project type ride along as dimensions so the GA4 report
         // can separate a $5k enquiry from a tyre-kick, which is the only
