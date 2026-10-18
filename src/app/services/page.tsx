@@ -27,15 +27,15 @@ const services = [
       "Motion and interaction, where it earns its place",
       "Sub-second loads",
       "Analytics and lead tracking wired in",
-      "Care plan: hosting, updates, changes inside 48 hours",
+      "Care plan from $100 a month: hosting, updates, changes inside 48 hours, a monthly report",
     ],
   },
   {
     id: "google-ads",
     code: "02",
     title: "Google Ads",
-    lead: "In front of buyers the day it turns on.",
-    body: "Search presence takes months to build. Ads work this week — as long as they're run honestly. We research what your buyers actually type, write ads that match it, and send every click to a page built to answer it. You get a plain monthly summary of what went out and what came back.",
+    lead: "Seen by buyers the week it launches. Tuned on real numbers after that.",
+    body: "Search presence takes months to build. Ads can put you in front of people searching this week. The first month is for learning which searches turn into enquiries; after that, the budget goes where the numbers say. We research what your buyers actually type, write ads that match it, and send every click to a page built to answer it. You get a plain monthly summary of what went out and what came back.",
     includes: [
       "Keyword and competitor research",
       "Campaign structure and ad copy",
@@ -103,11 +103,11 @@ const faqs: FaqItem[] = [
   },
   {
     q: "How long before any of this actually works?",
-    a: "Ads work the week they turn on. A website launches 3 to 6 weeks after kickoff and starts converting the traffic you already have. Search presence is the slow one — expect months, not weeks, before rankings move. That ordering is why we usually build the site first, run ads second, and let search compound underneath both.",
+    a: "Ads are seen the week they launch, and the first month is for learning which searches turn into enquiries. A website launches 3 to 6 weeks after kickoff and starts converting the traffic you already have. Search presence is the slow one — expect months, not weeks, before rankings move. That ordering is why we usually build the site first, run ads second, and let search compound underneath both.",
   },
   {
     q: "Do you guarantee first-page Google rankings?",
-    a: "No, and nobody honestly can. Rankings depend on what competitors do, what Google changes, and how old your domain is — none of which any agency controls. What we guarantee is the work: the technical foundation, the structured data, the speed and the content. Anyone promising you a number-one ranking is guessing, and charging you for the guess.",
+    a: "No, and nobody honestly can. Rankings depend on what competitors do, what Google changes, and how old your domain is — none of which any agency controls. What we guarantee is the work and the launch date: if your launch slips because of us, 10% of the website price comes off your final payment for every full week late, up to 30%. Anyone promising you a number-one ranking is guessing, and charging you for the guess.",
   },
   {
     q: "Who owns the website, the code and the ad account?",
@@ -115,7 +115,7 @@ const faqs: FaqItem[] = [
   },
   {
     q: "What happens if I want to stop working with you?",
-    a: "You keep everything and we hand over the accounts. There is no notice period on a care plan beyond the month you have paid for, no exit fee, and no part of your setup that only works while we are involved. We would rather you leave able to go elsewhere than stay because leaving is expensive.",
+    a: "You keep everything and we hand over the accounts. Monthly services run for the minimum term in your agreement, then month to month with 30 days' written notice. There is no exit fee, and no part of your setup that only works while we are involved. We would rather you leave able to go elsewhere than stay because leaving is expensive.",
   },
   {
     q: "Can you take over a website or ad account someone else built?",
@@ -205,8 +205,13 @@ export default function ServicesPage() {
                       ))}
                     </ul>
                     <div className="mt-10">
-                      <CtaButton href="/contact/" variant="outline">
-                        Ask about {s.title}
+                      <CtaButton
+                        href={site.whatsapp(
+                          `Hi Tramano, I'd like to see what people find when they search for my business. (${s.title})`,
+                        )}
+                        variant="outline"
+                      >
+                        See what people find when they search for you
                       </CtaButton>
                     </div>
                   </div>

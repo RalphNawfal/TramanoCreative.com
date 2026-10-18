@@ -49,7 +49,7 @@ export default function Page() {
           paras: [
             "The Lebanese market splits roughly in two. At one end, cheap template work — a bought theme, some stock photography, a contact form that may or may not deliver mail. It is fast to produce and it looks like everything else, which is precisely the problem when your customer is comparing three suppliers.",
             "At the other end, agencies that charge properly but hand the actual build to whoever is free, so the person who understood your business in the meeting is not the person who built the thing. What arrives is competent and generic.",
-            "We sit deliberately outside both. There are two of us, we take a small number of projects at a time, and the people on the call are the people writing the code. That is the whole reason the roster stays short, and it is why we sometimes say no.",
+            "We sit deliberately outside both. Two builders take a small number of projects at a time, and one consultant runs each account from the first call, with the builders in the same WhatsApp group. That is the whole reason the roster stays short, and it is why we sometimes say no.",
           ],
         },
       ]}
@@ -71,7 +71,7 @@ export default function Page() {
         "Custom websites in Lebanon typically cost between $1,000 and $2,000. Focused single-page builds start at $500, and larger projects are quoted individually.",
         "Every project is quoted as a fixed price in US dollars, agreed before work starts. The price you agree is the price you pay regardless of what the lira does.",
         "A typical website launches 3 to 6 weeks after kickoff. Landing pages ship in under two weeks.",
-        "Tramano Creative is two people — Ralph Nawfal and Ramy Al Housary — working from Beirut. There are no account managers and no hand-offs.",
+        "Tramano Creative is built by two people — Ralph Nawfal and Ramy Al Housary — working from Beirut, with one consultant as each client's contact from the first call to every monthly report.",
         "Sites are built as static files served from a global network, so they stay online during local power and connectivity outages.",
         "Bilingual and trilingual builds in Arabic, French and English are standard, with real right-to-left layouts rather than a translation plugin.",
       ]}

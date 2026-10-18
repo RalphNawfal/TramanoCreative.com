@@ -40,7 +40,7 @@ export default function Page() {
       breadcrumbName="Web Design in Beirut"
       serviceName="Web design and development"
       areaServed="Lebanon"
-      lead="Custom websites for Beirut businesses, built by two people who work here. You can meet us, or never meet us — but the people on the call are the people writing the code."
+      lead="Custom websites for Beirut businesses, built by two people who work here. You can meet us, or never meet us — either way, the people writing the code are in your WhatsApp group."
       facts={[
         "Tramano Creative is based in Beirut. Ralph Nawfal and Ramy Al Housary are the only two people in the studio, and both work on every project.",
         "Custom websites for Beirut businesses cost between $1,000 and $2,000, with focused single-page builds from $500, quoted as a fixed price in US dollars before work starts.",
@@ -54,7 +54,7 @@ export default function Page() {
           paras: [
             "Plenty of studios will build you a website from another country and never say so. That is a legitimate way to work — we do it ourselves for clients in the Gulf and further out. But when the studio is in the same city as the business, a few practical things get easier: sitting down together early, seeing the premises before designing a page about them, photographing the actual product instead of licensing a stock image of something similar.",
             "None of that is mandatory. Most Beirut projects still run the way every other project runs, over calls and a preview link, because that is faster for everyone and nobody wants a meeting for its own sake. The point is that it is available, and that there is somebody to hold accountable who is an hour away rather than a time zone away.",
-            "The two people who take the call are Ralph Nawfal and Ramy Al Housary, and they are the entire studio. There is no account manager to be handed off to afterwards, because there is nobody to hand off to.",
+            "The two people who build the work are Ralph Nawfal and Ramy Al Housary. One Tramano consultant runs your account from the first call, and the builders sit in the same WhatsApp group, so nothing is lost between the person who understood your business and the people building it.",
           ],
         },
         {

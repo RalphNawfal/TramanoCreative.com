@@ -43,8 +43,8 @@ const faqGroups: { category: string; items: Faq[] }[] = [
         a: "$500, and it buys one genuinely good page rather than a stripped-down version of a bigger site: custom design, copy that works, sub-second loading, one clear action. It does not include multiple pages, a blog, a content system you log into, or ongoing search work. If you need those, you are in the $1,000–$2,000 range — and we would rather say so on the call than sell you the cheap option twice.",
       },
       {
-        q: "Why are you cheaper than other agencies?",
-        a: "Because there is less of us to pay for. Two people, no office lease, no account managers, nobody on commission. An agency quoting three times as much is not necessarily overcharging — they have payroll we do not. The trade-off: we take few projects at a time, and if you need a department of twelve, we are the wrong studio. What you get instead is the people who understood your business on the call writing the code.",
+        q: "Why do you take so few clients?",
+        a: "Because every site we build is custom and every campaign is run by hand, and two builders can only do that well for so many businesses at once. Being small means the two people building your site are not splitting their attention across fifty other clients. When we are full, we say so and give you a start date rather than taking the work and rushing it. If you need a department of twelve, we are the wrong studio.",
       },
       {
         q: "How much does SEO or Google Ads management cost per month?",
@@ -61,7 +61,7 @@ const faqGroups: { category: string; items: Faq[] }[] = [
     items: [
       {
         q: "How long does a website take to build?",
-        a: "A typical site launches in 3–6 weeks from kickoff. Week one is discovery and design direction; you see real, working pages by week two. Landing pages can ship in under two weeks. Timelines are agreed up front and we hit them — launch dates don't slip because we control the whole stack.",
+        a: "A typical site launches in 3–6 weeks from kickoff. Week one is discovery and design direction; you see real, working pages by week two. Landing pages can ship in under two weeks. The launch date is agreed in writing before we start. If your launch slips because of us, 10% of the website price comes off your final payment for every full week late, up to 30%. If content or feedback arrives late on your side, the date moves by the same amount and we confirm the new one in writing.",
       },
       {
         q: "What does the onboarding process look like?",
@@ -69,15 +69,15 @@ const faqGroups: { category: string; items: Faq[] }[] = [
       },
       {
         q: "What do you need from me to get started?",
-        a: "Less than you would expect, and we tell you exactly what on the first call. Usually your logo and any brand assets, a rough sense of the pages you need, and one person who can give feedback within a few days. Content is the usual bottleneck — if the copy is not written, we write it, priced into the quote rather than left as a surprise blocker halfway through.",
+        a: "Less than you would expect, and we tell you exactly what on the first call. Usually your logo and any brand assets, a rough sense of the pages you need, and one person who can give feedback within a few days. Content is the usual bottleneck — if the copy is not written, we can write it, quoted up front as its own line rather than left as a surprise blocker halfway through.",
       },
       {
         q: "Who actually does the work?",
-        a: "The two people you talk to: Ralph Nawfal and Ramy Al Housary. We deliberately keep the client roster small — no account managers, no hand-offs, no departments. The person on your call is the person building your site and running your campaigns.",
+        a: "One person runs your account from the first call onwards: your Tramano consultant, who puts together your recommendation, answers your messages and sends your monthly reports. Ralph Nawfal and Ramy Al Housary build the site and run the search and ads work. You meet them at kick-off, and they are in your WhatsApp group from then on. No juniors and no outsourcing, and we keep the roster small so that stays true.",
       },
       {
         q: "What happens after launch?",
-        a: "You can take the keys and go — everything is documented and you own it all. Most clients stay on a care plan: we handle hosting, updates, monitoring, and content changes (within 48 hours), and keep improving what the numbers say needs improving.",
+        a: "You can take the keys and go — everything is documented and you own it all. Most clients stay on a care plan, from $100 a month: we handle hosting, updates, monitoring, and content changes (within 48 hours), send a monthly report, and keep improving what the numbers say needs improving.",
       },
     ],
   },
@@ -135,7 +135,7 @@ const faqGroups: { category: string; items: Faq[] }[] = [
       },
       {
         q: "Do you manage Google Ads?",
-        a: "Yes. Search presence compounds over months; Google Ads works immediately — if it's built honestly. We research the terms your buyers actually type, write matching ads, and land every click on a page built to convert it. You get clear monthly reporting: what was spent, what came back. No inflated dashboards.",
+        a: "Yes. Search presence compounds over months; Google Ads can put you in front of people searching this week. The first month is for learning which searches turn into enquiries, and after that the budget goes where the numbers say. We research the terms your buyers actually type, write matching ads, and land every click on a page built to convert it. You get clear monthly reporting: what was spent, what came back. No inflated dashboards.",
       },
     ],
   },

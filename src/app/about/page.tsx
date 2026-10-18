@@ -10,7 +10,7 @@ import { site } from "@/lib/site";
 export const metadata: Metadata = {
   title: "About — The Two People Doing the Work",
   description:
-    "Tramano Creative is Ralph Nawfal and Ramy Al Housary, working from Beirut — a deliberately small roster and no hand-offs. Book a call and talk to both of us.",
+    "Tramano Creative is Ralph Nawfal and Ramy Al Housary, working from Beirut — a deliberately small roster and one contact from the first call to every monthly report.",
   alternates: { canonical: "/about/" },
 };
 
@@ -45,8 +45,8 @@ const facts = [
 
 const principles = [
   {
-    title: "The people you talk to do the work",
-    body: "There are two of us, and that's on purpose. No account managers, no departments, nothing lost in a hand-off between the person who understood your business and the person building the site.",
+    title: "One contact, the whole way",
+    body: "One Tramano consultant runs your account from the first call to every monthly report, and the two of us build the work behind them, in the same WhatsApp group. No departments and no juniors, and what you told us on the call is written down before a line of code.",
   },
   {
     title: "Questions before recommendations",
@@ -63,7 +63,7 @@ export default function AboutPage() {
     <>
       <Breadcrumbs items={[{ name: "About", href: "/about/" }]} />
     <div className="pt-20">
-      <Section slate="Who we are" eyebrow="About" title="Two people. No hand-offs." titleAs="h1">
+      <Section slate="Who we are" eyebrow="About" title="Two builders. One contact." titleAs="h1">
         <div className="max-w-[58ch] space-y-6 text-lg leading-relaxed text-grey">
           <p>
             Tramano Creative is <span className="text-white">Ralph Nawfal</span>{" "}

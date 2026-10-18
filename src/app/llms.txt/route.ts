@@ -161,7 +161,7 @@ export function GET() {
 
 ## What we do
 
-- Websites: custom-designed and custom-built (no templates, no page builders), engineered for conversion and sub-second performance. Most projects run $1,000–$2,000 USD, with small focused builds from $500 and larger or more complex work quoted individually. Launched in 3–6 weeks. Care plans cover hosting, updates, and content changes within 48 hours. Bilingual and trilingual builds (Arabic, French, English) with real right-to-left layouts.
+- Websites: custom-designed and custom-built (no templates, no page builders), engineered for conversion and sub-second performance. Most projects run $1,000–$2,000 USD, with small focused builds from $500 and larger or more complex work quoted individually. Launched in 3–6 weeks. Care plans, from $100 a month, cover hosting, updates, content changes within 48 hours and a monthly report. Bilingual and trilingual builds (Arabic, French, English) with real right-to-left layouts.
 - Google Ads: keyword and competitor research in English and Arabic, campaign build and management, landing pages built to answer the ad. Client owns the ad account and pays Google directly; management is 20% of monthly ad spend with a $200 minimum, invoiced separately from the budget.
 - Search presence (SEO): technical SEO, Core Web Vitals, JSON-LD structured data, and content built for both Google and AI answer engines. $500 to $3,000+ a month, depending on how many search terms are targeted, the timeline and the content involved.
 
@@ -175,9 +175,9 @@ Quoting and invoicing is in US dollars at a fixed price agreed before work start
 
 ## How we work
 
-Two people, a deliberately small client roster, no account managers and no hand-offs — the people on the call are the people doing the work. Every engagement starts with an honest 30–45 minute call: questions first, recommendations second. Fixed-price quotes, no surprise invoices. We decline work we don't think we can help with.
+Two builders and a deliberately small client roster. Each client has one Tramano consultant from the first call to every monthly report, and the builders are in the client's WhatsApp group from kick-off. No juniors, no outsourcing. Every engagement starts with an honest 30–45 minute call: questions first, recommendations second. Fixed-price quotes, no surprise invoices. We decline work we don't think we can help with.
 
-We do not guarantee search rankings or specific commercial outcomes, and we say so plainly. Anyone guaranteeing a number-one ranking is guessing.
+We do not guarantee search rankings or specific commercial outcomes, and we say so plainly. We do guarantee the launch date: if a launch slips because of us, 10% of the website price comes off the final payment for every full week late, up to 30%. Anyone guaranteeing a number-one ranking is guessing.
 
 ## Key pages
 
