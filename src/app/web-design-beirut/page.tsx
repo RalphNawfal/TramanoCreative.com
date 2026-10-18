@@ -127,7 +127,7 @@ export default function Page() {
         },
         {
           q: "Is a Beirut studio cheaper than hiring abroad?",
-          a: "Usually, and the reason is structural rather than a discount: no office lease, no account managers, two people. The trade-off is availability — we take a small number of projects at a time and are not always free. If you need a department of twelve, we are the wrong studio and will say so.",
+          a: "Usually, and the reason is structural rather than a discount: no office lease and no salaried layers: one consultant runs your account and two people build it. The trade-off is availability — we take a small number of projects at a time and are not always free. If you need a department of twelve, we are the wrong studio and will say so.",
         },
         {
           q: "Can you redo a site another Beirut agency built?",

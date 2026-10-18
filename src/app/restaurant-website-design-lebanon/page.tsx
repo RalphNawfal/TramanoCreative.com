@@ -35,7 +35,7 @@ export const metadata: Metadata = {
  * No commission percentages, no share-of-search figures, no "restaurants
  * typically see" anywhere on this page. Every claim here is either structural
  * (an image cannot be read as text) or an observation stated as one. If a number
- * gets added later it needs a source, per docs/CONTENT-PLAN.md.
+ * gets added later it needs a source, per the content plan (kept in Tramano HQ, not this public repo).
  */
 export default function Page() {
   return (
